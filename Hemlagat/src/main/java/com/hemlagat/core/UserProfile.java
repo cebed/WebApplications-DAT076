@@ -16,6 +16,7 @@ public class UserProfile {
     private String email;
     private String password;
 
+
 public UserProfile(){
 
 }
@@ -23,4 +24,7 @@ public UserProfile(){
     return name;
 }
 
+
 }
+
+
