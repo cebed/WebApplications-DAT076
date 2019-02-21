@@ -14,5 +14,5 @@ public class UserProfile {
     private String name;
     private String id;
     private String email;
-    
+    private String password;
 }
