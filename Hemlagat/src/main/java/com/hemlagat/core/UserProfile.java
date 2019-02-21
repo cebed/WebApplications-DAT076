@@ -12,7 +12,7 @@ package com.hemlagat.core;
 public class UserProfile {
     
     private String name;
-    private String id; 
+    private String id;
     private String email;
     
 }
