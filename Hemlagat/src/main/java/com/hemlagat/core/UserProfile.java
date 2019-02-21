@@ -15,4 +15,12 @@ public class UserProfile {
     private String id;
     private String email;
     private String password;
+
+public UserProfile(){
+
+}
+ public String getName(){
+    return name;
+}
+
 }
