@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAdsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAdsLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{adsController.selected.id}" title="#{bundle.CreateAdsTitle_id}" required="true" requiredMessage="#{bundle.CreateAdsRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateAdsLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{adsController.selected.description}" title="#{bundle.CreateAdsTitle_description}" required="true" requiredMessage="#{bundle.CreateAdsRequiredMessage_description}"/>
+                    <h:outputLabel value="#{bundle.CreateAdsLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{adsController.selected.price}" title="#{bundle.CreateAdsTitle_price}" />
+                    <h:outputLabel value="#{bundle.CreateAdsLabel_address}" for="address" />
+                    <h:inputText id="address" value="#{adsController.selected.address}" title="#{bundle.CreateAdsTitle_address}" />
+                    <h:outputLabel value="#{bundle.CreateAdsLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{adsController.selected.quantity}" title="#{bundle.CreateAdsTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.CreateAdsLabel_weight}" for="weight" />
+                    <h:inputText id="weight" value="#{adsController.selected.weight}" title="#{bundle.CreateAdsTitle_weight}" />
+                    <h:outputLabel value="#{bundle.CreateAdsLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{adsController.selected.title}" title="#{bundle.CreateAdsTitle_title}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{adsController.create}" value="#{bundle.CreateAdsSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{adsController.prepareList}" value="#{bundle.CreateAdsShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAdsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
