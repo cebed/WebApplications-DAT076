@@ -21,8 +21,23 @@
                     <h:outputText value="#{adsController.pagination.pageFirstItem + 1}..#{adsController.pagination.pageLastItem + 1}/#{adsController.pagination.itemsCount}"/>&nbsp;
                     <h:commandLink action="#{adsController.previous}" value="#{bundle.Previous} #{adsController.pagination.pageSize}" rendered="#{adsController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{adsController.next}" value="#{bundle.Next} #{adsController.pagination.pageSize}" rendered="#{adsController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{adsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <h:dataTable value="#{adsController.items}" var="item" border="3" cellpadding="4" cellspacing="5" rowClasses="jsfcrud_list_form" rules="all" style="border:solid 1px">
+                        
+                        
+                        
+          
+                         
+                        
+                    <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAdsTitle_id}"/>
                             </f:facet>
@@ -73,7 +88,7 @@
                             <h:commandLink action="#{adsController.prepareEdit}" value="#{bundle.ListAdsEditLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{adsController.destroy}" value="#{bundle.ListAdsDestroyLink}"/>
-                        </h:column>
+                        </h:column> 
                     </h:dataTable>
                 </h:panelGroup>
                 <br />

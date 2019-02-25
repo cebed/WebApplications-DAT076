@@ -16,8 +16,8 @@
                 <h:messages errorStyle="color: red" infoStyle="color: red" layout="table"/>
             </h:panelGroup>
             <h:form>
-                <div id="tabelpos">
-                    <table   >
+                <div id="tabelpos" >
+                    <table  border="2" >
                         <tr height="400px">
                             <td  width="300px"> <div id="loadapic">ladda upp en bild</div>
                                 <h:panelGrid columns="2">
@@ -51,10 +51,11 @@
 
                             <td  width="400px"> 
                                 <div id="centerera-checkbox">
+                                    
                                     <h:outputText value="Contents " class="mat-tabel-fix"/>
                                     <br style="align-content: flex-start"></br>
                                     <h:panelGrid columns="2" >
-
+<!--
 
                                         <h:outputText value="Kött " class="mat-tabel-fix" />
                                         <p:selectBooleanButton id="value1" value="" onLabel="Yes" offLabel="No" style="width:60px" onIcon="pi pi-check" offIcon="pi pi-times" />
@@ -66,7 +67,7 @@
                                         <p:selectBooleanButton id="value3" value="" onLabel="Yes" offLabel="No" style="width:60px" onIcon="pi pi-check" offIcon="pi pi-times" />
                                         <h:outputText value="Nötter " class="mat-tabel-fix"/>
                                         <p:selectBooleanButton id="value4" value="" onLabel="Yes" offLabel="No" style="width:60px" onIcon="pi pi-check" offIcon="pi pi-times" />
-                                        
+                                        -->
                                     </h:panelGrid>
                                 </div>
                             </td>
@@ -74,14 +75,19 @@
 
 
 
-                            <td  width="100px"><br />
+
+                            <td  width="200px"><br />
+                                <div id="butom-pos">
                                 <h:commandLink action="#{adsController.create}" value="#{bundle.CreateAdsSaveLink}" />
                                 <br />
                                 <br />
                                 <h:commandLink action="#{adsController.prepareList}" value="#{bundle.CreateAdsShowAllLink}" immediate="true"/>
                                 <br />
                                 <br />
-                                <h:link outcome="/index" value="#{bundle.CreateAdsIndexLink}"/></td>
+                                <h:link outcome="/index" value="#{bundle.CreateAdsIndexLink}"/>
+                                    </div>
+                            </td>
+                        
                         </tr>
 
                     </table>
