@@ -108,6 +108,7 @@
            font-family: cursive;
            font-size: 40px;
             height: 200px;
+            border-color: #13654a;
           
             
         }
@@ -115,17 +116,60 @@
          
            border-style: outset;
            width: 600px;
-           font-family: cursive;
-           font-size: 50px;
+           font-family: serif;
+          
+           font-size: 30px;
             position: relative;
-            top: -50px;
+            font-weight: bold;
+            padding-left: 10px;
+            top: -1px;
+           
              height: 200px;
+             border-color: #13654a;
         }
          #food-pic-continu{
            
           
-           width: 400px;
+           width: 423px;
+           
           
            
             
         }
+       
+        #buy-buttom{
+            height: 350px;
+        width: 350px;
+        background-color: #13654a;
+            position: relative;
+            left: 300px;
+            font-size: 70px;
+            
+        }
+        
+        #sell-buttom{
+            height: 350px;
+        width: 350px;
+        background-color: #13654a;
+            position: relative;
+            left: 660px;
+            top: -350px;
+            font-size: 70px;
+            
+            
+        }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}

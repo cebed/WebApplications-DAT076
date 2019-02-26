@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -22,57 +23,40 @@
                     <h:commandLink action="#{adsController.previous}" value="#{bundle.Previous} #{adsController.pagination.pageSize}" rendered="#{adsController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{adsController.next}" value="#{bundle.Next} #{adsController.pagination.pageSize}" rendered="#{adsController.pagination.hasNextPage}"/>&nbsp;
 
-
-
-
-
-
-
-
                     <div id="tabelpos">
                         <h:dataTable value="#{adsController.items}" var="item" border="3" cellpadding="4" cellspacing="5" rowClasses="jsfcrud_list_form" rules="all" style="border:solid 1px">
 
 
 
                             <h:column >
-
-                                
-                                    <div id="food-pic-pos">
+                                <div id="food-pic-pos">
                                     <h:graphicImage value="/ads/curry.jpg" alt="hej"  />
-                                   
-                                    </div>
-                                
+                                </div>
                             </h:column>   
                             <h:column >
-                                
-                                
-                                    
-                                    <div id="food-pic-cont">
-                                     
-                                   <h:outputText value="#{bundle.ListAdsTitle_address}:   "/>
-                                 
-                                 <h:outputText value="#{item.address}"/>
-                                 <br/>
-                                  
-                                     <h:outputText value="#{bundle.ListAdsTitle_price}   :"/>
-                                     
-                     
-                                 <h:outputText value="#{item.price}"/>
-                                    </div>
-                                
+                                <div id="food-pic-cont">
+                                     <br/>
+                                      
+                                    <h:outputText value="#{bundle.ListAdsTitle_address}:   "/>
+                                    <h:outputText value="#{item.address}"/>
+                                    <br/>
+                                    <h:outputText value="#{bundle.ListAdsTitle_price}:   "/>
+                                    <h:outputText value="#{item.price}"/>
+                                </div>
+
                             </h:column>  
                             <h:column >
 
-                                
-                                    <div id="food-pic-continu">
-                                        <h:commandLink action="#{adsController.prepareView}" value="#{bundle.ListAdsViewLink}"/>
-                                 <h:outputText value=" "/>
-                                 <h:commandLink action="#{adsController.prepareEdit}" value="#{bundle.ListAdsEditLink}"/>
-                                 <h:outputText value=" "/>
-                                 <h:commandLink action="#{adsController.destroy}" value="#{bundle.ListAdsDestroyLink}"/>
-                                    
-                                    </div>
-                                
+
+                                <div id="food-pic-continu">
+                                    <h:commandLink action="#{adsController.prepareView}" value="#{bundle.ListAdsViewLink}"/>
+                                    <h:outputText value=" "/>
+                                    <h:commandLink action="#{adsController.prepareEdit}" value="#{bundle.ListAdsEditLink}"/>
+                                    <h:outputText value=" "/>
+                                    <h:commandLink action="#{adsController.destroy}" value="#{bundle.ListAdsDestroyLink}"/>
+                                   
+                                </div>
+
                             </h:column>   
 
 
