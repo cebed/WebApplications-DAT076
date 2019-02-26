@@ -93,3 +93,39 @@
              padding-left: 100px;
             
         }
+        #col{
+            position: relative;
+            margin-left: 40px;
+            width: 1290px;
+            height: 250px;
+            border: #ffffff;
+
+        }
+        #food-pic-pos{
+           
+           border-style: outset;
+           width: 300px;
+           font-family: cursive;
+           font-size: 40px;
+            height: 200px;
+          
+            
+        }
+        #food-pic-cont{
+         
+           border-style: outset;
+           width: 600px;
+           font-family: cursive;
+           font-size: 50px;
+            position: relative;
+            top: -50px;
+             height: 200px;
+        }
+         #food-pic-continu{
+           
+          
+           width: 400px;
+          
+           
+            
+        }
