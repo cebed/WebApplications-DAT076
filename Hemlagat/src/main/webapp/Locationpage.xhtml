@@ -18,16 +18,16 @@
         
         
         <h:form>
-            <form id="ipForm" action="GeoIPTest" method="POST">
+            <form id="ipForm" action="index.xhtml" >
                  <input type="text"  name = "ipAddress" id = "ip" value="temp"/>
-                 <input type="submit" value="Din Position"/>
+                 <input type="submit" value="Din Position" onclick="/index.xhtml"/>
                  
                  
              </form>
           
             
         </h:form>
-        
+        <h:link outcome="/index.xhtml" value="next page"/>
         <script>
         function callback(response){
             console.log(response);
