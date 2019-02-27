@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+    <script type="text/javascript">
+        function handleLoginRequest(xhr, status, args) {
+            if (args.validationFailed || !args.loggedIn) {
+                PF('dlg').jq.effect("shake", {times: 5}, 100);
+            } else {
+                PF('dlg').hide();
+                $('#loginLink').fadeOut();
+            }
+        }
+    </script>
+
+
+    <h:head>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+
+
+
+    </h:head>
+
+    <h:body styleClass="green darken-3">
+        <f:view locale="#{facesContext.externalContext.requestLocale}">
+            
+
+                <div  class="valign-wrapper" id="login-page" >
+                    <div class="container" >   
+                        <div class="center-align">
+                            <div class="row">
+                                <div class="col s6 offset-s3">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <div class="header">
+                                                <h1>Sign in</h1>
+                                                <h:outputStylesheet library="css" name="jsfcrud.css"/>
+
+                                            </div>
+
+                                            <img class="responsive-img" style="max-width: 64px;" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/120428/preview.svg"  />
+                                            <div class="left-align" >
+                                                <h:form id="login-form">
+                                                    <p:growl autoUpdate="true"/>
+                                                    <div class="row">
+                                                        <div class="col s12 input-field">
+                                                            <p:inputText id="email" value="#{login.email}" required="true" label="email" requiredMessage="Please enter email" />
+                                                            <p:outputLabel value="#{bundle.CreateUsertableLabel_email}" for="email"  />
+
+                                                        </div>
+
+                                                        <div class="col s12 input-field">
+                                                            <h:inputSecret id="password" value="#{login.password}" requiredMessage="Please enter password" required="true">
+                                                                <f:validateLength minimum="2" />
+                                                            </h:inputSecret>
+                                                            <p:message for="password" display="icon" />
+                                                            <p:outputLabel for="password" value="#{bundle.CreateUsertableLabel_password}" />
+
+                                                        </div>
+
+                                                        <div class="col s12 input-field">
+                                                            <h:commandButton action="#{login.login()}" value="Login" styleClass="btn btn-large"
+                                                                             />
+                                                        </div>
+
+                                                        <div class="col s12 input-field">
+                                                            <p:button outcome="/usertable/RegisterPage.xhtml" value="Register now"/>
+                                                        </div>
+                                                    </div>
+
+                                                </h:form>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+           
+        </f:view>
+    </h:body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
