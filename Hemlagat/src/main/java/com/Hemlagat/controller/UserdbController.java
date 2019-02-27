@@ -17,6 +17,8 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import lombok.Getter;
+import lombok.Setter;
 
 @Named("userdbController")
 @SessionScoped
@@ -24,6 +26,17 @@ public class UserdbController implements Serializable {
 
     private Userdb current;
     private DataModel items = null;
+
+    @Getter
+    @Setter
+    private String email;
+    @Setter
+    @Getter
+    private String username;
+    @Getter
+    @Setter
+    private String password;
+
     @EJB
     private com.Hemlagat.model.UserdbFacade ejbFacade;
     private PaginationHelper pagination;
