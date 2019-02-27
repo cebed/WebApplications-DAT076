@@ -32,10 +32,10 @@
                 </h:outputLink>
                 <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
-                Welcome #{usertableController.email}
+                Welcome #{userdbController.email}
                 <h:commandButton value="Logout" action="#{login.logout()}" />
                 <ui:insert name="title">Page</ui:insert>
-                <h:link outcome="index" value="#{bundle.CreateUsertableIndexLink}"/>
+                <h:link outcome="index" value="#{bundle.CreateUserdbIndexLink}"/>
             </h:form>
         </ui:define>
     </ui:composition>
