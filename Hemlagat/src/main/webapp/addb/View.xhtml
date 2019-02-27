@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAddbTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAddbLabel_id}"/>
+                    <h:outputText value="#{addbController.selected.id}" title="#{bundle.ViewAddbTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAddbLabel_title}"/>
+                    <h:outputText value="#{addbController.selected.title}" title="#{bundle.ViewAddbTitle_title}"/>
+                    <h:outputText value="#{bundle.ViewAddbLabel_price}"/>
+                    <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}"/>
+                    <h:outputText value="#{bundle.ViewAddbLabel_description}"/>
+                    <h:outputText value="#{addbController.selected.description}" title="#{bundle.ViewAddbTitle_description}"/>
+                    <h:outputText value="#{bundle.ViewAddbLabel_quantity}"/>
+                    <h:outputText value="#{addbController.selected.quantity}" title="#{bundle.ViewAddbTitle_quantity}"/>
+                    <h:outputText value="#{bundle.ViewAddbLabel_weight}"/>
+                    <h:outputText value="#{addbController.selected.weight}" title="#{bundle.ViewAddbTitle_weight}"/>
+                    <h:outputText value="#{bundle.ViewAddbLabel_vegetarian}"/>
+                    <h:outputText value="#{addbController.selected.vegetarian}" title="#{bundle.ViewAddbTitle_vegetarian}"/>
+                    <h:outputText value="#{bundle.ViewAddbLabel_nuts}"/>
+                    <h:outputText value="#{addbController.selected.nuts}" title="#{bundle.ViewAddbTitle_nuts}"/>
+                    <h:outputText value="#{bundle.ViewAddbLabel_lactose}"/>
+                    <h:outputText value="#{addbController.selected.lactose}" title="#{bundle.ViewAddbTitle_lactose}"/>
+                    <h:outputText value="#{bundle.ViewAddbLabel_gluten}"/>
+                    <h:outputText value="#{addbController.selected.gluten}" title="#{bundle.ViewAddbTitle_gluten}"/>
+                    <h:outputText value="#{bundle.ViewAddbLabel_address}"/>
+                    <h:outputText value="#{addbController.selected.address}" title="#{bundle.ViewAddbTitle_address}"/>
+                    <h:outputText value="#{bundle.ViewAddbLabel_other}"/>
+                    <h:outputText value="#{addbController.selected.other}" title="#{bundle.ViewAddbTitle_other}"/>
+                    <h:outputText value="#{bundle.ViewAddbLabel_other2}"/>
+                    <h:outputText value="#{addbController.selected.other2}" title="#{bundle.ViewAddbTitle_other2}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{addbController.destroyAndView}" value="#{bundle.ViewAddbDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAddbEditLink}"/>
+                <br />
+                <h:commandLink action="#{addbController.prepareCreate}" value="#{bundle.ViewAddbCreateLink}" />
+                <br />
+                <h:commandLink action="#{addbController.prepareList}" value="#{bundle.ViewAddbShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAddbIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

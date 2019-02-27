@@ -1,7 +1,9 @@
-/Users/nurabd/Documents/GitHub/Webapplications/WebApplications-DAT076/Hemlagat/src/main/java/com/hemlagat/core/Ads.java
-/Users/nurabd/Documents/GitHub/Webapplications/WebApplications-DAT076/Hemlagat/src/main/java/com/hemlagat/View/AdsController.java
-/Users/nurabd/Documents/GitHub/Webapplications/WebApplications-DAT076/Hemlagat/src/main/java/com/hemlagat/core/UserProfile.java
-/Users/nurabd/Documents/GitHub/Webapplications/WebApplications-DAT076/Hemlagat/src/main/java/com/hemlagat/View/util/JsfUtil.java
-/Users/nurabd/Documents/GitHub/Webapplications/WebApplications-DAT076/Hemlagat/src/main/java/com/hemlagat/View/util/PaginationHelper.java
-/Users/nurabd/Documents/GitHub/Webapplications/WebApplications-DAT076/Hemlagat/src/main/java/com/hemlagat/View/AdsFacade.java
-/Users/nurabd/Documents/GitHub/Webapplications/WebApplications-DAT076/Hemlagat/src/main/java/com/hemlagat/View/AbstractFacade.java
+C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\AddbController.java
+C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\AbstractFacade.java
+C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\AddbFacade.java
+C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\Userdb.java
+C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\Addb.java
+C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\UserdbFacade.java
+C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\UserdbController.java
+C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\util\PaginationHelper.java
+C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\util\JsfUtil.java
