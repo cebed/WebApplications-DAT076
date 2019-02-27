@@ -5,45 +5,45 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <ui:composition template="template.xhtml">
-        
+
         <ui:define name="body">
-            
-    <h:head>
-        <title>Facelet Title</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    </h:head>
-    <h:body>
-        <div id="data"></div>
-        Hello from Facelets
-        
-        
-        <h:form>
-            <form id="ipForm" action="index.xhtml" >
-                 <input type="text"  name = "ipAddress" id = "ip" value="temp"/>
-                 <input type="submit" value="Din Position" onclick="index.xhtml"/>
-             
-             </form>
-          
-            
-        </h:form>
-        <h:link outcome="/index.xhtml" value="next page"/>
-        <script>
-        function callback(response){
-            console.log(response);
-            document.getElementById("ip").value=response.city;
-        }
-        
 
-        $.ajax({
-            url:"https://geoip-db.com/jsonp",dataType:"jsonp"
+            <h:head>
+                <title>Facelet Title</title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            </h:head>
+            <h:body>
+                <div id="data"></div>
+                Hello from Facelets
 
-        })
-        
-        
-        </script>
-        
-    </h:body>
-            </ui:define>
-         </ui:composition>
+
+                <h:form>
+                    <form id="ipForm" action="index.xhtml" >
+                        <input type="text"  name = "ipAddress" id = "ip" value="temp"/>
+                        <input type="submit" value="Din Position" onclick="index.xhtml"/>
+
+                    </form>
+
+
+                </h:form>
+                <h:link outcome="/index.xhtml" value="next page"/>
+                <script>
+                    function callback(response) {
+                        console.log(response);
+                        document.getElementById("ip").value = response.city;
+                    }
+
+
+                    $.ajax({
+                        url: "https://geoip-db.com/jsonp", dataType: "jsonp"
+
+                    })
+
+
+                </script>
+
+            </h:body>
+        </ui:define>
+    </ui:composition>
 </html>
 

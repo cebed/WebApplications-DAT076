@@ -1,4 +1,6 @@
+com\Hemlagat\model\QAddb.class
 com\Hemlagat\model\AddbFacade.class
+com\Hemlagat\model\QUserdb.class
 com\Hemlagat\model\UserdbFacade.class
 com\Hemlagat\controller\UserdbController$1.class
 com\Hemlagat\controller\AddbController$AddbControllerConverter.class
