@@ -11,6 +11,7 @@ import com.Hemlagat.model.Userdb;
 
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -47,13 +48,20 @@ public class LoginController implements Serializable {
         loggedInUser = userRegistry.findUser(email, password);
         if (loggedInUser != null) {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("email", email);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success"));
+
             return "Logout?faces-redirect=true";
 
         } else {
-            JsfUtil.addErrorMessage("Wrong email or password");
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Wrong email or password"));
 
             return null;
         }
+    }
+    
+    public void showLoginMessage() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Logged in"));
     }
 
     public String logout() {

@@ -8,16 +8,7 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 
-    <script type="text/javascript">
-        function handleLoginRequest(xhr, status, args) {
-            if (args.validationFailed || !args.loggedIn) {
-                PF('dlg').jq.effect("shake", {times: 5}, 100);
-            } else {
-                PF('dlg').hide();
-                $('#loginLink').fadeOut();
-            }
-        }
-    </script>
+  
 
 
     <h:head>
@@ -55,6 +46,7 @@
                                         <div class="left-align" >
                                             <h:form id="login-form">
                                                 <p:growl autoUpdate="true"/>
+                                                <p:growl id="growl" showDetail="true" sticky="true" />  
                                                 <div class="row">
                                                     <div class="col s12 input-field">
                                                         <p:inputText id="email" value="#{login.email}" required="true" label="email" requiredMessage="Please enter email" />
