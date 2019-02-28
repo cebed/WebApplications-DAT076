@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -13,6 +14,108 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
+
+            <h:form>
+                <div id="tabelpos" >
+                    <table   >
+                        <tr height="400px">
+                            <td  width="300px"> <div id="loadapic">ladda upp en bild</div>
+                                <h:panelGrid columns="2">
+                                    <h:outputLabel value="#{bundle.CreateAddbLabel_id}" for="id" />
+                                    <h:inputText id="id" value="#{addbController.selected.id}" title="#{bundle.CreateAddbTitle_id}" required="true" requiredMessage="#{bundle.CreateAddbRequiredMessage_id}"/>
+                                </h:panelGrid>
+                            </td>
+
+
+                            <td  width="360px"> 
+                                <h:panelGrid columns="2">
+
+
+                                    <h:outputLabel value="#{bundle.CreateAddbLabel_title}" for="title" class="mat-tabel-fix"/>
+                                    <h:inputText id="title" value="#{addbController.selected.title}" title="#{bundle.CreateAddbTitle_title}" />
+                                    <h:outputLabel value="#{bundle.CreateAddbLabel_price}" for="price" class="mat-tabel-fix"/>
+                                    <h:inputText id="price" value="#{addbController.selected.price}" title="#{bundle.CreateAddbTitle_price}" />
+                                    <h:outputLabel value="#{bundle.CreateAddbLabel_description}" for="description" class="mat-tabel-fix"/>
+                                    <h:inputTextarea id="description" value="#{addbController.selected.description}" title="#{bundle.CreateAddbTitle_description}" />
+                                    <h:outputLabel value="#{bundle.CreateAddbLabel_quantity}" for="quantity" class="mat-tabel-fix"/>
+                                    <h:inputText id="quantity" value="#{addbController.selected.quantity}" title="#{bundle.CreateAddbTitle_quantity}" />
+                                    <h:outputLabel value="#{bundle.CreateAddbLabel_address}" for="address" class="mat-tabel-fix" />
+                                    <h:inputText id="address" value="#{addbController.selected.address}" title="#{bundle.CreateAddbTitle_address}" />
+                                    <h:outputLabel value="#{bundle.CreateAddbLabel_weight}" for="weight" class="mat-tabel-fix"/>
+                                    <h:inputText id="weight" value="#{addbController.selected.weight}" title="#{bundle.CreateAddbTitle_weight}" />
+                                    <!--<h:outputLabel value="#{bundle.CreateAddbLabel_vegetarian}" for="vegetarian" />
+                                     <h:inputText id="vegetarian" value="#{addbController.selected.vegetarian}" title="#{bundle.CreateAddbTitle_vegetarian}" />
+                                    <h:outputLabel value="#{bundle.CreateAddbLabel_nuts}" for="nuts" />
+                                    <h:inputText id="nuts" value="#{addbController.selected.nuts}" title="#{bundle.CreateAddbTitle_nuts}" />
+                                    <h:outputLabel value="#{bundle.CreateAddbLabel_lactose}" for="lactose" />
+                                    <h:inputText id="lactose" value="#{addbController.selected.lactose}" title="#{bundle.CreateAddbTitle_lactose}" />
+                                    <h:outputLabel value="#{bundle.CreateAddbLabel_gluten}" for="gluten" />
+                                    <h:inputText id="gluten" value="#{addbController.selected.gluten}" title="#{bundle.CreateAddbTitle_gluten}" />
+                                   <h:outputLabel value="#{bundle.CreateAddbLabel_other}" for="other" />
+                                    <h:inputText id="other" value="#{addbController.selected.other}" title="#{bundle.CreateAddbTitle_other}" />
+                                    <h:outputLabel value="#{bundle.CreateAddbLabel_other2}" for="other2" />
+                                    <h:inputText id="other2" value="#{addbController.selected.other2}" title="#{bundle.CreateAddbTitle_other2}" />-->
+
+
+
+
+                                </h:panelGrid>
+
+
+                            </td>
+
+
+                            <td  width="400px"> 
+                                <div id="centerera-checkbox">
+
+                                    <h:outputText value="Contents " class="mat-tabel-fix"/>
+                                    <br style="align-content: flex-start"></br>
+                                    <h:panelGrid columns="2" >
+                                        <h:outputLabel value="#{bundle.CreateAddbLabel_vegetarian}" for="vegetarian" class="mat-tabel-fix" />
+                                        <p:selectBooleanButton id="vegetarian" value="#{addbController.selected.vegetarian}" title="#{bundle.CreateAddbTitle_vegetarian}" onLabel="Yes" offLabel="No" style="width:60px" onIcon="pi pi-check" offIcon="pi pi-times" />
+
+                                        <h:outputLabel value="#{bundle.CreateAddbLabel_nuts}" for="nuts" class="mat-tabel-fix"/>
+                                        <p:selectBooleanButton id="nuts" value="#{addbController.selected.nuts}" title="#{bundle.CreateAddbTitle_nuts}" onLabel="Yes" offLabel="No" style="width:60px" onIcon="pi pi-check" offIcon="pi pi-times" />
+
+                                        <h:outputLabel value="#{bundle.CreateAddbLabel_gluten}" for="gluten" class="mat-tabel-fix"/>
+                                        <p:selectBooleanButton id="lactose" value="#{addbController.selected.lactose}" title="#{bundle.CreateAddbTitle_lactose}" onLabel="Yes" offLabel="No" style="width:60px" onIcon="pi pi-check" offIcon="pi pi-times" />
+
+                                        <h:outputLabel value="#{bundle.CreateAddbLabel_gluten}" for="gluten" class="mat-tabel-fix"/>
+                                        <p:selectBooleanButton id="gluten" value="#{addbController.selected.gluten}" title="#{bundle.CreateAddbTitle_gluten}" onLabel="Yes" offLabel="No" style="width:60px" onIcon="pi pi-check" offIcon="pi pi-times" />
+
+                                    </h:panelGrid>
+                                </div>
+                            </td>
+
+
+
+
+
+                            <td  width="200px"><br />
+                                <div id="butom-pos">
+                                    <br />
+                                    <h:commandLink action="#{addbController.create}" value="#{bundle.CreateAddbSaveLink}" />
+                                    <br />
+                                    <br />
+                                    <h:commandLink action="#{addbController.prepareList}" value="#{bundle.CreateAddbShowAllLink}" immediate="true"/>
+                                    <br />
+                                    <br />
+                                    <h:link outcome="/index" value="#{bundle.CreateAddbIndexLink}"/>
+                                </div>
+                            </td>
+
+                        </tr>
+
+                    </table>
+
+                </div>
+
+
+
+            </h:form>
+
+
+            <!--
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateAddbLabel_id}" for="id" />
@@ -42,15 +145,9 @@
                     <h:outputLabel value="#{bundle.CreateAddbLabel_other2}" for="other2" />
                     <h:inputText id="other2" value="#{addbController.selected.other2}" title="#{bundle.CreateAddbTitle_other2}" />
                 </h:panelGrid>
-                <br />
-                <h:commandLink action="#{addbController.create}" value="#{bundle.CreateAddbSaveLink}" />
-                <br />
-                <br />
-                <h:commandLink action="#{addbController.prepareList}" value="#{bundle.CreateAddbShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateAddbIndexLink}"/>
+                
             </h:form>
+            -->
         </ui:define>
     </ui:composition>
 

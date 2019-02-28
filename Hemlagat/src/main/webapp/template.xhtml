@@ -6,10 +6,10 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
 
-     
-    
-    
-      <h:head>
+
+
+
+    <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
@@ -23,10 +23,12 @@
             <b:row>
 
                 <div id="top" class="top">
-
+                    <h:link outcome="/addb/List" value="mat listan"/>
+                    <br/>
+                    <h:link outcome="/addb/Create" value="skapa lista"/>
                     <ui:insert name="top"></ui:insert>
-                    
-                    
+
+
                     <div id="logga" class="logga">
                         <h:graphicImage value="/addb/logga.png" alt="hej" id="loggapos" />
 
@@ -51,21 +53,21 @@
 
 
             </b:row>
+
+            <!--
+                        <b:row>
+                            
+                           <div id="bottom" class="bottom">
             
-<!--
-            <b:row>
-                
-               <div id="bottom" class="bottom">
-
-                    <ui:insert name="bottom"> </ui:insert>
-
-                </div>
-
-
-
-            </b:row>
-
--->
+                                <ui:insert name="bottom"> </ui:insert>
+            
+                            </div>
+            
+            
+            
+                        </b:row>
+            
+            -->
 
 
         </b:container>

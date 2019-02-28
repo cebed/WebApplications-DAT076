@@ -214,5 +214,5 @@ public class Addb implements Serializable {
     public String toString() {
         return "com.Hemlagat.model.Addb[ id=" + id + " ]";
     }
-    
+
 }

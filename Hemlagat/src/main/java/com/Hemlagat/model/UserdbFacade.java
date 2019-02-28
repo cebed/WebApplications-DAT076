@@ -39,8 +39,8 @@ public class UserdbFacade extends AbstractFacade<Userdb> {
     public UserdbFacade() {
         super(Userdb.class);
     }
-    
-      public Userdb findUser(String email, String password) {
+
+    public Userdb findUser(String email, String password) {
         System.out.println("Looking for user " + email);
         System.out.println("Password >" + password + "<");
         QUserdb tableofuser = QUserdb.userdb;

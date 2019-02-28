@@ -27,5 +27,5 @@ public class AddbFacade extends AbstractFacade<Addb> {
     public AddbFacade() {
         super(Addb.class);
     }
-    
+
 }

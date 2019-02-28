@@ -3,119 +3,79 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ListAddbTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListAddbEmpty}" rendered="#{addbController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{addbController.items.rowCount > 0}">
-                    <h:outputText value="#{addbController.pagination.pageFirstItem + 1}..#{addbController.pagination.pageLastItem + 1}/#{addbController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{addbController.previous}" value="#{bundle.Previous} #{addbController.pagination.pageSize}" rendered="#{addbController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{addbController.next}" value="#{bundle.Next} #{addbController.pagination.pageSize}" rendered="#{addbController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{addbController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_title}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.title}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_price}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.price}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_description}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.description}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_quantity}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.quantity}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_weight}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.weight}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_vegetarian}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.vegetarian}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_nuts}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.nuts}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_lactose}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.lactose}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_gluten}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.gluten}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_address}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.address}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_other}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.other}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_other2}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.other2}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
-                            <h:commandLink action="#{addbController.prepareView}" value="#{bundle.ListAddbViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{addbController.prepareEdit}" value="#{bundle.ListAddbEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{addbController.destroy}" value="#{bundle.ListAddbDestroyLink}"/>
-                        </h:column>
-                    </h:dataTable>
-                </h:panelGroup>
-                <br />
-                <h:commandLink action="#{addbController.prepareCreate}" value="#{bundle.ListAddbCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListAddbIndexLink}"/>
-            </h:form>
+            <h:outputText styleClass="pi pi-file" style="margin:0 auto;" value="hej" />
+            <h:form id="form">
+                <p:dataGrid var="item" value="#{addbController.items}" columns="4" layout="grid"
+                            >
+
+                   
+
+                    
+                        <h:panelGrid columns="2" style="width:100%">
+                            <p:graphicImage value="/addb/curry.jpg" /> 
+
+                            <h:outputText value="#{item.title}" />
+                            <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                    <h:outputText styleClass="pi pi-search" style="margin:0 auto;"/>
+                    <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
+                </p:commandLink>
+                            
+                        </h:panelGrid>
+                    
+
+                </p:dataGrid>
+                
+                <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="carDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedCar}" columnClasses="label,value">
+                <f:facet name="header">
+                    <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/> 
+                </f:facet>
+                 
+                <h:outputText value="Id:" />
+                <h:outputText value="#{dataGridView.selectedCar.id}" />
+ 
+                <h:outputText value="Year" />
+                <h:outputText value="#{dataGridView.selectedCar.year}" />
+ 
+                <h:outputText value="Color:" />
+                <h:outputText value="#{dataGridView.selectedCar.color}" style="color:#{dataGridView.selectedCar.color}"/>
+             
+                <h:outputText value="Price" />
+                <h:outputText value="$#{dataGridView.selectedCar.price}" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+
+</h:form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
         </ui:define>
     </ui:composition>
 
