@@ -38,45 +38,28 @@ public class AddbFacade extends AbstractFacade<Addb> {
         super(Addb.class);
     }
 
-    public Userdb findUser(String email, String password) {
-        System.out.println("Looking for user " + email);
-        System.out.println("Password >" + password + "<");
-        QUserdb tableofuser = QUserdb.userdb;
-        System.out.println(query.from(tableofuser).fetch());
-        Userdb result = qf.selectFrom(tableofuser).where(tableofuser.email.eq(email)).fetchOne();
-        System.out.println(qf.selectFrom(tableofuser).where(tableofuser.email.eq(email)).fetch());
+    public Addb findByAdress(String address) {
+        System.out.println("Looking for address " + address);
+        System.out.println("address >" + address + "<");
+        QAddb tableofAddress = QAddb.addb;
+        System.out.println(query.from(tableofAddress).fetch());
+        Addb result = qf.selectFrom(tableofAddress).where(tableofAddress.address.eq(address)).fetchOne();
+        System.out.println(qf.selectFrom(tableofAddress).where(tableofAddress.address.eq(address)).fetch());
         if (result != null) {
-            System.out.println("Found user");
-            System.out.println("Password: >" + result.getPassword() + "<");
+            System.out.println("Found address");
+            System.out.println("address: >" + result.getAddress()+ "<");
         }
-        if (result != null && result.getPassword().equals(password)) {
-            System.out.println("Found user and right password");
+        if (result != null && result.getAddress().equals(address)) {
+            System.out.println("Found address ");
             return result;
         } else {
-            System.out.println("Did not find user");
+            System.out.println("Did not find address");
             return null;
         }
     }
     
     
-     public Addb findByAddress(String address) {
-        System.out.println("Looking for  " + address);
-      
-        QAddb tableofuser = QAddb.addb;
-        System.out.println(query.from(tableofuser).fetch());
-       
-        Addb result = qf.selectFrom(tableofuser).where(tableofuser.address.eq(address)).fetchOne();
-       
-        
-       
-        if (result != null) {
-            System.out.println("Found user");
-            System.out.println("Password: >" + result.getAddress() + "<");
-        }
-        
-            System.out.println("Did not find user");
-            return null;
-        }
+   
     
 }
 
