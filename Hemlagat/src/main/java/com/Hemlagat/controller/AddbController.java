@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -17,12 +18,17 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import lombok.Getter;
+import lombok.Setter;
 
 @Named("addbController")
 @SessionScoped
 public class AddbController implements Serializable {
-
+    
     private Addb current;
+     @Getter
+    @Setter
+    private String Address;
     private DataModel items = null;
     @EJB
     private com.Hemlagat.model.AddbFacade ejbFacade;
@@ -65,6 +71,21 @@ public class AddbController implements Serializable {
     public String prepareList() {
         recreateModel();
         return "List";
+    }
+    public String loginn() {
+        System.out.print("##################################" +Address);
+        current = getFacade().findByAddress(Address);
+        System.out.print("##################################" +Address);
+        if (current != null) {
+            
+
+            return "List";
+
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Wrong email or password"));
+
+            return null;
+        }
     }
 
     public String prepareView() {

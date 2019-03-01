@@ -23,7 +23,10 @@
                 <b:row>
                     <h:form id="form">
 
-                        <p:dataGrid var="item" value="#{addbController.items}" columns="3" layout="grid"   >
+                        <p:dataGrid var="item" value="#{addbController.items}" columns="3" layout="grid"
+        rows="12" paginator="true" id="cars"
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="6,12,16">
                             <p:panelGrid  style="width:100%"  >
                                 <p:row >
                                     <p:column > <p:graphicImage value="/addb/curry.jpeg" id="curry" width="100px" height="100px"/> </p:column>
