@@ -3,6 +3,7 @@
     position:fixed;
     vertical-align: top;
     background-color:#13654a;
+    color: white;
     height:8em;
     width:100%;
     z-index:100;
@@ -37,6 +38,20 @@
 
     margin-bottom:85px;
 }
+
+
+
+.topButton {
+    width:100px;
+    float:right;
+      text-align:center;
+    margin:5px;
+    padding: 5px;
+    font-weight: bold;
+    top: 5px;
+    margin-top: 0px;
+}
+
 
 #bottom {
     position:fixed;
@@ -160,15 +175,15 @@
 }
 
 #gridview-pos{
-    
+
     width: 1100px;
-   
-    
+
+
 }
 
 #curry{
- border: #13654a;
- border-style: outset;
- 
-    
+    border: #13654a;
+    border-style: outset;
+
+
 }

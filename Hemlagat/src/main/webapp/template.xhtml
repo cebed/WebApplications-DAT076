@@ -23,10 +23,20 @@
             <b:row>
 
                 <div id="top" class="top">
+                    
+                    <form>
+                        <p:button id="button1" class="topButton" outcome="/userdb/RegisterPage" value="Register" />
+
+                        <p:button  id="button2"  class="topButton" outcome="/LoginPage" value="Login"/>
+                    </form>
+                    
                     <h:link outcome="/addb/List" value="mat listan"/>
                     <br/>
                     <h:link outcome="/addb/Create" value="skapa lista"/>
                     <ui:insert name="top"></ui:insert>
+
+                    
+
 
 
                     <div id="logga" class="logga">
@@ -54,20 +64,24 @@
 
             </b:row>
 
-            <!--
-                        <b:row>
-                            
-                           <div id="bottom" class="bottom">
-            
-                                <ui:insert name="bottom"> </ui:insert>
-            
-                            </div>
-            
-            
-            
-                        </b:row>
-            
-            -->
+
+            <b:row>
+
+                <div id="bottom" class="bottom">
+
+
+
+                    <ui:insert name="bottom"> </ui:insert>
+
+                </div>
+
+
+
+            </b:row>
+
+
+
+
 
 
         </b:container>
