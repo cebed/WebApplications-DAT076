@@ -72,21 +72,7 @@ public class AddbController implements Serializable {
         recreateModel();
         return "List";
     }
-    public String loginn() {
-        System.out.print("##################################" +Address);
-        current = getFacade().findByAddress(Address);
-        System.out.print("##################################" +Address);
-        if (current != null) {
-            
-
-            return "List";
-
-        } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Wrong email or password"));
-
-            return null;
-        }
-    }
+   
 
     public String prepareView() {
         current = (Addb) getItems().getRowData();
