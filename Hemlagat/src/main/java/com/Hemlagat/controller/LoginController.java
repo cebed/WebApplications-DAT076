@@ -48,7 +48,7 @@ public class LoginController implements Serializable {
         loggedInUser = userRegistry.findUser(email, password);
         if (loggedInUser != null) {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("email", email);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome:"+ loggedInUser.getUsername()));
 
             return "Logout?faces-redirect=true";
 
@@ -61,7 +61,7 @@ public class LoginController implements Serializable {
     
     public void showLoginMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Logged in"));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Logged in as " + loggedInUser.getUsername()));
     }
 
     public String logout() {

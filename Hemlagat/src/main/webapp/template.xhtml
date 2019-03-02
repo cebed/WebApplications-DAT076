@@ -23,19 +23,19 @@
             <b:row>
 
                 <div id="top" class="top">
-                    
+
                     <form>
                         <p:button id="button1" class="topButton" outcome="/userdb/RegisterPage" value="Register" />
 
                         <p:button  id="button2"  class="topButton" outcome="/LoginPage" value="Login"/>
                     </form>
-                    
+
                     <h:link outcome="/addb/List" value="mat listan"/>
                     <br/>
                     <h:link outcome="/addb/Create" value="skapa lista"/>
                     <ui:insert name="top"></ui:insert>
 
-                    
+
 
 
 
@@ -73,6 +73,24 @@
 
                     <ui:insert name="bottom"> </ui:insert>
 
+                    <div id="menubar" class="menubar">
+                        <b:navBar brand="Hemlagat AB" fluid="true">
+                            <b:navbarLinks>
+                                <div class="labl" id="labl" style="top: 25%; bottom: 10%; position: absolute;">
+                                <b:label text="Copyright 2019" severity="success"/>
+                                </div>
+                              
+
+                            </b:navbarLinks>
+
+                            <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+                            <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+                            <b:navbarLinks pull="right" styleClass="hidden-xs">
+                                <b:navLink value="About us" outcome="BottomBar"></b:navLink>
+                                <b:navLink value="Contact us" outcome="contactus"/>
+                            </b:navbarLinks>
+                        </b:navBar>
+                    </div>
                 </div>
 
 

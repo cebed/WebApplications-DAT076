@@ -21,6 +21,8 @@
     left:0;
 
 }
+
+
 #loggapos{
 
     position: fixed;
@@ -61,6 +63,17 @@
     height:8em;
     width:100%;
     left:0;
+}
+
+#menubar {
+    
+    width: 100%;
+    top: 50%;
+    bottom:0px;
+  
+    float: bottom; 
+    position:absolute; 
+    align-content: center;
 }
 
 #loadapic{
