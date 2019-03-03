@@ -47,8 +47,14 @@ public class AddbController implements Serializable {
         if (current == null) {
             current = new Addb();
             selectedItemIndex = -1;
+            
         }
+        
         return current;
+    }
+
+    public void setSelected(Addb current) {
+        this.current = current;
     }
 
     private AddbFacade getFacade() {

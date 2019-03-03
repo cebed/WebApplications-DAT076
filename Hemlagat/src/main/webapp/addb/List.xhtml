@@ -24,7 +24,7 @@
                     <h:form id="form">
 
                         <p:dataGrid var="item" value="#{addbController.item}" columns="3" layout="grid"
-        rows="12" paginator="true" id="cars"
+        rows="50" paginator="false" id="cars"
         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
         rowsPerPageTemplate="6,12,16">
                             <p:panelGrid  style="width:100%"  >
@@ -38,11 +38,11 @@
                                 <p:row>
 
                                     <p:column>
-                                        <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                                        <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
 
-                                            
-                                            <f:setPropertyActionListener value="#{item}" target="#{addbController.selected.id}" />
-                                        </p:commandButton></p:column>
+                                            <h:outputText value="haha" style="margin:0 auto;"/>
+                                            <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
+                                        </p:commandLink></p:column>
                                     <p:column> 
                                         <h:outputText value="#{item.description}" />
                                         <h:commandLink action="#{addbController.destroy}" value="#{bundle.ListAddbDestroyLink}"/></p:column>
@@ -58,7 +58,7 @@
 
 
 
-                        <p:dialog header="" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                        <p:dialog  widgetVar="carDialog"  resizable="false" showHeader="false" onHide="true" >
                             <p:outputPanel id="carDetail" style="text-align:center;">
                                 <p:panelGrid  columns="2"  layout="grid" >
                                     <f:facet name="header">
@@ -69,17 +69,17 @@
                                     <h:outputText value="#{addbController.selected.id}" />
 
                                     <h:outputText value="Description:" />
-                                    <h:outputText value="#{addbController.selected}" />
+                                    <h:outputText value="#{addbController.selected.description}" />
 
                                     <h:outputText value="address:" />
-                                    <h:outputText value="#{addbController.selected}" />
+                                    <h:outputText value="#{addbController.selected.address}" />
 
                                     <h:outputText value="Price" />
-                                    <h:outputText value="$#{addbController.selected}" />
+                                    <h:outputText value="$#{addbController.selected.price}" />
                                     <h:outputText value="quantity:" />
-                                    <h:outputText value="#{addbController.selected}" />
+                                    <h:outputText value="#{addbController.selected.quantity}" />
                                     <h:outputText value="weight:" />
-                                    <h:outputText value="#{addbController.selected}" />
+                                    <h:outputText value="#{addbController.selected.weight}" />
 
                                 </p:panelGrid>
                             </p:outputPanel>
