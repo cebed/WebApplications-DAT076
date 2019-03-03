@@ -90,13 +90,19 @@ public class MailController implements Serializable {
             showSuccessMessage();
 
         } catch (Exception e) {
-
+            showFailMessage();
         }
     }
 
     public void showSuccessMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Email has been sent to: " + getToMail()));
+    }
+    
+    public void showFailMessage(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Email could not be sent to: " + getToMail()));
+        
     }
 
 }
