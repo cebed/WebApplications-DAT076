@@ -26,7 +26,7 @@
 
 
                 </h:form>
-                <h:link outcome="/index.xhtml" value="next page"/>
+                <h:link outcome="/index_1.xhtml" value="next page"/>
                 <script>
                     function callback(response) {
                         console.log(response);
@@ -41,6 +41,18 @@
 
 
                 </script>
+                
+                <h:form>
+            <table>
+                <tr>
+                    <td>Username</td>
+                    <td><h:inputText value="#{addbController.address}" required="true" 
+                                     requiredMessage="Please enter a address"/></td>
+                </tr>
+                
+            </table>
+            <h:commandButton action="#{addbController.getIte()}" value="Login" styleClass="btn btn-large"/>
+        </h:form>
 
             </h:body>
         </ui:define>

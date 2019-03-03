@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
+import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -29,7 +30,11 @@ public class AddbController implements Serializable {
      @Getter
     @Setter
     private String Address;
+     private List<Addb> item = null;
+
+    
     private DataModel items = null;
+   
     @EJB
     private com.Hemlagat.model.AddbFacade ejbFacade;
     private PaginationHelper pagination;
@@ -166,11 +171,9 @@ public class AddbController implements Serializable {
         }
         return items;
     }
-
-    private void recreateModel() {
-        items = null;
-    }
-
+    
+    
+   
     private void recreatePagination() {
         pagination = null;
     }
@@ -236,7 +239,30 @@ public class AddbController implements Serializable {
                 throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Addb.class.getName());
             }
         }
+        
 
     }
+ //////////////////////////////NUr//////////////////////////////
+    
+     public List<Addb> getItem() {
+        
+        if (item == null) {
+        item = ejbFacade.findByAdress(Address);
+        }
+        return item;
+    }
+    
+    public String getIte() {
+        
+        
+        item = ejbFacade.findByAdress(Address);
+        System.out.println("####### jag är fär");
+        return "/addb/List.xhtml";
+    }
+    
+    
 
+    private void recreateModel() {
+        item = null;
+    }
 }
