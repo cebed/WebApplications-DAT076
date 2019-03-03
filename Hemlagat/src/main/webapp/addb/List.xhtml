@@ -38,14 +38,14 @@
                                 <p:row>
 
                                     <p:column>
-                                        <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                                        <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
 
                                             <h:outputText value="haha" style="margin:0 auto;"/>
                                             <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
                                         </p:commandLink></p:column>
                                     <p:column> 
                                         <h:outputText value="#{item.description}" />
-                                        <h:commandLink action="#{addbController.destroy}" value="#{bundle.ListAddbDestroyLink}"/></p:column>
+                                        <p:commandButton action="#{addbController.destroy}" value="#{bundle.ListAddbDestroyLink}"/></p:column>
                                         
                                 </p:row>
                             </p:panelGrid>
