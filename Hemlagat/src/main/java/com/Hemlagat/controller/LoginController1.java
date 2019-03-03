@@ -12,6 +12,7 @@ import com.Hemlagat.model.UserdbFacade;
 import com.Hemlagat.model.Userdb;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -36,15 +37,19 @@ public class LoginController1 implements Serializable {
 
     @Inject
     private AddbFacade addressreg;
-    private Addb loggedAddress;
+    private List<Addb> loggedAddress;
 
-    public Addb getAddr() {
+    public List<Addb> getAddr() {
         return loggedAddress;
     }
 
     public String login() {
         loggedAddress = addressreg.findByAdress(address);
         if (loggedAddress != null) {
+            for(Addb l : loggedAddress){
+             System.out.println("##############€€€€€€€€€#########___" + l.getAddress());
+            }
+           
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("address", address);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Success"));
 
@@ -53,7 +58,7 @@ public class LoginController1 implements Serializable {
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Wrong address"));
 
-            return null;
+            return "Logout?faces-redirect=true";
         }
     }
     
