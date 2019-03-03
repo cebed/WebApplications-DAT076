@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Mail Sender</title>
+    </h:head>
+    <h:body style="background:#1B5E20;;">
+    <b:jumbotron style="background:#1B5E20;"> 
+        <div class="myContact" style="position: relative; align-content: center; text-align: center; color: whitesmoke;">
+            <h1> Contact us </h1>
+
+        </div>
+        <b:container>
+            <h:form>
+                <p:growl autoUpdate="true"/>
+                <p:growl id="growl" showDetail="true" sticky="true" life="10"/>  
+
+                <p:panel style="background: whitesmoke;">
+                    <table>
+
+
+                        <tr>
+                            <td align="right"></td>
+                            <td>
+                                <h3> From:</h3>
+                                <p:inputText value="#{mailgctr.fromMail}" />
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td align="right">  </td>
+                            <td>
+                                <h3>Enter your email:</h3>
+                                <p:inputText value="#{mailgctr.username}"/>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td align="right">  </td>
+                            <td>
+                                <h3>Password:</h3>
+                                <p:password value="#{mailgctr.password}"/>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td align="right"> </td>
+                            <td>
+                                <h3>To:</h3>
+                                <p:inputText  value="#{mailgctr.toMail}" readonly="true"/>
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="right"></td>
+                            <td>
+                                <h3>Subject:</h3>
+                                <h:inputText value="#{mailgctr.subject}"/>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td align="right"></td>
+                            <td>
+                                <h3>Message:</h3>
+                                <p:inputTextarea rows="6" cols="40" value="#{mailgctr.message}"/>
+                                <h:outputText id="display" />
+                            </td>
+                        </tr>
+
+                    </table>
+
+
+                    <b:commandButton value="Send" action="#{mailgctr.send()}"  size="lg" look="success"  />
+                    <div class="mybt" style="padding: 5px 0px;">
+                        <b:button icon-rotate="l" iconAwesome="thumbs-up"
+                                  value="go back" 
+                                  look="info" title="icon-rotate='l'" outcome="/template.xhtml"/>
+
+                    </div>
+                    
+                    
+                        
+               
+
+
+
+                </p:panel>
+
+            </h:form>
+        </b:container>
+     
+
+    </b:jumbotron>
+       
+
+    
+    </h:body>
+
+  
+</html>
+
