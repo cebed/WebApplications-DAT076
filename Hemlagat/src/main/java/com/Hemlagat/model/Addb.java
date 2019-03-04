@@ -10,9 +10,11 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.swing.ImageIcon;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -38,7 +40,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Addb.findByGluten", query = "SELECT a FROM Addb a WHERE a.gluten = :gluten")
     , @NamedQuery(name = "Addb.findByAddress", query = "SELECT a FROM Addb a WHERE a.address = :address")
     , @NamedQuery(name = "Addb.findByOther", query = "SELECT a FROM Addb a WHERE a.other = :other")
-    , @NamedQuery(name = "Addb.findByOther2", query = "SELECT a FROM Addb a WHERE a.other2 = :other2")})
+    , @NamedQuery(name = "Addb.findByOther2", query = "SELECT a FROM Addb a WHERE a.other2 = :other2")
+    , @NamedQuery(name = "Addb.findByPhoto", query = "SELECT a FROM Addb a WHERE a.photo = :photo")
+
+})
 public class Addb implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -78,7 +83,12 @@ public class Addb implements Serializable {
     @Size(max = 100)
     @Column(name = "OTHER2")
     private String other2;
-
+    @Lob
+    @Column(name = "PHOTO")
+    private byte[] photo;
+    
+  
+    
     public Addb() {
     }
 
@@ -188,6 +198,14 @@ public class Addb implements Serializable {
 
     public void setOther2(String other2) {
         this.other2 = other2;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     @Override
