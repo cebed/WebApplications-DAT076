@@ -22,12 +22,11 @@
                     <p:panel style="background: whitesmoke;">
                         <table>
 
-
                             <tr>
-                                <td align="right"></td>
+                                <td align="right">  </td>
                                 <td>
-                                    <h3> From:</h3>
-                                    <p:inputText value="#{mailgctr.fromMail}" required="true" requiredMessage="Enter your name" />
+
+                                    <p:inputText type="hidden" value="#{mailgctr.username}"/>
                                 </td>
                             </tr>
 
@@ -35,17 +34,8 @@
                             <tr>
                                 <td align="right">  </td>
                                 <td>
-                                    <h3>Email:</h3>
-                                    <p:inputText value="#{mailgctr.username}" required="true" requiredMessage="Enter your email"/>
-                                </td>
-                            </tr>
 
-
-                            <tr>
-                                <td align="right">  </td>
-                                <td>
-                                    <h3>Password:</h3>
-                                    <p:password value="#{mailgctr.password}" required="true" requiredMessage="Enter your password"/>
+                                    <p:inputText value="#{mailgctr.password}" type="hidden"/>
                                 </td>
                             </tr>
 
@@ -53,7 +43,7 @@
                             <tr>
                                 <td align="right"> </td>
                                 <td>
-                                  
+
                                     <p:inputText  value="#{mailgctr.toMail}" readonly="true" type="hidden" />
 
                                 </td>
@@ -62,8 +52,8 @@
                             <tr>
                                 <td align="right"></td>
                                 <td>
-                                    <h3>Subject:</h3>
-                                    <p:inputText value="#{mailgctr.subject}" />
+                                    <h3>Email:</h3>
+                                    <p:inputText value="#{mailgctr.subject}" required="true" requiredMessage="Enter your email" />
                                 </td>
                             </tr>
 

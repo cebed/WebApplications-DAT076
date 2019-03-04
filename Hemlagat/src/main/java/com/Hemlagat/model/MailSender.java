@@ -21,7 +21,7 @@ import javax.mail.internet.MimeMessage;
  */
 public class MailSender implements Serializable {
 
-    public void sendMail(String fromMail, String username, String password, String toMail, String subject, String message) throws AddressException, MessagingException {
+    public void sendMail(String username, String password, String toMail, String subject, String message) throws AddressException, MessagingException {
 
         Properties props = System.getProperties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -36,7 +36,7 @@ public class MailSender implements Serializable {
         mailSession.setDebug(true);
 
         Message mailMessage = new MimeMessage(mailSession);
-        mailMessage.setFrom(new InternetAddress(fromMail));
+        mailMessage.setFrom(new InternetAddress(username));
         mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
         mailMessage.setContent(message,"text/html");
         mailMessage.setSubject(subject);

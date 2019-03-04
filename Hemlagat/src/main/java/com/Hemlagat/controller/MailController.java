@@ -21,7 +21,6 @@ import javax.faces.context.FacesContext;
 
 public class MailController implements Serializable {
 
-    private String fromMail;
     private String username;
     private String password;
     private String toMail;
@@ -30,16 +29,12 @@ public class MailController implements Serializable {
 
     public MailController() {
 
-        this.toMail = "cebedaniel97@gmail.com";
+        this.toMail = "hemlagattjanst@gmail.com";
+        this.username="hemlagattjanst@gmail.com";
+        this.password="Gruppen3";
     }
 
-    public String getFromMail() {
-        return fromMail;
-    }
-
-    public void setFromMail(String fromMail) {
-        this.fromMail = fromMail;
-    }
+   
 
     public String getUsername() {
         return username;
@@ -86,7 +81,7 @@ public class MailController implements Serializable {
         try {
 
             MailSender mailSender = new MailSender();
-            mailSender.sendMail(fromMail, username, password, toMail, subject, message);
+            mailSender.sendMail(username, password, toMail, subject, message);
             showSuccessMessage();
 
         } catch (Exception e) {
@@ -98,11 +93,11 @@ public class MailController implements Serializable {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Email has been sent to: " + getToMail()));
     }
-    
-    public void showFailMessage(){
+
+    public void showFailMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Email could not be sent to: " + getToMail()));
-        
+
     }
 
 }
