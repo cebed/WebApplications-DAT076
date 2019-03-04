@@ -5,14 +5,16 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
-    
-    
+
+
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
-        <h:outputStylesheet library="css" name="jsfcrud_1.css"/>
+        <h:outputStylesheet library="css" name="jsfcrud_1.css"
+         
+            />
     </h:head>
 
     <h:body>
@@ -23,11 +25,7 @@
 
                 <div id="top" class="top">
 
-                    <form>
-                        <p:button id="button1" class="topButton" outcome="/userdb/RegisterPage" value="Register" />
 
-                        <p:button  id="button2"  class="topButton" outcome="/LoginPage" value="Login"/>
-                    </form>
 
                     <h:link outcome="/addb/List" value="mat listan"/>
                     <br/>
@@ -39,7 +37,15 @@
 
 
                     <div id="logga" class="logga">
-                        <h:graphicImage value="/addb/logga.png" alt="hej" id="loggapos" />
+                        <h:link outcome="/Locationpage" >
+                        <h:graphicImage value="/addb/logga.png" alt="hej" id="loggapos" onclick=""/>
+                    </h:link>
+                        <form>
+                           
+                            <p:button id="button1" class="topButton" outcome="/userdb/RegisterPage" value="Register" />
+
+                            <p:button  id="button2"  class="topButton" outcome="/LoginPage" value="Login"/>
+                        </form>
 
                         <ui:insert name="logga"> </ui:insert>
 
@@ -87,7 +93,7 @@
                             <b:navbarLinks pull="right" styleClass="hidden-xs">
                                 <b:navLink value="About us" outcome="Aboutus"></b:navLink>
                                 <b:navLink value="Contact us" outcome="MailIndex"/>
-                       
+
                             </b:navbarLinks>
                         </b:navBar>
                     </div>

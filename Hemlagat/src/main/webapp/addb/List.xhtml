@@ -24,16 +24,16 @@
                     <h:form id="form">
 
                         <p:dataGrid var="item" value="#{addbController.item}" columns="3" layout="grid"
-        rows="50" paginator="false" id="cars"
-        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-        rowsPerPageTemplate="6,12,16">
+                                    rows="50" paginator="false" id="cars"
+                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                    rowsPerPageTemplate="6,12,16">
                             <p:panelGrid  style="width:100%"  >
                                 <p:row >
                                     <p:column > <p:graphicImage value="/addb/curry.jpeg" id="curry" width="100px" height="100px"/> </p:column>
                                     <p:column> <h:outputText value="#{item.title} " />
-                                    <h:outputText value="#{item.address} " />
+                                        <h:outputText value="#{item.address} " />
                                     </p:column>
-                                    
+
                                 </p:row>
                                 <p:row>
 
@@ -42,11 +42,11 @@
 
                                             <h:outputText value="haha" style="margin:0 auto;"/>
                                             <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
-                                        </p:commandLink></p:column>
+                                        </p:commandButton></p:column>
                                     <p:column> 
                                         <h:outputText value="#{item.description}" />
-                                        <p:commandButton action="#{addbController.destroy}" value="#{bundle.ListAddbDestroyLink}"/></p:column>
-                                        
+                                        <h:commandLink action="#{addbController.destroy}" value="#{bundle.ListAddbDestroyLink}"/></p:column>
+
                                 </p:row>
                             </p:panelGrid>
                         </p:dataGrid>
@@ -58,7 +58,7 @@
 
 
 
-                        <p:dialog  widgetVar="carDialog"  resizable="false" showHeader="false" onHide="true" >
+                        <p:dialog  widgetVar="carDialog"  resizable="false" showHeader="true" onHide="true" >
                             <p:outputPanel id="carDetail" style="text-align:center;">
                                 <p:panelGrid  columns="2"  layout="grid" >
                                     <f:facet name="header">
@@ -80,7 +80,10 @@
                                     <h:outputText value="#{addbController.selected.quantity}" />
                                     <h:outputText value="weight:" />
                                     <h:outputText value="#{addbController.selected.weight}" />
-
+                                    
+                                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                                  
                                 </p:panelGrid>
                             </p:outputPanel>
                         </p:dialog>
