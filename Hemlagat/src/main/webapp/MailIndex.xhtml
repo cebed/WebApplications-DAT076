@@ -8,9 +8,9 @@
     <h:head>
         <title>Mail Sender</title>
     </h:head>
-    <h:body style="background:#1B5E20;;">
-        <b:jumbotron style="background:#1B5E20;"> 
-            <div class="myContact" style="position: relative; align-content: center; text-align: center; color: whitesmoke;">
+    <h:body style="background:#1B5E20; ">
+        <b:jumbotron style="background:#1B5E20; height: auto;"> 
+            <div class="myContact" style="position: relative;  align-content: center; text-align: center; color: whitesmoke;">
                 <h1> Contact us </h1>
 
             </div>
@@ -53,8 +53,8 @@
                             <tr>
                                 <td align="right"> </td>
                                 <td>
-                                    <h3>To:</h3>
-                                    <p:inputText  value="#{mailgctr.toMail}" readonly="true" />
+                                  
+                                    <p:inputText  value="#{mailgctr.toMail}" readonly="true" type="hidden" />
 
                                 </td>
                             </tr>
@@ -63,7 +63,7 @@
                                 <td align="right"></td>
                                 <td>
                                     <h3>Subject:</h3>
-                                    <h:inputText value="#{mailgctr.subject}" />
+                                    <p:inputText value="#{mailgctr.subject}" />
                                 </td>
                             </tr>
 
