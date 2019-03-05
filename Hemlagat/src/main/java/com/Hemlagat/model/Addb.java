@@ -50,6 +50,7 @@ public class Addb implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
+    //GeneratedValue
     @Size(min = 1, max = 100)
     @Column(name = "ID")
     private String id;

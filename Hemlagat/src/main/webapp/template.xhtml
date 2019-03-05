@@ -13,8 +13,8 @@
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <h:outputStylesheet library="css" name="jsfcrud.css"/>
         <h:outputStylesheet library="css" name="jsfcrud_1.css"
-         
-            />
+
+                            />
     </h:head>
 
     <h:body>
@@ -26,8 +26,8 @@
                 <div id="top" class="top">
 
 
+                    <h:link outcome="/addb/List" value="Show All Addb Items"/>
 
-                    <h:link outcome="/addb/List" value="mat listan"/>
                     <br/>
                     <h:link outcome="/addb/Create" value="skapa lista"/>
                     <ui:insert name="top"></ui:insert>
@@ -38,10 +38,10 @@
 
                     <div id="logga" class="logga">
                         <h:link outcome="/Locationpage" >
-                        <h:graphicImage value="/addb/logga.png" alt="hej" id="loggapos" onclick=""/>
-                    </h:link>
+                            <h:graphicImage value="/addb/logga.png" alt="hej" id="loggapos" onclick=""/>
+                        </h:link>
                         <form>
-                           
+
                             <p:button id="button1" class="topButton" outcome="/userdb/RegisterPage" value="Register" />
 
                             <p:button  id="button2"  class="topButton" outcome="/LoginPage" value="Login"/>
@@ -68,45 +68,45 @@
 
 
             </b:row>
-
-
-            <b:row>
-
-                <div id="bottom" class="bottom">
-
-
-
-                    <ui:insert name="bottom"> </ui:insert>
-
-                    <div id="menubar" class="menubar">
-                        <b:navBar brand="Hemlagat AB" fluid="true">
-                            <b:navbarLinks>
-                                <div class="labl" id="labl" style="top: 25%; bottom: 10%; position: absolute;">
-                                    <b:label text="Copyright 2019" severity="success"/>
+            <!--
+            
+                        <b:row>
+            
+                            <div id="bottom" class="bottom">
+            
+            
+            
+                                <ui:insert name="bottom"> </ui:insert>
+            
+                                <div id="menubar" class="menubar">
+                                    <b:navBar brand="Hemlagat AB" fluid="true">
+                                        <b:navbarLinks>
+                                            <div class="labl" id="labl" style="top: 25%; bottom: 10%; position: absolute;">
+                                                <b:label text="Copyright 2019" severity="success"/>
+                                            </div>
+            
+            
+                                        </b:navbarLinks>
+            
+                                         Following line is needed for TBS 3.0.1 (panel content overflow issue) 
+                                        <b:navbarLinks pull="right"><b:navLink value="" href="#"></b:navLink></b:navbarLinks>
+                                        <b:navbarLinks pull="right" styleClass="hidden-xs">
+                                            <b:navLink value="About us" outcome="Aboutus"></b:navLink>
+                                            <b:navLink value="Contact us" outcome="MailIndex"/>
+            
+                                        </b:navbarLinks>
+                                    </b:navBar>
                                 </div>
-
-
-                            </b:navbarLinks>
-
-                            <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
-                            <b:navbarLinks pull="right"><b:navLink value="" href="#"></b:navLink></b:navbarLinks>
-                            <b:navbarLinks pull="right" styleClass="hidden-xs">
-                                <b:navLink value="About us" outcome="Aboutus"></b:navLink>
-                                <b:navLink value="Contact us" outcome="MailIndex"/>
-
-                            </b:navbarLinks>
-                        </b:navBar>
-                    </div>
-                </div>
-
-
-
-            </b:row>
-
-
-
-
-
+                            </div>
+            
+            
+            
+                        </b:row>
+            
+            
+            
+            
+            -->
 
         </b:container>
     </h:body>

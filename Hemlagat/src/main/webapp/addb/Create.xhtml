@@ -15,7 +15,7 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
 
-            <h:form>
+            <h:form enctype="multipart/form-data">
                 <div id="tabelpos" >
                     <table   >
                         <tr height="400px">
@@ -44,6 +44,8 @@
                                     <h:inputText id="address" value="#{addbController.selected.address}" title="#{bundle.CreateAddbTitle_address}" />
                                     <h:outputLabel value="#{bundle.CreateAddbLabel_weight}" for="weight" class="mat-tabel-fix"/>
                                     <h:inputText id="weight" value="#{addbController.selected.weight}" title="#{bundle.CreateAddbTitle_weight}" />
+                                    
+                                    <p:fileUpload value="#{addbController.file}" mode="simple"/>
                                     <!--<h:outputLabel value="#{bundle.CreateAddbLabel_vegetarian}" for="vegetarian" />
                                      <h:inputText id="vegetarian" value="#{addbController.selected.vegetarian}" title="#{bundle.CreateAddbTitle_vegetarian}" />
                                     <h:outputLabel value="#{bundle.CreateAddbLabel_nuts}" for="nuts" />

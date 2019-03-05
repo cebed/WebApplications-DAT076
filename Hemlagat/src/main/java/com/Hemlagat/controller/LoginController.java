@@ -43,6 +43,11 @@ public class LoginController implements Serializable {
     public Userdb getUser() {
         return loggedInUser;
     }
+    
+    public String getProfi(){
+        return loggedInUser.getUsername();
+        
+    }
 
     public String login() {
         loggedInUser = userRegistry.findUser(email, password);
