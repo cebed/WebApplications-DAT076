@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html lang="en"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:p="http://primefaces.org/ui"
+         
+     xmlns:b="http://bootsfaces.net/ui">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <ui:composition>
+            <p:panelGrid  style="width:100%"  >
+                <b:row>
+                    <b:column>
+       <b:navBar brand="Hemlagat AB" fluid="true">
+                            <b:navbarLinks>
+                                <div class="labl" id="labl" style="top: 25%; bottom: 10%; position: absolute;">
+                                    <b:label text="Copyright 2019" severity="success"/>
+                                </div>
+
+
+                            </b:navbarLinks>
+
+                            <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
+                            <b:navbarLinks pull="right"><b:navLink value="" href="#"></b:navLink></b:navbarLinks>
+                            <b:navbarLinks pull="right" styleClass="hidden-xs">
+                                <b:navLink value="About us" outcome="Aboutus"></b:navLink>
+                                <b:navLink value="Contact us" outcome="MailIndex"/>
+
+                            </b:navbarLinks>
+                        </b:navBar>
+                        </b:column>
+                    </b:row> 
+                </p:panelGrid>
+            </ui:composition>
+    </body>
+</html>
