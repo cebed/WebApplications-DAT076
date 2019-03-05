@@ -39,16 +39,9 @@
                                                 <h:form>
                                                     <p>Welcome, #{login.username} </p> 
                                                     <p>Email address: #{login.email}</p>
-                                                    <p>Your ads: #{login.myItems}</p>
+                                                    <p>Your ads: </p> <!-- hashtag{login.myItems} -->
                                                     <p>Your rating: </p>
                                                     <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
-
-                                                    <h:panelGrid columns="2">
-
-                                                        <h:outputLabel value="#{bundle.EditUserdbLabel_password}" for="Change password" />
-                                                        <h:inputText id="password" value="#{userdbController.selected.password}" title="#{bundle.EditUserdbTitle_password}" />
-                                                    </h:panelGrid>
-                                                    <h:commandLink action="#{userdbController.update}" value="#{bundle.EditUserdbSaveLink}"/>
                                                 </h:form>
                                             </div>
                                         </div>
