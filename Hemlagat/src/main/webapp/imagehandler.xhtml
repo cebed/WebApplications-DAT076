@@ -17,7 +17,8 @@
             <p:fileUpload value="#{imageStoreController.file}" mode="simple"/>
             
             <p:commandButton value="Submit" ajax="false" actionListener="#{imageStoreController.storeImage}"/>
-            
+                                <h:link outcome="/addb/Create" value="crate"> </h:link>
+
             <h:graphicImage id="image" alt="uploaded image" url="/image"/>
             
             
