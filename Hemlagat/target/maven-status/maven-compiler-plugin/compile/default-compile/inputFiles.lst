@@ -7,6 +7,7 @@
 /Users/nurabd/Documents/GitHub/WebbApp/WebApplications-DAT076/Hemlagat/src/main/java/com/Hemlagat/model/Addb.java
 /Users/nurabd/Documents/GitHub/WebbApp/WebApplications-DAT076/Hemlagat/src/main/java/com/Hemlagat/controller/LoginController1.java
 /Users/nurabd/Documents/GitHub/WebbApp/WebApplications-DAT076/Hemlagat/src/main/java/com/Hemlagat/model/AddbFacade.java
+/Users/nurabd/Documents/GitHub/WebbApp/WebApplications-DAT076/Hemlagat/src/main/java/com/Hemlagat/service/database/DatabaseInitializer.java
 /Users/nurabd/Documents/GitHub/WebbApp/WebApplications-DAT076/Hemlagat/src/main/java/com/Hemlagat/model/UserdbFacade.java
 /Users/nurabd/Documents/GitHub/WebbApp/WebApplications-DAT076/Hemlagat/src/main/java/com/Hemlagat/controller/util/PaginationHelper.java
 /Users/nurabd/Documents/GitHub/WebbApp/WebApplications-DAT076/Hemlagat/src/main/java/com/Hemlagat/model/AbstractFacade.java

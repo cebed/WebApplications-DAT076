@@ -14,6 +14,7 @@ com/Hemlagat/controller/AddbController$AddbControllerConverter.class
 com/Hemlagat/controller/UserdbController$UserdbControllerConverter.class
 com/Hemlagat/model/QAddb.class
 com/Hemlagat/controller/UserdbController$1.class
+com/Hemlagat/service/database/DatabaseInitializer.class
 com/Hemlagat/model/UserdbFacade.class
 com/Hemlagat/model/Userdb_.class
 com/Hemlagat/model/Addb_.class
