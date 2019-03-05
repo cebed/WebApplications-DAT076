@@ -121,6 +121,7 @@ public class AddbController implements Serializable {
         add.create(addb);
     }
 */
+    
     public String create() {
         try {
             current.setPhoto(file.getContents());
