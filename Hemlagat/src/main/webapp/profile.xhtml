@@ -31,17 +31,24 @@
                                 <div class="card">
                                     <div class="card-content">
                                         <div>
-                                                <img class="responsive-img" style="max-width: 64px;" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/120428/preview.svg"  />
-                                        <div class="header">
-                                            <h1>Your Profile</h1>
-                                            <h:outputStylesheet library="css" name="jsfcrud.css"/>
-                                            
+                                            <img class="responsive-img" style="max-width: 64px;" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/120428/preview.svg"  />
+                                            <div class="header">
+                                                <h1>Your Profile</h1>
+                                                <h:outputStylesheet library="css" name="jsfcrud.css"/>
+
                                                 <h:form>
-                                                    <p>Welcome, #{userdbController.getUsername()}</p> <!-- or #{login.user}? -->
-                                                    <p>Email address: #{login.email}</p> <!-- or #{userdbController.email}? -->
-                                                    <p>Your ads: #{adddbController.getItems()}</p> <!-- from certain user? -->
+                                                    <p>Welcome, #{login.username} </p> 
+                                                    <p>Email address: #{login.email}</p>
+                                                    <p>Your ads: #{login.myItems}</p>
                                                     <p>Your rating: </p>
                                                     <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
+
+                                                    <h:panelGrid columns="2">
+
+                                                        <h:outputLabel value="#{bundle.EditUserdbLabel_password}" for="Change password" />
+                                                        <h:inputText id="password" value="#{userdbController.selected.password}" title="#{bundle.EditUserdbTitle_password}" />
+                                                    </h:panelGrid>
+                                                    <h:commandLink action="#{userdbController.update}" value="#{bundle.EditUserdbSaveLink}"/>
                                                 </h:form>
                                             </div>
                                         </div>

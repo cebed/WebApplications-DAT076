@@ -58,6 +58,10 @@ public class AddbFacade extends AbstractFacade<Addb> {
         }
     }
     
+    /*public List<Addb> findByEmail(String email) {
+        Addb result = qf.selectFrom(tableofEmail).where(tableofEmail.email.eq(email)).fetchOne();
+        return result;
+    }*/
     
    
     

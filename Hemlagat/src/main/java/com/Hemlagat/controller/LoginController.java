@@ -6,10 +6,13 @@
 package com.Hemlagat.controller;
 
 import com.Hemlagat.controller.util.JsfUtil;
+import com.Hemlagat.model.Addb;
 import com.Hemlagat.model.UserdbFacade;
 import com.Hemlagat.model.Userdb;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -31,19 +34,22 @@ public class LoginController implements Serializable {
     private String email;
     @Getter
     @Setter
-    private String username;
-    @Getter
-    @Setter
     private String password;
 
     @Inject
     private UserdbFacade userRegistry;
     private Userdb loggedInUser;
+    @EJB
+    private com.Hemlagat.model.AddbFacade ejbFacade;
 
     public Userdb getUser() {
         return loggedInUser;
     }
 
+    public String getUsername() {
+        return loggedInUser.getUsername();
+    }
+    
     public String login() {
         loggedInUser = userRegistry.findUser(email, password);
         if (loggedInUser != null) {
@@ -69,4 +75,7 @@ public class LoginController implements Serializable {
         return "index?faces-redirect=true";
     }
 
+    /*public List<Addb> getMyItems() {
+        return ejbFacade.findByEmail(email);
+    }*/
 }
