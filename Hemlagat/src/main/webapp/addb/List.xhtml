@@ -6,19 +6,14 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
-    <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title><ui:insert name="title">Köp</ui:insert></title>
-        <h:outputStylesheet library="css" name="jsfcrud.css"/>
-        <h:outputStylesheet library="css" name="jsfcrud_1.css"/>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"></link>
-
-    </h:head>
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ListAddbTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
+    
+    
+    
+    <h:body>
+     <ui:composition template="/addb/Templetes/Templete.xhtml">
+       
+        
+            <ui:define name="content">
             <b:container>
                 <b:row>
                     <h:form id="form">
@@ -98,23 +93,21 @@
 
 
             </b:container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </ui:define>
+        
+        <ui:define name="footer">
+            
+            
+        </ui:define>
+        
+        
+        
+        
     </ui:composition>
-
+        
+        
+        
+        
+        
+</h:body>
 </html>

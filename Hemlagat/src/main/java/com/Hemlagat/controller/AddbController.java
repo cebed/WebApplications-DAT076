@@ -293,4 +293,12 @@ public class AddbController implements Serializable {
     private void recreateModel() {
         item = null;
     }
+    
+    
+    
+    /**
+     * ALTER TABLE ADDB
+ADD FOREIGN KEY (USERID)
+REFERENCES USERDB(EMAIL);
+     */
 }

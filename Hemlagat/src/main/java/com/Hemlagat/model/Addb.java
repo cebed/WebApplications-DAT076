@@ -6,15 +6,17 @@
 package com.Hemlagat.model;
 
 import java.io.Serializable;
+import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.swing.ImageIcon;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -60,6 +62,14 @@ public class Addb implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "PRICE")
     private Double price;
+
+    public void setUserid(Userdb userid) {
+        this.userid = userid;
+    }
+
+    public Userdb getUserid() {
+        return userid;
+    }
     @Size(max = 200)
     @Column(name = "DESCRIPTION")
     private String description;
@@ -90,6 +100,12 @@ public class Addb implements Serializable {
     
   
     
+
+    @JoinColumn(name = "USERID", referencedColumnName = "EMAIL")
+    @ManyToOne
+    private Userdb userid;
+    private static final Logger LOG = Logger.getLogger(Addb.class.getName());
+
     public Addb() {
     }
 
