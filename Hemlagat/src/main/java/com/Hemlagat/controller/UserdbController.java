@@ -96,7 +96,7 @@ public class UserdbController implements Serializable {
         try {
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserdbCreated"));
-            return prepareCreate();
+            return "/Locationpage.xhtml";
         } catch (Exception e) {
             JsfUtil.addErrorMessage("User already exist");
             return null;
