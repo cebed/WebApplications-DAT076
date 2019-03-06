@@ -241,6 +241,9 @@
    margin:0;
    padding:0;
    height:100%;
+   min-height: 400px;
+   
+   
 }
 
 #container11 {
@@ -255,11 +258,7 @@
   
    
 }
-body, #body11 {
-   padding:10px;
-   padding-bottom:60px;   /* Height of the footer */
-   
-}
+ 
 #footer11 {
    position:absolute;
    bottom:-40px;
@@ -267,5 +266,6 @@ body, #body11 {
    height:30px;   /* Height of the footer */
    background:#6cf;
    clear: both;
+  
  
 }
