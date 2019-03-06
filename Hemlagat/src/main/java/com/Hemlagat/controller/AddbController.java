@@ -10,8 +10,8 @@ import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -21,35 +21,50 @@ import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import lombok.Getter;
 import lombok.Setter;
+import org.primefaces.model.UploadedFile;
 
 @Named("addbController")
 @SessionScoped
 public class AddbController implements Serializable {
-    
+
+    private UploadedFile file;
     private Addb current;
-     @Getter
+    @Getter
     @Setter
     private String Address;
-     private List<Addb> item = null;
+    private List<Addb> item = null;
 
     
     private DataModel items = null;
-   
+
     @EJB
     private com.Hemlagat.model.AddbFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    
+    //private  Addb add;
+    
+    @PostConstruct
+    private void init(){
+        current = new Addb();
+    }
 
-    public AddbController() {
+    public UploadedFile getFile() {
+
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
     }
 
     public Addb getSelected() {
         if (current == null) {
             current = new Addb();
             selectedItemIndex = -1;
-            
+
         }
-        
+
         return current;
     }
 
@@ -83,7 +98,6 @@ public class AddbController implements Serializable {
         recreateModel();
         return "List";
     }
-   
 
     public String prepareView() {
         current = (Addb) getItems().getRowData();
@@ -97,8 +111,20 @@ public class AddbController implements Serializable {
         return "Create";
     }
 
+    /**
+    public void storeImage() {
+        final Addb addb = new Addb();
+        addb.setPhoto(file.getContents());
+        //if vi ändrar till int 
+        addb.setId("9");
+
+        add.create(addb);
+    }
+*/
+    
     public String create() {
         try {
+            current.setPhoto(file.getContents());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AddbCreated"));
             return prepareCreate();
@@ -177,9 +203,7 @@ public class AddbController implements Serializable {
         }
         return items;
     }
-    
-    
-   
+
     private void recreatePagination() {
         pagination = null;
     }
@@ -245,27 +269,26 @@ public class AddbController implements Serializable {
                 throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Addb.class.getName());
             }
         }
-        
 
     }
- //////////////////////////////NUr//////////////////////////////
-    
-     public List<Addb> getItem() {
-        
+    //////////////////////////////NUr//////////////////////////////
+
+    public List<Addb> getItem() {
+
         if (item == null) {
-        item = ejbFacade.findByAdress(Address);
+            item = ejbFacade.findByAdress(Address);
         }
         return item;
     }
-    
+
     public String getIte() {
-        
+
         
         item = ejbFacade.findByAdress(Address);
         System.out.println("####### jag är fär");
         return "/addb/List.xhtml";
     }
-    
+
     
 
     private void recreateModel() {
