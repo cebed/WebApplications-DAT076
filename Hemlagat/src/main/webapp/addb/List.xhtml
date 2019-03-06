@@ -76,8 +76,9 @@
                                     <h:outputText value="weight:" />
                                     <h:outputText value="#{addbController.selected.weight}" />
                                     
-                                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                                     <h:commandLink action="#{addbController.prepareView}" value="#{bundle.ListAddbViewLink}"/>
+                                    
+                                       
                                   
                                 </p:panelGrid>
                             </p:outputPanel>
