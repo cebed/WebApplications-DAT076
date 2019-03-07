@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    
+    <ui:composition template="template.xhtml">
+
+        <ui:define name="body">
+    <h:head>
+        <title>Facelet Title</title>
+        
+    </h:head>
+    <h:body>
+        
+        
+        
+        <h:form>
+    <p:growl id="messages" showDetail="true" />
+ 
+    <h:panelGrid id="ratesystem" columns="2" cellpadding="5" >
+        <h:outputText value="Rate the chef:" />
+        <p:rating value="#{ratingbean.rating1}" />
+        <h:outputText value="Leave a comment:" />
+        <h:inputText value="#{ratingbean.comment}" size="60" />
+        
+    </h:panelGrid>
+    <b:commandButton value="Done"  look="primary" span="2"
+                     actionListener="#{ratingbean.setRatingOnUser()}"/>
+    <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" style="margin:5px" />
+ 
+    <p:dialog header="Values" widgetVar="dlg" showEffect="fade" hideEffect="fade">
+        <h:panelGrid id="display" columns="2" cellpadding="5">
+            <h:outputText value="Rating 1:" />
+            <h:outputText value="#{ratingbean.rating1}" />
+ 
+            <h:outputText value="Comment:" />
+            <h:outputText value="#{ratingbean.comment}" />
+ 
+            <h:outputText value="Rating 3:" />
+            <h:outputText value="#{ratingbean.rating3}" />
+        </h:panelGrid>
+    </p:dialog>
+</h:form>
+        
+        
+        
+    </h:body>
+               </ui:define>
+    </ui:composition>
+</html>
+
