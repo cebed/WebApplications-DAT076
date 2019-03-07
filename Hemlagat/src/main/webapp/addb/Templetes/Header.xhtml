@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+
+    <body>
+        <ui:composition>
+            <div class="ui-g">
+                <div class="ui-g-12"><div id="header-color"></div></div>
+                
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-3"> 
+                    <h:link outcome="/addb/Create.xhtml" value="create"></h:link>
+                
+                </div>
+                <div class="ui-g-6">
+                    <h:link outcome="/Locationpage.xhtml"> <h:graphicImage value="/addb/logga.png" alt="hej"  height="100px" style="display: block; margin-left: auto; margin-right: auto;"/></h:link>
+                </div>
+                <div class="ui-g-3"><form>
+
+                            <p:button id="button1" class="topButton" outcome="/userdb/RegisterPage" value="Register" />
+
+                            <p:button  id="button2"  class="topButton" outcome="/LoginPage" value="Login" />
+                            
+                            
+                           
+                        </form></div>
+            </div>
+
+            
+        </ui:composition>
+    </body>
+
+</html>

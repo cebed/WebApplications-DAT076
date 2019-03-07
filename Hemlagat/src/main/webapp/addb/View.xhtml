@@ -3,60 +3,359 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
 
-    <ui:composition template="/template.xhtml">
-        <ui:define name="title">
-            <h:outputText value="#{bundle.ViewAddbTitle}"></h:outputText>
-        </ui:define>
-        <ui:define name="body">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewAddbLabel_id}"/>
-                    <h:outputText value="#{addbController.selected.id}" title="#{bundle.ViewAddbTitle_id}"/>
-                    <h:outputText value="#{bundle.ViewAddbLabel_title}"/>
-                    <h:outputText value="#{addbController.selected.title}" title="#{bundle.ViewAddbTitle_title}"/>
-                    <h:outputText value="#{bundle.ViewAddbLabel_price}"/>
-                    <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}"/>
-                    <h:outputText value="#{bundle.ViewAddbLabel_description}"/>
-                    <h:outputText value="#{addbController.selected.description}" title="#{bundle.ViewAddbTitle_description}"/>
-                    <h:outputText value="#{bundle.ViewAddbLabel_quantity}"/>
-                    <h:outputText value="#{addbController.selected.quantity}" title="#{bundle.ViewAddbTitle_quantity}"/>
-                    <h:outputText value="#{bundle.ViewAddbLabel_weight}"/>
-                    <h:outputText value="#{addbController.selected.weight}" title="#{bundle.ViewAddbTitle_weight}"/>
-                    <h:outputText value="#{bundle.ViewAddbLabel_vegetarian}"/>
-                    <h:outputText value="#{addbController.selected.vegetarian}" title="#{bundle.ViewAddbTitle_vegetarian}"/>
-                    <h:outputText value="#{bundle.ViewAddbLabel_nuts}"/>
-                    <h:outputText value="#{addbController.selected.nuts}" title="#{bundle.ViewAddbTitle_nuts}"/>
-                    <h:outputText value="#{bundle.ViewAddbLabel_lactose}"/>
-                    <h:outputText value="#{addbController.selected.lactose}" title="#{bundle.ViewAddbTitle_lactose}"/>
-                    <h:outputText value="#{bundle.ViewAddbLabel_gluten}"/>
-                    <h:outputText value="#{addbController.selected.gluten}" title="#{bundle.ViewAddbTitle_gluten}"/>
-                    <h:outputText value="#{bundle.ViewAddbLabel_address}"/>
-                    <h:outputText value="#{addbController.selected.address}" title="#{bundle.ViewAddbTitle_address}"/>
-                    <h:outputText value="#{bundle.ViewAddbLabel_other}"/>
-                    <h:outputText value="#{addbController.selected.other}" title="#{bundle.ViewAddbTitle_other}"/>
-                    <h:outputText value="#{bundle.ViewAddbLabel_other2}"/>
-                    <h:outputText value="#{addbController.selected.other2}" title="#{bundle.ViewAddbTitle_other2}"/>
-                </h:panelGrid>
-                <br />
-                <h:commandLink action="#{addbController.destroyAndView}" value="#{bundle.ViewAddbDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewAddbEditLink}"/>
-                <br />
-                <h:commandLink action="#{addbController.prepareCreate}" value="#{bundle.ViewAddbCreateLink}" />
-                <br />
-                <h:commandLink action="#{addbController.prepareList}" value="#{bundle.ViewAddbShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewAddbIndexLink}"/>
+    <h:body>
+        <ui:composition template="/addb/Templetes/Templete.xhtml">
 
-            </h:form>
-        </ui:define>
-    </ui:composition>
 
+            <ui:define name="content">
+
+                    <!--   hela sidan          -->
+                <div class="ui-g" style="background-color: white;">
+                    <!--   tommy högt upp           -->
+                    <div class="ui-g-12" align="center" style="height: 140px;">
+                        <p:outputLabel style="  font-family: serif; font-size: 80px; font-weight: bold; color: #13654a; margin-left: -80px;">
+                                      Bekräfta Köp
+                         </p:outputLabel></div>
+                    <!--   vänstra sidan          -->
+                    <div class="ui-g-8" style="background-color: white; " >
+                        
+          
+        
+                           <!--   vänstra tomma spalten            -->
+                            <div class="ui-g-3" > </div>
+                            
+                            
+                              <!--                högra fylningspalten           -->
+                            <div class="ui-g-9"  style=" border: outset;">
+                                <!-- info om beställaren -->   
+                                <div class="ui-g-12"  id="cellheight" align="center" > 
+                                    <p:outputLabel style="  font-family: serif; font-size: 30px; font-weight: bold; color: #13654a;">
+                                     Beställarens uppgift
+                         </p:outputLabel>
+                                    </div>
+                                 <div class="ui-g-12"  id="cellspacing"> </div>
+                                 
+                 <!--  rad 1                                                                                -->         
+                                  <!--   högra col           -->
+                                 <div class="ui-g-6"  id="cellheight" >
+                                     <b:inputText label="FörNamn" labelStyle="width:80px;">
+                                            
+                                        </b:inputText>
+                                     
+                                 </div>
+                                 <!--   mellan tom col          -->
+                                 <div class="ui-g-1"    > </div>
+                                 <!--   väbstra col           -->
+                                <div class="ui-g-5"  id="cellheight"> 
+                                <b:inputText label="EfterNamn" labelStyle="width:80px;">
+                                            
+                                        </b:inputText>
+                                </div>
+                                <!--  tom col mellan rader           -->
+                                <div class="ui-g-12"  id="cellspacing"> </div>
+            <!--  rad 1                 slute                                                                  -->  
+             <!--  rad 2                                                                                -->         
+                                  <!--   högra col           -->
+                                 <div class="ui-g-6"  id="cellheight" >
+                                     <b:inputText label="Upphämtningsdag" labelStyle="width:50px;">
+                                            
+                                        </b:inputText>
+                                     
+                                 </div>
+                                 <!--   mellan tom col          -->
+                                 <div class="ui-g-1"    > </div>
+                                 <!--   väbstra col           -->
+                                <div class="ui-g-5"  id="cellheight"> 
+                                <b:inputText label="Datum" labelStyle="width:80px;">
+                                            
+                                        </b:inputText>
+                                </div>
+                                <!--  tom col mellan rader           -->
+                                <div class="ui-g-12"  id="cellspacing"> </div>
+            <!--  rad 2                 slute                                                                  -->  
+             <!--  rad 3                                                                                -->         
+                                  <!--   högra col           -->
+                                 <div class="ui-g-6"  id="cellheight" >
+                                     <b:inputText label="Address" labelStyle="width:80px;">
+                                            
+                                        </b:inputText>
+                                     
+                                 </div>
+                                 <!--   mellan tom col          -->
+                                 <div class="ui-g-1"    > </div>
+                                 <!--   väbstra col           -->
+                                <div class="ui-g-5"  id="cellheight"> 
+                                <b:inputText label="ort" labelStyle="width:80px;">
+                                            
+                                        </b:inputText>
+                                </div>
+                                <!--  tom col mellan rader           -->
+                                <div class="ui-g-12"  id="cellspacing"> </div>
+            <!--  rad 3                 slute                                                                  -->  
+             <!--  rad 4                                                                                -->         
+                                  <!--   högra col           -->
+                                 <div class="ui-g-6"  id="cellheight" >
+                                     <b:inputText label="FörNamn" labelStyle="width:80px;">
+                                            
+                                        </b:inputText>
+                                     
+                                 </div>
+                                 <!--   mellan tom col          -->
+                                 <div class="ui-g-1"    > </div>
+                                 <!--   väbstra col           -->
+                                <div class="ui-g-5"  id="cellheight"> 
+                                <b:inputText label="Telefon" labelStyle="width:80px;">
+                                            
+                                        </b:inputText>
+                                </div>
+                                <!--  tom col mellan rader           -->
+                                <div class="ui-g-12"  id="cellspacing"> </div>
+            <!--  rad4                 slute                                                                  -->  
+             <!--  rad 5                                                                               -->         
+                                  <!--   högra col           -->
+                                 <div class="ui-g-6"  id="cellheight" >
+                                     <b:inputText label="Email" labelStyle="width:80px;">
+                                            
+                                        </b:inputText>
+                                     
+                                 </div>
+                                 <!--   mellan tom col          -->
+                                 <div class="ui-g-1"    > </div>
+                                 <!--   väbstra col           -->
+                                <div class="ui-g-5"  id="cellheight"> 
+                                <b:inputText label="EfterNamn" labelStyle="width:80px;">
+                                            
+                                        </b:inputText>
+                                </div>
+                                <!--  tom col mellan rader           -->
+                                <div class="ui-g-12"  id="cellspacing"> </div>
+            <!--  rad 5                 slute                                                                  -->  
+             
+                                
+                                    
+                                </div>
+                            
+                            
+                           
+                            
+                            
+                            
+                              
+       
+  
+                        </div>
+                    
+                    
+                    
+                    
+                    <!--  högra spalten som visar vad man har köpt          -->
+                    <div class="ui-g-4 " >
+                         <!--  Baren på toppen         -->
+                         <div class="ui-g-12" style="height: 40px;" align="center" >  </div>
+                         <!--  höger höger spalt          -->
+                        <div class="ui-g-1"   > </div> 
+                        <!--  box höger          -->
+                         <div class="ui-g-10"  style="border: outset; height: 450px; "  > 
+                             <div class="ui-g-12"  align="center" >
+                             <p:outputLabel style="  font-family: serif; font-size: 30px; font-weight: bold; color: #13654a;">
+                                    Din Bestälning
+                         </p:outputLabel> </div>
+                              <!--  radernea          -->
+                           <div class="ui-g-12"    > 
+                           
+                               <div class="ui-g-5" align="left"  id="cellheight-left" >
+                                   <p:outputLabel id="font-style-view-page">
+                                       Prudukt
+                                   </p:outputLabel>
+                               </div> 
+                               <div class="ui-g-2"   id="cellheight-left" align="right" > 
+                               <p:outputLabel id="font-style-view-page">
+                                       Antal
+                                   </p:outputLabel>
+                               </div> 
+                               <div class="ui-g-5"  align="right" id="cellheight-left" >
+                               <p:outputLabel style="align-content:flex-start ; font-family: serif; font-size: 20px; font-weight: bold;">
+                                       Totalt
+                                   </p:outputLabel>
+                               </div> 
+                           
+                           </div> 
+                          <!--  radernea   slut 1       -->
+                           <!--  radernea   börjar 1       -->
+                           <div class="ui-g-12"   > 
+                           
+                               <div class="ui-g-5"  id="cellheight-left"  > 
+                               <h:outputText value="#{addbController.selected.title}" title="#{bundle.ViewAddbTitle_title}"/>
+                               </div> 
+                               <div class="ui-g-2"  id="cellheight-left"  > 
+                               <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}"/>
+                               </div> 
+                               <div class="ui-g-5"  id="cellheight-left"  >
+                                   <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}"/>
+                               
+                               </div> 
+                           
+                           </div> 
+                          <!--  radernea          -->
+                           <!--  radernea          -->
+                           <div class="ui-g-12"  > 
+                           
+                               <div class="ui-g-5"   id="cellheight-left" >
+                               <p:outputLabel id="font-style-view-page">
+                                       Total
+                                   </p:outputLabel>
+                               </div> 
+                               <div class="ui-g-2"    id="cellheight-left" > </div> 
+                               <div class="ui-g-5"  align="right" id="cellheight-left" >
+                               <p:outputLabel id="font-style-view-page">
+                                       antal*pris= använd controller
+                                   </p:outputLabel>
+                               
+                              </div> 
+                           
+                           </div> 
+                          <!--  radernea          -->
+                          
+                           <!--  radernea          -->
+                           <div class="ui-g-12"    > 
+                           
+                               <div class="ui-g-12" align="center"  id="cellheight-left" >
+                                <p:outputLabel id="font-style-view-page">
+                                       Mera Info..
+                                   </p:outputLabel>
+                               
+                               </div> 
+                                
+                           
+                           </div> 
+                          <!--  radernea          -->
+                           <!--  radernea          -->
+                           <div class="ui-g-12"    > 
+                           
+                               <div class="ui-g-6"   id="cellheight-left" > 
+                               <p:outputLabel id="font-style-view-page">
+                                       Hämtas Ifrån Addressen
+                                   </p:outputLabel>
+                               
+                               </div> 
+                               
+                               <div class="ui-g-6"   id="cellheight-left" > 
+                               
+                               <h:outputText value="#{addbController.selected.address}" title="#{bundle.ViewAddbTitle_address}"/>
+                               </div> 
+                           
+                           </div> 
+                          <!--  radernea          -->
+                         </div>   
+                        
+                          <!--  höger vänster spalt          -->
+                         <div class="ui-g-1"    > </div> 
+                         <!--  footer vänster spalt          -->
+                          <div class="ui-g-12" style="height: 100px;" > </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <!--   tommy längst ner          -->
+                    <div class="ui-g-12" style="height: 300px;"> 
+                        <div class="ui-g-12" style="height: 40px;" ></div>
+                        <div class="ui-g-6"  align="left">
+                            <b:button value="Backa" tiny-screen="half"  offset="4" iconAwesome="bar-chart" look="success" style="height: 100px; width: 400px; "/>
+                             </div>
+                        <div class="ui-g-6" align="right">
+                                     
+                            <b:button value="Köp" tiny-screen="half"  iconAwesome="cart-plus" look="success"  style="height: 100px; width: 400px;"/>
+                             </div>
+                             </div>
+                    
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewAddbLabel_id}"/>
+                        <h:outputText value="#{addbController.selected.id}" title="#{bundle.ViewAddbTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewAddbLabel_title}"/>
+                        <h:outputText value="#{addbController.selected.title}" title="#{bundle.ViewAddbTitle_title}"/>
+                        <h:outputText value="#{bundle.ViewAddbLabel_price}"/>
+                        <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}"/>
+                        <h:outputText value="#{bundle.ViewAddbLabel_description}"/>
+                        <h:outputText value="#{addbController.selected.description}" title="#{bundle.ViewAddbTitle_description}"/>
+                        <h:outputText value="#{bundle.ViewAddbLabel_quantity}"/>
+                        <h:outputText value="#{addbController.selected.quantity}" title="#{bundle.ViewAddbTitle_quantity}"/>
+                        <h:outputText value="#{bundle.ViewAddbLabel_weight}"/>
+                        <h:outputText value="#{addbController.selected.weight}" title="#{bundle.ViewAddbTitle_weight}"/>
+                        <h:outputText value="#{bundle.ViewAddbLabel_vegetarian}"/>
+                        <h:outputText value="#{addbController.selected.vegetarian}" title="#{bundle.ViewAddbTitle_vegetarian}"/>
+                        <h:outputText value="#{bundle.ViewAddbLabel_nuts}"/>
+                        <h:outputText value="#{addbController.selected.nuts}" title="#{bundle.ViewAddbTitle_nuts}"/>
+                        <h:outputText value="#{bundle.ViewAddbLabel_lactose}"/>
+                        <h:outputText value="#{addbController.selected.lactose}" title="#{bundle.ViewAddbTitle_lactose}"/>
+                        <h:outputText value="#{bundle.ViewAddbLabel_gluten}"/>
+                        <h:outputText value="#{addbController.selected.gluten}" title="#{bundle.ViewAddbTitle_gluten}"/>
+                        <h:outputText value="#{bundle.ViewAddbLabel_address}"/>
+                        <h:outputText value="#{addbController.selected.address}" title="#{bundle.ViewAddbTitle_address}"/>
+                        <h:outputText value="#{bundle.ViewAddbLabel_other}"/>
+                        <h:outputText value="#{addbController.selected.other}" title="#{bundle.ViewAddbTitle_other}"/>
+                        <h:outputLabel value="användare_email" for="other2" />
+                        <h:outputText id="other2" value="#{addbController.selected.userid}" title="#{bundle.EditAddbTitle_other2}" />
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{addbController.destroyAndView}" value="#{bundle.ViewAddbDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewAddbEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{addbController.prepareCreate}" value="#{bundle.ViewAddbCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{addbController.prepareList}" value="#{bundle.ViewAddbShowAllLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ViewAddbIndexLink}"/>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>
