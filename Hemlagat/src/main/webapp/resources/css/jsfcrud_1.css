@@ -269,3 +269,38 @@
   
  
 }
+ /* View page css*/
+ #view-box-info{
+   background-color:red;
+     height: 550px;
+     border: outset;
+     border-color: #13654a;
+ }
+ #cellspacing{
+     height: 25px;
+ }
+ 
+ 
+ #cellheight{
+     height: 70px;
+     
+     border-color: #13654a;
+ }
+ #cellholder-left{
+     height: 5px;
+ }
+ #cellheight-left{
+     height: 50px;
+    
+     border-color: #13654a;
+ }
+ #font-style-view-page{
+     
+     align-content:flex-end ;
+     font-family: serif; 
+     font-size: 20px; 
+     font-weight: bold; 
+     color: #13654a;
+ }
+ 
+ 
