@@ -6,17 +6,15 @@
 package com.Hemlagat.model;
 
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.naming.Context;
-import javax.naming.InitialContext;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.transaction.UserTransaction;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -26,15 +24,36 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "RATING")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Rating.findAll", query = "SELECT r FROM Rating r")
+    , @NamedQuery(name = "Rating.findByChef", query = "SELECT r FROM Rating r WHERE r.chef = :chef")
+    , @NamedQuery(name = "Rating.findByComment", query = "SELECT r FROM Rating r WHERE r.comment = :comment")
+    , @NamedQuery(name = "Rating.findByRate", query = "SELECT r FROM Rating r WHERE r.rate = :rate")
+    , @NamedQuery(name = "Rating.findByRater", query = "SELECT r FROM Rating r WHERE r.rater = :rater")})
 public class Rating implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Column(name = "CHEF")
     private String chef;
-    private int rate;
+    @Size(max = 255)
+    @Column(name = "COMMENT")
     private String comment;
+    @Column(name = "RATE")
+    private Integer rate;
+    @Size(max = 255)
+    @Column(name = "RATER")
     private String rater;
+
+    public Rating() {
+    }
+
+    public Rating(String chef) {
+        this.chef = chef;
+    }
 
     public String getChef() {
         return chef;
@@ -42,14 +61,6 @@ public class Rating implements Serializable {
 
     public void setChef(String chef) {
         this.chef = chef;
-    }
-
-    public int getRate() {
-        return rate;
-    }
-
-    public void setRate(int rate) {
-        this.rate = rate;
     }
 
     public String getComment() {
@@ -60,6 +71,14 @@ public class Rating implements Serializable {
         this.comment = comment;
     }
 
+    public Integer getRate() {
+        return rate;
+    }
+
+    public void setRate(Integer rate) {
+        this.rate = rate;
+    }
+
     public String getRater() {
         return rater;
     }
@@ -67,9 +86,6 @@ public class Rating implements Serializable {
     public void setRater(String rater) {
         this.rater = rater;
     }
-    
-
-   
 
     @Override
     public int hashCode() {
@@ -93,9 +109,7 @@ public class Rating implements Serializable {
 
     @Override
     public String toString() {
-        return "com.Hemlagat.model.Rating[ id=" + chef + " ]";
+        return "com.Hemlagat.model.Rating[ chef=" + chef + " ]";
     }
-
-    
     
 }
