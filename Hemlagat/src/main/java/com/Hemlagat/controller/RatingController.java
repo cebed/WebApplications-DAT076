@@ -1,108 +1,235 @@
 package com.Hemlagat.controller;
 
-import com.Hemlagat.controller.util.JsfUtil;
 import com.Hemlagat.model.Rating;
+import com.Hemlagat.controller.util.JsfUtil;
+import com.Hemlagat.controller.util.PaginationHelper;
 import com.Hemlagat.model.RatingFacade;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
+
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
-import lombok.Getter;
-import lombok.Setter;
-import org.primefaces.event.RateEvent;
+import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
+import javax.faces.model.SelectItem;
 
-/**
- *
- * @author Rick
- */
-@Named(value = "ratingbean")
+@Named("ratingController")
 @SessionScoped
 public class RatingController implements Serializable {
 
-    /**
-     * Creates a new instance of Ratingbean
-     */
-    @Setter
-    @Getter
-    private String comment;
-    private Integer rating1;
-    private Integer rating2;
-    private Integer rating3;
-    private Integer rating4 = 3;
-    private Rating rating;
-    private RatingFacade facade;
-   /* @EJB(mappedName = "RatingFacade")
-    private com.Hemlagat.model.RatingFacade ejbFacade;*/
+    private Rating current;
+    private DataModel items = null;
+    @EJB
+    private com.Hemlagat.model.RatingFacade ejbFacade;
+    private PaginationHelper pagination;
+    private int selectedItemIndex;
 
     public RatingController() {
     }
 
-    /*private RatingFacade getFacade() {
+    public Rating getSelected() {
+        if (current == null) {
+            current = new Rating();
+            selectedItemIndex = -1;
+        }
+        return current;
+    }
+
+    private RatingFacade getFacade() {
         return ejbFacade;
-    }*/
-
-    public void onrate(RateEvent rateEvent) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "You rated:" + ((Integer) rateEvent.getRating()).intValue());
-        FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
-    public void oncancel() {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cancel Event", "Rate Reset");
-        FacesContext.getCurrentInstance().addMessage(null, message);
+    public PaginationHelper getPagination() {
+        if (pagination == null) {
+            pagination = new PaginationHelper(10) {
+
+                @Override
+                public int getItemsCount() {
+                    return getFacade().count();
+                }
+
+                @Override
+                public DataModel createPageDataModel() {
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                }
+            };
+        }
+        return pagination;
     }
 
-    public Integer getRating1() {
-        return rating1;
+    public String prepareList() {
+        recreateModel();
+        return "List";
     }
 
-    public void setRating1(Integer rating1) {
-        this.rating1 = rating1;
+    public String prepareView() {
+        current = (Rating) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "View";
     }
 
-    public Integer getRating2() {
-        return rating2;
+    public String prepareCreate() {
+        current = new Rating();
+        selectedItemIndex = -1;
+        return "Create";
     }
 
-    public void setRating2(Integer rating2) {
-        this.rating2 = rating2;
-    }
-
-    public Integer getRating3() {
-        return rating3;
-    }
-
-    public void setRating3(Integer rating3) {
-        this.rating3 = rating3;
-    }
-
-    public Integer getRating4() {
-        return rating4;
-    }
-
-    public void setRating4(Integer rating4) {
-        this.rating4 = rating4;
-    }
-
-    public void setRatingOnUser() {
-        System.out.print("we are hereOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-
-        rating = new Rating();
-
-        rating.setRate(23);
-        rating.setComment("comment");
-        rating.setRater("the persong giving the rate");
-        rating.setChef("the chef");
-        facade = new RatingFacade();
-        facade.insertDB(rating);
-       /* try {
-            getFacade().create(rating);
-
+    public String create() {
+        try {
+            getFacade().create(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("RatingCreated"));
+            return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage("rating error for putting in database");
-        }*/
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            return null;
+        }
     }
-    
+
+    public String prepareEdit() {
+        current = (Rating) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "Edit";
+    }
+
+    public String update() {
+        try {
+            getFacade().edit(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("RatingUpdated"));
+            return "View";
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            return null;
+        }
+    }
+
+    public String destroy() {
+        current = (Rating) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        performDestroy();
+        recreatePagination();
+        recreateModel();
+        return "List";
+    }
+
+    public String destroyAndView() {
+        performDestroy();
+        recreateModel();
+        updateCurrentItem();
+        if (selectedItemIndex >= 0) {
+            return "View";
+        } else {
+            // all items were removed - go back to list
+            recreateModel();
+            return "List";
+        }
+    }
+
+    private void performDestroy() {
+        try {
+            getFacade().remove(current);
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("RatingDeleted"));
+        } catch (Exception e) {
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+        }
+    }
+
+    private void updateCurrentItem() {
+        int count = getFacade().count();
+        if (selectedItemIndex >= count) {
+            // selected index cannot be bigger than number of items:
+            selectedItemIndex = count - 1;
+            // go to previous page if last page disappeared:
+            if (pagination.getPageFirstItem() >= count) {
+                pagination.previousPage();
+            }
+        }
+        if (selectedItemIndex >= 0) {
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
+        }
+    }
+
+    public DataModel getItems() {
+        if (items == null) {
+            items = getPagination().createPageDataModel();
+        }
+        return items;
+    }
+
+    private void recreateModel() {
+        items = null;
+    }
+
+    private void recreatePagination() {
+        pagination = null;
+    }
+
+    public String next() {
+        getPagination().nextPage();
+        recreateModel();
+        return "List";
+    }
+
+    public String previous() {
+        getPagination().previousPage();
+        recreateModel();
+        return "List";
+    }
+
+    public SelectItem[] getItemsAvailableSelectMany() {
+        return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
+    }
+
+    public SelectItem[] getItemsAvailableSelectOne() {
+        return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
+    }
+
+    public Rating getRating(java.lang.String id) {
+        return ejbFacade.find(id);
+    }
+
+    @FacesConverter(forClass = Rating.class)
+    public static class RatingControllerConverter implements Converter {
+
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            RatingController controller = (RatingController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "ratingController");
+            return controller.getRating(getKey(value));
+        }
+
+        java.lang.String getKey(String value) {
+            java.lang.String key;
+            key = value;
+            return key;
+        }
+
+        String getStringKey(java.lang.String value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
+
+        @Override
+        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
+            if (object == null) {
+                return null;
+            }
+            if (object instanceof Rating) {
+                Rating o = (Rating) object;
+                return getStringKey(o.getChef());
+            } else {
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Rating.class.getName());
+            }
+        }
+
+    }
+
 }

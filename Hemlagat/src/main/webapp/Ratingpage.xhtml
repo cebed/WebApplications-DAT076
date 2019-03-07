@@ -22,13 +22,17 @@
  
     <h:panelGrid id="ratesystem" columns="2" cellpadding="5" >
         <h:outputText value="Rate the chef:" />
-        <p:rating value="#{ratingbean.rating1}" />
+        <p:rating value="#{ratingController.selected.rate}" />
         <h:outputText value="Leave a comment:" />
-        <h:inputText value="#{ratingbean.comment}" size="60" />
+        <h:inputText value="#{ratingController.selected.comment}" size="60" />
+        <h:outputText value="who made this dish:" />
+        <h:inputText value="#{ratingController.selected.chef}" size="60" />
+        <h:outputText value="who is the rater" />
+        <h:inputText value="#{ratingController.selected.rater}" size="60" />
         
     </h:panelGrid>
     <b:commandButton value="Done"  look="primary" span="2"
-                     actionListener="#{ratingbean.setRatingOnUser()}"/>
+                     actionListener="#{ratingController.create()}"/>
     <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" style="margin:5px" />
  
     <p:dialog header="Values" widgetVar="dlg" showEffect="fade" hideEffect="fade">
