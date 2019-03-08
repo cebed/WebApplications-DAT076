@@ -298,4 +298,20 @@
      color: #13654a;
  }
  
+ /*  matlistan css        */
+ /*  matlistan störande border tas bort        */
+ .ui-datagrid-no-border>.ui-datagrid-content {
+	border: none;
+} 
+ .lista-title-describtion{
+     font-family: serif;
+     font-size: 30px;
+     color: #13654a;
+     font-weight: bold;
+ }
+ .lista-title-describtion-descr{
+     font-weight: normal;
+     font-size: 15px;
+     padding-left: 5px;
+ }
  

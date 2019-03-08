@@ -81,11 +81,11 @@
                                 <!-- rad 1 col 2 -->
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="MatTitel"  value="#{addbController.selected.title}"></b:inputText>
+                                    <b:inputText label="MatTitel" maxlength="25" value="#{addbController.selected.title}"></b:inputText>
                                 </div>
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här      -->      
-                                    <b:inputTextarea label="Beskrivning" styleClass="unresizable" value="#{addbController.selected.description}"> </b:inputTextarea>
+                                    <b:inputTextarea label="Beskrivning" styleClass="unresizable" value="#{addbController.selected.description}" maxlength="200" style="resize: none" > </b:inputTextarea>
                                   
                                 </div>
                                 <div class="ui-g-12"     > 
