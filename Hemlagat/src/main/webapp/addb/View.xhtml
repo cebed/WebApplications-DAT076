@@ -188,14 +188,14 @@
                            <!--  radernea   börjar 1       -->
                            <div class="ui-g-12"   > 
                            
-                               <div class="ui-g-5"  id="cellheight-left"  > 
-                               <h:outputText value="#{addbController.selected.title}" title="#{bundle.ViewAddbTitle_title}"/>
+                               <div class="ui-g-5"  id="cellheight-left"  align="left"> 
+                               <h:outputText value="#{addbController.selected.title}" title="#{bundle.ViewAddbTitle_title}" id="font-style-view-page"/>
                                </div> 
-                               <div class="ui-g-2"  id="cellheight-left"  > 
-                               <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}"/>
+                               <div class="ui-g-2"  id="cellheight-left" align="right"  > 
+                               <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}" id="font-style-view-page"/>
                                </div> 
-                               <div class="ui-g-5"  id="cellheight-left"  >
-                                   <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}"/>
+                               <div class="ui-g-5"  id="cellheight-left"  align="right">
+                                   <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}" id="font-style-view-page"/>
                                
                                </div> 
                            
@@ -212,7 +212,7 @@
                                <div class="ui-g-2"    id="cellheight-left" > </div> 
                                <div class="ui-g-5"  align="right" id="cellheight-left" >
                                <p:outputLabel id="font-style-view-page">
-                                       antal*pris= använd controller
+                                       antal*pris
                                    </p:outputLabel>
                                
                               </div> 
@@ -237,19 +237,33 @@
                            <div class="ui-g-12"    > 
                            
                                <div class="ui-g-6"   id="cellheight-left" > 
-                               <p:outputLabel id="font-style-view-page">
-                                       Hämtas Ifrån Addressen
+                                   <p:outputLabel id="font-style-view-page" style="font-size: 15px;">
+                                       plats för upphmtning
                                    </p:outputLabel>
                                
                                </div> 
                                
-                               <div class="ui-g-6"   id="cellheight-left" > 
+                               <div class="ui-g-12"     > 
+                                    <h:outputText value="#{addbController.selected.address}" id="font-style-view-page" style="font-size: 10px;"></h:outputText>
+                                 
+                               </div> 
+                                <div class="ui-g-12"   > 
+                                    <h:outputText value="#{addbController.selected.other}" id="font-style-view-page" style="font-size: 10px;"></h:outputText>
+                                  
+                                  
                                
-                               <h:outputText value="#{addbController.selected.address}" title="#{bundle.ViewAddbTitle_address}"/>
+                               </div> 
+                                <div class="ui-g-12"    > 
+                               
+                                    <h:outputText value="#{addbController.selected.other2}" id="font-style-view-page" style="font-size: 10px;"></h:outputText>
+                               
                                </div> 
                            
                            </div> 
-                          <!--  radernea          -->
+                          <!--  radernea     
+                          <h:outputText value="#{addbController.selected.address}" id="font-style-view-page" style="font-size: 10px;"></h:outputText>
+                                   <h:outputText value="#{addbController.selected.other}"id="font-style-view-page" style="font-size: 10px;"></h:outputText>
+                                   <h:outputText value="#{addbController.selected.other2}"id="font-style-view-page" style="font-size: 10px;"></h:outputText>-->
                          </div>   
                         
                           <!--  höger vänster spalt          -->

@@ -16,7 +16,11 @@
                     <!-- hela sidan          -->
                     <div class="ui-g-12" >
                         <!--  Baren på toppen         -->
-                        <div class="ui-g-12" style="height: 40px;" align="center" >  </div>
+                        <div class="ui-g-12"  align="center" >  
+                         <p:outputLabel style="  font-family: serif; font-size: 80px; font-weight: bold; color: #13654a; margin-left: -20px;">
+                                      Lägg upp  Annons
+                         </p:outputLabel>
+                        </div>
                         <!--   höger spalt          -->
                         <div class="ui-g-1"   > </div> 
                         <!-- conntent spalt         -->
@@ -25,19 +29,8 @@
                             <div class="ui-g-12"  align="center"  >
                                 <!-- baren på content          -->
                                 <p:outputLabel style="  font-family: serif; font-size: 30px; font-weight: bold; color: #13654a;">
-                                    Din Bestälning
+                                   Uppgifter om maträtten
                                 </p:outputLabel> </div>
-
-
-
-
-
-
-
-
-
-
-
 
                             <!-- detta är intressanta delen          -->
 
@@ -45,7 +38,12 @@
                             <!-- 1 col 1    där bilden och ladda knapp ska visas      -->
                             <div class="ui-g-4"      > 
                                 <!-- header till först col -->
-                                <div class="ui-g-12"  style="  height: 150px; "  ></div>
+                                <div class="ui-g-12"  style=" " align="left" ></div>
+                                <div class="ui-g-12"  style="  " align="left" >
+                                    <b:inputText label="Logged as: "  value="#{userdbController.selected.email}" id="font-style-view-page" disabled="true"></b:inputText>
+                                     <b:inputText label="Item Id:"  value="#{addbController.selected.id}" id="font-style-view-page" ></b:inputText>
+                                     
+                                </div>
                                 <div class="ui-g-12"  style="border: outset;  height: 200px; "  > 
                                     <!-- bidden visas här          -->    bilden visas här  
 
@@ -81,10 +79,12 @@
                                     <!-- bidden visas här          -->   
                                     <b:inputText label="Pris" labelStyle="width:80px;" value="#{addbController.selected.price}"> </b:inputText>
                                 </div>
-                                <div class="ui-g-12"     > 
+                                <div class="ui-g-3"    style="width: 50px; "  > <h:outputLabel for="basic" value="Antal  "  /></div>
+                                <div class="ui-g-2"  style="width: 50px;"    >  <p:spinner id="basic"  value="#{addbController.selected.quantity}"  /></div>
+                                <div class="ui-g-7"     > 
                                     <!-- bidden visas här          -->   
-                                    <h:outputLabel for="basic" value="Antal  "  />
-                                    <p:spinner id="basic"  value="#{addbController.selected.quantity}"  />
+                                    
+                                   
                                 </div>
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här          -->   
@@ -115,65 +115,32 @@
                             <!-- 3 col 3 col 3 börjar    <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" caption="checkbox 1" label="Please decide" />      -->
                             <div class="ui-g-4"    > 
                                 <!-- 2 col 2     slut på col 2     -->
-                                <div class="ui-g-12" style="border: outset; height: 100px; " align="center"  >
-                                    <p:outputLabel style="  font-family: serif; font-size: 30px; font-weight: bold; color: #13654a;">
+                                <div class="ui-g-12" style=" height: 50px;   " align="center"  ></div>
+                                <div class="ui-g-12" style=" height: 50px;   " align="center"  >
+                                    <p:outputLabel style="  font-family: serif; font-size: 20px; font-weight: bold; color: #13654a; text-align: end;">
                                         Maträtten innhåller
                                     </p:outputLabel> 
                                 </div>
 
                                 <div class="ui-g-12" style="border: outset; "   > 
-                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" caption="checkbox 1"  />  </div> 
-                                    <div class="ui-g-6"   >  <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" caption="checkbox 1"  />        </div> 
-                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" caption="checkbox 1"  />      </div> 
-                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" caption="checkbox 1"  />       </div>   
+                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.vegetarian}" caption="Vegetarian" id="font-style-view-page" />  </div> 
+                                    <div class="ui-g-6"   >  <b:selectBooleanCheckbox value="#{addbController.selected.nuts}" caption="Nuts" id="font-style-view-page"  />        </div> 
+                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.lactose}" caption="Lactose"  id="font-style-view-page" />      </div> 
+                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.gluten}" caption="Gluten"  id="font-style-view-page" />       </div>   
                                 </div>
-                                <div class="ui-g-6"   >
-                                    <b:button value="Backa" tiny-screen="half"   iconAwesome="bar-chart" look="success" style="height: 100px; width: 100px; "/>
+                                <div class="ui-g-12" style="height: 180px;"></div>
+                                <div class="ui-g-12"   >
+                                    <b:button value="Lägg upp annons" tiny-screen="half"   iconAwesome="fa-save" look="success" style="height: 80px; width: 300px; font-family: serif; font-size: 15px; "/>
                                 </div>
-                                <div class="ui-g-6" >
+                                <div class="ui-g-12"  >
 
-                                    <b:button value="Köp" tiny-screen="half"  iconAwesome="cart-plus" look="success"  style="height: 100px; width: 100px;"/>
+                                    <b:button value="back" tiny-screen="half"  iconAwesome="cart-plus" look="success"   style="height: 80px; width: 300px; font-family: serif; font-size: 15px; "/>
                                 </div>
 
 
 
                             </div> 
                             <!-- 1 col 1          -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                         </div> 
                         <!--  höger vänster spalt          -->
@@ -191,16 +158,7 @@
 
 
                     <!--   tommy längst ner          -->
-                    <div class="ui-g-12" style="height: 300px;"> 
-                        <div class="ui-g-12" style="height: 40px;" ></div>
-                        <div class="ui-g-6"  align="left">
-                            <b:button value="Backa" tiny-screen="half"  offset="4" iconAwesome="bar-chart" look="success" style="height: 100px; width: 400px; "/>
-                        </div>
-                        <div class="ui-g-6" align="right">
-
-                            <b:button value="Köp" tiny-screen="half"  iconAwesome="cart-plus" look="success"  style="height: 100px; width: 400px;"/>
-                        </div>
-                    </div>
+                    <div class="ui-g-12" style="height: 30px;"> </div>
 
                 </div>
 
