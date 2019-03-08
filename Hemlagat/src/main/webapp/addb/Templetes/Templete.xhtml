@@ -31,22 +31,18 @@
         
             
                 
-                 <div id="container11">
-         
-            
-                <div id="header11">
-                      <ui:include src="/addb/Templetes/Header.xhtml" />
-                       
-                </div>
-                <div id="body11">
+               <div class="ui-g" style="background-color: white;">
+                   <div class="ui-g-12" > 
+                    <ui:include src="/addb/Templetes/Header.xhtml" />
+                    </div>
+                    <!-- hela sidan          -->
+                    <div class="ui-g-12" style="min-height: 300px"><ui:insert name="content">Put default content here, if any.</ui:insert> </div>
+                        
                     
-                      <ui:insert name="content">Put default content here, if any.</ui:insert>
-                </div>
-                <div id="footer11">
-                 <ui:include src="/addb/Templetes/Footer.xhtml" />
-                
-                </div>
-                 </div>
+                     <div class="ui-g-12" ><ui:include src="/addb/Templetes/Footer.xhtml" /> </div>
+          </div>
+            
+               
                
                  
 	  
