@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
 
     
     <h:body>
@@ -12,92 +13,167 @@
        
         
             <ui:define name="content">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
+           
 
             <h:form enctype="multipart/form-data">
-                <div id="tabelpos" >
-                    <table   >
-                        <tr height="400px">
-                            <td  width="300px"> <div id="loadapic">ladda upp en bild</div>
-                                <h:panelGrid columns="2">
-                                    <h:outputLabel value="#{bundle.CreateAddbLabel_id}" for="id" />
-                                    <h:inputText id="id" value="#{addbController.selected.id}" title="#{bundle.CreateAddbTitle_id}" required="true" requiredMessage="#{bundle.CreateAddbRequiredMessage_id}"/>
-                                </h:panelGrid>
-                            </td>
+  <div class="ui-g" style="background-color: white;">
+
+                    <!-- hela sidan          -->
+                    <div class="ui-g-12" >
+                        <!--  Baren på toppen         -->
+                        <div class="ui-g-12"  align="center" >  
+                         <p:outputLabel style="  font-family: serif; font-size: 80px; font-weight: bold; color: #13654a; margin-left: -20px;">
+                                      Lägg upp  Annons
+                         </p:outputLabel>
+                        </div>
+                        <!--   höger spalt          -->
+                        <div class="ui-g-1"   > </div> 
+                        <!-- conntent spalt         -->
+                        <div class="ui-g-10"  style="border: outset; "  >
+                            <!-- baren på content          -->
+                            <div class="ui-g-12"  align="center"  >
+                                <!-- baren på content          -->
+                                <p:outputLabel style="  font-family: serif; font-size: 30px; font-weight: bold; color: #13654a;">
+                                   Uppgifter om maträtten
+                                </p:outputLabel> </div>
+
+                            <!-- detta är intressanta delen          -->
 
 
-                            <td  width="360px"> 
-                                <h:panelGrid columns="2">
-
-
-                                    <h:outputLabel value="#{bundle.CreateAddbLabel_title}" for="title" class="mat-tabel-fix"/>
-                                    <h:inputText id="title" value="#{addbController.selected.title}" title="#{bundle.CreateAddbTitle_title}"  />
-                                    
-                                    <h:outputLabel value="#{bundle.CreateAddbLabel_price}" for="price" class="mat-tabel-fix"/>
-                                    <h:inputText id="price" value="#{addbController.selected.price}" title="#{bundle.CreateAddbTitle_price}" />
-                                    <h:outputLabel value="#{bundle.CreateAddbLabel_description}" for="description" class="mat-tabel-fix"/>
-                                    <h:inputTextarea id="description" value="#{addbController.selected.description}" title="#{bundle.CreateAddbTitle_description}" />
-                                    <h:outputLabel value="#{bundle.CreateAddbLabel_quantity}" for="quantity" class="mat-tabel-fix"/>
-                                    <h:inputText id="quantity" value="#{addbController.selected.quantity}" title="#{bundle.CreateAddbTitle_quantity}" />
-                                    <h:outputLabel value="#{bundle.CreateAddbLabel_address}" for="address" class="mat-tabel-fix" />
-                                    <h:inputText id="address" value="#{addbController.selected.address}" title="#{bundle.CreateAddbTitle_address}" />
-                                    <h:outputLabel value="#{bundle.CreateAddbLabel_weight}" for="weight" class="mat-tabel-fix"/>
-                                    <h:inputText id="weight" value="#{addbController.selected.weight}" title="#{bundle.CreateAddbTitle_weight}" />
-                                    
-                                    <p:fileUpload value="#{addbController.file}" mode="simple"/>
-                                    <!--<h:outputLabel value="#{bundle.CreateAddbLabel_vegetarian}" for="vegetarian" />
-                                     <h:inputText id="vegetarian" value="#{addbController.selected.vegetarian}" title="#{bundle.CreateAddbTitle_vegetarian}" />
-                                    <h:outputLabel value="#{bundle.CreateAddbLabel_nuts}" for="nuts" />
-                                    <h:inputText id="nuts" value="#{addbController.selected.nuts}" title="#{bundle.CreateAddbTitle_nuts}" />
-                                    <h:outputLabel value="#{bundle.CreateAddbLabel_lactose}" for="lactose" />
-                                    <h:inputText id="lactose" value="#{addbController.selected.lactose}" title="#{bundle.CreateAddbTitle_lactose}" />
-                                    <h:outputLabel value="#{bundle.CreateAddbLabel_gluten}" for="gluten" />
-                                    <h:inputText id="gluten" value="#{addbController.selected.gluten}" title="#{bundle.CreateAddbTitle_gluten}" />
-                                   <h:outputLabel value="#{bundle.CreateAddbLabel_other}" for="other" />
-                                    <h:inputText id="other" value="#{addbController.selected.other}" title="#{bundle.CreateAddbTitle_other}" />
-                                    <h:outputLabel value="#{bundle.CreateAddbLabel_other2}" for="other2" />
-                                    <h:inputText id="other2" value="#{addbController.selected.other2}" title="#{bundle.CreateAddbTitle_other2}" />-->
-
-
-
-
-                                </h:panelGrid>
-
-
-                            </td>
-
-
-                            <td  width="400px"> 
-                                <div id="centerera-checkbox">
-
-                                    <h:outputText value="Contents " class="mat-tabel-fix"/>
-                                    <br style="align-content: flex-start"></br>
-                                    <h:panelGrid columns="2" >
-                                        <h:outputLabel value="#{bundle.CreateAddbLabel_vegetarian}" for="vegetarian" class="mat-tabel-fix" />
-                                        <p:selectBooleanButton id="vegetarian" value="#{addbController.selected.vegetarian}" title="#{bundle.CreateAddbTitle_vegetarian}" onLabel="Yes" offLabel="No" style="width:60px" onIcon="pi pi-check" offIcon="pi pi-times" />
-
-                                        <h:outputLabel value="#{bundle.CreateAddbLabel_nuts}" for="nuts" class="mat-tabel-fix"/>
-                                        <p:selectBooleanButton id="nuts" value="#{addbController.selected.nuts}" title="#{bundle.CreateAddbTitle_nuts}" onLabel="Yes" offLabel="No" style="width:60px" onIcon="pi pi-check" offIcon="pi pi-times" />
-
-                                        <h:outputLabel value="#{bundle.CreateAddbLabel_gluten}" for="gluten" class="mat-tabel-fix"/>
-                                        <p:selectBooleanButton id="lactose" value="#{addbController.selected.lactose}" title="#{bundle.CreateAddbTitle_lactose}" onLabel="Yes" offLabel="No" style="width:60px" onIcon="pi pi-check" offIcon="pi pi-times" />
-
-                                        <h:outputLabel value="#{bundle.CreateAddbLabel_gluten}" for="gluten" class="mat-tabel-fix"/>
-                                        <p:selectBooleanButton id="gluten" value="#{addbController.selected.gluten}" title="#{bundle.CreateAddbTitle_gluten}" onLabel="Yes" offLabel="No" style="width:60px" onIcon="pi pi-check" offIcon="pi pi-times" />
-
-                                    </h:panelGrid>
+                            <!-- 1 col 1    där bilden och ladda knapp ska visas      -->
+                            <div class="ui-g-4"      > 
+                                <!-- header till först col -->
+                                <div class="ui-g-12"  style=" " align="left" ></div>
+                                <div class="ui-g-12"  style="  " align="left" >
+                                
+                                    <p:outputLabel value="logged as: " ></p:outputLabel> 
+                                    <div class="ui-g-12"  align="center"  ></div>
+                                    <p:outputLabel value="#{userdbController.selected.email}" ></p:outputLabel>     
+                                    <b:inputText label="Item Id:"  value="#{addbController.selected.id}"  ></b:inputText>
+                                     <p:outputLabel style="  font-family: serif; font-size: 30px; font-weight: bold; color: #13654a;">
+                                   Lägg Maträttsbilden
+                                </p:outputLabel> 
                                 </div>
-                            </td>
+                                <div class="ui-g-12"  style="border: outset;  height: 200px; "  > 
+                                    <!-- bidden visas här          -->    bilden visas här  
+                                    
+                                </div>
+                                <div class="ui-g-12"  style="  height: 200px; "  align="center"> 
+                                    
+                                    <!-- sätt bilden här med knapp       knappen skavara här         -->     
+                                    <p:fileUpload value="#{addbController.file}" mode="simple"/>
+                                    
+                                </div>                  
+
+                            </div> 
+                            <!-- 1 col 1    slut på col 1      -->
 
 
 
 
 
-                            <td  width="200px"><br />
-                                <div id="butom-pos">
-                                    <br />
+
+
+
+
+                            <!-- 2col 2   start på col 2 där contenten ska sätta in       -->
+                            <div class="ui-g-4"  style="border: outset;  background-color: white; "  > 
+                                <!-- rad 1 col 2 -->
+                                <div class="ui-g-12"     > 
+                                    <!-- bidden visas här          -->   
+                                    <b:inputText label="MatTitel"  value="#{addbController.selected.title}"></b:inputText>
+                                </div>
+                                <div class="ui-g-12"     > 
+                                    <!-- bidden visas här      -->      
+                                    <b:inputTextarea label="Beskrivning" styleClass="unresizable" value="#{addbController.selected.description}"> </b:inputTextarea>
+                                  
+                                </div>
+                                <div class="ui-g-12"     > 
+                                    <!-- bidden visas här          -->   
+                                    <b:inputText label="Pris" labelStyle="width:80px;" value="#{addbController.selected.price}"> </b:inputText>
+                                </div>
+                                <div class="ui-g-3"    style="width: 50px; "  > <h:outputLabel for="basic" value="Antal  "  /></div>
+                                <div class="ui-g-2"  style="width: 50px;"    >  <p:spinner id="basic"  value="#{addbController.selected.quantity}"  /></div>
+                                <div class="ui-g-7"     > 
+                                    <!-- bidden visas här          -->   
+                                    
+                                   
+                                </div>
+                                <div class="ui-g-12"     > 
+                                    <!-- bidden visas här          -->   
+                                    <b:inputText label="Vikt" labelStyle="width:80px;" value="#{addbController.selected.weight}"> </b:inputText>
+                                </div>
+                                <div class="ui-g-12"     > 
+                                    <!-- bidden visas här          -->   
+                                    <b:inputText label="Address" labelStyle="width:80px;" value="#{addbController.selected.address}"> </b:inputText>
+                                </div>
+                                <div class="ui-g-6"   > 
+                                    <!-- bidden visas här          -->   
+                                    <b:inputText label="Ort" labelStyle="width:80px;" value="#{addbController.selected.other}"></b:inputText>
+                                </div>
+                                <div class="ui-g-6"   > 
+                                    <!-- bidden visas här          -->   
+                                    <b:inputText label="Postnumber" labelStyle="width:80px;" value="#{addbController.selected.other2}"></b:inputText>
+                                </div>
+
+
+
+                            </div> 
+                            <!-- 2 col 2     slut på col 2     -->
+
+
+
+
+
+                            <!-- 3 col 3 col 3 börjar    <b:selectBooleanCheckbox value="#{settingsBean.checkbox1}" caption="checkbox 1" label="Please decide" />      -->
+                            <div class="ui-g-4"    > 
+                                <!-- 2 col 2     slut på col 2     -->
+                                <div class="ui-g-12" style=" height: 50px;   " align="center"  ></div>
+                                <div class="ui-g-12" style=" height: 50px;   " align="center"  >
+                                    <p:outputLabel style="  font-family: serif; font-size: 20px; font-weight: bold; color: #13654a; text-align: end;">
+                                        Maträtten innhåller
+                                    </p:outputLabel> 
+                                </div>
+
+                                <div class="ui-g-12" style="border: outset; "   > 
+                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.vegetarian}" caption="Vegetarian"  />  </div> 
+                                    <div class="ui-g-6"   >  <b:selectBooleanCheckbox value="#{addbController.selected.nuts}" caption="Nuts"   />        </div> 
+                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.lactose}" caption="Lactose"   />      </div> 
+                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.gluten}" caption="Gluten"   />       </div>   
+                                </div>
+                                <div class="ui-g-12" style="height: 180px;"></div>
+                                <div class="ui-g-12"   >
+                                    
+                                      <b:commandButton value="Lägg upp annons" iconAwesome="fa-save" look="success" style="height: 80px; width: 300px; font-family: serif; font-size: 15px; " actionListener="#{addbController.create}"> </b:commandButton>
+                                </div>
+                                <div class="ui-g-12"  >
+
+                                    <b:button value="back" tiny-screen="half"  iconAwesome="cart-plus" look="success"   style="height: 80px; width: 300px; font-family: serif; font-size: 15px; "/>
+                                </div>
+
+
+
+                            </div> 
+                            <!-- 1 col 1          -->
+
+                        </div> 
+                        <!--  höger vänster spalt          -->
+                        <div class="ui-g-1"    > </div> 
+                        <!--  footer vänster spalt          -->
+                        <div class="ui-g-12" style="height: 100px;" > </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <!--   tommy längst ner          -->
+                    <div class="ui-g-12" style="height: 30px;"> <br />
+                        <!--   tommy längst ner          -->
                                     <h:commandLink action="#{addbController.create}" value="#{bundle.CreateAddbSaveLink}" />
                                     <br />
                                     <br />
@@ -105,54 +181,19 @@
                                     <br />
                                     <br />
                                     <h:link outcome="/index" value="#{bundle.CreateAddbIndexLink}"/>
-                                </div>
-                            </td>
-
-                        </tr>
-
-                    </table>
+                    </div>
 
                 </div>
 
 
 
-            </h:form>
 
-
-            <!--
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{addbController.selected.id}" title="#{bundle.CreateAddbTitle_id}" required="true" requiredMessage="#{bundle.CreateAddbRequiredMessage_id}"/>
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_title}" for="title" />
-                    <h:inputText id="title" value="#{addbController.selected.title}" title="#{bundle.CreateAddbTitle_title}" />
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_price}" for="price" />
-                    <h:inputText id="price" value="#{addbController.selected.price}" title="#{bundle.CreateAddbTitle_price}" />
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_description}" for="description" />
-                    <h:inputText id="description" value="#{addbController.selected.description}" title="#{bundle.CreateAddbTitle_description}" />
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_quantity}" for="quantity" />
-                    <h:inputText id="quantity" value="#{addbController.selected.quantity}" title="#{bundle.CreateAddbTitle_quantity}" />
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_weight}" for="weight" />
-                    <h:inputText id="weight" value="#{addbController.selected.weight}" title="#{bundle.CreateAddbTitle_weight}" />
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_vegetarian}" for="vegetarian" />
-                    <h:inputText id="vegetarian" value="#{addbController.selected.vegetarian}" title="#{bundle.CreateAddbTitle_vegetarian}" />
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_nuts}" for="nuts" />
-                    <h:inputText id="nuts" value="#{addbController.selected.nuts}" title="#{bundle.CreateAddbTitle_nuts}" />
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_lactose}" for="lactose" />
-                    <h:inputText id="lactose" value="#{addbController.selected.lactose}" title="#{bundle.CreateAddbTitle_lactose}" />
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_gluten}" for="gluten" />
-                    <h:inputText id="gluten" value="#{addbController.selected.gluten}" title="#{bundle.CreateAddbTitle_gluten}" />
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_address}" for="address" />
-                    <h:inputText id="address" value="#{addbController.selected.address}" title="#{bundle.CreateAddbTitle_address}" />
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_other}" for="other" />
-                    <h:inputText id="other" value="#{addbController.selected.other}" title="#{bundle.CreateAddbTitle_other}" />
-                    <h:outputLabel value="#{bundle.CreateAddbLabel_other2}" for="other2" />
-                    <h:inputText id="other2" value="#{addbController.selected.other2}" title="#{bundle.CreateAddbTitle_other2}" />
-                </h:panelGrid>
                 
+
+
+
             </h:form>
-            -->
-            
+
            
         </ui:define>
          

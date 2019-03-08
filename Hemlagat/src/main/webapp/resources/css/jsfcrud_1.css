@@ -276,16 +276,10 @@
      border: outset;
      border-color: #13654a;
  }
- #cellspacing{
-     height: 25px;
- }
  
  
- #cellheight{
-     height: 70px;
-     
-     border-color: #13654a;
- }
+ 
+ 
  #cellholder-left{
      height: 5px;
  }
@@ -294,7 +288,8 @@
     
      border-color: #13654a;
  }
- #font-style-view-page{
+ 
+ .font-style-view-page{
      
      align-content:flex-end ;
      font-family: serif; 
