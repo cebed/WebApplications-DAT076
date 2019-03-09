@@ -22,7 +22,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 /**
  *
@@ -58,44 +60,70 @@ public class Addb implements Serializable {
     @Basic(optional = false)
     @Size(min = 1, max = 100)
     @Column(name = "ID")
+    @Getter
+    @Setter
     private String id;
     @Size(max = 100)
     @Column(name = "TITLE")
+    @Getter
+    @Setter
     private String title;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "PRICE")
+    @Getter
+    @Setter
     private Double price;
     @Size(max = 200)
     @Column(name = "DESCRIPTION")
+    @Getter
+    @Setter
     private String description;
     @Column(name = "QUANTITY")
+    @Getter
+    @Setter
     private Integer quantity;
     @Column(name = "WEIGHT")
+    @Getter
+    @Setter
     private Double weight;
     @Column(name = "VEGETARIAN")
+    @Getter
+    @Setter
     private Boolean vegetarian;
     @Column(name = "NUTS")
+    @Getter
+    @Setter
     private Boolean nuts;
     @Column(name = "LACTOSE")
+    @Getter
+    @Setter
     private Boolean lactose;
     @Column(name = "GLUTEN")
+    @Getter
+    @Setter
     private Boolean gluten;
     @Size(max = 100)
     @Column(name = "ADDRESS")
+    @Getter
+    @Setter
     private String address;
     @Size(max = 100)
     @Column(name = "OTHER")
+    @Getter
+    @Setter
     private String other;
     @Size(max = 100)
     @Column(name = "OTHER2")
+    @Getter
+    @Setter
     private String other2;
     @Lob
     @Column(name = "PHOTO")
+    @Getter
+    @Setter
     private byte[] photo;
-    
-  
-    
-
+   @Getter
+    @Setter
     @JoinColumn(name = "USERID", referencedColumnName = "EMAIL")
     @ManyToOne
     private Userdb userid;
@@ -104,125 +132,6 @@ public class Addb implements Serializable {
     
     private static final Logger LOG = Logger.getLogger(Addb.class.getName());
 private static final AtomicLong counter = new AtomicLong(100);
-
-
-    
-
-   
-    
-    
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public Double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
-
-    public Boolean getVegetarian() {
-        return vegetarian;
-    }
-
-    public void setVegetarian(Boolean vegetarian) {
-        this.vegetarian = vegetarian;
-    }
-
-    public Boolean getNuts() {
-        return nuts;
-    }
-
-    public void setNuts(Boolean nuts) {
-        this.nuts = nuts;
-    }
-
-    public Boolean getLactose() {
-        return lactose;
-    }
-
-    public void setLactose(Boolean lactose) {
-        this.lactose = lactose;
-    }
-
-    public Boolean getGluten() {
-        return gluten;
-    }
-
-    public void setGluten(Boolean gluten) {
-        this.gluten = gluten;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getOther() {
-        return other;
-    }
-
-    public void setOther(String other) {
-        this.other = other;
-    }
-
-    public String getOther2() {
-        return other2;
-    }
-
-    public void setOther2(String other2) {
-        this.other2 = other2;
-    }
-
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
 
     @Override
     public int hashCode() {
