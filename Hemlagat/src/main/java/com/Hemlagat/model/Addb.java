@@ -6,10 +6,12 @@
 package com.Hemlagat.model;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.JoinColumn;
@@ -20,6 +22,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import lombok.RequiredArgsConstructor;
 
 /**
  *
@@ -28,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "ADDB")
 @XmlRootElement
+@RequiredArgsConstructor
 @NamedQueries({
     @NamedQuery(name = "Addb.findAll", query = "SELECT a FROM Addb a")
     , @NamedQuery(name = "Addb.findById", query = "SELECT a FROM Addb a WHERE a.id = :id")
@@ -50,9 +54,8 @@ public class Addb implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue
     @Basic(optional = false)
-    @NotNull
-    //GeneratedValue
     @Size(min = 1, max = 100)
     @Column(name = "ID")
     private String id;
@@ -62,14 +65,6 @@ public class Addb implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "PRICE")
     private Double price;
-
-    public void setUserid(Userdb userid) {
-        this.userid = userid;
-    }
-
-    public Userdb getUserid() {
-        return userid;
-    }
     @Size(max = 200)
     @Column(name = "DESCRIPTION")
     private String description;
@@ -104,14 +99,18 @@ public class Addb implements Serializable {
     @JoinColumn(name = "USERID", referencedColumnName = "EMAIL")
     @ManyToOne
     private Userdb userid;
+    
+    
+    
     private static final Logger LOG = Logger.getLogger(Addb.class.getName());
+private static final AtomicLong counter = new AtomicLong(100);
 
-    public Addb() {
-    }
 
-    public Addb(String id) {
-        this.id = id;
-    }
+    
+
+   
+    
+    
 
     public String getId() {
         return id;
@@ -249,5 +248,11 @@ public class Addb implements Serializable {
     public String toString() {
         return "com.Hemlagat.model.Addb[ id=" + id + " ]";
     }
+ public void setUserid(Userdb userid) {
+        this.userid = userid;
+    }
 
+    public Userdb getUserid() {
+        return userid;
+    }
 }
