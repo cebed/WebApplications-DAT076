@@ -7,16 +7,11 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
 
-    
-    <h:body>
-     <ui:composition template="/addb/Templetes/Templete.xhtml">
-       
-        
-            <ui:define name="content">
-           
 
-            <h:form enctype="multipart/form-data">
-  <div class="ui-g" style="background-color: white;">
+    <h:body>
+        <ui:composition template="/addb/Templetes/Templete.xhtml">
+            <ui:define name="content">
+                <div class="ui-g" style="background-color: white;">
 
                     <!-- hela sidan          -->
                     <div class="ui-g-12" >
@@ -45,24 +40,17 @@
                                 <!-- header till först col -->
                                 <div class="ui-g-12"  style=" " align="left" ></div>
                                 <div class="ui-g-12"  style="  " align="left" >
-                                
-                                    <p:outputLabel value="logged as: " ></p:outputLabel> 
-                                    <div class="ui-g-12"  align="center"  ></div>
-                                    <p:outputLabel value="#{userdbController.selected.email}" ></p:outputLabel>     
-                                    <b:inputText label="Item Id:"  value="#{addbController.selected.id}"  ></b:inputText>
-                                     <p:outputLabel style="  font-family: serif; font-size: 30px; font-weight: bold; color: #13654a;">
-                                   Lägg Maträttsbilden
-                                </p:outputLabel> 
+                                    <b:inputText label="Logged as: "  value="#{userdbController.selected.email}" id="font-style-view-page" disabled="true"></b:inputText>
+                                     <b:inputText label="Item Id:"  value="#{addbController.selected.id}" id="font-style-view-page" ></b:inputText>
+                                     
                                 </div>
                                 <div class="ui-g-12"  style="border: outset;  height: 200px; "  > 
                                     <!-- bidden visas här          -->    bilden visas här  
-                                    
+
                                 </div>
                                 <div class="ui-g-12"  style="  height: 200px; "  align="center"> 
-                                    
-                                    <!-- sätt bilden här med knapp       knappen skavara här         -->     
+                                    <!-- sätt bilden här med knapp       knappen skavara här     -->         
                                     <p:fileUpload value="#{addbController.file}" mode="simple"/>
-                                    
                                 </div>                  
 
                             </div> 
@@ -81,12 +69,11 @@
                                 <!-- rad 1 col 2 -->
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="MatTitel" maxlength="25" value="#{addbController.selected.title}"></b:inputText>
+                                    <b:inputText label="MatTitel"  value="#{addbController.selected.title}"></b:inputText>
                                 </div>
                                 <div class="ui-g-12"     > 
-                                    <!-- bidden visas här      -->      
-                                    <b:inputTextarea label="Beskrivning" styleClass="unresizable" value="#{addbController.selected.description}" maxlength="200" style="resize: none" > </b:inputTextarea>
-                                  
+                                    <!-- bidden visas här          -->   
+                                    <b:inputTextarea label="Beskrivning" styleClass="unresizable" value="#{addbController.selected.description}"> </b:inputTextarea>
                                 </div>
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här          -->   
@@ -136,15 +123,14 @@
                                 </div>
 
                                 <div class="ui-g-12" style="border: outset; "   > 
-                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.vegetarian}" caption="Vegetarian"  />  </div> 
-                                    <div class="ui-g-6"   >  <b:selectBooleanCheckbox value="#{addbController.selected.nuts}" caption="Nuts"   />        </div> 
-                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.lactose}" caption="Lactose"   />      </div> 
-                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.gluten}" caption="Gluten"   />       </div>   
+                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.vegetarian}" caption="Vegetarian" id="font-style-view-page" />  </div> 
+                                    <div class="ui-g-6"   >  <b:selectBooleanCheckbox value="#{addbController.selected.nuts}" caption="Nuts" id="font-style-view-page"  />        </div> 
+                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.lactose}" caption="Lactose"  id="font-style-view-page" />      </div> 
+                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.gluten}" caption="Gluten"  id="font-style-view-page" />       </div>   
                                 </div>
                                 <div class="ui-g-12" style="height: 180px;"></div>
                                 <div class="ui-g-12"   >
-                                    
-                                      <b:commandButton value="Lägg upp annons" iconAwesome="fa-save" look="success" style="height: 80px; width: 300px; font-family: serif; font-size: 15px; " actionListener="#{addbController.create}"> </b:commandButton>
+                                    <b:button value="Lägg upp annons" tiny-screen="half"   iconAwesome="fa-save" look="success" style="height: 80px; width: 300px; font-family: serif; font-size: 15px; "/>
                                 </div>
                                 <div class="ui-g-12"  >
 
@@ -172,36 +158,13 @@
 
 
                     <!--   tommy längst ner          -->
-                    <div class="ui-g-12" style="height: 30px;"> <br />
-                        <!--   tommy längst ner          -->
-                                    <h:commandLink action="#{addbController.create}" value="#{bundle.CreateAddbSaveLink}" />
-                                    <br />
-                                    <br />
-                                    <h:commandLink action="#{addbController.prepareList}" value="#{bundle.CreateAddbShowAllLink}" immediate="true"/>
-                                    <br />
-                                    <br />
-                                    <h:link outcome="/index" value="#{bundle.CreateAddbIndexLink}"/>
-                    </div>
+                    <div class="ui-g-12" style="height: 30px;"> </div>
 
                 </div>
 
 
 
-
-                
-
-
-
-            </h:form>
-
-           
-        </ui:define>
-         
-           
-            
-           
-            
-        
-    </ui:composition>
-</h:body>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>

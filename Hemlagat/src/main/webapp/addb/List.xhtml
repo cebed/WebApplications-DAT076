@@ -6,45 +6,134 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
-    
-    
-    
+    <!-- om ni vill hjälpa till med disign kolla title på list sidan och discriotion kan se bättre ut
+    skriv ctrl-f "lista-title-describtion" på css jsfcrud_1 heter classen samma -->
+    <!-- Kolla hit rickard: Vill du lägga till Rating O comment, sök efter ordet "Rickard" dvs ctrl-f Ricakrd  -->
+
+
     <h:body>
-     <ui:composition template="/addb/Templetes/Templete.xhtml">
-       
-        
+        <ui:composition template="/addb/Templetes/Templete.xhtml">
+
+
             <ui:define name="content">
-            <b:container>
-                <b:row>
-                    <h:form id="form">
 
-                        <p:dataGrid var="item" value="#{addbController.item}" columns="3" layout="grid"
-                                    rows="50" paginator="false" id="cars"
-                                    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                    rowsPerPageTemplate="6,12,16">
-                            <p:panelGrid  style="width:100%"  >
-                                <p:row >
-                                    <p:column > <p:graphicImage value="/addb/curry.jpeg" id="curry" width="100px" height="100px"/> </p:column>
-                                    <p:column> <h:outputText value="#{item.title} " />
-                                        <h:outputText value="#{item.address} " />
-                                    </p:column>
+                <h:form id="form">
 
-                                </p:row>
-                                <p:row>
+                    <div class="ui-g" > 
+                        <div class="ui-g-12" align="center"  >
+                            <p:outputLabel style="  font-family: serif; font-size: 80px; font-weight: bold; color: #13654a; margin-left: -20px;" value="  Annonser i #{addbController.address}">
+                                     
+                         </p:outputLabel>
+                        </div>  
+                        <div class="ui-g-1"   ></div>
+                        <div class="ui-g-10"   >
+                            <p:dataGrid var="item" value="#{addbController.item}" columns="2" layout="grid"
+                                        rows="100" paginator="false" id="cars" styleClass="ui-datagrid-no-border"
+                                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                        rowsPerPageTemplate="6,12,16">
+                                <div class="ui-g"  > <!-- kolla om du kan fixa egen exit knapp-->
 
-                                    <p:column>
-                                        <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                                    <!-- bildens plats på på viewlistan -->
+                                    <div class="ui-g-12" style="border: outset; "  >
 
-                                            <h:outputText value="haha" style="margin:0 auto;"/>
-                                            <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
-                                        </p:commandButton></p:column>
-                                    <p:column> 
-                                        <h:outputText value="#{item.description}" />
-                                        <h:commandLink action="#{addbController.destroy}" value="#{bundle.ListAddbDestroyLink}"/></p:column>
+                                        <!-- vänster col sp -->
+                                        <div class="ui-g-4"   >
 
-                                </p:row>
+                                            <!-- intresant -->
+                                            <div class="ui-g-12"  style=" height: 150px;  border:outset;" >
+                                                <p:graphicImage value="/addb/curry.jpeg" id="curry" width="150px" height="130px"/>
+                                                <!--
+                                               <p:graphicImage name="#{item.photo}"/> 
+                                                -->
+                                            </div>                                  
+                                            <!-- plats för add knapp -->
+                                            <div class="ui-g-12" style="height: 75px; border:outset;" align="left" >
+                                                <b:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:150px; height: 50px;" value="Detalj">
+
+                                                    <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
+                                                </b:commandButton>
+
+                                            </div>
+
+
+                                        </div>
+                                        <!-- inehålls titel -->
+                                        <div class="ui-g-8"    >
+                                            <div class="ui-g-12"  style=" height: 150px; " >
+                                                <div class="lista-title-describtion">
+                                                    <h:outputText value="#{item.title} " />
+                                                    <br style="width: 10px;"></br>
+                                                    <div class="lista-title-describtion-descr">
+                                                        <h:outputText value="#{item.description} " />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- plats för add knapp -->
+                                            <div class="ui-g-12"  style="height: 75px; " >
+
+                                                <!-- comment fält lägg/ rating , en fält för RIKARD, rickard, Rickard -->
+
+
+                                            </div>
+
+
+
+                                        </div> 
+
+
+                                    </div> 
+
+                                </div>
+                            </p:dataGrid>
+                        </div>
+                        <div class="ui-g-1"   ></div> 
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <p:dialog  widgetVar="carDialog"  resizable="false" showHeader="true" onHide="true" >
+                        <p:outputPanel id="carDetail" style="text-align:center;">
+                            <p:panelGrid  columns="2"  layout="grid" >
+                                <f:facet name="header">
+                                    <p:graphicImage value="/addb/curry.jpg" />  
+
+                                </f:facet>
+                                <h:outputText value="Title:" />
+                                <h:outputText value="#{addbController.selected.id}" />
+
+                                <h:outputText value="Description:" />
+                                <h:outputText value="#{addbController.selected.description}" />
+
+                                <h:outputText value="address:" />
+                                <h:outputText value="#{addbController.selected.address}" />
+
+                                <h:outputText value="Price" />
+                                <h:outputText value="$#{addbController.selected.price}" />
+                                <h:outputText value="quantity:" />
+                                <h:outputText value="#{addbController.selected.quantity}" />
+                                <h:outputText value="weight:" />
+                                <h:outputText value="#{addbController.selected.weight}" />
+
+
+                                <h:link outcome="/addb/View" value="#{bundle.CreateUserdbIndexLink}"/>
+
+
+
+
                             </p:panelGrid>
-                        </p:dataGrid>
+                        </p:outputPanel>
+                    </p:dialog>
 
 
 
@@ -53,61 +142,49 @@
 
 
 
-                        <p:dialog  widgetVar="carDialog"  resizable="false" showHeader="true" onHide="true" >
-                            <p:outputPanel id="carDetail" style="text-align:center;">
-                                <p:panelGrid  columns="2"  layout="grid" >
-                                    <f:facet name="header">
-                                        <p:graphicImage value="/addb/curry.jpg" />  
-
-                                    </f:facet>
-                                    <h:outputText value="Title:" />
-                                    <h:outputText value="#{addbController.selected.id}" />
-
-                                    <h:outputText value="Description:" />
-                                    <h:outputText value="#{addbController.selected.description}" />
-
-                                    <h:outputText value="address:" />
-                                    <h:outputText value="#{addbController.selected.address}" />
-
-                                    <h:outputText value="Price" />
-                                    <h:outputText value="$#{addbController.selected.price}" />
-                                    <h:outputText value="quantity:" />
-                                    <h:outputText value="#{addbController.selected.quantity}" />
-                                    <h:outputText value="weight:" />
-                                    <h:outputText value="#{addbController.selected.weight}" />
-                                    
-                                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-                                  
-                                </p:panelGrid>
-                            </p:outputPanel>
-                        </p:dialog>
-
-                    </h:form>
-
-
-
-                </b:row>
 
 
 
 
-            </b:container>
-        </ui:define>
-        
-        <ui:define name="footer">
-            
-            
-        </ui:define>
-        
-        
-        
-        
-    </ui:composition>
-        
-        
-        
-        
-        
-</h:body>
+                </h:form>
+
+            </ui:define>
+
+
+
+
+
+
+        </ui:composition>
+
+
+
+
+
+    </h:body>
 </html>
+
+<!--
+ <p:panelGrid  style="width:100%"  >
+                                    <p:row >
+                                        <p:column > <p:graphicImage value="/addb/curry.jpeg" id="curry" width="100px" height="100px"/> </p:column>
+                                        <p:column> <h:outputText value="#{item.title} " />
+                                            <h:outputText value="#{item.address} " />
+                                        </p:column>
+
+                                    </p:row>
+                                    <p:row>
+
+                                        <p:column>
+                                            <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+
+                                                <h:outputText value="haha" style="margin:0 auto;"/>
+                                                <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
+                                            </p:commandButton></p:column>
+                                        <p:column> 
+                                            <h:outputText value="#{item.description}" />
+                                            <h:commandLink action="#{addbController.destroy}" value="#{bundle.ListAddbDestroyLink}"/></p:column>
+
+                                    </p:row>
+                                </p:panelGrid>
+-->
