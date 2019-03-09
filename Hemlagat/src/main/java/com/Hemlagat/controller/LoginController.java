@@ -35,6 +35,7 @@ public class LoginController implements Serializable {
     @Getter
     @Setter
     private String password;
+    
 
     @Inject
     private UserdbFacade userRegistry;
@@ -45,15 +46,22 @@ public class LoginController implements Serializable {
     public Userdb getUser() {
         return loggedInUser;
     }
+    
+    public String getProfi(){
+        return loggedInUser.getUsername();
+        
+    }
 
     public String getUsername() {
         return loggedInUser.getUsername();
     }
     
+    
     public String login() {
         loggedInUser = userRegistry.findUser(email, password);
         if (loggedInUser != null) {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("email", email);
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username", loggedInUser.getUsername());
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome:"+ loggedInUser.getUsername()));
 
             return "Logout?faces-redirect=true";

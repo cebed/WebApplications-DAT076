@@ -8,33 +8,47 @@
       xmlns:b="http://bootsfaces.net/ui">
 
     <h:head>
-         <h:outputStylesheet library="css" name="jsfcrud_1.css"/>
     </h:head>
 
-    <h:body>
+    <h:body style="background: #13654a;">
+        <p:panel style="background: #13654a; ">
+            <b:jumbotron style="height: auto;">
 
-        <b:row>
-            <b:column col-md="12">
-                <b:jumbotron>
-                     <p:column > <p:graphicImage value="/addb/logga.png" style="width: 100%; top: 0%;"/> </p:column>
+
+                <h:form>
+
+
+                    <p:column > <p:graphicImage value="/addb/logga.png" style="width: 50%;  display: block; margin-left: auto; margin-right: auto;"/> </p:column>
                     <h1>Hemlagat!</h1>
                     <p>Welcome to Hemlagat!
                         Hemlagat is Sweden's first start-up company in cooking sales for home use.</p>
-                        <p>
+                    <p>
                         Our goal is for you to experience quality in everything we do. Can we be even better at something so do not hesitate to contact us. We want you to think about us with a smile.
-                        
+
                     </p>
-                    <p> <b:button value="Back" outcome="template" look="primary" /></p>
-                    
-                   
-                </b:jumbotron>
-            </b:column>
-        </b:row>
+
+
+
+
+                    <p>
+                        <b:row style="padding-top: 100px; "  >
+                            <b:button value="Back"  large-screen="full-width" look="success"  outcome="Locationpage"/>
+
+                        </b:row>
+
+                    </p>
 
 
 
 
 
+
+
+
+                </h:form>
+
+            </b:jumbotron>
+        </p:panel>
     </h:body>
 
 </html>
