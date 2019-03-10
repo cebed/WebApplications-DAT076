@@ -102,53 +102,50 @@
 
 
 
-                    <p:dialog  widgetVar="AdsDialog"  resizable="false" showHeader="false" onHide="true" >
+                    <p:dialog  widgetVar="AdsDialog"  resizable="false" showHeader="true" onHide="true" >
 
 
                         <div class="ui-g" style=" width: 900px;" >
                             <!-- västra sidan för bilden dialog -->
-                           
+                            <div class="ui-g-3" style="border: outset"  >
+                                <div class="ui-g-12" style="border: outset; height: 50px;"  ></div>
+                                <div class="ui-g-1" style="border: outset"  ></div>
+                                <div class="ui-g-9" style="border: outset"  >
+                                    <p:graphicImage value="/addb/curry.jpeg" id="curry" width="130px" height="130px"/>
+                                </div>
+                                <div class="ui-g-1"  ></div>
+                            </div>   
                             <!-- mittersta sidan detalj oc innehåll dialog -->
-                            <div class="ui-g-12" style="border: outset"  >
+                            <div class="ui-g-9" style="border: outset"  >
                                 <p:outputPanel id="AdsDetail" style="text-align:center;">
-                                    <div class="ui-g-12" style="border: outset" align="left" >  
-                                        <div class="ui-g-3" style=" min-height: 150px;" align="left" >
-                                          <p:graphicImage value="/addb/curry.jpeg" id="curry" width="190px" height="128px"/>
-                                        </div>
-                                        <div class="ui-g-6" style=" min-height: 150px;" align="left" >
+                                    <div class="ui-g-12" style="border: outset" align="left" >                          
+                                        <div class="ui-g-9" style="border: outset; min-height: 150px;" align="left" >
                                             <h:outputText value="#{addbController.selected.title}"  class="lista-title-describtion"/>
                                             <br style="height: 200px;"></br>
-                                            <div class="ui-g-12" align="left" ></div>
+                                            <div class="ui-g-12" style="border: outset;" align="left" ></div>
                                             <h:outputText value="#{addbController.selected.description}"  class="lista-title-describtion" style="font-weight: normal; font-size: 17px; font-family: cursive"/>
                                         </div>
-                                        <div class="ui-g-3" style=" min-height: 150px;" align="left" >
-                                            rad1 col 3
+                                        <div class="ui-g-3" style="border: outset; min-height: 150px;" align="left" >
+                                            rad1
                                         </div>
                                         <!--ort address och postno -->
-                                        <div class="ui-g-3"  align="left" >
-                                            rad2 com 1
-                                        </div>
-                                        <div class="ui-g-6"  align="left" >
-                                            <div class="ui-g-4" align="left"  >
+                                        <div class="ui-g-9" style="border: outset;" align="left" >
+                                            <div class="ui-g-4" style="border: outset;;" align="left"  >
                                                 <h:outputText value="#{addbController.selected.address}" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                             </div>
-                                            <div class="ui-g-6"   align="left" >
+                                            <div class="ui-g-6" style="border: outset; " align="left" >
                                                 <h:outputText value="#{addbController.selected.other}" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                             </div>
-                                            <div class="ui-g-2"  align="left" >
+                                            <div class="ui-g-2" style="border: outset; " align="left" >
                                                 <h:outputText value="#{addbController.selected.other2}" class="lista-title-describtion" style="font-weight: normal; font-size: 13px; font-family: normal"/>
                                             </div>
 
                                         </div>
-                                        <div class="ui-g-3"  align="left" >
-                                            rad2 com 3
+                                        <div class="ui-g-3" style="border: outset; " align="left" >
+                                            rad2
                                         </div>
-                                        <div class="ui-g-12"  align="left" >
-                                            <div class="ui-g-3"  align="left" >
-                                               <!--  Rickard här kan du sötta  -->
-                                               rad 3 col 3
-                                            </div> 
-                                        <div class="ui-g-6"  align="left" >
+                                        <div class="ui-g-12" style="border: outset" align="left" >
+                                        <div class="ui-g-9" style="border: outset;" align="left" >
                                             <h:outputText value="Pris per portion:   $#{addbController.selected.price} skr "  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                             <br style="height: 50px;"></br>
                                             <h:outputText value="Antal i lager   :    #{addbController.selected.quantity} /st  " class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>                
@@ -156,24 +153,13 @@
                                             <h:outputText value="Vikt per portion:   #{addbController.selected.weight} / kg" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
 
                                         </div>
-                                            <div class="ui-g-3"  align="left" >
+                                            <div class="ui-g-3" style="border: outset;" align="left" >
                                                <!--  Rickard här kan du sötta  -->
-                                               rad 3 col 3
                                             </div>     
                                             
-                                        </div>    
-                                         <div class="ui-g-3"  align="left" >
-                                              
-                                                   
-                                        <b:commandButton  oncomplete="/addb/View" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Köp">
-
-                                                  
-                                                     <h:link outcome="/addb/List" value="backa" style="font-size: 15px; font-family: normal;" />
-                                                      
-                                        </b:commandButton>
-                                            </div> 
+                                        </div>                          
                                         
-                                        <div class="ui-g-6"  style="height: 110px;" align="left" >
+                                        <div class="ui-g-9" style="border: outset; height: 110px;" align="left" >
                                         <h:outputText value="Vegeterian :  #{item.vegetarian}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                        <br style="height: 50px;"></br>
                                         <h:outputText value="Nötter:  #{item.nuts}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
@@ -183,12 +169,12 @@
                                         <h:outputText value="Gluten:  #{item.gluten}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                        
                                         </div>
-                                        <div class="ui-g-3" style="height: 110px;" align="left"  >
+                                        <div class="ui-g-3" style="border: outset; height: 110px;" align="left"  >
                                            
-                                        <b:commandButton  oncomplete="/addb/View" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Backa">
+                                        <b:commandButton  oncomplete="/addb/View" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:140px; height: 90px;" value="Detalj">
 
                                                   
-                                                     <h:link outcome="/addb/View" value="vidare" style="font-size: 15px; font-family: normal;" />
+                                                     <h:link outcome="/addb/View" value="#{bundle.CreateUserdbIndexLink}" style="font-size: 15px; font-family: normal;" />
                                                        <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
                                         </b:commandButton>
                                              

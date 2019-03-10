@@ -157,11 +157,5 @@ private static final AtomicLong counter = new AtomicLong(100);
     public String toString() {
         return "com.Hemlagat.model.Addb[ id=" + id + " ]";
     }
- public void setUserid(Userdb userid) {
-        this.userid = userid;
-    }
 
-    public Userdb getUserid() {
-        return userid;
-    }
 }
