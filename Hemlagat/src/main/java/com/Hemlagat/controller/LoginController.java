@@ -64,7 +64,7 @@ public class LoginController implements Serializable {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username", loggedInUser.getUsername());
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome:"+ loggedInUser.getUsername()));
 
-            return "Logout?faces-redirect=true";
+            return "Locationpage?faces-redirect=true";
 
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Wrong email or password"));
@@ -80,7 +80,7 @@ public class LoginController implements Serializable {
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "index?faces-redirect=true";
+        return "Locationpage?faces-redirect=true";
     }
 
     /*public List<Addb> getMyItems() {

@@ -11,6 +11,7 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"
       >
     <head>
         <title>TODO supply a title</title>
@@ -24,7 +25,7 @@ and open the template in the editor.
                 <div class="ui-g-12">
                     <div id="header-color">
                         <div class="navbar navbar-inverse  navbar-custom" style="height: 93px;  color: #FFFFFF;
-    background-color: #13654a;">
+                             background-color: #13654a;">
                             <div class="container" >
                                 <a class="navbar-brand text-muted" href="#" > Välkommen</a>
                                 <div class="collapse navbar-collapse">
@@ -33,30 +34,53 @@ and open the template in the editor.
                                         <li class="active "><a href="#">Home</a></li>
                                         <li><a href="#">LoggIn</a></li>
                                         <li><a href="#">Loggout</a></li>
+                                        <li>
+                                            <h:form>
+                                                <p:commandButton id="dynaButton" value="Meny" type="button" icon="pi pi-ellipsis-h" style="padding-right: 50%; margin-left: 330%; margin-top: 5%;"/>
+                                                <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
+                                                    <p:submenu label="Home">
+                                                        <p:menuitem value="My Profile" outcome="/profile.xhtml" update="messages" icon="pi pi-save"/>
+                                                        <p:menuitem value="Logout" action="#{login.logout()}" />
+
+                                                    </p:submenu>
+
+
+
+                                                </p:menu>
+                                            </h:form>
+                                        </li>
+
                                     </ul>
 
+
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     </div>
 
                 </div>
 
+
             </div>
             <div class="ui-g">
-                <div class="ui-g-3"> 
-                    <h:form>
-                    <table>
-                        <tr>
-                            <td>Stad</td>
-                            <td><h:inputText value="#{addbController.address}" required="true" 
-                                             requiredMessage="Please enter a address"/></td>
-                        </tr>
+                <div class="ui-g-3">
 
-                    </table>
-                    <h:commandButton action="#{addbController.getIte()}" value="Annonser" styleClass="btn btn-large"/>
-                </h:form>
-                    
+                    <h:form>
+                        <table>
+                            <tr>
+                                <td>Stad</td>
+                                <td><h:inputText value="#{addbController.address}" required="true" 
+                                                 requiredMessage="Please enter a address"/></td>
+                            </tr>
+
+                        </table>
+                        <h:commandButton action="#{addbController.getIte()}" value="Annonser" styleClass="btn btn-large"/>
+                    </h:form>
+
                     <h:link outcome="/addb/Create.xhtml" value="create"></h:link>
 
                 </div>
