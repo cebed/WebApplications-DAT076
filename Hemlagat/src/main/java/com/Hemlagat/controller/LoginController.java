@@ -64,7 +64,11 @@ public class LoginController implements Serializable {
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username", loggedInUser.getUsername());
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome:"+ loggedInUser.getUsername()));
 
+<<<<<<< HEAD
             return "Locationpage?faces-redirect=true";
+=======
+            return "addb/Create?faces-redirect=true";
+>>>>>>> nur
 
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Wrong email or password"));
