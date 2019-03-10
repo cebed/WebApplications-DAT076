@@ -61,7 +61,7 @@
                                 <div class="ui-g-12"  style="  height: 200px; "  align="center"> 
                                     
                                     <!-- sätt bilden här med knapp       knappen skavara här         -->     
-                                    <p:fileUpload value="#{addbController.file}" mode="simple"/>
+                                    <p:fileUpload value="#{addbBean.file}" mode="simple"/>
                                     
                                 </div>                  
 
@@ -81,19 +81,19 @@
                                 <!-- rad 1 col 2 -->
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="MatTitel" maxlength="25" value="#{addbController.selected.title}"></b:inputText>
+                                    <b:inputText label="MatTitel" maxlength="25" value="#{addbBean.selected.title}"></b:inputText>
                                 </div>
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här      -->      
-                                    <b:inputTextarea label="Beskrivning" styleClass="unresizable" value="#{addbController.selected.description}" maxlength="200" style="resize: none" > </b:inputTextarea>
+                                    <b:inputTextarea label="Beskrivning" styleClass="unresizable" value="#{addbBean.selected.description}" maxlength="200" style="resize: none" > </b:inputTextarea>
                                   
                                 </div>
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="Pris" labelStyle="width:80px;" value="#{addbController.selected.price}"> </b:inputText>
+                                    <b:inputText label="Pris" labelStyle="width:80px;" value="#{addbBean.selected.price}"> </b:inputText>
                                 </div>
                                 <div class="ui-g-3"    style="width: 50px; "  > <h:outputLabel for="basic" value="Antal  "  /></div>
-                                <div class="ui-g-2"  style="width: 50px;"    >  <p:spinner id="basic"  value="#{addbController.selected.quantity}"  /></div>
+                                <div class="ui-g-2"  style="width: 50px;"    >  <p:spinner id="basic"  value="#{addbBean.selected.quantity}"  /></div>
                                 <div class="ui-g-7"     > 
                                     <!-- bidden visas här          -->   
                                     
@@ -101,19 +101,19 @@
                                 </div>
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="Vikt" labelStyle="width:80px;" value="#{addbController.selected.weight}"> </b:inputText>
+                                    <b:inputText label="Vikt" labelStyle="width:80px;" value="#{addbBean.selected.weight}"> </b:inputText>
                                 </div>
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="Address" labelStyle="width:80px;" value="#{addbController.selected.address}"> </b:inputText>
+                                    <b:inputText label="Address" labelStyle="width:80px;" value="#{addbBean.selected.address}"> </b:inputText>
                                 </div>
                                 <div class="ui-g-6"   > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="Ort" labelStyle="width:80px;" value="#{addbController.selected.other}"></b:inputText>
+                                    <b:inputText label="Ort" labelStyle="width:80px;" value="#{addbBean.selected.other}"></b:inputText>
                                 </div>
                                 <div class="ui-g-6"   > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="Postnumber" labelStyle="width:80px;" value="#{addbController.selected.other2}"></b:inputText>
+                                    <b:inputText label="Postnumber" labelStyle="width:80px;" value="#{addbBean.selected.other2}"></b:inputText>
                                 </div>
 
 
@@ -136,15 +136,15 @@
                                 </div>
 
                                 <div class="ui-g-12" style="border: outset; "   > 
-                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.vegetarian}" caption="Vegetarian"  />  </div> 
-                                    <div class="ui-g-6"   >  <b:selectBooleanCheckbox value="#{addbController.selected.nuts}" caption="Nuts"   />        </div> 
-                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.lactose}" caption="Lactose"   />      </div> 
-                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbController.selected.gluten}" caption="Gluten"   />       </div>   
+                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbBean.selected.vegetarian}" caption="Vegetarian"  />  </div> 
+                                    <div class="ui-g-6"   >  <b:selectBooleanCheckbox value="#{addbBean.selected.nuts}" caption="Nuts"   />        </div> 
+                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbBean.selected.lactose}" caption="Lactose"   />      </div> 
+                                    <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbBean.selected.gluten}" caption="Gluten"   />       </div>   
                                 </div>
                                 <div class="ui-g-12" style="height: 180px;"></div>
                                 <div class="ui-g-12"   >
                                     
-                                      <b:commandButton value="Lägg upp annons" iconAwesome="fa-save" look="success" style="height: 80px; width: 300px; font-family: serif; font-size: 15px; " actionListener="#{addbController.create}"> </b:commandButton>
+                                      <b:commandButton value="Lägg upp annons" iconAwesome="fa-save" look="success" style="height: 80px; width: 300px; font-family: serif; font-size: 15px; " actionListener="#{addbBean.create}"> </b:commandButton>
                                 </div>
                                 <div class="ui-g-12"  >
 
@@ -174,10 +174,10 @@
                     <!--   tommy längst ner          -->
                     <div class="ui-g-12" style="height: 30px;"> <br />
                         <!--   tommy längst ner          -->
-                                    <h:commandLink action="#{addbController.create}" value="#{bundle.CreateAddbSaveLink}" />
+                                    <h:commandLink action="#{addbBean.create}" value="#{bundle.CreateAddbSaveLink}" />
                                     <br />
                                     <br />
-                                    <h:commandLink action="#{addbController.prepareList}" value="#{bundle.CreateAddbShowAllLink}" immediate="true"/>
+                                    <h:commandLink action="#{addbBean.prepareList}" value="#{bundle.CreateAddbShowAllLink}" immediate="true"/>
                                     <br />
                                     <br />
                                     <h:link outcome="/index" value="#{bundle.CreateAddbIndexLink}"/>
