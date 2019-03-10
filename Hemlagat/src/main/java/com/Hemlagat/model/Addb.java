@@ -50,6 +50,7 @@ import lombok.Setter;
     , @NamedQuery(name = "Addb.findByOther", query = "SELECT a FROM Addb a WHERE a.other = :other")
     , @NamedQuery(name = "Addb.findByOther2", query = "SELECT a FROM Addb a WHERE a.other2 = :other2")
     , @NamedQuery(name = "Addb.findByPhoto", query = "SELECT a FROM Addb a WHERE a.photo = :photo")
+    ,@NamedQuery(name =  "Addb.findByUSERID", query = "SELECT a FROM Addb a WHERE a.USERID = :USERID")    
 
 })
 public class Addb implements Serializable {
