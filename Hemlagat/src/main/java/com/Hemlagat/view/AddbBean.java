@@ -1,5 +1,6 @@
-package com.Hemlagat.controller;
+package com.Hemlagat.view;
 
+import com.Hemlagat.controller.*;
 import com.Hemlagat.model.Addb;
 import com.Hemlagat.controller.util.JsfUtil;
 import com.Hemlagat.controller.util.PaginationHelper;
@@ -19,22 +20,20 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.faces.view.ViewScoped;
 import lombok.Getter;
 import lombok.Setter;
 import org.primefaces.model.UploadedFile;
 
-@Named("addbController")
-@SessionScoped
-public class AddbController implements Serializable {
+@Named("addbBean")
+@ViewScoped
+public class AddbBean implements Serializable {
 
     private UploadedFile file;
     private Addb current;
     @Getter
     @Setter
     private String Address;
-    @Getter
-    @Setter
-    private String email;
     private List<Addb> item = null;
 
     
@@ -185,17 +184,6 @@ public class AddbController implements Serializable {
         return "/addb/List.xhtml";
     }
 
-    
-    
-    public void byEmail(){
-    
-    
-    getFacade().findByEmail(email);
-    
-    }
-    
-    
-    
     
 
     private void recreateModel() {
