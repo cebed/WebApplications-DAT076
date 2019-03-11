@@ -112,12 +112,17 @@ public class Addb implements Serializable {
     @Column(name = "OTHER")
     @Getter
     @Setter
-    private String other;
+    private String other;// fungerar som tillfällig stad -- ta inte bort Nur
     @Size(max = 100)
     @Column(name = "OTHER2")
     @Getter
     @Setter
-    private String other2;
+    private String other2; // fungerar som tillfällig post no -- ta inte bort Nur
+    
+    @Getter
+    @Setter
+    @Column(name = "STATUS")
+    private String status; 
     @Lob
     @Column(name = "PHOTO")
     @Getter
