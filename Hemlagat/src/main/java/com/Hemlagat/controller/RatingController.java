@@ -46,6 +46,9 @@ public class RatingController implements Serializable {
 
         if (ratings == null) {
             ratings = ejbFacade.findUserRatings("rozz");
+            for(Rating rating : ratings) {
+            System.out.println(rating.getComment());
+        }
         }
         return ratings;
     }
