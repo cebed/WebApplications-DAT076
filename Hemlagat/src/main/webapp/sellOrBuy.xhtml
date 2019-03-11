@@ -27,8 +27,19 @@ and open the template in the editor.
             <h:body>
                 <div>
                     <h:form>
-                        <b:button   class="hbtn hb-fill-bottom hpill pp" value="SELL"  size="lg"  look="green" icon="bookmark" style="font-weight:bold; font-size: 30px;"></b:button>
-                        <b:button   class="hbtn hb-fill-bottom hpill p1" value="BUY" size="lg"  icon="shopping-cart"  look="green" style="font-weight: bold; font-size: 30px; "  ></b:button>
+                        <b:commandButton   class="hbtn hb-fill-bottom hpill pp"  value="SELL FOOD" action="/addb/Create.xhtml?faces-redirect=true" size="lg"  look="green" icon="bookmark"  style="font-weight:bold; font-size: 36px; ">
+                            <div style="padding: 50px;">
+                                <b:image value="/addb/curry.jpeg" style=" margin-top: -40%;  width: 100%; height: 100%;" />  
+                            </div>
+
+                        </b:commandButton>
+                        <b:commandButton   class="hbtn hb-fill-bottom hpill p1" action="#{addbController.getIte()}" value="BUY FOOD " size="lg"  icon="shopping-cart"  look="green" style="font-weight: bold; font-size: 36px; "  >
+                            <div style="padding: 50px;">
+                                <b:image value="/addb/curry.jpeg" style=" margin-top: -40%;  width: 100%; height: 100%;" />  
+                            </div>
+                        </b:commandButton>
+
+
                     </h:form>
                 </div>
             </h:body>

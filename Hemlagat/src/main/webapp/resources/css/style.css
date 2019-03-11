@@ -27,9 +27,12 @@ and open the template in the editor.
 .pp{
 
     width: 500px; 
-    height: 500px; margin-left: 25%; 
+    height: 500px; 
+    margin-left: 15%; 
     background-color: #13654a; 
-    font-weight: bold; 
+    font-weight: bold;
+    margin-right: 50px;
+    
 }
 
 .p1{
