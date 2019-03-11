@@ -101,5 +101,19 @@ public class Userdb implements Serializable {
     public String toString() {
         return "com.Hemlagat.model.Userdb[ email=" + email + " ]";
     }
+    
+    
+    /* kunde inte komma åt den ovan equals metod drf har jag skapat denna // nur*/
+     public boolean equalsbbb(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Userdb)) {
+            return false;
+        }
+        Userdb other = (Userdb) object;
+        if ((this.email == null && other.email != null) || (this.email != null && !this.email.equals(other.email))) {
+            return false;
+        }
+        return true;
+    }
 
 }

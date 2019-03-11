@@ -32,6 +32,9 @@ public class AddbController implements Serializable {
     @Getter
     @Setter
     private String Address;
+    @Getter
+    @Setter
+    private String email;
     private List<Addb> item = null;
 
     
@@ -182,6 +185,17 @@ public class AddbController implements Serializable {
         return "/addb/List.xhtml";
     }
 
+    
+    
+    public void byEmail(){
+    
+    
+    getFacade().findByEmail(email);
+    
+    }
+    
+    
+    
     
 
     private void recreateModel() {
