@@ -20,31 +20,79 @@
     </h:head>
 
     <h:body styleClass="green darken-3">
-        <f:view locale="#{facesContext.externalContext.requestLocale}">
+        <ui:composition template="/addb/Templetes/Templete.xhtml">
 
 
-            <div  class="valign-wrapper" id="login-page" >
-                <div class="container" >   
-                    <div class="center-align">
-                        <div class="row">
-                            <div class="col s6 offset-s3">
-                                <div class="card">
-                                    <div class="card-content">
-                                        <div>
-                                            <img class="responsive-img" style="max-width: 64px;" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/120428/preview.svg"  />
-                                            <div class="header">
-                                                <h1>Your Profile</h1>
-                                                <h:outputStylesheet library="css" name="jsfcrud.css"/>
+            <ui:define name="content">
+                <f:view locale="#{facesContext.externalContext.requestLocale}">
 
-                                                <h:form>
-                                                    <p>Welcome, #{login.username} </p> 
-                                                    <p>Email address: #{login.email}</p>
-                                                    <!-- <p>Your ads: </p> hashtag{login.myItems} -->
-                                                    <!-- <p>Your rating: </p>-->
-                                                    <h:link outcome="/changepassword" value="Change your password"/>
-                                                     <br/>
-                                                    <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
-                                                </h:form>
+
+                    <div  class="valign-wrapper" id="login-page" >
+                        <div class="container" >   
+                            <div class="center-align">
+                                <div class="row">
+                                    <div class="col s6 offset-s3">
+                                        <div class="card">
+                                            <div class="card-content">
+                                                <div>
+                                                    <img class="responsive-img" style="max-width: 64px;" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/120428/preview.svg"  />
+                                                    <div class="header">
+                                                        <h1>Your Profile</h1>
+                                                        <h:outputStylesheet library="css" name="jsfcrud.css"/>
+                                                            <!--      loggad som skriven av roman             -->
+                                                        <h:form>
+                                                            <p>Welcome, #{login.username} </p> 
+                                                            <p>Email address: #{login.email}</p>
+                                                            <!-- <p>Your ads: </p> hashtag{login.myItems} -->
+                                                            <!-- <p>Your rating: </p>-->
+                                                            <h:link outcome="/changepassword" value="Change your password"/>
+                                                            <br/>
+                                                            <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
+                                                        </h:form>
+                                                              <!--      leta alla adds tilhörande mejlet             -->
+                                                        <h:form>
+                                                            <table>
+                                                                <tr>                                                           
+                                                                    <br></br>
+                                                                    <td><h:outputLabel  value="find all ads: "/></td>
+                                                                    <td><h:inputText    value="#{addbController.email}" required="true" 
+                                                                                        requiredMessage="Please enter a address"/></td>
+                                                                </tr>
+
+                                                            </table>
+                                                            <h:commandButton action="#{addbController.byEmail()}" value="Annonser" styleClass="btn btn-large"/>
+                                                        </h:form>
+                                                                <!--      leta efeter solda ads             -->
+                                                        <h:form>
+                                                            <table>
+                                                                <tr>                                                           
+                                                                    <br></br>
+                                                                    <td><h:outputLabel  value="Se tidgare köp: "/></td>
+                                                                    <td><h:inputText    value="#{addbController.email}" required="true" 
+                                                                                        requiredMessage="Please enter a address"/></td>
+                                                                </tr>
+
+                                                            </table>
+                                                            <h:commandButton action="#{addbController.bysold()}" value="Annonser" styleClass="btn btn-large"/>
+                                                        </h:form>
+                                                                
+                                                                  <!--      köpta items            -->
+                                                        <h:form>
+                                                            <table>
+                                                                <tr>                                                           
+                                                                    <br></br>
+                                                                    <td><h:outputLabel  value="Se dina solda Items: "/></td>
+                                                                    <td><h:inputText    value="#{addbController.email}" required="true" 
+                                                                                        requiredMessage="Please enter a address"/></td>
+                                                                </tr>
+
+                                                            </table>
+                                                            <h:commandButton action="#{addbController.bysold()}" value="Annonser" styleClass="btn btn-large"/>
+                                                        </h:form>
+
+
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -52,8 +100,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </f:view>
+                </f:view>
+            </ui:define>
+        </ui:composition>
     </h:body>
 </html>
