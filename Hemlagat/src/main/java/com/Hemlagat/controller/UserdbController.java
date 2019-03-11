@@ -29,14 +29,13 @@ public class UserdbController implements Serializable {
 
     @Getter
     @Setter
-    private String confirmPassword;
-/*    @Setter
+    private String email;
+    @Setter
     @Getter
     private String username;
     @Getter
     @Setter
     private String password;
-*/
 
     @EJB
     private com.Hemlagat.model.UserdbFacade ejbFacade;
@@ -112,15 +111,6 @@ public class UserdbController implements Serializable {
 
     public String update() {
         try {
-            System.out.println("UPDATE");
-            System.out.println( FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("email") );
-            current.setEmail( FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("email").toString() );
-            //current.setUsername(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("username"));
-            System.out.println(current);
-            System.out.println(current.getPassword());
-            
-            System.out.println(confirmPassword);
-            
             getFacade().edit(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserdbUpdated"));
             return "View";

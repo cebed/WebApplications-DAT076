@@ -32,12 +32,6 @@ public class AddbController implements Serializable {
     @Getter
     @Setter
     private String Address;
-<<<<<<< HEAD
-=======
-    @Getter
-    @Setter
-    private String email;
->>>>>>> master
     private List<Addb> item = null;
 
     
@@ -54,21 +48,12 @@ public class AddbController implements Serializable {
     private void init(){
         current = new Addb();
     }
-<<<<<<< HEAD
 
     public UploadedFile getFile() {
 
         return file;
     }
 
-=======
-
-    public UploadedFile getFile() {
-
-        return file;
-    }
-
->>>>>>> master
     public void setFile(UploadedFile file) {
         this.file = file;
     }
@@ -91,13 +76,34 @@ public class AddbController implements Serializable {
         return ejbFacade;
     }
 
-    
+    public PaginationHelper getPagination() {
+        if (pagination == null) {
+            pagination = new PaginationHelper(10) {
+
+                @Override
+                public int getItemsCount() {
+                    return getFacade().count();
+                }
+
+                @Override
+                public DataModel createPageDataModel() {
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                }
+            };
+        }
+        return pagination;
+    }
+
     public String prepareList() {
         recreateModel();
         return "List";
     }
 
-   
+    public String prepareView() {
+        current = (Addb) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "View";
+    }
 
     public String prepareCreate() {
         current = new Addb();
@@ -128,7 +134,11 @@ public class AddbController implements Serializable {
         }
     }
 
-   /*        använd den här för att uppdatera om varan är såld eller ej*/
+    public String prepareEdit() {
+        current = (Addb) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        return "Edit";
+    }
 
     public String update() {
         try {
@@ -141,15 +151,28 @@ public class AddbController implements Serializable {
         }
     }
 
-   
+    public String destroy() {
+        current = (Addb) getItems().getRowData();
+        selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
+        performDestroy();
+        recreatePagination();
+        recreateModel();
+        return "List";
+    }
 
-   
+    public String destroyAndView() {
+        performDestroy();
+        recreateModel();
+        updateCurrentItem();
+        if (selectedItemIndex >= 0) {
+            return "View";
+        } else {
+            // all items were removed - go back to list
+            recreateModel();
+            return "List";
+        }
+    }
 
-    
-    
-    
-    
-    /* om varan är såld använd den här*/
     private void performDestroy() {
         try {
             getFacade().remove(current);
@@ -159,7 +182,6 @@ public class AddbController implements Serializable {
         }
     }
 
-<<<<<<< HEAD
     private void updateCurrentItem() {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
@@ -185,14 +207,18 @@ public class AddbController implements Serializable {
     private void recreatePagination() {
         pagination = null;
     }
-=======
-   
->>>>>>> master
 
-   
-   
+    public String next() {
+        getPagination().nextPage();
+        recreateModel();
+        return "List";
+    }
 
-   
+    public String previous() {
+        getPagination().previousPage();
+        recreateModel();
+        return "List";
+    }
 
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
@@ -206,10 +232,31 @@ public class AddbController implements Serializable {
         return ejbFacade.find(id);
     }
 
- 
-    //////////////////////////////NUr//////////////////////////////
+    @FacesConverter(forClass = Addb.class)
+    public static class AddbControllerConverter implements Converter {
 
-<<<<<<< HEAD
+        @Override
+        public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
+            if (value == null || value.length() == 0) {
+                return null;
+            }
+            AddbController controller = (AddbController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "addbController");
+            return controller.getAddb(getKey(value));
+        }
+
+        java.lang.String getKey(String value) {
+            java.lang.String key;
+            key = value;
+            return key;
+        }
+
+        String getStringKey(java.lang.String value) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(value);
+            return sb.toString();
+        }
+
         @Override
         public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
             if (object == null) {
@@ -228,10 +275,6 @@ public class AddbController implements Serializable {
 
     public List<Addb> getItem() {
 
-=======
-    public List<Addb> getItem() {
-
->>>>>>> master
         if (item == null) {
             item = ejbFacade.findByAdress(Address);
         }
@@ -246,20 +289,6 @@ public class AddbController implements Serializable {
         return "/addb/List.xhtml";
     }
 
-<<<<<<< HEAD
-=======
-    
-    
-    public void byEmail(){
-    
-    
-    getFacade().findByEmail(email);
-    
-    }
-    
-    
-    
->>>>>>> master
     
 
     private void recreateModel() {

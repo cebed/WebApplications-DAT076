@@ -6,15 +6,10 @@
 package com.Hemlagat.model;
 
 import java.io.Serializable;
-<<<<<<< HEAD
-=======
-import java.util.concurrent.atomic.AtomicLong;
->>>>>>> master
 import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.JoinColumn;
@@ -25,9 +20,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 /**
  *
@@ -36,7 +28,6 @@ import lombok.Setter;
 @Entity
 @Table(name = "ADDB")
 @XmlRootElement
-@RequiredArgsConstructor
 @NamedQueries({
     @NamedQuery(name = "Addb.findAll", query = "SELECT a FROM Addb a")
     , @NamedQuery(name = "Addb.findById", query = "SELECT a FROM Addb a WHERE a.id = :id")
@@ -53,37 +44,23 @@ import lombok.Setter;
     , @NamedQuery(name = "Addb.findByOther", query = "SELECT a FROM Addb a WHERE a.other = :other")
     , @NamedQuery(name = "Addb.findByOther2", query = "SELECT a FROM Addb a WHERE a.other2 = :other2")
     , @NamedQuery(name = "Addb.findByPhoto", query = "SELECT a FROM Addb a WHERE a.photo = :photo")
-<<<<<<< HEAD
-=======
-  
->>>>>>> master
 
 })
 public class Addb implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue
     @Basic(optional = false)
-<<<<<<< HEAD
     @NotNull
     //GeneratedValue
-=======
->>>>>>> master
     @Size(min = 1, max = 100)
     @Column(name = "ID")
-    @Getter
-    @Setter
     private String id;
     @Size(max = 100)
     @Column(name = "TITLE")
-    @Getter
-    @Setter
     private String title;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "PRICE")
-    @Getter
-    @Setter
     private Double price;
 
     public void setUserid(Userdb userid) {
@@ -95,51 +72,30 @@ public class Addb implements Serializable {
     }
     @Size(max = 200)
     @Column(name = "DESCRIPTION")
-    @Getter
-    @Setter
     private String description;
     @Column(name = "QUANTITY")
-    @Getter
-    @Setter
     private Integer quantity;
     @Column(name = "WEIGHT")
-    @Getter
-    @Setter
     private Double weight;
     @Column(name = "VEGETARIAN")
-    @Getter
-    @Setter
     private Boolean vegetarian;
     @Column(name = "NUTS")
-    @Getter
-    @Setter
     private Boolean nuts;
     @Column(name = "LACTOSE")
-    @Getter
-    @Setter
     private Boolean lactose;
     @Column(name = "GLUTEN")
-    @Getter
-    @Setter
     private Boolean gluten;
     @Size(max = 100)
     @Column(name = "ADDRESS")
-    @Getter
-    @Setter
     private String address;
     @Size(max = 100)
     @Column(name = "OTHER")
-    @Getter
-    @Setter
     private String other;
     @Size(max = 100)
     @Column(name = "OTHER2")
-    @Getter
-    @Setter
     private String other2;
     @Lob
     @Column(name = "PHOTO")
-<<<<<<< HEAD
     private byte[] photo;
     
   
@@ -260,21 +216,6 @@ public class Addb implements Serializable {
     public void setOther2(String other2) {
         this.other2 = other2;
     }
-=======
-    @Getter
-    @Setter
-    private byte[] photo;
-   @Getter
-    @Setter
-    @JoinColumn(name = "USERID", referencedColumnName = "EMAIL")
-    @ManyToOne
-    private Userdb userid;
-    
-    
-    
-    private static final Logger LOG = Logger.getLogger(Addb.class.getName());
-private static final AtomicLong counter = new AtomicLong(100);
->>>>>>> master
 
     public byte[] getPhoto() {
         return photo;

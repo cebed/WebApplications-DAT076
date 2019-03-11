@@ -25,13 +25,8 @@ hs_err_pid*
 /hemlagat/build/
 nb-configuration.xml
 target/Hemlagat-1.0-SNAPSHOT/pfv3ee6.dpf
-Hemlagat/faces-config.NavData
 
 
 
 target
-<<<<<<< HEAD
 Hemlagat/target/maven-archiver/pom.properties
-=======
-Hemlagat/target/maven-archiver/pom.properties
->>>>>>> master

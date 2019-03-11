@@ -3,7 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
-<<<<<<< HEAD
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 
@@ -19,33 +18,9 @@
             <ui:define name="content">
                 <div id="data"></div>
                 Hello from Facelets
-=======
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
 
 
-
->>>>>>> master
-
-    <h:head>
-        <title>Facelet Title</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    </h:head>
-
-    <h:body>
-        <ui:composition template="/addb/Templetes/Templete.xhtml">
-            <ui:define name="content">
-                <div id="data"></div>
-               
-                
-                <div style="position: relative;text-align: center; color: #13654a; font-size: 20px;">
-                    <p:graphicImage value="/addb/Templetes/framsidabild.jpeg"  width="63%" height="61%;" style=" padding-left: 406px;"  />
-                    <div style=" position: absolute; top: 50%; padding-left: 250px;">
-                          
-                        
-                        
-                        <!-- Rickard -->
-                        <h:form>
+                <h:form>
                     <form id="ipForm" action="index.xhtml" >
                         <input type="text"  name = "ipAddress" id = "ip" value="temp"/>
                         <input type="submit" value="Din Position" onclick="index.xhtml"/>
@@ -54,7 +29,7 @@
 
 
                 </h:form>
-               
+                <h:link outcome="/index_1.xhtml" value="next page"/>
                 <script>
                     function callback(response) {
                         console.log(response);
@@ -69,7 +44,6 @@
 
 
                 </script>
-<<<<<<< HEAD
 
                 <h:form>
                     <table>
@@ -83,16 +57,6 @@
                     <h:commandButton action="#{addbController.getIte()}" value="Login" styleClass="btn btn-large"/>
                 </h:form>
 
-=======
-                        
-                
-
-                    </div>
-                </div>
-
-
-               
->>>>>>> master
             </ui:define>
 
         </ui:composition>
