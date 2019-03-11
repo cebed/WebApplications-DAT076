@@ -6,6 +6,7 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html lang="en"
+<<<<<<< HEAD
      xmlns="http://www.w3.org/1999/xhtml"
      xmlns:f="http://java.sun.com/jsf/core"
      xmlns:h="http://java.sun.com/jsf/html"
@@ -13,6 +14,14 @@ and open the template in the editor.
      xmlns:p="http://primefaces.org/ui"
          
      xmlns:b="http://bootsfaces.net/ui">
+=======
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+>>>>>>> master
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -22,9 +31,16 @@ and open the template in the editor.
             <p:panelGrid  style="width:100%"  >
                 <b:row>
                     <b:column>
+<<<<<<< HEAD
        <b:navBar brand="Hemlagat AB" fluid="true">
                             <b:navbarLinks>
                                 <div class="labl" id="labl" style="top: 25%; bottom: 10%; position: absolute;">
+=======
+                        <b:navBar brand="Hemlagat AB" fluid="true"   style="height: 200px;
+                                  background-color: #13654a; bottom: -40px; color:white; font-size: 18px; font-weight: bold;" >
+                            <b:navbarLinks>
+                                <div class="labl" id="labl" style="top: 7%;  position: absolute;">
+>>>>>>> master
                                     <b:label text="Copyright 2019" severity="success"/>
                                 </div>
 
@@ -34,6 +50,7 @@ and open the template in the editor.
                             <!-- Following line is needed for TBS 3.0.1 (panel content overflow issue) -->
                             <b:navbarLinks pull="right"><b:navLink value="" href="#"></b:navLink></b:navbarLinks>
                             <b:navbarLinks pull="right" styleClass="hidden-xs">
+<<<<<<< HEAD
                                 <b:navLink value="About us" outcome="Aboutus"></b:navLink>
                                 <b:navLink value="Contact us" outcome="MailIndex"/>
 
@@ -43,5 +60,17 @@ and open the template in the editor.
                     </b:row> 
                 </p:panelGrid>
             </ui:composition>
+=======
+                                <b:navLink value="About us" outcome="Aboutus" style="color:white; font-size: 18px; font-weight: bold; "></b:navLink>
+                                <b:navLink value="Contact us" outcome="MailIndex" style="color:white; font-size: 18px; font-weight: bold;"/>
+                                
+                            </b:navbarLinks>
+                          
+                        </b:navBar>
+                    </b:column>
+                </b:row> 
+            </p:panelGrid>
+        </ui:composition>
+>>>>>>> master
     </body>
 </html>

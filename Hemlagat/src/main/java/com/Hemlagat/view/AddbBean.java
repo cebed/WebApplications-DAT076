@@ -1,5 +1,6 @@
-package com.Hemlagat.controller;
+package com.Hemlagat.view;
 
+import com.Hemlagat.controller.*;
 import com.Hemlagat.model.Addb;
 import com.Hemlagat.controller.util.JsfUtil;
 import com.Hemlagat.controller.util.PaginationHelper;
@@ -19,25 +20,20 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.faces.view.ViewScoped;
 import lombok.Getter;
 import lombok.Setter;
 import org.primefaces.model.UploadedFile;
 
-@Named("addbController")
-@SessionScoped
-public class AddbController implements Serializable {
+@Named("addbBean")
+@ViewScoped
+public class AddbBean implements Serializable {
 
     private UploadedFile file;
     private Addb current;
     @Getter
     @Setter
     private String Address;
-<<<<<<< HEAD
-=======
-    @Getter
-    @Setter
-    private String email;
->>>>>>> master
     private List<Addb> item = null;
 
     
@@ -54,21 +50,12 @@ public class AddbController implements Serializable {
     private void init(){
         current = new Addb();
     }
-<<<<<<< HEAD
 
     public UploadedFile getFile() {
 
         return file;
     }
 
-=======
-
-    public UploadedFile getFile() {
-
-        return file;
-    }
-
->>>>>>> master
     public void setFile(UploadedFile file) {
         this.file = file;
     }
@@ -159,35 +146,7 @@ public class AddbController implements Serializable {
         }
     }
 
-<<<<<<< HEAD
-    private void updateCurrentItem() {
-        int count = getFacade().count();
-        if (selectedItemIndex >= count) {
-            // selected index cannot be bigger than number of items:
-            selectedItemIndex = count - 1;
-            // go to previous page if last page disappeared:
-            if (pagination.getPageFirstItem() >= count) {
-                pagination.previousPage();
-            }
-        }
-        if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
-        }
-    }
-
-    public DataModel getItems() {
-        if (items == null) {
-            items = getPagination().createPageDataModel();
-        }
-        return items;
-    }
-
-    private void recreatePagination() {
-        pagination = null;
-    }
-=======
    
->>>>>>> master
 
    
    
@@ -209,29 +168,8 @@ public class AddbController implements Serializable {
  
     //////////////////////////////NUr//////////////////////////////
 
-<<<<<<< HEAD
-        @Override
-        public String getAsString(FacesContext facesContext, UIComponent component, Object object) {
-            if (object == null) {
-                return null;
-            }
-            if (object instanceof Addb) {
-                Addb o = (Addb) object;
-                return getStringKey(o.getId());
-            } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Addb.class.getName());
-            }
-        }
-
-    }
-    //////////////////////////////NUr//////////////////////////////
-
     public List<Addb> getItem() {
 
-=======
-    public List<Addb> getItem() {
-
->>>>>>> master
         if (item == null) {
             item = ejbFacade.findByAdress(Address);
         }
@@ -246,20 +184,6 @@ public class AddbController implements Serializable {
         return "/addb/List.xhtml";
     }
 
-<<<<<<< HEAD
-=======
-    
-    
-    public void byEmail(){
-    
-    
-    getFacade().findByEmail(email);
-    
-    }
-    
-    
-    
->>>>>>> master
     
 
     private void recreateModel() {

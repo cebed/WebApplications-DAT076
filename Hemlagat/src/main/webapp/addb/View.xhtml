@@ -6,6 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:p="http://primefaces.org/ui">
+<<<<<<< HEAD
 
     <h:body>
         <ui:composition template="/addb/Templetes/Templete.xhtml">
@@ -279,6 +280,287 @@
                              </div>
                     
                 </div>
+=======
+
+    <h:body>
+        <ui:composition template="/addb/Templetes/Templete.xhtml">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+
+            <ui:define name="content">
+                <h:form>
+                    <!--   hela sidan          -->
+                    <div class="ui-g" style="background-color: white;">
+                        <!--   tommy högt upp           -->
+                        <div class="ui-g-12" align="center" style="height: 140px;">
+                            <p:outputLabel style="  font-family: serif; font-size: 80px; font-weight: bold; color: #13654a; margin-left: -80px;">
+                                Bekräfta Köp
+                            </p:outputLabel></div>
+                        <!--   vänstra sidan          -->
+                        <div class="ui-g-8" style="background-color: white; " >
+
+
+
+                            <!--   vänstra tomma spalten            -->
+                            <div class="ui-g-3" > </div>
+
+
+                            <!--                högra fylningspalten           -->
+                            <div class="ui-g-9"  style=" border: outset;">
+                                <!-- info om beställaren -->   
+                                <div class="ui-g-12"  style="height:70px;border-color: #13654a;" align="center" > 
+                                    <p:outputLabel style="  font-family: serif; font-size: 30px; font-weight: bold; color: #13654a;">
+                                        Beställarens uppgift
+                                    </p:outputLabel>
+                                </div>
+                                <div class="ui-g-12"  style="height: 25px;"> </div>
+
+                                <!--  rad 1                                                                                -->         
+                                <!--   högra col           -->
+                                <div class="ui-g-6"  style="height:70px;border-color: #13654a;" >                                  <b:inputText label="FörNamn" labelStyle="width:80px;">
+
+                                    </b:inputText>
+
+                                </div>
+                                <!--   mellan tom col          -->
+                                <div class="ui-g-1"    > </div>
+                                <!--   väbstra col           -->
+                                <div class="ui-g-5"  style="height:70px;border-color: #13654a;" >                             <b:inputText label="EfterNamn" labelStyle="width:80px;">
+
+                                    </b:inputText>
+                                </div>
+                                <!--  tom col mellan rader           -->
+                                <div class="ui-g-12"  style="height: 25px;"> </div>
+                                <!--  rad 1                 slute                                                                  -->  
+                                <!--  rad 2                                                                                -->         
+                                <!--   högra col           -->
+                                <div class="ui-g-6"  style="height:70px;border-color: #13654a;"  >                                 <b:inputText label="Upphämtningsdag" labelStyle="width:50px;">
+
+                                    </b:inputText>
+
+                                </div>
+                                <!--   mellan tom col          -->
+                                <div class="ui-g-1"    > </div>
+                                <!--   väbstra col           -->
+                                <div class="ui-g-5"  style="height:70px;border-color: #13654a;" >                             <b:inputText label="Datum" labelStyle="width:80px;">
+
+                                    </b:inputText>
+                                </div>
+                                <!--  tom col mellan rader           -->
+                                <div class="ui-g-12"  style="height: 25px;"> </div>
+                                <!--  rad 2                 slute                                                                  -->  
+                                <!--  rad 3                                                                                -->         
+                                <!--   högra col           -->
+                                <div class="ui-g-6"  style="height:70px;border-color: #13654a;" >                                  <b:inputText label="Address" labelStyle="width:80px;">
+
+                                    </b:inputText>
+
+                                </div>
+                                <!--   mellan tom col          -->
+                                <div class="ui-g-1"    > </div>
+                                <!--   väbstra col           -->
+                                <div class="ui-g-5"  style="height:70px;border-color: #13654a;"  >                            <b:inputText label="ort" labelStyle="width:80px;">
+
+                                    </b:inputText>
+                                </div>
+                                <!--  tom col mellan rader           -->
+                                <div class="ui-g-12"  style="height: 25px;"> </div>
+                                <!--  rad 3                 slute                                                                  -->  
+                                <!--  rad 4                                                                                -->         
+                                <!--   högra col           -->
+                                <div class="ui-g-6"  style="height:70px;border-color: #13654a;"   >                                <b:inputText label="FörNamn" labelStyle="width:80px;">
+
+                                    </b:inputText>
+
+                                </div>
+                                <!--   mellan tom col          -->
+                                <div class="ui-g-1"    > </div>
+                                <!--   väbstra col           -->
+                                <div class="ui-g-5"  style="height:70px;border-color: #13654a;"    >                          <b:inputText label="Telefon" labelStyle="width:80px;">
+
+                                    </b:inputText>
+                                </div>
+                                <!--  tom col mellan rader           -->
+                                <div class="ui-g-12"  style="height: 25px;"> </div>
+                                <!--  rad4                 slute                                                                  -->  
+                                <!--  rad 5                                                                               -->         
+                                <!--   högra col           -->
+                                <div class="ui-g-6"  style="height:70px;border-color: #13654a;"   >                                <b:inputText label="Email" labelStyle="width:80px;">
+
+                                    </b:inputText>
+
+                                </div>
+                                <!--   mellan tom col          -->
+                                <div class="ui-g-1"    > </div>
+                                <!--   väbstra col           -->
+                                <div class="ui-g-5"  style="height:70px;border-color: #13654a;"      >                        <b:inputText label="EfterNamn" labelStyle="width:80px;">
+
+                                    </b:inputText>
+                                </div>
+                                <!--  tom col mellan rader           -->
+                                <div class="ui-g-12"  style="height: 25px;"> </div>
+                                <!--  rad 5                 slute                                                                  -->  
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+                        <!--  högra spalten som visar vad man har köpt          -->
+                        <div class="ui-g-4 " >
+                            <!--  Baren på toppen         -->
+                            <div class="ui-g-12" style="height: 40px;" align="center" >  </div>
+                            <!--  höger höger spalt          -->
+                            <div class="ui-g-1"   > </div> 
+                            <!--  box höger          -->
+                            <div class="ui-g-10"  style="border: outset; height: 450px; "  > 
+                                <div class="ui-g-12"  align="center" >
+                                    <p:outputLabel style="  font-family: serif; font-size: 30px; font-weight: bold; color: #13654a;">
+                                        Din Bestälning
+                                    </p:outputLabel> </div>
+                                <!--  radernea          -->
+                                <div class="ui-g-12"    > 
+
+                                    <div class="ui-g-5" align="left"  style="height:70px;border-color: #13654a;" >
+                                        <p:outputLabel class="font-style-view-page">
+                                            Prudukt
+                                        </p:outputLabel>
+                                    </div> 
+                                    <div class="ui-g-2"   style="height:70px;border-color: #13654a;" align="right" > 
+                                        <p:outputLabel class="font-style-view-page">
+                                            Antal
+                                        </p:outputLabel>
+                                    </div> 
+                                    <div class="ui-g-5"  align="right" style="height:70px;border-color: #13654a;" >
+                                        <p:outputLabel style="align-content:flex-start ; font-family: serif; font-size: 20px; font-weight: bold;">
+                                            Totalt
+                                        </p:outputLabel>
+                                    </div> 
+
+                                </div> 
+                                <!--  radernea   slut 1       -->
+                                <!--  radernea   börjar 1       -->
+                                <div class="ui-g-12"   > 
+
+                                    <div class="ui-g-5"  style="height:70px;border-color: #13654a;"  align="left"> 
+                                        <h:outputText value="#{addbController.selected.title}" title="#{bundle.ViewAddbTitle_title}" class="font-style-view-page"/>
+                                    </div> 
+                                    <div class="ui-g-2"  style="height:70px;border-color: #13654a;" align="right"  > 
+                                        <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}" class="font-style-view-page"/>
+                                    </div> 
+                                    <div class="ui-g-5"  style="height:70px;border-color: #13654a;"  align="right">
+                                        <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}" class="font-style-view-page"/>
+
+                                    </div> 
+
+                                </div> 
+                                <!--  radernea          -->
+                                <!--  radernea          -->
+                                <div class="ui-g-12"  > 
+
+                                    <div class="ui-g-5"   style="height:70px;border-color: #13654a;" >
+                                        <p:outputLabel class="font-style-view-page">
+                                            Total
+                                        </p:outputLabel>
+                                    </div> 
+                                    <div class="ui-g-2"    style="height:70px;border-color: #13654a;" > </div> 
+                                    <div class="ui-g-5"  align="right" style="height:70px;border-color: #13654a;" >
+                                        <p:outputLabel class="font-style-view-page">
+                                            antal*pris
+                                        </p:outputLabel>
+
+                                    </div> 
+
+                                </div> 
+                                <!--  radernea          -->
+
+                                <!--  radernea          -->
+                                <div class="ui-g-12"    > 
+
+                                    <div class="ui-g-12" align="center"  style="height:70px;border-color: #13654a;" >
+                                        <p:outputLabel class="font-style-view-page">
+                                            Mera Info..
+                                        </p:outputLabel>
+
+                                    </div> 
+
+
+                                </div> 
+                                <!--  radernea          -->
+                                <!--  radernea          -->
+                                <div class="ui-g-12"    > 
+
+                                    <div class="ui-g-6"   style="height:70px;border-color: #13654a;" > 
+                                        <p:outputLabel class="font-style-view-page" style="font-size: 15px;">
+                                            plats för upphmtning
+                                        </p:outputLabel>
+
+                                    </div> 
+
+                                    <div class="ui-g-12"     > 
+                                        <h:outputText value="#{addbController.selected.address}" class="font-style-view-page" style="font-size: 10px;"></h:outputText>
+
+                                    </div> 
+                                    <div class="ui-g-12"   > 
+                                        <h:outputText value="#{addbController.selected.other}" class="font-style-view-page" style="font-size: 10px;"></h:outputText>
+
+
+
+                                    </div> 
+                                    <div class="ui-g-12"    > 
+
+                                        <h:outputText value="#{addbController.selected.other2}" class="font-style-view-page" style="font-size: 10px;"></h:outputText>
+
+                                    </div> 
+
+                                </div> 
+                                <!--  radernea     
+                                <h:outputText value="#{addbController.selected.address}" class="font-style-view-page" style="font-size: 10px;"></h:outputText>
+                                         <h:outputText value="#{addbController.selected.other}"class="font-style-view-page" style="font-size: 10px;"></h:outputText>
+                                         <h:outputText value="#{addbController.selected.other2}"class="font-style-view-page" style="font-size: 10px;"></h:outputText>-->
+                            </div>   
+
+                            <!--  höger vänster spalt          -->
+                            <div class="ui-g-1"    > </div> 
+                            <!--  footer vänster spalt          -->
+                            <div class="ui-g-12" style="height: 100px;" > </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <!--   tommy längst ner          -->
+                        <div class="ui-g-12" style="height: 300px;"> 
+                            <div class="ui-g-12" style="height: 40px;" ></div>
+                            <div class="ui-g-6"  align="left">
+                                <b:button value="Backa" tiny-screen="half"  offset="4" iconAwesome="bar-chart" look="success" style="height: 100px; width: 400px; "/>
+                            </div>
+                            <div class="ui-g-6" align="right">
+
+                                <b:button value="Köp" tiny-screen="half"  iconAwesome="cart-plus" look="success"  style="height: 100px; width: 400px;"/>
+                            </div>
+                        </div>
+
+                    </div>
+>>>>>>> master
 
 
 
@@ -309,6 +591,7 @@
 
 
 
+<<<<<<< HEAD
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
@@ -341,6 +624,9 @@
                         <h:outputLabel value="användare_email" for="other2" />
                         <h:outputText id="other2" value="#{addbController.selected.userid}" title="#{bundle.EditAddbTitle_other2}" />
                     </h:panelGrid>
+=======
+
+>>>>>>> master
                     <br />
                     <h:commandLink action="#{addbController.destroyAndView}" value="#{bundle.ViewAddbDestroyLink}"/>
                     <br />
