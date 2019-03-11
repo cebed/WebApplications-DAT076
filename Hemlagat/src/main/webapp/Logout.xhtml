@@ -8,11 +8,11 @@
 
 
 
-    <ui:composition template="/addb/Templetes/Templete.xhtml">
+    <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="Register"></h:outputText>
         </ui:define>
-        <ui:define name="content">
+        <ui:define name="body">
             <f:event type="preRenderView" listener="#{login.showLoginMessage()}" />
 
             <h:form>

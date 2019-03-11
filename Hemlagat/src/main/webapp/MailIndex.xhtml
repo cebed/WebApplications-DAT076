@@ -2,87 +2,80 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Mail Sender</title>
     </h:head>
+    <h:body style="background:#1B5E20; ">
+        <b:jumbotron style="background:#1B5E20; height: auto;"> 
+            <div class="myContact" style="position: relative;  align-content: center; text-align: center; color: whitesmoke;">
+                <h1> Contact us </h1>
 
-    <ui:composition template="/addb/Templetes/Templete.xhtml">
-        <ui:define name="title">
-            <h:outputText value="Mail"></h:outputText>
-        </ui:define>
-        <ui:define name="content">
-            <h:body>
-                <b:jumbotron style="background: white; height: auto;"> 
-                    <div class="myContact" style="position: relative;  align-content: center; text-align: center; color: green;">
-                        <h1> Contact us </h1>
+            </div>
+            <b:container>
+                <h:form>
+                    <p:growl autoUpdate="true"/>
+                    <p:growl id="growl" showDetail="true" sticky="true" life="10"/>  
 
-                    </div>
-                    <b:container>
-                        <h:form>
-                            <p:growl autoUpdate="true"/>
-                            <p:growl id="growl" showDetail="true" sticky="true" life="10"/>  
+                    <p:panel style="background: whitesmoke;">
+                        <table>
 
-                            <p:panel style="background: whitesmoke;">
-                                <table>
+                            <tr>
+                                <td align="right">  </td>
+                                <td>
 
-                                    <tr>
-                                        <td align="right">  </td>
-                                        <td>
-
-                                            <p:inputText type="hidden" value="#{mailgctr.username}"/>
-                                        </td>
-                                    </tr>
+                                    <p:inputText type="hidden" value="#{mailgctr.username}"/>
+                                </td>
+                            </tr>
 
 
-                                    <tr>
-                                        <td align="right">  </td>
-                                        <td>
+                            <tr>
+                                <td align="right">  </td>
+                                <td>
 
-                                            <p:inputText value="#{mailgctr.password}" type="hidden"/>
-                                        </td>
-                                    </tr>
-
-
-                                    <tr>
-                                        <td align="right"> </td>
-                                        <td>
-
-                                            <p:inputText  value="#{mailgctr.toMail}" readonly="true" type="hidden" />
-
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td align="right"></td>
-                                        <td>
-                                            <h3>Email:</h3>
-                                            <p:inputText value="#{mailgctr.subject}" required="true" requiredMessage="Enter your email" />
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td align="right"></td>
-                                        <td>
-                                            <h3>Message:</h3>
-                                            <p:inputTextarea rows="6" cols="40" value="#{mailgctr.message}" required="true" requiredMessage="Enter Message"/>
-                                            <h:outputText id="display" />
-                                        </td>
-                                    </tr>
-
-                                </table>
+                                    <p:inputText value="#{mailgctr.password}" type="hidden"/>
+                                </td>
+                            </tr>
 
 
-                                <b:commandButton value="Send" action="#{mailgctr.send()}"  size="lg" look="success"  />
-                                <div class="mybt" style="padding: 5px 0px;">
-                                    <b:button icon-rotate="l" iconAwesome="thumbs-up"
-                                              value="go back" 
-                                              look="info" title="icon-rotate='l'" outcome="/Locationpage.xhtml"/>
+                            <tr>
+                                <td align="right"> </td>
+                                <td>
 
-                                </div>
+                                    <p:inputText  value="#{mailgctr.toMail}" readonly="true" type="hidden" />
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="right"></td>
+                                <td>
+                                    <h3>Email:</h3>
+                                    <p:inputText value="#{mailgctr.subject}" required="true" requiredMessage="Enter your email" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td align="right"></td>
+                                <td>
+                                    <h3>Message:</h3>
+                                    <p:inputTextarea rows="6" cols="40" value="#{mailgctr.message}" required="true" requiredMessage="Enter Message"/>
+                                    <h:outputText id="display" />
+                                </td>
+                            </tr>
+
+                        </table>
+
+
+                        <b:commandButton value="Send" action="#{mailgctr.send()}"  size="lg" look="success"  />
+                        <div class="mybt" style="padding: 5px 0px;">
+                            <b:button icon-rotate="l" iconAwesome="thumbs-up"
+                                      value="go back" 
+                                      look="info" title="icon-rotate='l'" outcome="/template.xhtml"/>
+
+                        </div>
 
 
 
@@ -90,19 +83,18 @@
 
 
 
-                            </p:panel>
+                    </p:panel>
 
-                        </h:form>
-                    </b:container>
-
-
-                </b:jumbotron>
+                </h:form>
+            </b:container>
 
 
+        </b:jumbotron>
 
-            </h:body>
-        </ui:define>
-    </ui:composition>
+
+
+    </h:body>
+
 
 </html>
 
