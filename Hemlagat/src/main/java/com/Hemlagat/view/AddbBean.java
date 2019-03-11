@@ -34,15 +34,16 @@ public class AddbBean implements Serializable {
     @Getter
     @Setter
     private String Address;
+   
     private List<Addb> item = null;
-
     
-    private DataModel items = null;
+   
+    
+  
 
     @EJB
     private com.Hemlagat.model.AddbFacade ejbFacade;
-    private PaginationHelper pagination;
-    private int selectedItemIndex;
+   
     
     //private  Addb add;
     
@@ -63,7 +64,7 @@ public class AddbBean implements Serializable {
     public Addb getSelected() {
         if (current == null) {
             current = new Addb();
-            selectedItemIndex = -1;
+            
 
         }
 
@@ -88,7 +89,7 @@ public class AddbBean implements Serializable {
 
     public String prepareCreate() {
         current = new Addb();
-        selectedItemIndex = -1;
+       
         return "Create";
     }
 
@@ -126,6 +127,8 @@ public class AddbBean implements Serializable {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
+        
+   
     }
 
    
@@ -184,6 +187,16 @@ public class AddbBean implements Serializable {
         return "/addb/List.xhtml";
     }
 
+    
+    
+    
+   
+    
+    
+    
+    
+    
+    
     
 
     private void recreateModel() {

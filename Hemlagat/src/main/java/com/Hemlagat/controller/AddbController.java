@@ -38,12 +38,15 @@ public class AddbController implements Serializable {
     private List<Addb> item = null;
 
     
-    private DataModel items = null;
+     private List<Addb> itemsbyEmail = null;
+     
+     private List<Addb> solditems;
+     
+     private List<Addb> bougtitems;
 
     @EJB
     private com.Hemlagat.model.AddbFacade ejbFacade;
-    private PaginationHelper pagination;
-    private int selectedItemIndex;
+  
     
     //private  Addb add;
     
@@ -64,7 +67,7 @@ public class AddbController implements Serializable {
     public Addb getSelected() {
         if (current == null) {
             current = new Addb();
-            selectedItemIndex = -1;
+           
 
         }
 
@@ -89,7 +92,7 @@ public class AddbController implements Serializable {
 
     public String prepareCreate() {
         current = new Addb();
-        selectedItemIndex = -1;
+      
         return "Create";
     }
 
@@ -186,16 +189,72 @@ public class AddbController implements Serializable {
     }
 
     
-    
-    public void byEmail(){
+     /***************        alla oavset Adds hittas genom att stopa in mailet
+     * @return '*/
+    public String byEmail(){
     
     
     getFacade().findByEmail(email);
     
+    return "/addb/extradata.xhtml";
+    
     }
     
+     public List<Addb> getItemsbyEmail() {
+
+        if (itemsbyEmail == null) {
+            itemsbyEmail = ejbFacade.findByEmail(email);
+        }
+        return itemsbyEmail;
+    }
+    /***************        alla solda Adds hittas genom att stopa in mailet
+     * @return '*/
+     
+     public List<Addb> getSoldItems() {
+
+        if (solditems == null) {
+            solditems = ejbFacade.findonlysoldaAds(email);
+        }
+        return solditems;
+    }
+     
+     
+     public String bysold(){
     
     
+    getFacade().findonlysoldaAds(email);
+    
+    return "/addb/searchSolditems.xhtml";
+    
+    }
+     
+     /**********     alla köpta Adds hiitas i profil sidan
+     * @return  */
+    
+     public List<Addb> BougtItems() {
+
+        if (bougtitems == null) {
+            bougtitems = ejbFacade.findonlyBougtItems(email);
+        }
+        return bougtitems;
+    }
+     
+      public String byBougt(){
+    
+    
+    getFacade().findonlyBougtItems(email);
+    
+    return "/addb/searchBougtItems.xhtml";
+    
+    }
+    
+     
+     
+     
+     
+     
+     
+     
     
 
     private void recreateModel() {
