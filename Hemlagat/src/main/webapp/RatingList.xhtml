@@ -15,19 +15,18 @@
         <link rel="stylesheet" href="/materialize/css/rating.css"/>
     </h:head>
     <h:body>
-        <div class="ui-g-5" style="display: block; margin-left: auto; margin-right: auto;"></div>
-        <div class="ui-g-2" style="display: block; margin-left: auto; margin-right: auto;">
+        <div class="ui-g-3" style="display: block; margin-left: auto; margin-right: auto;"></div>
+        <div class="ui-g-6" style="display: block; margin-left: auto; margin-right: auto;">
         <h:form> 
             <p:dataScroller value="#{ratingController.rating}" var="rating" chunkSize="5">
                 <f:facet name="header">
                     Reviews
-                    <h:outputText value="#{rating.chef}" style="font-weight: bold"/>
                 </f:facet>
 
                 <h:panelGrid columns="2" style="width:100%" columnClasses="detail">
                    
                     
-                    <p:panel id="basic" header="#{rating.rater}" style="margin-bottom:20px">
+                    <p:outputPanel>
                         <h:panelGrid columns="2" cellpadding="5">
                             <h:outputText value="chef:" />
                             <h:outputText value="#{rating.chef}" style="font-weight: bold"/>
@@ -39,7 +38,7 @@
                             <h:outputText value="Comment:" />
                             <h:outputText value="#{rating.comment}" style="font-weight: bold"/>
                         </h:panelGrid>
-                    </p:panel>
+                    </p:outputPanel>
                     
                 </h:panelGrid>
             </p:dataScroller>

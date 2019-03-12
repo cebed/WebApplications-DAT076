@@ -5,7 +5,6 @@
  */
 package com.Hemlagat.model;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -37,13 +36,6 @@ public class RatingFacade extends AbstractFacade<Rating> {
 
         List<Rating> getAllRatings = em.createNamedQuery("Rating.findAll", Rating.class).getResultList();
         List<Rating> OnlyWanteAdd = new LinkedList<>();
-        Iterator<Rating> ratingIterator = getAllRatings.iterator();
- 
-        while(ratingIterator.hasNext()) {
-             System.out.println(ratingIterator.next().toString()); 
-        }
-        
-        
         for (Rating rate : getAllRatings) {
             System.out.println("Here comes the comments: " + rate.getComment());
             if (rate.getChef().equals(chef)) {
