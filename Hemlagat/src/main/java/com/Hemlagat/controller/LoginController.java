@@ -8,12 +8,8 @@ package com.Hemlagat.controller;
 import com.Hemlagat.controller.util.JsfUtil;
 import com.Hemlagat.model.UserdbFacade;
 import com.Hemlagat.model.Userdb;
-import com.Hemlagat.model.session.UserBean;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -27,7 +23,7 @@ import lombok.Setter;
  * @author Daniel Cebe
  */
 @Named(value = "login")
-@RequestScoped
+@SessionScoped
 public class LoginController implements Serializable {
 
     @Getter
@@ -42,24 +38,24 @@ public class LoginController implements Serializable {
 
     @Inject
     private UserdbFacade userRegistry;
+    private Userdb loggedInUser;
 
-    @Inject
-    private UserBean userBean;
-
-    @EJB
-    private com.Hemlagat.model.AddbFacade ejbFacade;
+    public Userdb getUser() {
+        return loggedInUser;
+    }
+    
+    public String getProfi(){
+        return loggedInUser.getUsername();
+        
+    }
 
     public String login() {
-        final Userdb loggedInUser = userRegistry.findUser(email, password);
+        loggedInUser = userRegistry.findUser(email, password);
         if (loggedInUser != null) {
-            //FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("email", email);
-            //FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username", loggedInUser.getUsername());
-            userBean.setEmail(email);
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("email", email);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome:"+ loggedInUser.getUsername()));
 
-            userBean.setUsername(loggedInUser.getUsername());
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome:" + loggedInUser.getUsername()));
-
-            return "addb/Create?faces-redirect=true";
+            return "Logout?faces-redirect=true";
 
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Wrong email or password"));
@@ -67,10 +63,10 @@ public class LoginController implements Serializable {
             return null;
         }
     }
-
+    
     public void showLoginMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Logged in as " + userBean.getUsername()));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Logged in as " + loggedInUser.getUsername()));
     }
 
     public String logout() {

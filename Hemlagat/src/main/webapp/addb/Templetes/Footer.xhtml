@@ -11,7 +11,7 @@ and open the template in the editor.
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:ui="http://java.sun.com/jsf/facelets"
      xmlns:p="http://primefaces.org/ui"
-
+         
      xmlns:b="http://bootsfaces.net/ui">
     <head>
         <title>TODO supply a title</title>
@@ -22,8 +22,7 @@ and open the template in the editor.
             <p:panelGrid  style="width:100%"  >
                 <b:row>
                     <b:column>
-                        <b:navBar brand="Hemlagat AB" fluid="true"  style="height: 200px;
-                                  background-color: #13654a; bottom: -40px; color:white; font-size: 18px; font-weight: bold;" >
+       <b:navBar brand="Hemlagat AB" fluid="true">
                             <b:navbarLinks>
                                 <div class="labl" id="labl" style="top: 25%; bottom: 10%; position: absolute;">
                                     <b:label text="Copyright 2019" severity="success"/>
@@ -41,7 +40,7 @@ and open the template in the editor.
                             </b:navbarLinks>
                         </b:navBar>
                         </b:column>
-                    </b:row>
+                    </b:row> 
                 </p:panelGrid>
             </ui:composition>
     </body>
