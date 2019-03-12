@@ -5,46 +5,39 @@
  */
 package com.Hemlagat.model;
 
-import java.util.LinkedList;
-import java.util.List;
-import javax.ejb.Stateless;
+import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 /**
  *
  * @author Rick
  */
-@Stateless
-public class RatingFacade extends AbstractFacade<Rating> {
-
-    @PersistenceContext(unitName = "com.mycompany_Hemlagat_war_1.0-SNAPSHOTPU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
+public class RatingFacade {
 
     public RatingFacade() {
-        super(Rating.class);
     }
 
-    public List<Rating> findUserRatings(String chef) {
-        System.out.println("Looking for chefs rating: " + chef);
-
-        List<Rating> getAllRatings = em.createNamedQuery("Rating.findAll", Rating.class).getResultList();
-        List<Rating> OnlyWanteAdd = new LinkedList<>();
-        for (Rating rate : getAllRatings) {
-            System.out.println("Here comes the comments: " + rate.getComment());
-            if (rate.getChef().equals(chef)) {
-               
-                OnlyWanteAdd.add(rate);
-            }
+    public void insertDB(Rating rating) {
+        System.out.println("We are in insertDB");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("com.mycompany_Hemlagat_war_1.0-SNAPSHOTPU");
+        EntityManager manager = factory.createEntityManager();
+        try {
+            System.out.println("we are in try insterDV1");
+            manager.getTransaction().begin();
+            System.out.println("we are in try insterDV2");
+            manager.persist(rating);
+            System.out.println("we are in try insterDV3");
+            manager.getTransaction().commit();
+            System.out.println("we are in try insterDV4");
+        } catch (Exception e) {
+            System.out.println("We are i n cathch");
         }
 
-      
-        return OnlyWanteAdd;
     }
+
 }

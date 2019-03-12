@@ -6,7 +6,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
-
+    <!-- om ni vill hjälpa till med disign kolla title på list sidan och discriotion kan se bättre ut
+    skriv ctrl-f "lista-title-describtion" på css jsfcrud_1 heter classen samma -->
+    <!-- Kolla hit rickard: Vill du lägga till Rating O comment, sök efter ordet "Rickard" dvs ctrl-f Ricakrd  -->
 
 
     <h:body>
@@ -14,37 +16,78 @@
 
 
             <ui:define name="content">
-                <b:container>
-                    <b:row>
-                        <h:form id="form">
 
-                            <p:dataGrid var="item" value="#{addbController.item}" columns="3" layout="grid"
-                                        rows="50" paginator="false" id="cars"
+                <h:form id="form">
+
+                    <div class="ui-g" > 
+                        <div class="ui-g-12" align="center"  >
+                            <p:outputLabel style="  font-family: serif; font-size: 80px; font-weight: bold; color: #13654a; margin-left: -20px;" value="  Annonser i #{addbController.address}">
+
+                            </p:outputLabel>
+                        </div>  
+                        <div class="ui-g-1"   ></div>
+                        <div class="ui-g-10"   >
+                            <p:dataGrid var="item" value="#{addbController.item}" columns="2" layout="grid"
+                                        rows="100" paginator="false" id="cars" styleClass="ui-datagrid-no-border"
                                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                         rowsPerPageTemplate="6,12,16">
-                                <p:panelGrid  style="width:100%"  >
-                                    <p:row >
-                                        <p:column > <p:graphicImage value="/addb/curry.jpeg" id="curry" width="100px" height="100px"/> </p:column>
-                                        <p:column> <h:outputText value="#{item.title} " />
-                                            <h:outputText value="#{item.address} " />
-                                        </p:column>
+                                <div class="ui-g"  > <!-- kolla om du kan fixa egen exit knapp-->
 
-                                    </p:row>
-                                    <p:row>
+                                    <!-- bildens plats på på viewlistan -->
+                                    <div class="ui-g-12" style="border: outset; "  >
 
-                                        <p:column>
-                                            <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                                        <!-- vänster col sp -->
+                                        <div class="ui-g-4"   >
 
-                                                <h:outputText value="haha" style="margin:0 auto;"/>
-                                                <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
-                                            </p:commandButton></p:column>
-                                        <p:column> 
-                                            <h:outputText value="#{item.description}" />
-                                            <h:commandLink action="#{addbController.destroy}" value="#{bundle.ListAddbDestroyLink}"/></p:column>
+                                            <!-- intresant -->
+                                            <div class="ui-g-12"  style=" height: 150px;  border:outset;" >
+                                                <p:graphicImage value="/addb/curry.jpeg" id="curry" width="150px" height="130px"/>
+                                                <!--
+                                               <p:graphicImage name="#{item.photo}"/> 
+                                                -->
+                                            </div>                                  
+                                            <!-- plats för add knapp -->
+                                            <div class="ui-g-12" style="height: 75px; border:outset;" align="left" >
+                                                <b:commandButton update=":form:AdsDetail" oncomplete="PF('AdsDialog').show()" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:150px; height: 50px;" value="Detalj">
 
-                                    </p:row>
-                                </p:panelGrid>
+                                                    <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
+                                                </b:commandButton>
+
+                                            </div>
+
+
+                                        </div>
+                                        <!-- inehålls titel -->
+                                        <div class="ui-g-8"    >
+                                            <div class="ui-g-12"  style=" height: 150px; " >
+                                                <div class="lista-title-describtion">
+                                                    <h:outputText value="#{item.title} " />
+                                                    <br style="width: 10px;"></br>
+                                                    <div class="lista-title-describtion-descr">
+                                                        <h:outputText value="#{item.description} " />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- plats för add knapp -->
+                                            <div class="ui-g-12"  style="height: 75px; " >
+
+                                                <!-- comment fält lägg/ rating , en fält för RIKARD, rickard, Rickard -->
+
+
+                                            </div>
+
+
+
+                                        </div> 
+
+
+                                    </div> 
+
+                                </div>
                             </p:dataGrid>
+                        </div>
+                        <div class="ui-g-1"   ></div> 
+                    </div>
 
 
 
@@ -53,55 +96,129 @@
 
 
 
-                            <p:dialog  widgetVar="carDialog"  resizable="false" showHeader="true" onHide="true" >
-                                <p:outputPanel id="carDetail" style="text-align:center;">
-                                    <p:panelGrid  columns="2"  layout="grid" >
-                                        <f:facet name="header">
-                                            <p:graphicImage value="/addb/curry.jpg" />  
 
-                                        </f:facet>
-                                        <h:outputText value="Title:" />
-                                        <h:outputText value="#{addbController.selected.id}" />
 
-                                        <h:outputText value="Description:" />
-                                        <h:outputText value="#{addbController.selected.description}" />
 
-                                        <h:outputText value="address:" />
-                                        <h:outputText value="#{addbController.selected.address}" />
 
-                                        <h:outputText value="Price" />
-                                        <h:outputText value="$#{addbController.selected.price}" />
-                                        <h:outputText value="quantity:" />
-                                        <h:outputText value="#{addbController.selected.quantity}" />
-                                        <h:outputText value="weight:" />
-                                        <h:outputText value="#{addbController.selected.weight}" />
 
+
+                    <p:dialog  widgetVar="AdsDialog"  resizable="false" showHeader="false" onHide="true" >
+
+
+                        <div class="ui-g" style=" width: 900px;" >
+                            <!-- västra sidan för bilden dialog -->
+                           
+                            <!-- mittersta sidan detalj oc innehåll dialog -->
+                            <div class="ui-g-12" style="border: outset"  >
+                                <p:outputPanel id="AdsDetail" style="text-align:center;">
+                                    <div class="ui-g-12" style="border: outset" align="left" >  
+                                        <div class="ui-g-3" style=" min-height: 150px;" align="left" >
+                                          <p:graphicImage value="/addb/curry.jpeg" id="curry" width="190px" height="128px"/>
+                                        </div>
+                                        <div class="ui-g-6" style=" min-height: 150px;" align="left" >
+                                            <h:outputText value="#{addbController.selected.title}"  class="lista-title-describtion"/>
+                                            <br style="height: 200px;"></br>
+                                            <div class="ui-g-12" align="left" ></div>
+                                            <h:outputText value="#{addbController.selected.description}"  class="lista-title-describtion" style="font-weight: normal; font-size: 17px; font-family: cursive"/>
+                                        </div>
+                                        <div class="ui-g-3" style=" min-height: 150px;" align="left" >
+                                            rad1 col 3
+                                        </div>
+                                        <!--ort address och postno -->
+                                        <div class="ui-g-3"  align="left" >
+                                            rad2 com 1
+                                        </div>
+                                        <div class="ui-g-6"  align="left" >
+                                            <div class="ui-g-4" align="left"  >
+                                                <h:outputText value="#{addbController.selected.address}" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            </div>
+                                            <div class="ui-g-6"   align="left" >
+                                                <h:outputText value="#{addbController.selected.other}" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            </div>
+                                            <div class="ui-g-2"  align="left" >
+                                                <h:outputText value="#{addbController.selected.other2}" class="lista-title-describtion" style="font-weight: normal; font-size: 13px; font-family: normal"/>
+                                            </div>
+
+                                        </div>
+                                        <div class="ui-g-3"  align="left" >
+                                            rad2 com 3
+                                        </div>
+                                        <div class="ui-g-12"  align="left" >
+                                            <div class="ui-g-3"  align="left" >
+                                               <!--  Rickard här kan du sötta  -->
+                                               rad 3 col 3
+                                            </div> 
+                                        <div class="ui-g-6"  align="left" >
+                                            <h:outputText value="Pris per portion:   $#{addbController.selected.price} skr "  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            <br style="height: 50px;"></br>
+                                            <h:outputText value="Antal i lager   :    #{addbController.selected.quantity} /st  " class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>                
+                                            <br style="height: 50px;"></br>
+                                            <h:outputText value="Vikt per portion:   #{addbController.selected.weight} / kg" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+
+                                        </div>
+                                            <div class="ui-g-3"  align="left" >
+                                               <!--  Rickard här kan du sötta  -->
+                                               rad 3 col 3
+                                            </div>     
+                                            
+                                        </div>    
+                                         <div class="ui-g-3"  align="left" >
+                                              
+                                                   
+                                        <b:commandButton  oncomplete="/addb/View" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Köp">
+
+                                                  
+                                                     <h:link outcome="/addb/List" value="backa" style="font-size: 15px; font-family: normal;" />
+                                                      
+                                        </b:commandButton>
+                                            </div> 
+                                        
+                                        <div class="ui-g-6"  style="height: 110px;" align="left" >
+                                        <h:outputText value="Vegeterian :  #{item.vegetarian}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                       <br style="height: 50px;"></br>
+                                        <h:outputText value="Nötter:  #{item.nuts}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                        <br style="height: 50px;"></br>
+                                        <h:outputText value="Laktos:  #{item.lactose}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                        <br style="height: 50px;"></br>
+                                        <h:outputText value="Gluten:  #{item.gluten}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                        
-                                           <h:link outcome="/addb/View" value="#{bundle.CreateUserdbIndexLink}"/>
-                                       
+                                        </div>
+                                        <div class="ui-g-3" style="height: 110px;" align="left"  >
+                                           
+                                        <b:commandButton  action="/addb/View?faces-redirct=true"  title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Till köp">
 
+                                            <b:commandLink outcome="/addb/View" value="heehahsdas"></b:commandLink>
+                                                     
+                                                       <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
+                                                    
+                                        </b:commandButton>
+                                             
+                                        </div>
 
-
-                                    </p:panelGrid>
+                                    </div>
                                 </p:outputPanel>
-                            </p:dialog>
+                            </div>   
+                            
+                        </div>   
 
-                        </h:form>
-
-
-
-                    </b:row>
+                    </p:dialog>
 
 
 
 
-                </b:container>
+
+
+
+
+
+
+
+
+                </h:form>
+
             </ui:define>
 
-            <ui:define name="footer">
 
-
-            </ui:define>
 
 
 
@@ -114,3 +231,4 @@
 
     </h:body>
 </html>
+

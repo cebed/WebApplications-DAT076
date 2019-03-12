@@ -41,26 +41,116 @@ public class AddbFacade extends AbstractFacade<Addb> {
     }
 
     public List<Addb> findByAdress(String address) {
+        
         System.out.println("Looking for address " + address);
         List<Addb> getByAddre = em.createNamedQuery("Addb.findAll", Addb.class).getResultList();
         List<Addb> OnlyWanteAdd = new LinkedList<>();
        for(Addb li : getByAddre){
            if(li.getAddress().equals(address)){
+               System.out.println("//////////////////////////////////////" +li.getTitle().equals("gbg"));
+              
+                System.out.println( li.getAddress().equals("gbg") + "2222 " );
                 OnlyWanteAdd.add(li);       
                }          
        }
        
           if (!OnlyWanteAdd.isEmpty() ) {
-            System.out.println("Found user and right password");
+          //  System.out.println("Found user and right password");
             return OnlyWanteAdd;
         } else {
-            System.out.println("Did not find user");
+           // System.out.println("Did not find user");
             return getByAddre;
         }
         }
     
     
     
+    public List<Addb> findByEmail(String email) {
+        Userdb us = new Userdb();
+        
+        us.setEmail(email.toLowerCase().trim());
+        
+        System.out.println("Looking for User " + email);
+        List<Addb> emaillist = em.createNamedQuery("Addb.findAll", Addb.class).getResultList();
+        List<Addb> wantedEmail = new LinkedList<>();
+       for(Addb li : emaillist){
+           if(us.equalsbbb(li.getUserid())){
+               
+                wantedEmail.add(li);       
+               }          
+       }
+       
+          if (!wantedEmail.isEmpty() ) {
+           // System.out.println("mission done" + wantedEmail);
+            return wantedEmail;
+        } else {
+            System.out.println("mission faild");
+            return null;
+        }
+        }
+    
+    
+    
+    public List<Addb> findonlysoldaAds(String email) {
+        Userdb us = new Userdb();
+        
+        us.setEmail(email.toLowerCase().trim());
+        
+        System.out.println("Looking for User " + email);
+        List<Addb> emaillist = em.createNamedQuery("Addb.findAll", Addb.class).getResultList();
+        List<Addb> wantedEmail = new LinkedList<>();
+       for(Addb li : emaillist){
+          
+         
+           if((us.equalsbbb(li.getUserid())) && (li.getOther()!= null) && (li.getOther().equals("sold"))  ){
+               
+             
+              
+              
+             
+                wantedEmail.add(li);       
+               }          
+       }
+       
+          if (!wantedEmail.isEmpty() ) {
+           // System.out.println("mission done" );
+            return wantedEmail;
+        } else {
+            //System.out.println("mission faild");
+            return null;
+        }
+        }
+    
+    
+    
+    
+    
+    public List<Addb> findonlyBougtItems(String email) {
+        Userdb us = new Userdb();
+        
+        us.setEmail(email.toLowerCase().trim());
+        
+        //System.out.println("Looking for User " + email);
+        List<Addb> emaillist = em.createNamedQuery("Addb.findAll", Addb.class).getResultList();
+        List<Addb> wantedEmail = new LinkedList<>();
+       for(Addb li : emaillist){
+           if((us.equalsbbb(li.getUserid())) && (li.getOther()!= null) && (li.getOther().equals("kopt"))){
+              
+              
+           //    System.out.println( li.getOther()+" _________-------" );
+                wantedEmail.add(li);       
+               }          
+       }
+       
+          if (!wantedEmail.isEmpty() ) {
+           // System.out.println("mission done" );
+            return wantedEmail;
+        } else {
+           // System.out.println("mission faild");
+            return null;
+        }
+        }
+  
     
     
 }

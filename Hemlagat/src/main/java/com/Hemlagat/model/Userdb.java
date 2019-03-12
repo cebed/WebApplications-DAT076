@@ -16,6 +16,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -38,12 +40,18 @@ public class Userdb implements Serializable {
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "EMAIL")
+    @Getter
+    @Setter
     private String email;
     @Size(max = 100)
     @Column(name = "USERNAME")
+    @Getter
+    @Setter
     private String username;
     @Size(max = 100)
     @Column(name = "PASSWORD")
+    @Getter
+    @Setter
     private String password;
 
     public Userdb() {
@@ -51,30 +59,6 @@ public class Userdb implements Serializable {
 
     public Userdb(String email) {
         this.email = email;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override
@@ -100,6 +84,20 @@ public class Userdb implements Serializable {
     @Override
     public String toString() {
         return "com.Hemlagat.model.Userdb[ email=" + email + " ]";
+    }
+    
+    
+    /* kunde inte komma åt den ovan equals metod drf har jag skapat denna // nur*/
+     public boolean equalsbbb(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Userdb)) {
+            return false;
+        }
+        Userdb other = (Userdb) object;
+        if ((this.email == null && other.email != null) || (this.email != null && !this.email.equals(other.email))) {
+            return false;
+        }
+        return true;
     }
 
 }

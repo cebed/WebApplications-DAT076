@@ -1,5 +1,6 @@
-package com.Hemlagat.controller;
+package com.Hemlagat.view;
 
+import com.Hemlagat.controller.*;
 import com.Hemlagat.model.Addb;
 import com.Hemlagat.controller.util.JsfUtil;
 import com.Hemlagat.controller.util.PaginationHelper;
@@ -19,34 +20,30 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.faces.view.ViewScoped;
 import lombok.Getter;
 import lombok.Setter;
 import org.primefaces.model.UploadedFile;
 
-@Named("addbController")
-@SessionScoped
-public class AddbController implements Serializable {
+@Named("addbBean")
+@ViewScoped
+public class AddbBean implements Serializable {
 
     private UploadedFile file;
     private Addb current;
     @Getter
     @Setter
     private String Address;
-    @Getter
-    @Setter
-    private String email;
+   
     private List<Addb> item = null;
-
     
-     private List<Addb> itemsbyEmail = null;
-     
-     private List<Addb> solditems;
-     
-     private List<Addb> bougtitems;
+   
+    
+  
 
     @EJB
     private com.Hemlagat.model.AddbFacade ejbFacade;
-  
+   
     
     //private  Addb add;
     
@@ -67,7 +64,7 @@ public class AddbController implements Serializable {
     public Addb getSelected() {
         if (current == null) {
             current = new Addb();
-           
+            
 
         }
 
@@ -92,7 +89,7 @@ public class AddbController implements Serializable {
 
     public String prepareCreate() {
         current = new Addb();
-      
+       
         return "Create";
     }
 
@@ -130,6 +127,8 @@ public class AddbController implements Serializable {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
+        
+   
     }
 
    
@@ -189,72 +188,15 @@ public class AddbController implements Serializable {
     }
 
     
-     /***************        alla oavset Adds hittas genom att stopa in mailet
-     * @return '*/
-    public String byEmail(){
     
     
-    getFacade().findByEmail(email);
-    
-    return "/addb/extradata.xhtml";
-    
-    }
-    
-     public List<Addb> getItemsbyEmail() {
-
-        if (itemsbyEmail == null) {
-            itemsbyEmail = ejbFacade.findByEmail(email);
-        }
-        return itemsbyEmail;
-    }
-    /***************        alla solda Adds hittas genom att stopa in mailet
-     * @return '*/
-     
-     public List<Addb> getSoldItems() {
-
-        if (solditems == null) {
-            solditems = ejbFacade.findonlysoldaAds(email);
-        }
-        return solditems;
-    }
-     
-     
-     public String bysold(){
+   
     
     
-    getFacade().findonlysoldaAds(email);
-    
-    return "/addb/searchSolditems.xhtml";
-    
-    }
-     
-     /**********     alla köpta Adds hiitas i profil sidan
-     * @return  */
-    
-     public List<Addb> BougtItems() {
-
-        if (bougtitems == null) {
-            bougtitems = ejbFacade.findonlyBougtItems(email);
-        }
-        return bougtitems;
-    }
-     
-      public String byBougt(){
     
     
-    getFacade().findonlyBougtItems(email);
     
-    return "/addb/searchBougtItems.xhtml";
     
-    }
-    
-     
-     
-     
-     
-     
-     
-     
     
 
     private void recreateModel() {

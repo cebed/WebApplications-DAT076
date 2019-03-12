@@ -6,10 +6,12 @@
 package com.Hemlagat.model;
 
 import java.io.Serializable;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.JoinColumn;
@@ -20,14 +22,18 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 /**
  *
- * @author Daniel Cebe
+ * @author nurabd
  */
 @Entity
 @Table(name = "ADDB")
 @XmlRootElement
+@RequiredArgsConstructor
 @NamedQueries({
     @NamedQuery(name = "Addb.findAll", query = "SELECT a FROM Addb a")
     , @NamedQuery(name = "Addb.findById", query = "SELECT a FROM Addb a WHERE a.id = :id")
@@ -44,186 +50,94 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Addb.findByOther", query = "SELECT a FROM Addb a WHERE a.other = :other")
     , @NamedQuery(name = "Addb.findByOther2", query = "SELECT a FROM Addb a WHERE a.other2 = :other2")
     , @NamedQuery(name = "Addb.findByPhoto", query = "SELECT a FROM Addb a WHERE a.photo = :photo")
+  
 
 })
 public class Addb implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue
     @Basic(optional = false)
-    @NotNull
-    //GeneratedValue
     @Size(min = 1, max = 100)
     @Column(name = "ID")
+    @Getter
+    @Setter
     private String id;
     @Size(max = 100)
     @Column(name = "TITLE")
+    @Getter
+    @Setter
     private String title;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "PRICE")
+    @Getter
+    @Setter
     private Double price;
-
-    public void setUserid(Userdb userid) {
-        this.userid = userid;
-    }
-
-    public Userdb getUserid() {
-        return userid;
-    }
     @Size(max = 200)
     @Column(name = "DESCRIPTION")
+    @Getter
+    @Setter
     private String description;
     @Column(name = "QUANTITY")
+    @Getter
+    @Setter
     private Integer quantity;
     @Column(name = "WEIGHT")
+    @Getter
+    @Setter
     private Double weight;
     @Column(name = "VEGETARIAN")
+    @Getter
+    @Setter
     private Boolean vegetarian;
     @Column(name = "NUTS")
+    @Getter
+    @Setter
     private Boolean nuts;
     @Column(name = "LACTOSE")
+    @Getter
+    @Setter
     private Boolean lactose;
     @Column(name = "GLUTEN")
+    @Getter
+    @Setter
     private Boolean gluten;
     @Size(max = 100)
     @Column(name = "ADDRESS")
+    @Getter
+    @Setter
     private String address;
     @Size(max = 100)
     @Column(name = "OTHER")
-    private String other;
+    @Getter
+    @Setter
+    private String other;// fungerar som tillfällig stad -- ta inte bort Nur
     @Size(max = 100)
     @Column(name = "OTHER2")
-    private String other2;
+    @Getter
+    @Setter
+    private String other2; // fungerar som tillfällig post no -- ta inte bort Nur
+    
+    @Getter
+    @Setter
+    @Column(name = "STATUS")
+    private String status; 
     @Lob
     @Column(name = "PHOTO")
+    @Getter
+    @Setter
     private byte[] photo;
-    
-  
-    
-
+   @Getter
+    @Setter
     @JoinColumn(name = "USERID", referencedColumnName = "EMAIL")
     @ManyToOne
     private Userdb userid;
+    
+    
+    
     private static final Logger LOG = Logger.getLogger(Addb.class.getName());
-
-    public Addb() {
-    }
-
-    public Addb(String id) {
-        this.id = id;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public Double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
-
-    public Boolean getVegetarian() {
-        return vegetarian;
-    }
-
-    public void setVegetarian(Boolean vegetarian) {
-        this.vegetarian = vegetarian;
-    }
-
-    public Boolean getNuts() {
-        return nuts;
-    }
-
-    public void setNuts(Boolean nuts) {
-        this.nuts = nuts;
-    }
-
-    public Boolean getLactose() {
-        return lactose;
-    }
-
-    public void setLactose(Boolean lactose) {
-        this.lactose = lactose;
-    }
-
-    public Boolean getGluten() {
-        return gluten;
-    }
-
-    public void setGluten(Boolean gluten) {
-        this.gluten = gluten;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getOther() {
-        return other;
-    }
-
-    public void setOther(String other) {
-        this.other = other;
-    }
-
-    public String getOther2() {
-        return other2;
-    }
-
-    public void setOther2(String other2) {
-        this.other2 = other2;
-    }
-
-    public byte[] getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
+private static final AtomicLong counter = new AtomicLong(100);
 
     @Override
     public int hashCode() {
