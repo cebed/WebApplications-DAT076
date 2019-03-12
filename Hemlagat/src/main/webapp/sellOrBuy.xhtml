@@ -22,12 +22,15 @@ and open the template in the editor.
             <h:outputText value="Mail"></h:outputText>
         </ui:define>
         <ui:define name="content">
+            <f:event type="preRenderView" listener="#{login.showLoginMessage()}"  />
 
 
             <h:body>
                 <div>
                     <h:form>
-                        <b:commandButton   class="hbtn hb-fill-bottom hpill pp"  value="SELL FOOD" action="/LoginPage" size="lg"  look="green" icon="bookmark"  style="font-weight:bold; font-size: 36px; ">
+                        <p:growl id="growl" life="4000" showDetail="true"  />
+
+                        <b:commandButton   class="hbtn hb-fill-bottom hpill pp"  value="SELL FOOD" action="/addb/Create.xthml?faces-redirect=true" size="lg"  look="green" icon="bookmark"  style="font-weight:bold; font-size: 36px; ">
                             <div style="padding: 50px;">
                                 <b:image value="/addb/curry.jpeg" style=" margin-top: -40%;  width: 100%; height: 100%;" />  
                             </div>

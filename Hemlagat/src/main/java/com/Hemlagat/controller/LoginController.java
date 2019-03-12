@@ -30,49 +30,57 @@ import lombok.Setter;
 @Named(value = "login")
 @RequestScoped
 public class LoginController implements Serializable {
-    
+
     @Getter
     @Setter
     private String email;
     @Getter
     @Setter
     private String password;
+
     
     @Inject
     private UserdbFacade userRegistry;
-    
+
     @Inject
     private UserBean userBean;
-    
+
     @EJB
     private com.Hemlagat.model.AddbFacade ejbFacade;
-    
+
     public String login() {
         final Userdb loggedInUser = userRegistry.findUser(email, password);
         if (loggedInUser != null) {
             //FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("email", email);
             //FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("username", loggedInUser.getUsername());
             userBean.setEmail(email);
-            
+
             userBean.setUsername(loggedInUser.getUsername());
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Welcome:" + loggedInUser.getUsername()));
-            
-            return "addb/Create?faces-redirect=true";
-            
+
+            return "sellOrBuy?faces-redirect=true";
+
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Wrong email or password"));
-            
+
             return null;
         }
     }
-    
-    public void showLoginMessage() {
+
+    public void showLoginMessage(){
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Logged in as " + userBean.getUsername()));
     }
-    
+
+    public void showLogoutMessage() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Logged out"));
+
+    }
+
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        showLogoutMessage();
         return "Locationpage?faces-redirect=true";
     }
 
