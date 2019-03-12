@@ -28,7 +28,7 @@ import lombok.Setter;
 
 /**
  *
- * @author Daniel Cebe
+ * @author nurabd
  */
 @Entity
 @Table(name = "ADDB")

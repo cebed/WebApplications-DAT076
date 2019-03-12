@@ -185,11 +185,12 @@
                                         </div>
                                         <div class="ui-g-3" style="height: 110px;" align="left"  >
                                            
-                                        <b:commandButton  oncomplete="/addb/View" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Backa">
+                                        <b:commandButton  action="/addb/View?faces-redirct=true"  title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Till köp">
 
-                                                  
-                                                     <h:link outcome="/addb/View" value="vidare" style="font-size: 15px; font-family: normal;" />
+                                            <b:commandLink outcome="/addb/View" value="heehahsdas"></b:commandLink>
+                                                     
                                                        <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
+                                                    
                                         </b:commandButton>
                                              
                                         </div>
@@ -231,87 +232,3 @@
     </h:body>
 </html>
 
-<!--
- <p:panelGrid  style="width:100%"  >
-                                    <p:row >
-                                        <p:column > <p:graphicImage value="/addb/curry.jpeg" id="curry" width="100px" height="100px"/> </p:column>
-                                        <p:column> <h:outputText value="#{item.title} " />
-                                            <h:outputText value="#{item.address} " />
-                                        </p:column>
-
-                                    </p:row>
-                                    <p:row>
-
-                                        <p:column>
-                                            <p:commandButton update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
-
-                                                <h:outputText value="haha" style="margin:0 auto;"/>
-                                                <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
-                                            </p:commandButton></p:column>
-                                        <p:column> 
-                                            <h:outputText value="#{item.description}" />
-                                            <h:commandLink action="#{addbController.destroy}" value="#{bundle.ListAddbDestroyLink}"/></p:column>
-
-                                    </p:row>
-                                </p:panelGrid>
-
-
-
-
-
-
-
-
-""""""""""""""""""""""""""""""@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@”””"""""""""”””@@@@@@@@@””"""""""”””@@@
-
-
-
-
-<f:facet name="header">
-                                    <p:graphicImage value="/addb/curry.jpg" />  
-
-                                </f:facet>
-                                <h:outputText value="Title:" />
-                                <h:outputText value="#{addbController.selected.id}" />
-
-                                <h:outputText value="Description:" />
-                                <h:outputText value="#{addbController.selected.description}" />
-
-                                <h:outputText value="address:" />
-                                <h:outputText value="#{addbController.selected.address}" />
-
-                                <h:outputText value="Price" />
-                                <h:outputText value="$#{addbController.selected.price}" />
-                                <h:outputText value="quantity:" />
-                                <h:outputText value="#{addbController.selected.quantity}" />
-                                <h:outputText value="weight:" />
-                                <h:outputText value="#{addbController.selected.weight}" />
-
-
-                                <h:link outcome="/addb/View" value="#{bundle.CreateUserdbIndexLink}"/>
-
-_____________________________***************************____________________________***************
-
-
-<div class="ui-g-3" style="border: outset"  >
-                                <div class="ui-g-12" style="border: outset"  >
-                                    <div class="ui-g-12" style="border: outset; height: 100px;"   >
-                                        rad1
-                                    </div>
-                                    <div class="ui-g-12" style="border: outset ; height: 100px;"   >
-                                        rad2
-                                    </div>
-                                    <div class="ui-g-12" style="border: outset ; height: 100px;" >
-                                        rad3
-                                    </div>
-                                    
-                                </div>
-                            </div>    
-
-
-
-
-    <b:commandButton value="Lägg upp annons" iconAwesome="fa-save" look="success" style="height: 0px; width: 150px; font-family: serif; font-size: 15px; " actionListener="#{addbController.prepareView()}"> </b:commandButton>
-
-
--->

@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 
 
@@ -28,14 +29,15 @@
                         
                         <!-- Rickard -->
                         <h:form>
-                    <form id="ipForm" action="index.xhtml" >
+                    <form id="ipForm">
                         <input type="text"  name = "ipAddress" id = "ip" value="temp"/>
-                        <input type="submit" value="Din Position" onclick="index.xhtml"/>
+                     
+                        <h:link outcome="sellOrBuy.xhtml" value="Dinposition"/>
 
                     </form>
 
 
-                </h:form>
+                        </h:form>
                
                 <script>
                     function callback(response) {
