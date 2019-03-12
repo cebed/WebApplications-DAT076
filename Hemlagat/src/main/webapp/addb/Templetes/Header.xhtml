@@ -22,28 +22,27 @@ and open the template in the editor.
         <ui:composition>
             <div class="ui-g">
                 <div class="ui-g-12"><div id="header-color"></div></div>
-                
+
             </div>
             <div class="ui-g">
-                <div class="ui-g-3"> 
+                <div class="ui-g-3">
                     <h:link outcome="/addb/Create.xhtml" value="create"></h:link>
-                
+
                 </div>
                 <div class="ui-g-6">
                     <h:link outcome="/Locationpage.xhtml"> <h:graphicImage value="/addb/logga.png" alt="hej"  height="100px" style="display: block; margin-left: auto; margin-right: auto;"/></h:link>
                 </div>
                 <div class="ui-g-3"><form>
 
-                            <p:button id="button1" class="topButton" outcome="/userdb/RegisterPage" value="Register" />
+                        <p:button id="button1" class="topButton" outcome="/userdb/RegisterPage" value="Register" />
 
-                            <p:button  id="button2"  class="topButton" outcome="/LoginPage" value="Login" />
-                            
-                            
-                           
-                        </form></div>
+                        <p:button rendered="#{!userBean.loggedIn}" id="button2"  class="topButton" outcome="/LoginPage" value="Login" />
+
+
+                    </form></div>
             </div>
 
-            
+
         </ui:composition>
     </body>
 
