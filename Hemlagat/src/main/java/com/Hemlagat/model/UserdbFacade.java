@@ -24,6 +24,7 @@ public class UserdbFacade extends AbstractFacade<Userdb> {
 
     private JPAQuery query;
     private JPAQueryFactory qf;
+    
 
     @PostConstruct
     public void setup() {
