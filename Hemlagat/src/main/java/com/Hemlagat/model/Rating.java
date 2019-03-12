@@ -100,6 +100,7 @@ public class Rating implements Serializable {
         if (!(object instanceof Rating)) {
             return false;
         }
+        System.out.println("We are in rating equals");
         Rating other = (Rating) object;
         if ((this.chef == null && other.chef != null) || (this.chef != null && !this.chef.equals(other.chef))) {
             return false;
@@ -109,7 +110,7 @@ public class Rating implements Serializable {
 
     @Override
     public String toString() {
-        return "com.Hemlagat.model.Rating[ chef=" + chef + " ]";
+        return "com.Hemlagat.model.Rating[ chef=" + chef + " comment="+ comment +" ]";
     }
     
 }
