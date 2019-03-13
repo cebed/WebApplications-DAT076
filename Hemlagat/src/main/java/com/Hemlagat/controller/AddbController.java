@@ -1,15 +1,13 @@
 package com.Hemlagat.controller;
 
 import com.Hemlagat.model.Addb;
-import com.Hemlagat.controller.util.JsfUtil;
 
 import com.Hemlagat.model.AddbFacade;
 import com.Hemlagat.model.session.UserBean;
 import com.Hemlagat.view.AddbBean;
 
 import java.io.Serializable;
-import java.util.ResourceBundle;
-import javax.ejb.EJB;
+
 import javax.inject.Named;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
@@ -18,7 +16,6 @@ import javax.inject.Inject;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.primefaces.model.UploadedFile;
 
 @Named("addbController")
 @SessionScoped

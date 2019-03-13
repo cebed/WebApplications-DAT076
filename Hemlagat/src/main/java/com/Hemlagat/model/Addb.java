@@ -127,16 +127,21 @@ public class Addb implements Serializable {
     private String status; 
     @Lob
     @Column(name = "PHOTO")
-    @Getter
     @Setter
     private byte[] photo;
-   @Getter
+    @Getter
     @Setter
     @JoinColumn(name = "USERID", referencedColumnName = "EMAIL")
     @ManyToOne
     private Userdb userid;
     
+    public boolean getHasPhoto() {
+        return photo != null;
+    }
     
+    public byte[] getPhoto() {
+        return photo;
+    }
     
     private static final Logger LOG = Logger.getLogger(Addb.class.getName());
 private static final AtomicLong counter = new AtomicLong(100);
