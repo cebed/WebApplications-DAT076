@@ -6,7 +6,6 @@ import com.Hemlagat.controller.util.PaginationHelper;
 import com.Hemlagat.model.RatingFacade;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -30,7 +29,7 @@ public class RatingController implements Serializable {
     private com.Hemlagat.model.RatingFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-    private List<Rating>ratings=null;
+    private List<Rating> ratings = null;
 
     public RatingController() {
     }
@@ -42,13 +41,14 @@ public class RatingController implements Serializable {
         }
         return current;
     }
+
     public List<Rating> getRating() {
 
         if (ratings == null) {
             ratings = ejbFacade.findUserRatings("rozz");
-            for(Rating rating : ratings) {
-            System.out.println(rating.getComment());
-        }
+            for (Rating rating : ratings) {
+                System.out.println(rating.getComment());
+            }
         }
         return ratings;
     }
