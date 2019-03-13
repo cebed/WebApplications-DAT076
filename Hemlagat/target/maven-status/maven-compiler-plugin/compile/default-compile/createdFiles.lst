@@ -15,6 +15,7 @@ com\Hemlagat\controller\UserdbController$UserdbControllerConverter.class
 com\Hemlagat\model\QRating.class
 com\Hemlagat\view\AddbBean.class
 com\Hemlagat\model\Userdb.class
+.netbeans_automatic_build
 com\Hemlagat\controller\LoginController.class
 com\Hemlagat\model\UserdbFacade.class
 com\Hemlagat\controller\UserdbController$1.class

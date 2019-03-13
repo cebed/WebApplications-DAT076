@@ -315,3 +315,6 @@
      padding-left: 5px;
  }
  
+ div.ui-datagrid-column img {
+     max-height: 100%;
+ }

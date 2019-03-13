@@ -4,8 +4,11 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:o="http://omnifaces.org/ui"
       xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui">
+
+
     <!-- om ni vill hjälpa till med disign kolla title på list sidan och discriotion kan se bättre ut
     skriv ctrl-f "lista-title-describtion" på css jsfcrud_1 heter classen samma -->
     <!-- Kolla hit rickard: Vill du lägga till Rating O comment, sök efter ordet "Rickard" dvs ctrl-f Ricakrd  -->
@@ -19,12 +22,12 @@
 
                 <h:form id="form">
 
-                    <div class="ui-g" > 
+                    <div class="ui-g" >
                         <div class="ui-g-12" align="center"  >
                             <p:outputLabel style="  font-family: serif; font-size: 80px; font-weight: bold; color: #13654a; margin-left: -20px;" value="  Annonser i #{addbBean.address}">
 
                             </p:outputLabel>
-                        </div>  
+                        </div>
                         <div class="ui-g-1"   ></div>
                         <div class="ui-g-10"   >
                             <p:dataGrid var="item" value="#{addbBean.items}" columns="2" layout="grid"
@@ -41,11 +44,12 @@
 
                                             <!-- intresant -->
                                             <div class="ui-g-12"  style=" height: 150px;  border:outset;" >
-                                                <p:graphicImage value="/addb/curry.jpeg" id="curry" width="150px" height="130px"/>
+                                                <!--<p:graphicImage value="/addb/curry.jpeg" id="curry" width="150px" height="130px"/> -->
+                                                <o:graphicImage width="100%" height="auto"  value="#{item.photo}" dataURI="true" rendered="#{item.hasPhoto}"/>
                                                 <!--
-                                               <p:graphicImage name="#{item.photo}"/> 
+                                               <p:graphicImage name="#{item.photo}"/>
                                                 -->
-                                            </div>                                  
+                                            </div>
                                             <!-- plats för add knapp -->
                                             <div class="ui-g-12" style="height: 75px; border:outset;" align="left" >
                                                 <b:commandButton update=":form:AdsDetail" oncomplete="PF('AdsDialog').show()" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:150px; height: 50px;" value="Detalj">
@@ -78,15 +82,15 @@
 
 
 
-                                        </div> 
+                                        </div>
 
 
-                                    </div> 
+                                    </div>
 
                                 </div>
                             </p:dataGrid>
                         </div>
-                        <div class="ui-g-1"   ></div> 
+                        <div class="ui-g-1"   ></div>
                     </div>
 
 
@@ -107,13 +111,13 @@
 
                         <div class="ui-g" style=" width: 900px;" >
                             <!-- västra sidan för bilden dialog -->
-                           
+
                             <!-- mittersta sidan detalj oc innehåll dialog -->
                             <div class="ui-g-12" style="border: outset"  >
                                 <p:outputPanel id="AdsDetail" style="text-align:center;">
-                                    <div class="ui-g-12" style="border: outset" align="left" >  
+                                    <div class="ui-g-12" style="border: outset" align="left" >
                                         <div class="ui-g-3" style=" min-height: 150px;" align="left" >
-                                          <p:graphicImage value="/addb/curry.jpeg" id="curry" width="190px" height="128px"/>
+                                            <p:graphicImage value="/addb/curry.jpeg" id="curry" width="190px" height="128px"/>
                                         </div>
                                         <div class="ui-g-6" style=" min-height: 150px;" align="left" >
                                             <h:outputText value="#{addbBean.current.title}"  class="lista-title-describtion"/>
@@ -145,61 +149,61 @@
                                         </div>
                                         <div class="ui-g-12"  align="left" >
                                             <div class="ui-g-3"  align="left" >
-                                               <!--  Rickard här kan du sötta  -->
-                                               rad 3 col 3
-                                            </div> 
-                                        <div class="ui-g-6"  align="left" >
-                                            <h:outputText value="Pris per portion:   $#{addbBean.current.price} skr "  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
-                                            <br style="height: 50px;"></br>
-                                            <h:outputText value="Antal i lager   :    #{addbBean.current.quantity} /st  " class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>                
-                                            <br style="height: 50px;"></br>
-                                            <h:outputText value="Vikt per portion:   #{addbBean.current.weight} / kg" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                                <!--  Rickard här kan du sötta  -->
+                                                rad 3 col 3
+                                            </div>
+                                            <div class="ui-g-6"  align="left" >
+                                                <h:outputText value="Pris per portion:   $#{addbBean.current.price} skr "  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                                <br style="height: 50px;"></br>
+                                                <h:outputText value="Antal i lager   :    #{addbBean.current.quantity} /st  " class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                                <br style="height: 50px;"></br>
+                                                <h:outputText value="Vikt per portion:   #{addbBean.current.weight} / kg" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+
+                                            </div>
+                                            <div class="ui-g-3"  align="left" >
+                                                <!--  Rickard här kan du sötta  -->
+                                                rad 3 col 3
+                                            </div>
 
                                         </div>
-                                            <div class="ui-g-3"  align="left" >
-                                               <!--  Rickard här kan du sötta  -->
-                                               rad 3 col 3
-                                            </div>     
-                                            
-                                        </div>    
-                                         <div class="ui-g-3"  align="left" >
-                                              
-                                                   
-                                        <b:commandButton  oncomplete="/addb/View" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Köp">
+                                        <div class="ui-g-3"  align="left" >
 
-                                                  
-                                                     <h:link outcome="/addb/List" value="backa" style="font-size: 15px; font-family: normal;" />
-                                                      
-                                        </b:commandButton>
-                                            </div> 
-                                        
+
+                                            <b:commandButton  oncomplete="/addb/View" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Köp">
+
+
+                                                <h:link outcome="/addb/List" value="backa" style="font-size: 15px; font-family: normal;" />
+
+                                            </b:commandButton>
+                                        </div>
+
                                         <div class="ui-g-6"  style="height: 110px;" align="left" >
-                                        <h:outputText value="Vegeterian :  #{addbBean.current.vegetarian}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
-                                       <br style="height: 50px;"></br>
-                                        <h:outputText value="Nötter:  #{addbBean.current.nuts}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
-                                        <br style="height: 50px;"></br>
-                                        <h:outputText value="Laktos:  #{addbBean.current.lactose}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
-                                        <br style="height: 50px;"></br>
-                                        <h:outputText value="Gluten:  #{addbBean.current.gluten}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
-                                       
+                                            <h:outputText value="Vegeterian :  #{addbBean.current.vegetarian}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            <br style="height: 50px;"></br>
+                                            <h:outputText value="Nötter:  #{addbBean.current.nuts}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            <br style="height: 50px;"></br>
+                                            <h:outputText value="Laktos:  #{addbBean.current.lactose}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            <br style="height: 50px;"></br>
+                                            <h:outputText value="Gluten:  #{addbBean.current.gluten}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+
                                         </div>
                                         <div class="ui-g-3" style="height: 110px;" align="left"  >
-                                           
+
                                         <b:commandButton  action="#{addbController.addToShoppingCart}"  title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Till köp">
-                                          
+
                                             <b:commandLink action="#{addbController.addToShoppingCart}" value="heehahsdas"></b:commandLink>
-                                                  <f:setPropertyActionListener value="#{item}" target="#{addbBean.current}" />     
-                                                       
-                                                    
+                                                  <f:setPropertyActionListener value="#{item}" target="#{addbBean.current}" />
+
+
                                         </b:commandButton>
-                                             
+
                                         </div>
 
                                     </div>
                                 </p:outputPanel>
-                            </div>   
-                            
-                        </div>   
+                            </div>
+
+                        </div>
 
                     </p:dialog>
 
@@ -231,4 +235,3 @@
 
     </h:body>
 </html>
-

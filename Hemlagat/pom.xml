@@ -29,10 +29,6 @@
             <version>10.8.3.0</version>
         </dependency>
         
-  
-        
-         
-            
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>org.eclipse.persistence.jpa.modelgen.processor</artifactId>
@@ -56,11 +52,6 @@
             <artifactId>mail</artifactId>
             <version>1.4.7</version>
         </dependency>
-        <dependency>
-            <groupId>org.omnifaces</groupId>
-            <artifactId>omnifaces</artifactId>
-            <version>3.2</version>
-        </dependency>
         
         <dependency>
             <groupId>net.bootsfaces</groupId>
@@ -82,7 +73,11 @@
             <scope>compile</scope>
         </dependency>
         
-    
+        <dependency>
+            <groupId>org.omnifaces</groupId>
+            <artifactId>omnifaces</artifactId>
+            <version>2.3</version>
+        </dependency>
         
         <dependency>
             <groupId>com.querydsl</groupId>
@@ -106,9 +101,9 @@
     
     <repositories>
         <repository>
-        <id>primefaces-repository </id>
-        <name>Primefaces repository</name>
-        <url> http://repository.primefaces.org</url>
+            <id>primefaces-repository </id>
+            <name>Primefaces repository</name>
+            <url> http://repository.primefaces.org</url>
         </repository>
     </repositories>
     
