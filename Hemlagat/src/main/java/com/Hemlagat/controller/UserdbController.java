@@ -113,6 +113,14 @@ public class UserdbController implements Serializable {
 
     public String update() {
         try {
+<<<<<<< Updated upstream
+=======
+            //current.setUsername(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("username"));
+            //System.out.println(current);
+            //System.out.println(current.getPassword());
+            //System.out.println(confirmPassword);
+ 
+>>>>>>> Stashed changes
             final Userdb userdb = getFacade().find(userBean.getEmail());
             userdb.setPassword(password);
             getFacade().edit(userdb);
