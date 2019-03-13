@@ -78,12 +78,12 @@ and open the template in the editor.
                         <table>
                             <tr>
                                 <td>Stad</td>
-                                <td><h:inputText value="#{addbController.address}" required="true" 
+                                <td><h:inputText value="#{addbBean.address}" required="true" 
                                                  requiredMessage="Please enter a address"/></td>
                             </tr>
 
                         </table>
-                        <h:commandButton action="#{addbController.getIte()}" value="Annonser" styleClass="btn btn-large"/>
+                        <h:commandButton action="#{addbController.putItems()}" value="Annonser" styleClass="btn btn-large"/>
                     </h:form>
 
                     <h:link outcome="/addb/Create.xhtml" value="create"></h:link>
