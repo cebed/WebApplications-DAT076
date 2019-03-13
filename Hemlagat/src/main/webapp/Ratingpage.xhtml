@@ -27,7 +27,7 @@
         <p:rating value="#{ratingController.selected.rate}" />
         <h3> Comment </h3>
        
-        <p:inputTextarea rows="6" cols="33" />
+        <p:inputTextarea rows="6" cols="33" value ="#{ratingController.selected.comment}" />
        
         <h:outputText value="who made this dish:" />
         <h:inputText value="#{ratingController.selected.chef}" size="60" />

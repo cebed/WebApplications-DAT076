@@ -5,10 +5,17 @@
  */
 package com.Hemlagat.model;
 
+import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -21,6 +28,10 @@ public class RatingFacade extends AbstractFacade<Rating> {
 
     @PersistenceContext(unitName = "com.mycompany_Hemlagat_war_1.0-SNAPSHOTPU")
     private EntityManager em;
+    @Inject
+    private UserdbFacade Userfacade;
+    
+    
 
     @Override
     protected EntityManager getEntityManager() {
@@ -30,21 +41,35 @@ public class RatingFacade extends AbstractFacade<Rating> {
     public RatingFacade() {
         super(Rating.class);
     }
+    @Override
+    public void create(Rating rate){
+         System.out.println(rate.getComment());
+         Userdb userdb = Userfacade.find(rate.getChef());
+         userdb.getRatings().add(rate);
+            
+        System.out.println("ADDED TO LIST: ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+        
+        System.out.print("Vi är i min create");
+        getEntityManager().persist(userdb);
+        System.out.print("Vi är i min create2");
+    
+    }
 
     public List<Rating> findUserRatings(String chef) {
-        System.out.println("Looking for chefs rating: " + chef);
+        
+       
+        List<Rating> allRatings = em.createQuery("SELECT e FROM Rating e").getResultList();
 
-        List<Rating> getAllRatings = em.createNamedQuery("Rating.findAll", Rating.class).getResultList();
-        List<Rating> OnlyWanteAdd = new LinkedList<>();
-        for (Rating rate : getAllRatings) {
-            System.out.println("Here comes the comments: " + rate.getComment());
+       
+       List<Rating> RatingsWeWant = new LinkedList<>();
+        for (Rating rate : allRatings) {
+            System.out.println("Here comes the comments: " + rate.getComment()); 
             if (rate.getChef().equals(chef)) {
                
-                OnlyWanteAdd.add(rate);
+               RatingsWeWant.add(rate);
             }
         }
 
-      
-        return OnlyWanteAdd;
+       return RatingsWeWant;
     }
 }
