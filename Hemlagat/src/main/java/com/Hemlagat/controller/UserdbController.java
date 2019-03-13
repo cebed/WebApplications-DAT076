@@ -4,6 +4,7 @@ import com.Hemlagat.model.Userdb;
 import com.Hemlagat.controller.util.JsfUtil;
 import com.Hemlagat.controller.util.PaginationHelper;
 import com.Hemlagat.model.UserdbFacade;
+import com.Hemlagat.model.session.UserBean;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
@@ -17,6 +18,7 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.inject.Inject;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,13 +32,12 @@ public class UserdbController implements Serializable {
     @Getter
     @Setter
     private String confirmPassword;
-/*    @Setter
-    @Getter
-    private String username;
     @Getter
     @Setter
     private String password;
-*/
+
+    @Inject
+    private UserBean userBean;
 
     @EJB
     private com.Hemlagat.model.UserdbFacade ejbFacade;
@@ -112,16 +113,10 @@ public class UserdbController implements Serializable {
 
     public String update() {
         try {
-            System.out.println("UPDATE");
-            System.out.println( FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("email") );
-            current.setEmail( FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("email").toString() );
-            //current.setUsername(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("username"));
-            System.out.println(current);
-            System.out.println(current.getPassword());
-            
-            System.out.println(confirmPassword);
-            
-            getFacade().edit(current);
+            final Userdb userdb = getFacade().find(userBean.getEmail());
+            userdb.setPassword(password);
+            getFacade().edit(userdb);
+  
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UserdbUpdated"));
             return "View";
         } catch (Exception e) {
