@@ -6,9 +6,9 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui">
     
-    <ui:composition template="template.xhtml">
+    <ui:composition template="/addb/Templetes/Templete.xhtml">
 
-        <ui:define name="body">
+        <ui:define name="content">
     <h:head>
         <title>Facelet Title</title>
         
@@ -17,20 +17,29 @@
         
         
         
-        <h:form>
+        <h:form><div class="ui-g-4" style="display: block; margin-left: auto; margin-right: auto;"></div>
+        <div class="ui-g-6" style="display: block; margin-left: auto; margin-right: auto;">
+            
     <p:growl id="messages" showDetail="true" />
  
-    <h:panelGrid id="ratesystem" columns="2" cellpadding="5" >
-        <h:outputText value="Rate the chef:" />
-        <p:rating value="#{ratingbean.rating1}" />
-        <h:outputText value="Leave a comment:" />
-        <h:inputText value="#{ratingbean.comment}" size="60" />
+    <h:panelGrid id="ratesystem" columns="1" cellpadding="2"  >
+        <h3>Rating</h3>
+        <p:rating value="#{ratingController.selected.rate}" />
+        <h3> Comment </h3>
+       
+        <p:inputTextarea rows="6" cols="33" />
+       
+        <h:outputText value="who made this dish:" />
+        <h:inputText value="#{ratingController.selected.chef}" size="60" />
+        <h:outputText value="who is the rater" />
+        <h:inputText value="#{ratingController.selected.rater}" size="60" />
         
     </h:panelGrid>
-    <b:commandButton value="Done"  look="primary" span="2"
-                     actionListener="#{ratingbean.setRatingOnUser()}"/>
-    <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" style="margin:5px" />
- 
+    <b:commandButton value="Submit"  look="success" span="2"
+                     actionListener="#{ratingController.create()}"/>
+    
+          
+        </div>
     <p:dialog header="Values" widgetVar="dlg" showEffect="fade" hideEffect="fade">
         <h:panelGrid id="display" columns="2" cellpadding="5">
             <h:outputText value="Rating 1:" />
@@ -51,4 +60,3 @@
                </ui:define>
     </ui:composition>
 </html>
-
