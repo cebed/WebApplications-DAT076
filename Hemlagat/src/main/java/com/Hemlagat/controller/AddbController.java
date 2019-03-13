@@ -1,24 +1,24 @@
 package com.Hemlagat.controller;
 
 import com.Hemlagat.model.Addb;
+import com.Hemlagat.model.Userdb;
 import com.Hemlagat.controller.util.JsfUtil;
-import com.Hemlagat.controller.util.PaginationHelper;
+
 import com.Hemlagat.model.AddbFacade;
+import com.Hemlagat.model.UserdbFacade;
+import com.Hemlagat.model.session.ShoppingCart;
+import com.Hemlagat.model.session.UserBean;
+import com.Hemlagat.view.AddbBean;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
-import javax.faces.model.DataModel;
-import javax.faces.model.ListDataModel;
-import javax.faces.model.SelectItem;
+import javax.inject.Inject;
+
+
 import lombok.Getter;
 import lombok.Setter;
 import org.primefaces.model.UploadedFile;
@@ -27,245 +27,60 @@ import org.primefaces.model.UploadedFile;
 @SessionScoped
 public class AddbController implements Serializable {
 
-    private UploadedFile file;
-    private Addb current;
-    @Getter
-    @Setter
-    private String Address;
-    @Getter
-    @Setter
-    private String email;
-    private List<Addb> item = null;
-
+    @Inject
+    private AddbBean addbBean;
+    @Inject
+    private UserBean userBean;
     
-     private List<Addb> itemsbyEmail = null;
-     
-     private List<Addb> solditems;
-     
-     private List<Addb> bougtitems;
-
-    @EJB
-    private com.Hemlagat.model.AddbFacade ejbFacade;
-  
     
-    //private  Addb add;
+   @Inject
+  private AddbFacade addbFacade;
+    @Inject
+  private UserdbFacade userFacade;
     
-    @PostConstruct
-    private void init(){
-        current = new Addb();
-    }
-
-    public UploadedFile getFile() {
-
-        return file;
-    }
-
-    public void setFile(UploadedFile file) {
-        this.file = file;
-    }
-
-    public Addb getSelected() {
-        if (current == null) {
-            current = new Addb();
-           
-
-        }
-
-        return current;
-    }
-
-    public void setSelected(Addb current) {
-        this.current = current;
-    }
-
-    private AddbFacade getFacade() {
-        return ejbFacade;
-    }
-
+    @Inject
+    private ShoppingCart cart;
     
-    public String prepareList() {
-        recreateModel();
-        return "List";
-    }
 
-   
-
-    public String prepareCreate() {
-        current = new Addb();
-      
-        return "Create";
-    }
-
-    /**
-    public void storeImage() {
-        final Addb addb = new Addb();
-        addb.setPhoto(file.getContents());
-        //if vi ändrar till int 
-        addb.setId("9");
-
-        add.create(addb);
-    }
-*/
     
     public String create() {
         try {
-            current.setPhoto(file.getContents());
-            getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AddbCreated"));
-            return prepareCreate();
+              System.out.println("###############################################   jag är på controller" + addbBean.getCurrent().toString());       
+            addbBean.getCurrent().setPhoto(addbBean.getFile().getContents()); 
+            addbBean.getCurrent().setStatus("sold");
+            
+            final Userdb userdb = userFacade.find(userBean.getEmail());
+          addbBean.getCurrent().setUserid(userdb);
+            
+             
+            addbFacade.create( addbBean.getCurrent());
+            return "Locationpage?faces-redirect=true";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
+          
+            return "Locationpage.xhtml";
         }
     }
 
-   /*        använd den här för att uppdatera om varan är såld eller ej*/
+    public String putItems() {
 
-    public String update() {
-        try {
-            getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AddbUpdated"));
-            return "View";
-        } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
-        }
+       
+     //addbBean.setItems();
+       return  "/addb/List.xhtml?faces-redirect=true";
+       
     }
-
-   
-
-   
-
     
-    
-    
-    
-    /* om varan är såld använd den här*/
-    private void performDestroy() {
-        try {
-            getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AddbDeleted"));
-        } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-        }
+     
+     
+    public String addToShoppingCart() {
+        cart.setItem(addbBean.getCurrent());
+        return "/addb/View";
     }
-
-   
-
-   
-   
-
-   
-
-    public SelectItem[] getItemsAvailableSelectMany() {
-        return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
-    }
-
-    public SelectItem[] getItemsAvailableSelectOne() {
-        return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
-    }
-
-    public Addb getAddb(java.lang.String id) {
-        return ejbFacade.find(id);
-    }
-
- 
-    //////////////////////////////NUr//////////////////////////////
-
-    public List<Addb> getItem() {
-
-        if (item == null) {
-            item = ejbFacade.findByAdress(Address);
-        }
-        return item;
-    }
-
-    public String getIte() {
-
+    // public double getTotal(){
+         
         
-        item = ejbFacade.findByAdress(Address);
-        System.out.println("####### jag är fär");
-        return "/addb/List.xhtml";
-    }
+    //return addbBean.getCurrent().getQuantity() * addbBean.getCurrent().getPrice();
+    
+     
+    // }
 
-    
-     /***************        alla oavset Adds hittas genom att stopa in mailet
-     * @return '*/
-    public String byEmail(){
-    
-    
-    getFacade().findByEmail(email);
-    
-    return "/addb/extradata.xhtml";
-    
-    }
-    
-     public List<Addb> getItemsbyEmail() {
-
-        if (itemsbyEmail == null) {
-            itemsbyEmail = ejbFacade.findByEmail(email);
-        }
-        return itemsbyEmail;
-    }
-    /***************        alla solda Adds hittas genom att stopa in mailet
-     * @return '*/
-     
-     public List<Addb> getSoldItems() {
-
-        if (solditems == null) {
-            solditems = ejbFacade.findonlysoldaAds(email);
-        }
-        return solditems;
-    }
-     
-     
-     public String bysold(){
-    
-    
-    getFacade().findonlysoldaAds(email);
-    
-    return "/addb/searchSolditems.xhtml";
-    
-    }
-     
-     /**********     alla köpta Adds hiitas i profil sidan
-     * @return  */
-    
-     public List<Addb> BougtItems() {
-
-        if (bougtitems == null) {
-            bougtitems = ejbFacade.findonlyBougtItems(email);
-        }
-        return bougtitems;
-    }
-     
-      public String byBougt(){
-    
-    
-    getFacade().findonlyBougtItems(email);
-    
-    return "/addb/searchBougtItems.xhtml";
-    
-    }
-    
-     
-     
-     
-     
-     
-     
-     
-    
-
-    private void recreateModel() {
-        item = null;
-    }
-    
-     
-    
-    /**
-     * ALTER TABLE ADDB
-ADD FOREIGN KEY (USERID)
-REFERENCES USERDB(EMAIL);
-     */
 }

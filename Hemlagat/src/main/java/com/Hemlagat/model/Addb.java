@@ -118,9 +118,11 @@ public class Addb implements Serializable {
     @Getter
     @Setter
     private String other2; // fungerar som tillfällig post no -- ta inte bort Nur
+    /** tillfällig*/
     
     @Getter
     @Setter
+    /* */
     @Column(name = "STATUS")
     private String status; 
     @Lob

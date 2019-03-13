@@ -21,13 +21,13 @@
 
                     <div class="ui-g" > 
                         <div class="ui-g-12" align="center"  >
-                            <p:outputLabel style="  font-family: serif; font-size: 80px; font-weight: bold; color: #13654a; margin-left: -20px;" value="  Annonser i #{addbController.address}">
+                            <p:outputLabel style="  font-family: serif; font-size: 80px; font-weight: bold; color: #13654a; margin-left: -20px;" value="  Annonser i #{addbBean.address}">
 
                             </p:outputLabel>
                         </div>  
                         <div class="ui-g-1"   ></div>
                         <div class="ui-g-10"   >
-                            <p:dataGrid var="item" value="#{addbController.item}" columns="2" layout="grid"
+                            <p:dataGrid var="item" value="#{addbBean.items}" columns="2" layout="grid"
                                         rows="100" paginator="false" id="cars" styleClass="ui-datagrid-no-border"
                                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                         rowsPerPageTemplate="6,12,16">
@@ -50,7 +50,7 @@
                                             <div class="ui-g-12" style="height: 75px; border:outset;" align="left" >
                                                 <b:commandButton update=":form:AdsDetail" oncomplete="PF('AdsDialog').show()" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:150px; height: 50px;" value="Detalj">
 
-                                                    <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
+                                                    <f:setPropertyActionListener value="#{item}" target="#{addbBean.current}" />
                                                 </b:commandButton>
 
                                             </div>
@@ -116,10 +116,10 @@
                                           <p:graphicImage value="/addb/curry.jpeg" id="curry" width="190px" height="128px"/>
                                         </div>
                                         <div class="ui-g-6" style=" min-height: 150px;" align="left" >
-                                            <h:outputText value="#{addbController.selected.title}"  class="lista-title-describtion"/>
+                                            <h:outputText value="#{addbBean.current.title}"  class="lista-title-describtion"/>
                                             <br style="height: 200px;"></br>
                                             <div class="ui-g-12" align="left" ></div>
-                                            <h:outputText value="#{addbController.selected.description}"  class="lista-title-describtion" style="font-weight: normal; font-size: 17px; font-family: cursive"/>
+                                            <h:outputText value="#{addbBean.current.description}"  class="lista-title-describtion" style="font-weight: normal; font-size: 17px; font-family: cursive"/>
                                         </div>
                                         <div class="ui-g-3" style=" min-height: 150px;" align="left" >
                                             rad1 col 3
@@ -130,13 +130,13 @@
                                         </div>
                                         <div class="ui-g-6"  align="left" >
                                             <div class="ui-g-4" align="left"  >
-                                                <h:outputText value="#{addbController.selected.address}" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                                <h:outputText value="#{addbBean.current.address}" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                             </div>
                                             <div class="ui-g-6"   align="left" >
-                                                <h:outputText value="#{addbController.selected.other}" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                                <h:outputText value="#{addbBean.current.other}" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                             </div>
                                             <div class="ui-g-2"  align="left" >
-                                                <h:outputText value="#{addbController.selected.other2}" class="lista-title-describtion" style="font-weight: normal; font-size: 13px; font-family: normal"/>
+                                                <h:outputText value="#{addbBean.current.other2}" class="lista-title-describtion" style="font-weight: normal; font-size: 13px; font-family: normal"/>
                                             </div>
 
                                         </div>
@@ -149,11 +149,11 @@
                                                rad 3 col 3
                                             </div> 
                                         <div class="ui-g-6"  align="left" >
-                                            <h:outputText value="Pris per portion:   $#{addbController.selected.price} skr "  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            <h:outputText value="Pris per portion:   $#{addbBean.current.price} skr "  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                             <br style="height: 50px;"></br>
-                                            <h:outputText value="Antal i lager   :    #{addbController.selected.quantity} /st  " class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>                
+                                            <h:outputText value="Antal i lager   :    #{addbBean.current.quantity} /st  " class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>                
                                             <br style="height: 50px;"></br>
-                                            <h:outputText value="Vikt per portion:   #{addbController.selected.weight} / kg" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            <h:outputText value="Vikt per portion:   #{addbBean.current.weight} / kg" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
 
                                         </div>
                                             <div class="ui-g-3"  align="left" >
@@ -174,22 +174,22 @@
                                             </div> 
                                         
                                         <div class="ui-g-6"  style="height: 110px;" align="left" >
-                                        <h:outputText value="Vegeterian :  #{item.vegetarian}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                        <h:outputText value="Vegeterian :  #{addbBean.current.vegetarian}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                        <br style="height: 50px;"></br>
-                                        <h:outputText value="Nötter:  #{item.nuts}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                        <h:outputText value="Nötter:  #{addbBean.current.nuts}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                         <br style="height: 50px;"></br>
-                                        <h:outputText value="Laktos:  #{item.lactose}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                        <h:outputText value="Laktos:  #{addbBean.current.lactose}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                         <br style="height: 50px;"></br>
-                                        <h:outputText value="Gluten:  #{item.gluten}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                        <h:outputText value="Gluten:  #{addbBean.current.gluten}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                        
                                         </div>
                                         <div class="ui-g-3" style="height: 110px;" align="left"  >
                                            
-                                        <b:commandButton  action="/addb/View?faces-redirct=true"  title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Till köp">
-
-                                            <b:commandLink outcome="/addb/View" value="heehahsdas"></b:commandLink>
-                                                     
-                                                       <f:setPropertyActionListener value="#{item}" target="#{addbController.selected}" />
+                                        <b:commandButton  action="#{addbController.addToShoppingCart}"  title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Till köp">
+                                          
+                                            <b:commandLink action="#{addbController.addToShoppingCart}" value="heehahsdas"></b:commandLink>
+                                                  <f:setPropertyActionListener value="#{item}" target="#{addbBean.current}" />     
+                                                       
                                                     
                                         </b:commandButton>
                                              

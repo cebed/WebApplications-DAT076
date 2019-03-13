@@ -55,12 +55,12 @@
                                                                 <tr>                                                           
                                                                     <br></br>
                                                                     <td><h:outputLabel  value="find all ads: "/></td>
-                                                                    <td><h:inputText    value="#{addbController.email}" required="true" 
+                                                                    <td><h:inputText    value="#{addbBean.email}" required="true" 
                                                                                         requiredMessage="Please enter a address"/></td>
                                                                 </tr>
 
                                                             </table>
-                                                            <h:commandButton action="#{addbController.byEmail()}" value="Annonser" styleClass="btn btn-large"/>
+                                                            <h:commandButton action="#{addbBean.ItemsbyEmail()}" value="Annonser" styleClass="btn btn-large"/>
                                                         </h:form>
                                                                 <!--      leta efeter solda ads             -->
                                                         <h:form>
@@ -68,12 +68,12 @@
                                                                 <tr>                                                           
                                                                     <br></br>
                                                                     <td><h:outputLabel  value="Se tidgare köp: "/></td>
-                                                                    <td><h:inputText    value="#{addbController.email}" required="true" 
+                                                                    <td><h:inputText    value="#{addbBean.email}" required="true" 
                                                                                         requiredMessage="Please enter a address"/></td>
                                                                 </tr>
 
                                                             </table>
-                                                            <h:commandButton action="#{addbController.bysold()}" value="Annonser" styleClass="btn btn-large"/>
+                                                            <h:commandButton action="#{addbBean.SoldItems()}" value="Annonser" styleClass="btn btn-large"/>
                                                         </h:form>
                                                                 
                                                                   <!--      köpta items            -->
@@ -82,14 +82,14 @@
                                                                 <tr>                                                           
                                                                     <br></br>
                                                                     <td><h:outputLabel  value="Se dina solda Items: "/></td>
-                                                                    <td><h:inputText    value="#{addbController.email}" required="true" 
+                                                                    <td><h:inputText    value="#{userBean.email}" required="true" 
                                                                                         requiredMessage="Please enter a address"/></td>
                                                                 </tr>
 
                                                             </table>
-                                                            <h:commandButton action="#{addbController.bysold()}" value="Annonser" styleClass="btn btn-large"/>
+                                                            <p:commandButton action="#{addbBean.BougtItems}"  value="Annonser" styleClass="btn btn-large"/>
                                                         </h:form>
-
+                                                                  
 
                                                     </div>
                                                 </div>
