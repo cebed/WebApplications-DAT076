@@ -14,6 +14,7 @@
             </h:panelGroup>
 
             <ui:define name="content">
+                <f:view locale="#{facesContext.externalContext.requestLocale}">
                 <h:form>
                     <!--   hela sidan          -->
                     <div class="ui-g" style="background-color: white;">
@@ -44,18 +45,18 @@
                                 <!--  rad 1                                                                                -->         
                                 <!--   högra col           -->
                                 <div class="ui-g-6"  style="height:70px;border-color: #13654a;" >                        
-                                    <b:inputText label="FörNamn" labelStyle="width:80px;">
-
-                                    </b:inputText>
-
+                                    <p:outputLabel value = " namn :  "></p:outputLabel>
+                                    <br></br>
+                                     <p:outputLabel value ="#{userBean.username}"></p:outputLabel>
+                                    
                                 </div>
                                 <!--   mellan tom col          -->
                                 <div class="ui-g-1"    > </div>
                                 <!--   väbstra col           -->
                                 <div class="ui-g-5"  style="height:70px;border-color: #13654a;" >                 
-                                    <b:inputText label="EfterNamn" labelStyle="width:80px;">
-
-                                    </b:inputText>
+                                    <p:outputLabel value = " namn :  "></p:outputLabel>
+                                    <br></br>
+                                     <p:outputLabel value ="#{userBean.username}son"></p:outputLabel>
                                 </div>
                                 <!--  tom col mellan rader           -->
                                 <div class="ui-g-12"  style="height: 25px;"> </div>
@@ -101,9 +102,9 @@
                                 <!--  rad 4                                                                                -->         
                                 <!--   högra col           -->
                                 <div class="ui-g-6"  style="height:70px;border-color: #13654a;"   >                 
-                                    <b:inputText label="FörNamn" labelStyle="width:80px;">
-
-                                    </b:inputText>
+                                   <p:outputLabel value = " Email :  "></p:outputLabel>
+                                    <br></br>
+                                    <p:outputLabel value ="#{userBean.email}"></p:outputLabel>
 
                                 </div>
                                 <!--   mellan tom col          -->
@@ -164,7 +165,7 @@
                             <div class="ui-g-10"  style="border: outset; height: 490px; "  > 
                                 <div class="ui-g-12"  align="center" >
                                     <p:outputLabel style="  font-family: serif; font-size: 30px; font-weight: bold; color: #13654a;">
-                                        Din Bestälning
+                                        Din Bestälning 
                                     </p:outputLabel> </div>
                                 <!--  radernea          -->
                                 <div class="ui-g-12"    > 
@@ -191,13 +192,13 @@
                                 <div class="ui-g-12"   > 
 
                                     <div class="ui-g-5"  style="height:70px;border-color: #13654a;"  align="left"> 
-                                        <h:outputText value="#{addbController.selected.title}" title="#{bundle.ViewAddbTitle_title}" class="font-style-view-page"/>
+                                        <h:outputText value="#{addbBean.current}"  class="font-style-view-page"/>
                                     </div> 
                                     <div class="ui-g-2"  style="height:70px;border-color: #13654a;" align="right"  > 
-                                        <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}" class="font-style-view-page"/>
+                                        <h:outputText value="#{addbBean.current.price}" class="font-style-view-page"/>
                                     </div> 
                                     <div class="ui-g-5"  style="height:70px;border-color: #13654a;"  align="right">
-                                        <h:outputText value="#{addbController.selected.price}" title="#{bundle.ViewAddbTitle_price}" class="font-style-view-page"/>
+                                        <h:outputText value="#{addbBean.current.price}" class="font-style-view-page"/>
 
                                     </div> 
 
@@ -246,26 +247,23 @@
                                     </div> 
 
                                     <div class="ui-g-3"     > 
-                                        <h:outputText value="#{addbController.selected.address}" class="font-style-view-page" style="font-size: 14px;"></h:outputText>
+                                        <h:outputText value="#{addbBean.current.address}" class="font-style-view-page" style="font-size: 14px;"></h:outputText>
 
                                     </div> 
                                     <div class="ui-g-3"   > 
-                                        <h:outputText value="#{addbController.selected.other}" class="font-style-view-page" style="font-size: 14px;"></h:outputText>
+                                        <h:outputText value="#{addbBean.current.other}" class="font-style-view-page" style="font-size: 14px;"></h:outputText>
 
 
 
                                     </div> 
                                     <div class="ui-g-2"    > 
 
-                                        <h:outputText value="#{addbController.selected.other2}" class="font-style-view-page" style="font-size: 14px;"></h:outputText>
+                                        <h:outputText value="#{addbBean.current.other2}" class="font-style-view-page" style="font-size: 14px;"></h:outputText>
 
                                     </div> 
 
                                 </div> 
-                                <!--  radernea     
-                                <h:outputText value="#{addbController.selected.address}" class="font-style-view-page" style="font-size: 10px;"></h:outputText>
-                                         <h:outputText value="#{addbController.selected.other}"class="font-style-view-page" style="font-size: 10px;"></h:outputText>
-                                         <h:outputText value="#{addbController.selected.other2}"class="font-style-view-page" style="font-size: 10px;"></h:outputText>-->
+                               
                             </div>   
 
                             <!--  höger vänster spalt          -->
@@ -296,50 +294,8 @@
 
                     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    <br />
-                    <h:commandLink action="#{addbController.destroyAndView}" value="#{bundle.ViewAddbDestroyLink}"/>
-                    <br />
-                    <br />
-                    <h:link outcome="Edit" value="#{bundle.ViewAddbEditLink}"/>
-                    <br />
-                    <h:commandLink action="#{addbController.prepareCreate}" value="#{bundle.ViewAddbCreateLink}" />
-                    <br />
-                    <h:commandLink action="#{addbController.prepareList}" value="#{bundle.ViewAddbShowAllLink}"/>
-                    <br />
-                    <br />
-                    <h:link outcome="/index" value="#{bundle.ViewAddbIndexLink}"/>
-
                 </h:form>
+                    </f:view>
             </ui:define>
         </ui:composition>
     </h:body>
