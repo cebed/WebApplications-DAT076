@@ -111,5 +111,5 @@ public class Rating implements Serializable {
     public String toString() {
         return "com.Hemlagat.model.Rating[ chef=" + chef + " ]";
     }
-    
+
 }

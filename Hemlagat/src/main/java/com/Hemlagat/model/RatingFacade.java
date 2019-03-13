@@ -39,12 +39,11 @@ public class RatingFacade extends AbstractFacade<Rating> {
         for (Rating rate : getAllRatings) {
             System.out.println("Here comes the comments: " + rate.getComment());
             if (rate.getChef().equals(chef)) {
-               
+
                 OnlyWanteAdd.add(rate);
             }
         }
 
-      
         return OnlyWanteAdd;
     }
 }

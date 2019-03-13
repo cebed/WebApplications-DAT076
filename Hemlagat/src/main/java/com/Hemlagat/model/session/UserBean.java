@@ -14,20 +14,17 @@ import lombok.Data;
  *
  * @author Daniel Cebe
  */
-
 @Data
 @Named
 @SessionScoped
 public class UserBean implements Serializable {
-    
+
     private String email;
     private String username;
-    
-    
-    public boolean isLoggedIn(){
-        return username!=null;
-        
+
+    public boolean isLoggedIn() {
+        return username != null;
+
     }
-    
-    
+
 }

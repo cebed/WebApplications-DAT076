@@ -5,56 +5,56 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-     <h:body>
-     <ui:composition template="/addb/Templetes/Templete.xhtml">
-       
-        
+    <h:body>
+        <ui:composition template="/addb/Templetes/Templete.xhtml">
+
+
             <ui:define name="content">
-            <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditAddbLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{addbController.selected.id}" title="#{bundle.EditAddbTitle_id}" required="true" requiredMessage="#{bundle.EditAddbRequiredMessage_id}"/>
-                    <h:outputLabel value="#{bundle.EditAddbLabel_title}" for="title" />
-                    <h:inputText id="title" value="#{addbController.selected.title}" title="#{bundle.EditAddbTitle_title}" />
-                    <h:outputLabel value="#{bundle.EditAddbLabel_price}" for="price" />
-                    <h:inputText id="price" value="#{addbController.selected.price}" title="#{bundle.EditAddbTitle_price}" />
-                    <h:outputLabel value="#{bundle.EditAddbLabel_description}" for="description" />
-                    <h:inputText id="description" value="#{addbController.selected.description}" title="#{bundle.EditAddbTitle_description}" />
-                    <h:outputLabel value="#{bundle.EditAddbLabel_quantity}" for="quantity" />
-                    <h:inputText id="quantity" value="#{addbController.selected.quantity}" title="#{bundle.EditAddbTitle_quantity}" />
-                    <h:outputLabel value="#{bundle.EditAddbLabel_weight}" for="weight" />
-                    <h:inputText id="weight" value="#{addbController.selected.weight}" title="#{bundle.EditAddbTitle_weight}" />
-                    <h:outputLabel value="#{bundle.EditAddbLabel_vegetarian}" for="vegetarian" />
-                    <h:inputText id="vegetarian" value="#{addbController.selected.vegetarian}" title="#{bundle.EditAddbTitle_vegetarian}" />
-                    <h:outputLabel value="#{bundle.EditAddbLabel_nuts}" for="nuts" />
-                    <h:inputText id="nuts" value="#{addbController.selected.nuts}" title="#{bundle.EditAddbTitle_nuts}" />
-                    <h:outputLabel value="#{bundle.EditAddbLabel_lactose}" for="lactose" />
-                    <h:inputText id="lactose" value="#{addbController.selected.lactose}" title="#{bundle.EditAddbTitle_lactose}" />
-                    <h:outputLabel value="#{bundle.EditAddbLabel_gluten}" for="gluten" />
-                    <h:inputText id="gluten" value="#{addbController.selected.gluten}" title="#{bundle.EditAddbTitle_gluten}" />
-                    <h:outputLabel value="#{bundle.EditAddbLabel_address}" for="address" />
-                    <h:inputText id="address" value="#{addbController.selected.address}" title="#{bundle.EditAddbTitle_address}" />
-                    <h:outputLabel value="#{bundle.EditAddbLabel_other}" for="other" />
-                    <h:inputText id="other" value="#{addbController.selected.other}" title="#{bundle.EditAddbTitle_other}" />
-                    <h:outputLabel value="#{bundle.EditAddbLabel_other2}" for="other2" />
-                    <h:inputText id="other2" value="#{addbController.selected.other2}" title="#{bundle.EditAddbTitle_other2}" />
-                    <h:outputLabel value="användare_email" for="other2" />
-                    <h:inputText id="other2" value="#{addbController.selected.userid}" title="#{bundle.EditAddbTitle_other2}" />
-                </h:panelGrid>
-                <h:commandLink action="#{addbController.update}" value="#{bundle.EditAddbSaveLink}"/>
-                <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditAddbViewLink}"/>
-                <br />
-                <h:commandLink action="#{addbController.prepareList}" value="#{bundle.EditAddbShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditAddbIndexLink}" />
-            </h:form>
-        </ui:define>
-    </ui:composition>
-     </h:body>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.EditAddbLabel_id}" for="id" />
+                        <h:inputText id="id" value="#{addbController.selected.id}" title="#{bundle.EditAddbTitle_id}" required="true" requiredMessage="#{bundle.EditAddbRequiredMessage_id}"/>
+                        <h:outputLabel value="#{bundle.EditAddbLabel_title}" for="title" />
+                        <h:inputText id="title" value="#{addbController.selected.title}" title="#{bundle.EditAddbTitle_title}" />
+                        <h:outputLabel value="#{bundle.EditAddbLabel_price}" for="price" />
+                        <h:inputText id="price" value="#{addbController.selected.price}" title="#{bundle.EditAddbTitle_price}" />
+                        <h:outputLabel value="#{bundle.EditAddbLabel_description}" for="description" />
+                        <h:inputText id="description" value="#{addbController.selected.description}" title="#{bundle.EditAddbTitle_description}" />
+                        <h:outputLabel value="#{bundle.EditAddbLabel_quantity}" for="quantity" />
+                        <h:inputText id="quantity" value="#{addbController.selected.quantity}" title="#{bundle.EditAddbTitle_quantity}" />
+                        <h:outputLabel value="#{bundle.EditAddbLabel_weight}" for="weight" />
+                        <h:inputText id="weight" value="#{addbController.selected.weight}" title="#{bundle.EditAddbTitle_weight}" />
+                        <h:outputLabel value="#{bundle.EditAddbLabel_vegetarian}" for="vegetarian" />
+                        <h:inputText id="vegetarian" value="#{addbController.selected.vegetarian}" title="#{bundle.EditAddbTitle_vegetarian}" />
+                        <h:outputLabel value="#{bundle.EditAddbLabel_nuts}" for="nuts" />
+                        <h:inputText id="nuts" value="#{addbController.selected.nuts}" title="#{bundle.EditAddbTitle_nuts}" />
+                        <h:outputLabel value="#{bundle.EditAddbLabel_lactose}" for="lactose" />
+                        <h:inputText id="lactose" value="#{addbController.selected.lactose}" title="#{bundle.EditAddbTitle_lactose}" />
+                        <h:outputLabel value="#{bundle.EditAddbLabel_gluten}" for="gluten" />
+                        <h:inputText id="gluten" value="#{addbController.selected.gluten}" title="#{bundle.EditAddbTitle_gluten}" />
+                        <h:outputLabel value="#{bundle.EditAddbLabel_address}" for="address" />
+                        <h:inputText id="address" value="#{addbController.selected.address}" title="#{bundle.EditAddbTitle_address}" />
+                        <h:outputLabel value="#{bundle.EditAddbLabel_other}" for="other" />
+                        <h:inputText id="other" value="#{addbController.selected.other}" title="#{bundle.EditAddbTitle_other}" />
+                        <h:outputLabel value="#{bundle.EditAddbLabel_other2}" for="other2" />
+                        <h:inputText id="other2" value="#{addbController.selected.other2}" title="#{bundle.EditAddbTitle_other2}" />
+                        <h:outputLabel value="användare_email" for="other2" />
+                        <h:inputText id="other2" value="#{addbController.selected.userid}" title="#{bundle.EditAddbTitle_other2}" />
+                    </h:panelGrid>
+                    <h:commandLink action="#{addbController.update}" value="#{bundle.EditAddbSaveLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="View" value="#{bundle.EditAddbViewLink}"/>
+                    <br />
+                    <h:commandLink action="#{addbController.prepareList}" value="#{bundle.EditAddbShowAllLink}" immediate="true"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.EditAddbIndexLink}" />
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>

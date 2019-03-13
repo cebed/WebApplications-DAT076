@@ -11,16 +11,16 @@
     <h:body>
         Hello from Facelets
         <h:form>
-                        <table>
-                            <tr>
-                                <td>Stad</td>
-                                <td><h:inputText value="#{addbController.email}" required="true" 
-                                                 requiredMessage="Please enter a address"/></td>
-                            </tr>
+            <table>
+                <tr>
+                    <td>Stad</td>
+                    <td><h:inputText value="#{addbController.email}" required="true" 
+                                     requiredMessage="Please enter a address"/></td>
+                </tr>
 
-                        </table>
+            </table>
             <h:commandButton action="#{addbController.byEmail()}" value="Annonser" styleClass="btn btn-large"/>
-                    </h:form>
+        </h:form>
     </h:body>
 
 

@@ -38,7 +38,6 @@ public class LoginController implements Serializable {
     @Setter
     private String password;
 
-    
     @Inject
     private UserdbFacade userRegistry;
 
@@ -67,7 +66,7 @@ public class LoginController implements Serializable {
         }
     }
 
-    public void showLoginMessage(){
+    public void showLoginMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Logged in as " + userBean.getUsername()));
     }

@@ -14,7 +14,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 /*! cash-dom 1.3.5, https://github.com/kenwheeler/cash @license MIT */
 (function (factory) {
 window.cash = factory();
-        })(function () {
+})(function () {
 var doc = document,
         win = window,
         ArrayProto = Array.prototype,
@@ -55,20 +55,20 @@ var frag;
 function onReady(fn) {
 if (doc.readyState !== "loading") {
 fn();
-} else {
+        } else {
 doc.addEventListener("DOMContentLoaded", fn);
-}
+        }
 }
 
 function Init(selector, context) {
 if (!selector) {
 return this;
-}
+        }
 
 // If already a cash collection, don't do any further processing
 if (selector.cash && selector !== win) {
 return selector;
-}
+        }
 
 var elems = selector,
         i = 0,
@@ -82,32 +82,32 @@ elems = idMatch.test(selector) ?
         // else use `find`
         find(selector, context);
         // If function, use as shortcut for DOM ready
-} else if (isFunction(selector)) {
+        } else if (isFunction(selector)) {
 onReady(selector); return this;
-}
+        }
 
 if (!elems) {
 return this;
-}
+        }
 
 // If a single DOM element is passed in or received via ID, return the single element
 if (elems.nodeType || elems === win) {
 this[0] = elems;
         this.length = 1;
-} else {
+        } else {
 // Treat like an array and loop through each item.
 length = this.length = elems.length;
         for (; i < length; i++) {
 this[i] = elems[i];
-}
+        }
 }
 
 return this;
-}
+        }
 
 function cash(selector, context) {
 return new Init(selector, context);
-}
+        }
 
 var fn = cash.fn = cash.prototype = Init.prototype = { // jshint ignore:line
 cash: true,
@@ -116,7 +116,7 @@ cash: true,
         splice: ArrayProto.splice,
         map: ArrayProto.map,
         init: Init
-};
+        };
         Object.defineProperty(fn, "constructor", { value: cash });
         cash.parseHTML = parseHTML;
         cash.noop = noop;
@@ -158,7 +158,7 @@ cash: true,
 function matches(el, selector) {
 var m = el && (el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector || el.oMatchesSelector);
         return !!m && m.call(el, selector);
-}
+        }
 
 function getCompareFunction(selector) {
 return (
@@ -178,8 +178,8 @@ return (
 function unique(collection) {
 return cash(slice.call(collection).filter(function (item, index, self) {
 return self.indexOf(item) === index;
-}));
-}
+        }));
+        }
 
 cash.extend({
 merge: function (first, second) {
@@ -188,11 +188,11 @@ var len = + second.length,
         j = 0;
         for (; j < len; i++, j++) {
 first[i] = second[j];
-}
+        }
 
 first.length = i;
         return first;
-},
+        },
         each: each,
         matches: matches,
         unique: unique,
@@ -209,25 +209,25 @@ first.length = i;
 
 function setData(node, key, value) {
 return getDataCache(node)[key] = value;
-}
+        }
 
 function getData(node, key) {
 var c = getDataCache(node);
         if (c[key] === undefined) {
 c[key] = node.dataset ? node.dataset[key] : cash(node).attr("data-" + key);
-}
+        }
 return c[key];
-}
+        }
 
 function removeData(node, key) {
 var c = getDataCache(node);
         if (c) {
 delete c[key];
-} else if (node.dataset) {
+        } else if (node.dataset) {
 delete node.dataset[key];
-} else {
+        } else {
 cash(node).removeAttr("data-" + name);
-}
+        }
 }
 
 fn.extend({
@@ -235,15 +235,15 @@ data: function (name, value) {
 if (isString(name)) {
 return value === undefined ? getData(this[0], name) : this.each(function (v) {
 return setData(v, name, value);
-});
-}
+        });
+        }
 
 for (var key in name) {
 this.data(key, name[key]);
-}
+        }
 
 return this;
-},
+        },
         removeData: function (key) {
         return this.each(function (v) {
         return removeData(v, key);
@@ -258,22 +258,22 @@ return this;
 
 function hasClass(v, c) {
 return v.classList ? v.classList.contains(c) : new RegExp("(^| )" + c + "( |$)", "gi").test(v.className);
-}
+        }
 
 function addClass(v, c, spacedName) {
 if (v.classList) {
 v.classList.add(c);
-} else if (spacedName.indexOf(" " + c + " ")) {
+        } else if (spacedName.indexOf(" " + c + " ")) {
 v.className += " " + c;
-}
+        }
 }
 
 function removeClass(v, c) {
 if (v.classList) {
 v.classList.remove(c);
-} else {
+        } else {
 v.className = v.className.replace(c, "");
-}
+        }
 }
 
 fn.extend({
@@ -285,7 +285,7 @@ var classes = getClasses(c);
                 addClass(v, c, spacedName);
                 });
         }) : this;
-},
+        },
         attr: function (name, value) {
         if (!name) {
         return undefined;
@@ -475,14 +475,14 @@ each(["Width", "Height"], function (v) {
 var lower = v.toLowerCase();
         fn[lower] = function () {
 return this[0].getBoundingClientRect()[lower];
-};
+        };
         fn["inner" + v] = function () {
 return this[0]["client" + v];
-};
+        };
         fn["outer" + v] = function (margins) {
 return this[0]["offset" + v] + (margins ? compute(this, "margin" + (v === "Width" ? "Left" : "Top")) + compute(this, "margin" + (v === "Width" ? "Right" : "Bottom")) : 0);
-};
-});
+        };
+        });
         function registerEvent(node, eventName, callback) {
         var eventCache = getData(node, "_cashEvents") || setData(node, "_cashEvents", {});
                 eventCache[eventName] = eventCache[eventName] || [];
@@ -496,28 +496,28 @@ var events = getData(node, "_cashEvents"),
         index;
         if (!eventCache) {
 return;
-}
+        }
 
 if (callback) {
 node.removeEventListener(eventName, callback);
         index = eventCache.indexOf(callback);
         if (index >= 0) {
 eventCache.splice(index, 1);
-}
+        }
 } else {
 each(eventCache, function (event) {
 node.removeEventListener(eventName, event);
-});
+        });
         eventCache = [];
-}
+        }
 }
 
 fn.extend({
 off: function (eventName, callback) {
 return this.each(function (v) {
 return removeEvent(v, eventName, callback);
-});
-},
+        });
+        },
         on: function (eventName, delegate, callback, runOnce) {
         // jshint ignore:line
         var originalCallback;
@@ -601,18 +601,18 @@ var values = [];
         }
         });
         return values.length ? values : null;
-}
+        }
 
 function getSelectSingle_(el) {
 var selectedIndex = el.selectedIndex;
         return selectedIndex >= 0 ? el.options[selectedIndex].value : null;
-}
+        }
 
 function getValue(el) {
 var type = el.type;
         if (!type) {
 return null;
-}
+        }
 switch (type.toLowerCase()) {
 case "select-one":
         return getSelectSingle_(el);
@@ -624,7 +624,7 @@ case "select-one":
         return el.checked ? el.value : null;
         default:
         return el.value ? el.value : null;
-}
+        }
 }
 
 fn.extend({
@@ -657,7 +657,7 @@ var query = "";
         }
         });
         return query.substr(1);
-},
+        },
         val: function (value) {
         if (value === undefined) {
         return getValue(this[0]);
@@ -683,22 +683,22 @@ var str = isString(child);
         if (!str && child.length) {
 each(child, function (v) {
 return insertContent(parent, v, prepend);
-});
+        });
         return;
-}
+        }
 
 each(parent, str ? function (v) {
 return v.insertAdjacentHTML(prepend ? "afterbegin" : "beforeend", child);
-} : function (v, i) {
+        } : function (v, i) {
 return insertElement(v, i === 0 ? child : child.cloneNode(true), prepend);
-});
-}
+        });
+        }
 
 fn.extend({
 after: function (selector) {
 cash(selector).insertAfter(this);
         return this;
-},
+        },
         append: function (content) {
         insertContent(this, content);
                 return this;
@@ -897,7 +897,7 @@ cash(selector).insertAfter(this);
 
         });
         return cash;
-        });
+});
         ;
         var Component = function () {
         /**
@@ -949,7 +949,7 @@ cash(selector).insertAfter(this);
                 }
         }]);
                 return Component;
-                }();
+        }();
         ; // Required for Meteor package, the use of window prevents export by Meteor
         (function (window) {
         if (window.Package) {
@@ -960,19 +960,19 @@ cash(selector).insertAfter(this);
 
         // Check for jQuery
         M.jQueryLoaded = !!window.jQuery;
-                })(window);
+        })(window);
 // AMD
         if (typeof define === 'function' && define.amd) {
 define('M', [], function () {
 return M;
-});
+        });
         // Common JS
-        } else if (typeof exports !== 'undefined' && !exports.nodeType) {
+} else if (typeof exports !== 'undefined' && !exports.nodeType) {
 if (typeof module !== 'undefined' && !module.nodeType && module.exports) {
 exports = module.exports = M;
-}
-exports.default = M;
         }
+exports.default = M;
+}
 
 M.version = '1.0.0';
         M.keys = {
@@ -981,7 +981,7 @@ M.version = '1.0.0';
                 ESC: 27,
                 ARROW_UP: 38,
                 ARROW_DOWN: 40
-                };
+        };
         /**
          * TabPress Keydown handler
          */
@@ -1006,7 +1006,7 @@ M.version = '1.0.0';
         };
         var docHandleBlur = function (e) {
         document.body.classList.remove('keyboard-focused');
-                };
+        };
         document.addEventListener('keydown', docHandleKeydown, true);
         document.addEventListener('keyup', docHandleKeyup, true);
         document.addEventListener('focus', docHandleFocus, true);
@@ -1042,7 +1042,7 @@ M.version = '1.0.0';
         // Return error if an unrecognized  method name is passed in
         jQuery.error("Method " + methodOrOptions + " does not exist on jQuery." + pluginName);
         };
-                };
+        };
         /**
          * Automatically initialize components
          * @param {Element} context  DOM Element to search within for components
@@ -1085,7 +1085,7 @@ M.version = '1.0.0';
                 var idStr = obj.attr('id') || '';
                 var classStr = obj.attr('class') || '';
                 return (tagStr + idStr + classStr).replace(/\s/g, '');
-                };
+        };
 // Unique Random ID
         M.guid = function () {
         function s4() {
@@ -1094,7 +1094,7 @@ M.version = '1.0.0';
         return function () {
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
         };
-                }();
+        }();
         /**
          * Escapes hash from special characters
          * @param {string} hash  String returned from this.hash
@@ -1102,7 +1102,7 @@ M.version = '1.0.0';
          */
         M.escapeHash = function (hash) {
         return hash.replace(/(:|\.|\[|\]|,|=|\/)/g, '\\$1');
-                };
+        };
         M.elementOrParentIsFixed = function (element) {
         var $element = $(element);
                 var $checkElements = $element.add($element.parents());
@@ -1114,7 +1114,7 @@ M.version = '1.0.0';
                 }
                 });
                 return isFixed;
-                };
+        };
         /**
          * @typedef {Object} Edges
          * @property {Boolean} top  If the top edge was exceeded
@@ -1170,7 +1170,7 @@ M.version = '1.0.0';
         }
 
         return edges;
-                };
+        };
         M.checkPossibleAlignments = function (el, container, bounding, offset) {
         var canAlign = {
         top: true,
@@ -1217,7 +1217,7 @@ M.version = '1.0.0';
         }
 
         return canAlign;
-                };
+        };
         M.getOverflowParent = function (element) {
         if (element == null) {
         return null;
@@ -1228,7 +1228,7 @@ M.version = '1.0.0';
         }
 
         return M.getOverflowParent(element.parentElement);
-                };
+        };
         /**
          * Gets id of component from a trigger
          * @param {Element} trigger  trigger
@@ -1245,21 +1245,21 @@ M.version = '1.0.0';
         }
         }
         return id;
-                };
+        };
         /**
          * Multi browser support for document scroll top
          * @returns {Number}
          */
         M.getDocumentScrollTop = function () {
         return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-                };
+        };
         /**
          * Multi browser support for document scroll left
          * @returns {Number}
          */
         M.getDocumentScrollLeft = function () {
         return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
-                };
+        };
         /**
          * @typedef {Object} Edges
          * @property {Boolean} top  If the top edge was exceeded
@@ -1284,7 +1284,7 @@ M.version = '1.0.0';
          */
         var getTime = Date.now || function () {
         return new Date().getTime();
-                };
+        };
         /**
          * Returns a function, that, when invoked, will only be triggered at most once
          * during a given window of time. Normally, the throttled function will run
@@ -1327,7 +1327,7 @@ M.version = '1.0.0';
                 }
                 return result;
                 };
-                };
+        };
         ; /*
          v2.2.0
          2017 Julian Garnier
@@ -1335,28 +1335,28 @@ M.version = '1.0.0';
          */
         var $jscomp = { scope: {} }; $jscomp.defineProperty = "function" == typeof Object.defineProperties ? Object.defineProperty : function (e, r, p) {
 if (p.get || p.set) throw new TypeError("ES3 does not support getters and setters."); e != Array.prototype && e != Object.prototype && (e[r] = p.value);
-        }; $jscomp.getGlobal = function (e) {
+}; $jscomp.getGlobal = function (e) {
 return "undefined" != typeof window && window === e ? e : "undefined" != typeof global && null != global ? global : e;
-        }; $jscomp.global = $jscomp.getGlobal(this); $jscomp.SYMBOL_PREFIX = "jscomp_symbol_";
+}; $jscomp.global = $jscomp.getGlobal(this); $jscomp.SYMBOL_PREFIX = "jscomp_symbol_";
         $jscomp.initSymbol = function () {
         $jscomp.initSymbol = function () {}; $jscomp.global.Symbol || ($jscomp.global.Symbol = $jscomp.Symbol);
-                }; $jscomp.symbolCounter_ = 0; $jscomp.Symbol = function (e) {
+        }; $jscomp.symbolCounter_ = 0; $jscomp.Symbol = function (e) {
 return $jscomp.SYMBOL_PREFIX + (e || "") + $jscomp.symbolCounter_++;
-        };
+};
         $jscomp.initSymbolIterator = function () {
         $jscomp.initSymbol(); var e = $jscomp.global.Symbol.iterator; e || (e = $jscomp.global.Symbol.iterator = $jscomp.global.Symbol("iterator")); "function" != typeof Array.prototype[e] && $jscomp.defineProperty(Array.prototype, e, { configurable: !0, writable: !0, value: function () {
         return $jscomp.arrayIterator(this);
         } }); $jscomp.initSymbolIterator = function () {};
-                }; $jscomp.arrayIterator = function (e) {
+        }; $jscomp.arrayIterator = function (e) {
 var r = 0; return $jscomp.iteratorPrototype(function () {
 return r < e.length ? { done: !1, value: e[r++] } : { done: !0 };
-});
-        };
+        });
+};
         $jscomp.iteratorPrototype = function (e) {
         $jscomp.initSymbolIterator(); e = { next: e }; e[$jscomp.global.Symbol.iterator] = function () {
         return this;
         }; return e;
-                }; $jscomp.array = $jscomp.array || {}; $jscomp.iteratorFromArray = function (e, r) {
+        }; $jscomp.array = $jscomp.array || {}; $jscomp.iteratorFromArray = function (e, r) {
 $jscomp.initSymbolIterator(); e instanceof String && (e += ""); var p = 0,
         m = { next: function () {
         if (p < e.length) {
@@ -1366,8 +1366,8 @@ $jscomp.initSymbolIterator(); e instanceof String && (e += ""); var p = 0,
         }; return m.next();
         } }; m[Symbol.iterator] = function () {
 return m;
-}; return m;
-        };
+        }; return m;
+};
         $jscomp.polyfill = function (e, r, p, m) {
         if (r) {
         p = $jscomp.global; e = e.split("."); for (m = 0; m < e.length - 1; m++) {
@@ -1378,99 +1378,99 @@ return m;
 return e ? e : function () {
 return $jscomp.iteratorFromArray(this, function (e) {
 return e;
-});
-};
-        }, "es6-impl", "es3"); var $jscomp$this = this;
+        });
+        };
+}, "es6-impl", "es3"); var $jscomp$this = this;
         (function (r) {
         M.anime = r();
-                })(function () {
+        })(function () {
 function e(a) {
 if (!h.col(a)) try {
 return document.querySelectorAll(a);
-} catch (c) {}
+        } catch (c) {}
 }function r(a, c) {
 for (var d = a.length, b = 2 <= arguments.length ? arguments[1] : void 0, f = [], n = 0; n < d; n++) {
 if (n in a) {
 var k = a[n]; c.call(b, k, n, a) && f.push(k);
-}
+        }
 }return f;
-}function p(a) {
+        }function p(a) {
 return a.reduce(function (a, d) {
 return a.concat(h.arr(d) ? p(d) : d);
-}, []);
-}function m(a) {
+        }, []);
+        }function m(a) {
 if (h.arr(a)) return a;
         h.str(a) && (a = e(a) || a); return a instanceof NodeList || a instanceof HTMLCollection ? [].slice.call(a) : [a];
-}function u(a, c) {
+        }function u(a, c) {
 return a.some(function (a) {
 return a === c;
-});
-}function C(a) {
+        });
+        }function C(a) {
 var c = {},
         d; for (d in a) {
 c[d] = a[d];
-}return c;
-}function D(a, c) {
+        }return c;
+        }function D(a, c) {
 var d = C(a),
         b; for (b in a) {
 d[b] = c.hasOwnProperty(b) ? c[b] : a[b];
-}return d;
-}function z(a, c) {
+        }return d;
+        }function z(a, c) {
 var d = C(a),
         b; for (b in c) {
 d[b] = h.und(a[b]) ? c[b] : a[b];
-}return d;
-}function T(a) {
+        }return d;
+        }function T(a) {
 a = a.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, function (a, c, d, k) {
 return c + c + d + d + k + k;
-}); var c = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(a);
+        }); var c = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(a);
         a = parseInt(c[1], 16); var d = parseInt(c[2], 16),
         c = parseInt(c[3], 16); return "rgba(" + a + "," + d + "," + c + ",1)";
-}function U(a) {
+        }function U(a) {
 function c(a, c, b) {
 0 > b && (b += 1); 1 < b && --b; return b < 1 / 6 ? a + 6 * (c - a) * b : .5 > b ? c : b < 2 / 3 ? a + (c - a) * (2 / 3 - b) * 6 : a;
-}var d = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g.exec(a) || /hsla\((\d+),\s*([\d.]+)%,\s*([\d.]+)%,\s*([\d.]+)\)/g.exec(a); a = parseInt(d[1]) / 360; var b = parseInt(d[2]) / 100,
+        }var d = /hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)/g.exec(a) || /hsla\((\d+),\s*([\d.]+)%,\s*([\d.]+)%,\s*([\d.]+)\)/g.exec(a); a = parseInt(d[1]) / 360; var b = parseInt(d[2]) / 100,
         f = parseInt(d[3]) / 100,
-        d = d[4] || 1; if (0 == b) f = b = a = f;  else {
+        d = d[4] || 1; if (0 == b) f = b = a = f; else {
 var n = .5 > f ? f * (1 + b) : f + b - f * b,
         k = 2 * f - n,
         f = c(k, n, a + 1 / 3),
         b = c(k, n, a); a = c(k, n, a - 1 / 3);
-}return "rgba(" + 255 * f + "," + 255 * b + "," + 255 * a + "," + d + ")";
-}function y(a) {
+        }return "rgba(" + 255 * f + "," + 255 * b + "," + 255 * a + "," + d + ")";
+        }function y(a) {
 if (a = /([\+\-]?[0-9#\.]+)(%|px|pt|em|rem|in|cm|mm|ex|ch|pc|vw|vh|vmin|vmax|deg|rad|turn)?$/.exec(a)) return a[2];
-}function V(a) {
+        }function V(a) {
 if ( - 1 < a.indexOf("translate") || "perspective" === a) return "px"; if ( - 1 < a.indexOf("rotate") || - 1 < a.indexOf("skew")) return "deg";
-}function I(a, c) {
+        }function I(a, c) {
 return h.fnc(a) ? a(c.target, c.id, c.total) : a;
-}function E(a, c) {
+        }function E(a, c) {
 if (c in a.style) return getComputedStyle(a).getPropertyValue(c.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase()) || "0";
-}function J(a, c) {
+        }function J(a, c) {
 if (h.dom(a) && u(W, c)) return "transform"; if (h.dom(a) && (a.getAttribute(c) || h.svg(a) && a[c])) return "attribute"; if (h.dom(a) && "transform" !== c && E(a, c)) return "css"; if (null != a[c]) return "object";
-}function X(a, c) {
+        }function X(a, c) {
 var d = V(c),
         d = - 1 < c.indexOf("scale") ? 1 : 0 + d; a = a.style.transform; if (!a) return d; for (var b = [], f = [], n = [], k = /(\w+)\((.+?)\)/g; b = k.exec(a); ) {
 f.push(b[1]), n.push(b[2]);
-}a = r(n, function (a, b) {
+        }a = r(n, function (a, b) {
 return f[b] === c;
-}); return a.length ? a[0] : d;
-}function K(a, c) {
+        }); return a.length ? a[0] : d;
+        }function K(a, c) {
 switch (J(a, c)) {case "transform":
         return X(a, c); case "css":
         return E(a, c); case "attribute":
         return a.getAttribute(c); }return a[c] || 0;
-}function L(a, c) {
+        }function L(a, c) {
 var d = /^(\*=|\+=|-=)/.exec(a); if (!d) return a; var b = y(a) || 0; c = parseFloat(c); a = parseFloat(a.replace(d[0], "")); switch (d[0][0]) {case "+":
         return c + a + b; case "-":
         return c - a + b; case "*":
         return c * a + b; }
 }function F(a, c) {
 return Math.sqrt(Math.pow(c.x - a.x, 2) + Math.pow(c.y - a.y, 2));
-}function M(a) {
+        }function M(a) {
 a = a.points; for (var c = 0, d, b = 0; b < a.numberOfItems; b++) {
 var f = a.getItem(b); 0 < b && (c += F(d, f)); d = f;
-}return c;
-}function N(a) {
+        }return c;
+        }function N(a) {
 if (a.getTotalLength) return a.getTotalLength(); switch (a.tagName.toLowerCase()) {case "circle":
         return 2 * Math.PI * a.getAttribute("r"); case "rect":
         return 2 * a.getAttribute("width") + 2 * a.getAttribute("height"); case "line":
@@ -1480,7 +1480,7 @@ if (a.getTotalLength) return a.getTotalLength(); switch (a.tagName.toLowerCase()
 }function Y(a, c) {
 function d(b) {
 b = void 0 === b ? 0 : b; return a.el.getPointAtLength(1 <= c + b ? c + b : 0);
-}var b = d(),
+        }var b = d(),
         f = d( - 1),
         n = d(1); switch (a.property) {case "x":
         return b.x; case "y":
@@ -1492,34 +1492,34 @@ var d = /-?\d*\.?\d+/g,
         b; b = h.pth(a) ? a.totalLength : a; if (h.col(b)) {
 if (h.rgb(b)) {
 var f = /rgb\((\d+,\s*[\d]+,\s*[\d]+)\)/g.exec(b); b = f ? "rgba(" + f[1] + ",1)" : b;
-} else b = h.hex(b) ? T(b) : h.hsl(b) ? U(b) : void 0;
-} else f = (f = y(b)) ? b.substr(0, b.length - f.length) : b, b = c && !/\s/g.test(b) ? f + c : f; b += ""; return { original: b, numbers: b.match(d) ? b.match(d).map(Number) : [0], strings: h.str(a) || c ? b.split(d) : [] };
-}function P(a) {
+        } else b = h.hex(b) ? T(b) : h.hsl(b) ? U(b) : void 0;
+        } else f = (f = y(b)) ? b.substr(0, b.length - f.length) : b, b = c && !/\s/g.test(b) ? f + c : f; b += ""; return { original: b, numbers: b.match(d) ? b.match(d).map(Number) : [0], strings: h.str(a) || c ? b.split(d) : [] };
+        }function P(a) {
 a = a ? p(h.arr(a) ? a.map(m) : m(a)) : []; return r(a, function (a, d, b) {
 return b.indexOf(a) === d;
-});
-}function Z(a) {
+        });
+        }function Z(a) {
 var c = P(a); return c.map(function (a, b) {
 return { target: a, id: b, total: c.length };
-});
-}function aa(a, c) {
+        });
+        }function aa(a, c) {
 var d = C(c); if (h.arr(a)) {
 var b = a.length; 2 !== b || h.obj(a[0]) ? h.fnc(c.duration) || (d.duration = c.duration / b) : a = { value: a };
-}return m(a).map(function (a, b) {
+        }return m(a).map(function (a, b) {
 b = b ? 0 : c.delay; a = h.obj(a) && !h.pth(a) ? a : { value: a }; h.und(a.delay) && (a.delay = b); return a;
-}).map(function (a) {
+        }).map(function (a) {
 return z(a, d);
-});
-}function ba(a, c) {
+        });
+        }function ba(a, c) {
 var d = {},
         b; for (b in a) {
 var f = I(a[b], c); h.arr(f) && (f = f.map(function (a) {
 return I(a, c);
-}), 1 === f.length && (f = f[0])); d[b] = f;
-}d.duration = parseFloat(d.duration); d.delay = parseFloat(d.delay); return d;
-}function ca(a) {
+        }), 1 === f.length && (f = f[0])); d[b] = f;
+        }d.duration = parseFloat(d.duration); d.delay = parseFloat(d.delay); return d;
+        }function ca(a) {
 return h.arr(a) ? A.apply(this, a) : Q[a];
-}function da(a, c) {
+        }function da(a, c) {
 var d; return a.tweens.map(function (b) {
 b = ba(b, c); var f = b.value,
         e = K(c.target, a.name),
@@ -1527,22 +1527,22 @@ b = ba(b, c); var f = b.value,
         k = h.arr(f) ? f[0] : k,
         w = L(h.arr(f) ? f[1] : f, k),
         e = y(w) || y(k) || y(e); b.from = O(k, e); b.to = O(w, e); b.start = d ? d.end : a.offset; b.end = b.start + b.delay + b.duration; b.easing = ca(b.easing); b.elasticity = (1E3 - Math.min(Math.max(b.elasticity, 1), 999)) / 1E3; b.isPath = h.pth(f); b.isColor = h.col(b.from.original); b.isColor && (b.round = 1); return d = b;
-});
-}function ea(a, c) {
+        });
+        }function ea(a, c) {
 return r(p(a.map(function (a) {
 return c.map(function (b) {
 var c = J(a.target, b.name); if (c) {
 var d = da(b, a); b = { type: c, property: b.name, animatable: a, tweens: d, duration: d[d.length - 1].end, delay: d[0].delay };
-} else b = void 0; return b;
-});
-})), function (a) {
+        } else b = void 0; return b;
+        });
+        })), function (a) {
 return !h.und(a);
-});
-}function R(a, c, d, b) {
+        });
+        }function R(a, c, d, b) {
 var f = "delay" === a; return c.length ? (f ? Math.min : Math.max).apply(Math, c.map(function (b) {
 return b[a];
-})) : f ? b.delay : d.offset + b.delay + b.duration;
-}function fa(a) {
+        })) : f ? b.delay : d.offset + b.delay + b.duration;
+        }function fa(a) {
 var c = D(ga, a),
         d = D(S, a),
         b = Z(a.targets),
@@ -1550,15 +1550,15 @@ var c = D(ga, a),
         e = z(c, d),
         k; for (k in a) {
 e.hasOwnProperty(k) || "targets" === k || f.push({ name: k, offset: e.offset, tweens: aa(a[k], d) });
-}a = ea(b, f); return z(c, { children: [], animatables: b, animations: a, duration: R("duration", a, c, d), delay: R("delay", a, c, d) });
-}function q(a) {
+        }a = ea(b, f); return z(c, { children: [], animatables: b, animations: a, duration: R("duration", a, c, d), delay: R("delay", a, c, d) });
+        }function q(a) {
 function c() {
 return window.Promise && new Promise(function (a) {
 return p = a;
-});
-}function d(a) {
+        });
+        }function d(a) {
 return g.reversed ? g.duration - a : a;
-}function b(a) {
+        }function b(a) {
 for (var b = 0, c = {}, d = g.animations, f = d.length; b < f; ) {
 var e = d[b],
         k = e.animatable,
@@ -1566,22 +1566,22 @@ var e = d[b],
         n = h.length - 1,
         l = h[n]; n && (l = r(h, function (b) {
 return a < b.end;
-})[0] || l); for (var h = Math.min(Math.max(a - l.start - l.delay, 0), l.duration) / l.duration, w = isNaN(h) ? 1 : l.easing(h, l.elasticity), h = l.to.strings, p = l.round, n = [], m = void 0, m = l.to.numbers.length, t = 0; t < m; t++) {
+        })[0] || l); for (var h = Math.min(Math.max(a - l.start - l.delay, 0), l.duration) / l.duration, w = isNaN(h) ? 1 : l.easing(h, l.elasticity), h = l.to.strings, p = l.round, n = [], m = void 0, m = l.to.numbers.length, t = 0; t < m; t++) {
 var x = void 0,
         x = l.to.numbers[t],
         q = l.from.numbers[t],
         x = l.isPath ? Y(l.value, w * x) : q + w * (x - q); p && (l.isColor && 2 < t || (x = Math.round(x * p) / p)); n.push(x);
-}if (l = h.length) for (m = h[0], w = 0; w < l; w++) {
+        }if (l = h.length) for (m = h[0], w = 0; w < l; w++) {
 p = h[w + 1], t = n[w], isNaN(t) || (m = p ? m + (t + p) : m + (t + " "));
-} else m = n[0]; ha[e.type](k.target, e.property, m, c, k.id); e.currentValue = m; b++;
-}if (b = Object.keys(c).length) for (d = 0; d < b; d++) {
+        } else m = n[0]; ha[e.type](k.target, e.property, m, c, k.id); e.currentValue = m; b++;
+        }if (b = Object.keys(c).length) for (d = 0; d < b; d++) {
 H || (H = E(document.body, "transform") ? "transform" : "-webkit-transform"), g.animatables[d].target.style[H] = c[d].join(" ");
-}g.currentTime = a; g.progress = a / g.duration * 100;
-}function f(a) {
+        }g.currentTime = a; g.progress = a / g.duration * 100;
+        }function f(a) {
 if (g[a]) g[a](g);
-}function e() {
+        }function e() {
 g.remaining && !0 !== g.remaining && g.remaining--;
-}function k(a) {
+        }function k(a) {
 var k = g.duration,
         n = g.offset,
         w = n + g.delay,
@@ -1592,11 +1592,11 @@ var u = g.children,
         v = u.length;
         if (q >= g.currentTime) for (var G = 0; G < v; G++) {
 u[G].seek(q);
-} else for (; v--; ) {
+        } else for (; v--; ) {
 u[v].seek(q);
-}
-}if (q >= w || !k) g.began || (g.began = !0, f("begin")), f("run"); if (q > n && q < k) b(q);  else if (q <= n && 0 !== r && (b(0), x && e()), q >= k && r !== k || !k) b(k), x || e(); f("update"); a >= k && (g.remaining ? (t = h, "alternate" === g.direction && (g.reversed = !g.reversed)) : (g.pause(), g.completed || (g.completed = !0, f("complete"), "Promise" in window && (p(), m = c()))), l = 0);
-}a = void 0 === a ? {} : a; var h,
+        }
+}if (q >= w || !k) g.began || (g.began = !0, f("begin")), f("run"); if (q > n && q < k) b(q); else if (q <= n && 0 !== r && (b(0), x && e()), q >= k && r !== k || !k) b(k), x || e(); f("update"); a >= k && (g.remaining ? (t = h, "alternate" === g.direction && (g.reversed = !g.reversed)) : (g.pause(), g.completed || (g.completed = !0, f("complete"), "Promise" in window && (p(), m = c()))), l = 0);
+        }a = void 0 === a ? {} : a; var h,
         t,
         l = 0,
         p = null,
@@ -1605,22 +1605,22 @@ u[v].seek(q);
 var a = g.direction,
         c = g.loop; g.currentTime = 0; g.progress = 0; g.paused = !0; g.began = !1; g.completed = !1; g.reversed = "reverse" === a; g.remaining = "alternate" === a && 1 === c ? 2 : c; b(0); for (a = g.children.length; a--; ) {
 g.children[a].reset();
-}
+        }
 }; g.tick = function (a) {
 h = a; t || (t = h); k((l + h - t) * q.speed);
-}; g.seek = function (a) {
+        }; g.seek = function (a) {
 k(d(a));
-}; g.pause = function () {
+        }; g.pause = function () {
 var a = v.indexOf(g); - 1 < a && v.splice(a, 1); g.paused = !0;
-}; g.play = function () {
+        }; g.play = function () {
 g.paused && (g.paused = !1, t = 0, l = d(g.currentTime), v.push(g), B || ia());
-}; g.reverse = function () {
+        }; g.reverse = function () {
 g.reversed = !g.reversed; t = 0; l = d(g.currentTime);
-}; g.restart = function () {
+        }; g.restart = function () {
 g.pause();
         g.reset(); g.play();
-}; g.finished = m; g.reset(); g.autoplay && g.play(); return g;
-}var ga = { update: void 0, begin: void 0, run: void 0, complete: void 0, loop: 1, direction: "normal", autoplay: !0, offset: 0 },
+        }; g.finished = m; g.reset(); g.autoplay && g.play(); return g;
+        }var ga = { update: void 0, begin: void 0, run: void 0, complete: void 0, loop: 1, direction: "normal", autoplay: !0, offset: 0 },
         S = { duration: 1E3, delay: 0, easing: "easeOutElastic", elasticity: 500, round: 0 },
         W = "translateX translateY translateZ rotate rotateX rotateY rotateZ scale scaleX scaleY scaleZ skewX skewY perspective".split(" "),
         H,
@@ -1669,7 +1669,7 @@ g.pause();
         n = 3 * (1 - 3 * b + 3 * c) * l * l + 2 * (3 * b - 6 * c) * l + 3 * c; if (0 === n) break; var m = a(l, c, b) - k,
                 l = l - m / n;
         }k = l;
-        } else if (0 === n) k = l;  else {
+        } else if (0 === n) k = l; else {
         var l = h,
                 h = h + .1,
                 g = 0; do {
@@ -1724,27 +1724,27 @@ g.pause();
 a = P(a); for (var c = v.length; c--; ) {
 for (var d = v[c], b = d.animations, f = b.length; f--; ) {
 u(a, b[f].animatable.target) && (b.splice(f, 1), b.length || d.pause());
-}
+        }
 }
 }; q.getValue = K; q.path = function (a, c) {
 var d = h.str(a) ? e(a)[0] : a,
         b = c || 100; return function (a) {
         return { el: d, property: a, totalLength: N(d) * (b / 100) };
         };
-}; q.setDashoffset = function (a) {
+        }; q.setDashoffset = function (a) {
 var c = N(a); a.setAttribute("stroke-dasharray", c); return c;
-}; q.bezier = A; q.easings = Q; q.timeline = function (a) {
+        }; q.bezier = A; q.easings = Q; q.timeline = function (a) {
 var c = q(a); c.pause(); c.duration = 0; c.add = function (d) {
 c.children.forEach(function (a) {
 a.began = !0; a.completed = !0;
-}); m(d).forEach(function (b) {
+        }); m(d).forEach(function (b) {
 var d = z(b, D(S, a || {})); d.targets = d.targets || a.targets; b = c.duration; var e = d.offset; d.autoplay = !1; d.direction = c.direction; d.offset = h.und(e) ? b : L(e, b); c.began = !0; c.completed = !0; c.seek(d.offset); d = q(d); d.began = !0; d.completed = !0; d.duration > b && (c.duration = d.duration); c.children.push(d);
-}); c.seek(0); c.reset(); c.autoplay && c.restart(); return c;
-}; return c;
-}; q.random = function (a, c) {
+        }); c.seek(0); c.reset(); c.autoplay && c.restart(); return c;
+        }; return c;
+        }; q.random = function (a, c) {
 return Math.floor(Math.random() * (c - a + 1)) + a;
-}; return q;
-        });
+        }; return q;
+});
         ; (function ($, anim) {
         'use strict';
                 var _defaults = {
@@ -4692,7 +4692,7 @@ return Math.floor(Math.random() * (c - a + 1)) + a;
                                                                         document.addEventListener('DOMContentLoaded', function () {
                                                                         Waves.displayEffect();
                                                                         }, false);
-                                                                        })(window);
+                                                                })(window);
                                                                 ; (function ($, anim) {
                                                                 'use strict';
                                                                         var _defaults = {
@@ -5014,7 +5014,7 @@ return Math.floor(Math.random() * (c - a + 1)) + a;
                                                                         M.toast = function (options) {
                                                                         return new Toast(options);
                                                                         };
-                                                                        })(cash, M.anime);
+                                                                })(cash, M.anime);
                                                                 ; (function ($, anim) {
                                                                 'use strict';
                                                                         var _defaults = {
@@ -6596,7 +6596,7 @@ return Math.floor(Math.random() * (c - a + 1)) + a;
                                                                                                 path_input.trigger('change');
                                                                                         });
                                                                                         }); // End of $(document).ready
-                                                                                                })(cash);
+                                                                                        })(cash);
                                                                                         ; (function ($, anim) {
                                                                                         'use strict';
                                                                                                 var _defaults = {
@@ -6845,7 +6845,7 @@ return Math.floor(Math.random() * (c - a + 1)) + a;
                                                                                                                 value: function set(index) {
                                                                                                                 var _this44 = this;
                                                                                                                         // Wrap around indices.
-                                                                                                                        if (index >= this.$slides.length) index = 0;  else if (index < 0) index = this.$slides.length - 1;
+                                                                                                                        if (index >= this.$slides.length) index = 0; else if (index < 0) index = this.$slides.length - 1;
                                                                                                                         // Only do if index changes
                                                                                                                         if (this.activeIndex != index) {
                                                                                                                 this.$active = this.$slides.eq(this.activeIndex);
@@ -6928,7 +6928,7 @@ return Math.floor(Math.random() * (c - a + 1)) + a;
                                                                                                                 value: function next() {
                                                                                                                 var newIndex = this.activeIndex + 1;
                                                                                                                         // Wrap around indices.
-                                                                                                                        if (newIndex >= this.$slides.length) newIndex = 0;  else if (newIndex < 0) newIndex = this.$slides.length - 1;
+                                                                                                                        if (newIndex >= this.$slides.length) newIndex = 0; else if (newIndex < 0) newIndex = this.$slides.length - 1;
                                                                                                                         this.set(newIndex);
                                                                                                                 }
 
@@ -6941,7 +6941,7 @@ return Math.floor(Math.random() * (c - a + 1)) + a;
                                                                                                                 value: function prev() {
                                                                                                                 var newIndex = this.activeIndex - 1;
                                                                                                                         // Wrap around indices.
-                                                                                                                        if (newIndex >= this.$slides.length) newIndex = 0;  else if (newIndex < 0) newIndex = this.$slides.length - 1;
+                                                                                                                        if (newIndex >= this.$slides.length) newIndex = 0; else if (newIndex < 0) newIndex = this.$slides.length - 1;
                                                                                                                         this.set(newIndex);
                                                                                                                 }
                                                                                                         }], [{
@@ -7006,7 +7006,7 @@ return Math.floor(Math.random() * (c - a + 1)) + a;
                                                                                                 }
                                                                                                 }
                                                                                                 });
-                                                                                                        })(cash, M.anime);
+                                                                                                })(cash, M.anime);
                                                                                                 ; (function ($) {
                                                                                                 'use strict';
                                                                                                         var _defaults = {
@@ -7528,7 +7528,7 @@ return Math.floor(Math.random() * (c - a + 1)) + a;
                                                                                                         $(this).closest('.chip').remove();
                                                                                                         });
                                                                                                         });
-                                                                                                                })(cash);
+                                                                                                        })(cash);
                                                                                                         ; (function ($) {
                                                                                                         'use strict';
                                                                                                                 var _defaults = {
@@ -11439,4 +11439,4 @@ return Math.floor(Math.random() * (c - a + 1)) + a;
                                                                                                                                                                         }
 
                                                                                                                                                                         Range.init($('input[type=range]'));
-                                                                                                                                                                                })(cash, M.anime);
+                                                                                                                                                                        })(cash, M.anime);

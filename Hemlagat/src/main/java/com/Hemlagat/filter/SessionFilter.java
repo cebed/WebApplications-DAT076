@@ -21,13 +21,12 @@ import org.omnifaces.util.Servlets;
  *
  * @author Daniel Cebe
  */
-
-
 @WebFilter(urlPatterns = "/*")
 public class SessionFilter extends HttpFilter {
 
-    @Inject private UserBean userBean;
-    
+    @Inject
+    private UserBean userBean;
+
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, HttpSession session, FilterChain chain) throws ServletException, IOException {
 
@@ -35,7 +34,7 @@ public class SessionFilter extends HttpFilter {
         HttpServletResponse res1 = (HttpServletResponse) response;
 
         String HomeURL = req1.getContextPath() + "/Locationpage.xhtml";
-        System.out.println(HomeURL); 
+        System.out.println(HomeURL);
         System.out.println("Current path " + req1.getRequestURL());
 
         String currentPath = req1.getRequestURL().toString();

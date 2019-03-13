@@ -50,7 +50,6 @@ import lombok.Setter;
     , @NamedQuery(name = "Addb.findByOther", query = "SELECT a FROM Addb a WHERE a.other = :other")
     , @NamedQuery(name = "Addb.findByOther2", query = "SELECT a FROM Addb a WHERE a.other2 = :other2")
     , @NamedQuery(name = "Addb.findByPhoto", query = "SELECT a FROM Addb a WHERE a.photo = :photo")
-  
 
 })
 public class Addb implements Serializable {
@@ -118,28 +117,28 @@ public class Addb implements Serializable {
     @Getter
     @Setter
     private String other2; // fungerar som tillfällig post no -- ta inte bort Nur
-    /** tillfällig*/
-    
+    /**
+     * tillfällig
+     */
+
     @Getter
     @Setter
     /* */
     @Column(name = "STATUS")
-    private String status; 
+    private String status;
     @Lob
     @Column(name = "PHOTO")
     @Getter
     @Setter
     private byte[] photo;
-   @Getter
+    @Getter
     @Setter
     @JoinColumn(name = "USERID", referencedColumnName = "EMAIL")
     @ManyToOne
     private Userdb userid;
-    
-    
-    
+
     private static final Logger LOG = Logger.getLogger(Addb.class.getName());
-private static final AtomicLong counter = new AtomicLong(100);
+    private static final AtomicLong counter = new AtomicLong(100);
 
     @Override
     public int hashCode() {

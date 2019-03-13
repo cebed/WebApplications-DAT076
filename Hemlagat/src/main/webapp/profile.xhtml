@@ -34,12 +34,11 @@
                                     <div class="col s6 offset-s3">
                                         <div class="card">
                                             <div class="card-content">
-                                                <div>
-                                                    <img class="responsive-img" style="max-width: 64px;" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/120428/preview.svg"  />
+                                                <div>                       
                                                     <div class="header">
                                                         <h1>Your Profile</h1>
                                                         <h:outputStylesheet library="css" name="jsfcrud.css"/>
-                                                            <!--      loggad som skriven av roman             -->
+                                                        <!--      loggad som skriven av roman             -->
                                                         <h:form>
                                                             <p>Welcome, #{userBean.username} </p> 
                                                             <p>Email address: #{userBean.email}</p>
@@ -49,7 +48,7 @@
                                                             <br/>
                                                             <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
                                                         </h:form>
-                                                              <!--      leta alla adds tilhörande mejlet             -->
+                                                        <!--      leta alla adds tilhörande mejlet             -->
                                                         <h:form>
                                                             <table>
                                                                 <tr>                                                           
@@ -62,7 +61,7 @@
                                                             </table>
                                                             <h:commandButton action="#{addbController.ItemsbyEmail()}" value="Annonser" styleClass="btn btn-large"/>
                                                         </h:form>
-                                                                <!--      leta efeter solda ads             -->
+                                                        <!--      leta efeter solda ads             -->
                                                         <h:form>
                                                             <table>
                                                                 <tr>                                                           
@@ -75,8 +74,8 @@
                                                             </table>
                                                             <h:commandButton action="#{addbController.SoldItems()}" value="Annonser" styleClass="btn btn-large"/>
                                                         </h:form>
-                                                                
-                                                                  <!--      köpta items            -->
+
+                                                        <!--      köpta items            -->
                                                         <h:form>
                                                             <table>
                                                                 <tr>                                                           

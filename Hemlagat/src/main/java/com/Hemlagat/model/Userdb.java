@@ -85,10 +85,9 @@ public class Userdb implements Serializable {
     public String toString() {
         return "com.Hemlagat.model.Userdb[ email=" + email + " ]";
     }
-    
-    
+
     /* kunde inte komma åt den ovan equals metod drf har jag skapat denna // nur*/
-     public boolean equalsbbb(Object object) {
+    public boolean equalsbbb(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Userdb)) {
             return false;

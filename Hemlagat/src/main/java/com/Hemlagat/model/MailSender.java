@@ -38,13 +38,13 @@ public class MailSender implements Serializable {
         Message mailMessage = new MimeMessage(mailSession);
         mailMessage.setFrom(new InternetAddress(username));
         mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
-        mailMessage.setContent(message,"text/html");
+        mailMessage.setContent(message, "text/html");
         mailMessage.setSubject(subject);
-        
-         Transport transport = mailSession.getTransport("smtp");
-            transport.connect("smtp.gmail.com", username, password);
-            
-            transport.sendMessage(mailMessage, mailMessage.getAllRecipients());
+
+        Transport transport = mailSession.getTransport("smtp");
+        transport.connect("smtp.gmail.com", username, password);
+
+        transport.sendMessage(mailMessage, mailMessage.getAllRecipients());
 
     }
 

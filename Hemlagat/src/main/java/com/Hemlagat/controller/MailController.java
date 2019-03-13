@@ -29,11 +29,9 @@ public class MailController implements Serializable {
     public MailController() {
 
         this.toMail = "hemlagattjanst@gmail.com";
-        this.username="hemlagattjanst@gmail.com";
-        this.password="Gruppen3";
+        this.username = "hemlagattjanst@gmail.com";
+        this.password = "Gruppen3";
     }
-
-   
 
     public String getUsername() {
         return username;
