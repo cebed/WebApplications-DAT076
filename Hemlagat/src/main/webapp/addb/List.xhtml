@@ -27,7 +27,7 @@
                         </div>  
                         <div class="ui-g-1"   ></div>
                         <div class="ui-g-10"   >
-                            <p:dataGrid var="item" value="#{addbController.items}" columns="2" layout="grid"
+                            <p:dataGrid var="item" value="#{addbBean.items}" columns="2" layout="grid"
                                         rows="100" paginator="false" id="cars" styleClass="ui-datagrid-no-border"
                                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                         rowsPerPageTemplate="6,12,16">
@@ -185,9 +185,9 @@
                                         </div>
                                         <div class="ui-g-3" style="height: 110px;" align="left"  >
                                            
-                                        <b:commandButton  action="/addb/View?faces-redirect=true"  title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Till köp">
+                                        <b:commandButton  action="#{addbController.addToShoppingCart}"  title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Till köp">
                                           
-                                            <b:commandLink outcome="/addb/View" value="heehahsdas"></b:commandLink>
+                                            <b:commandLink action="#{addbController.addToShoppingCart}" value="heehahsdas"></b:commandLink>
                                                   <f:setPropertyActionListener value="#{item}" target="#{addbBean.current}" />     
                                                        
                                                     

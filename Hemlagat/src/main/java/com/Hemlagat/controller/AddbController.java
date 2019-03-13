@@ -1,9 +1,12 @@
 package com.Hemlagat.controller;
 
 import com.Hemlagat.model.Addb;
+import com.Hemlagat.model.Userdb;
 import com.Hemlagat.controller.util.JsfUtil;
 
 import com.Hemlagat.model.AddbFacade;
+import com.Hemlagat.model.UserdbFacade;
+import com.Hemlagat.model.session.ShoppingCart;
 import com.Hemlagat.model.session.UserBean;
 import com.Hemlagat.view.AddbBean;
 
@@ -32,20 +35,11 @@ public class AddbController implements Serializable {
     
    @Inject
   private AddbFacade addbFacade;
+    @Inject
+  private UserdbFacade userFacade;
     
-     @Getter
-    @Setter
-    private List<Addb> items;
-     @Getter
-    @Setter
-    private List<Addb> itemsbyEmail;
-    @Getter
-    @Setter
-    private List<Addb>  bougtItems;    
-    @Getter
-    @Setter
-    private List<Addb>  soldItems; 
-                       
+    @Inject
+    private ShoppingCart cart;
     
 
     
@@ -54,8 +48,10 @@ public class AddbController implements Serializable {
               System.out.println("###############################################   jag är på controller" + addbBean.getCurrent().toString());       
             addbBean.getCurrent().setPhoto(addbBean.getFile().getContents()); 
             addbBean.getCurrent().setStatus("sold");
-          
-             //addbBean.getCurrent().setUserid(userBean.setUserBean(userBean.getEmail()));
+            
+            final Userdb userdb = userFacade.find(userBean.getEmail());
+          addbBean.getCurrent().setUserid(userdb);
+            
              
             addbFacade.create( addbBean.getCurrent());
             return "Locationpage?faces-redirect=true";
@@ -68,36 +64,17 @@ public class AddbController implements Serializable {
     public String putItems() {
 
        
-     items = addbFacade.findByAdress(addbBean.getAddress());
+     //addbBean.setItems();
        return  "/addb/List.xhtml?faces-redirect=true";
        
     }
     
-     public String ItemsbyEmail() {
-
-       
-            itemsbyEmail =  addbFacade.findByEmail(addbBean.getEmail());
-            return "/addb/extradata.xhtml";
-        
+     
+     
+    public String addToShoppingCart() {
+        cart.setItem(addbBean.getCurrent());
+        return "/addb/View";
     }
-     
-     
-     public String SoldItems() {
-
-          soldItems = addbFacade.findonlysoldaAds(addbBean.getEmail());
-           return "/addb/extradata.xhtml";
-     
-    }
-   
-     
-     public String BougtItems() {
-
-        bougtItems = addbFacade.findonlysoldaAds(addbBean.getEmail());
-       return "/addb/extradata.xhtml";
-        
-    }
-     
-     
     // public double getTotal(){
          
         
