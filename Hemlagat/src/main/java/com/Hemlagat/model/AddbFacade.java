@@ -23,13 +23,11 @@ public class AddbFacade extends AbstractFacade<Addb> {
 
     @PersistenceContext(unitName = "com.mycompany_Hemlagat_war_1.0-SNAPSHOTPU")
     private EntityManager em;
-    private JPAQuery query;
-    private JPAQueryFactory qf;
+    
     
      @PostConstruct
     public void setup() {
-        query = new JPAQuery(em);
-        qf = new JPAQueryFactory(em);
+       
     }
     @Override
     protected EntityManager getEntityManager() {
@@ -151,6 +149,15 @@ public class AddbFacade extends AbstractFacade<Addb> {
         }
         }
   
+    
+    
+    public double getTotal(double quan , int price){
+    
+    return quan * (double)price;
+     
+     }
+    
+    
     
     
 }
