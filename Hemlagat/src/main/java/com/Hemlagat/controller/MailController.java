@@ -3,7 +3,7 @@ package com.Hemlagat.controller;
 
 import com.Hemlagat.model.MailSender;
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -13,7 +13,7 @@ import javax.inject.Named;
  * @author Daniel Cebe
  */
 @Named(value = "mailgctr")
-@SessionScoped
+@RequestScoped
 public class MailController implements Serializable {
 
     private String username;
@@ -86,12 +86,12 @@ public class MailController implements Serializable {
 
     public void showSuccessMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Email has been sent to: " + getToMail()));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success!", "Email has been sent"));
     }
 
     public void showFailMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Email could not be sent to: " + getToMail()));
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Email could not be sent"));
 
     }
 
