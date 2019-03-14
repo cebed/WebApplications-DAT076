@@ -134,6 +134,10 @@ public class Addb implements Serializable {
     @JoinColumn(name = "USERID", referencedColumnName = "EMAIL")
     @ManyToOne
     private Userdb userid;
+    @Column(name = "RATING")
+    @Getter
+    @Setter
+    private int rating;
     
     public boolean getHasPhoto() {
         return photo != null;

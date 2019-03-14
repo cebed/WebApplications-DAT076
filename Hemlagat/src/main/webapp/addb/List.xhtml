@@ -126,7 +126,8 @@
                                             <h:outputText value="#{addbBean.current.description}"  class="lista-title-describtion" style="font-weight: normal; font-size: 17px; font-family: cursive"/>
                                         </div>
                                         <div class="ui-g-3" style=" min-height: 150px;" align="left" >
-                                            <p:rating value="#{addbBean.medianRating}" readonly="true" />
+                                            <h:outputText value="Betyg på kocken:  #{addbBean.current.rating}/5 "  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            <p:rating value="#{addbBean.current.rating}" readonly="true" />
                                         </div>
                                         <!--ort address och postno -->
                                         <div class="ui-g-3"  align="left" >
