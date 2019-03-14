@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\Rick\Documents\GitHub\WebApplicationsNY-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\LoginController.java
 C:\Users\Rick\Documents\GitHub\WebApplicationsNY-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\Rating.java
 C:\Users\Rick\Documents\GitHub\WebApplicationsNY-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\RatingController.java
@@ -23,28 +22,3 @@ C:\Users\Rick\Documents\GitHub\WebApplicationsNY-DAT076\Hemlagat\src\main\java\c
 C:\Users\Rick\Documents\GitHub\WebApplicationsNY-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\RatingFacade.java
 C:\Users\Rick\Documents\GitHub\WebApplicationsNY-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\AddbController.java
 C:\Users\Rick\Documents\GitHub\WebApplicationsNY-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\util\PaginationHelper.java
-=======
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\view\AddbBean.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\AddbController.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\filter\SessionFilter.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\MailController.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\AbstractFacade.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\LoginController.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\RatingController.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\Userdb.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\Addb.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\UserdbFacade.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\service\database\DatabaseInitializer.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\UserdbController.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\target\generated-sources\java\com\Hemlagat\model\QAddb.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\util\PaginationHelper.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\util\JsfUtil.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\AddbFacade.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\target\generated-sources\java\com\Hemlagat\model\QRating.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\controller\ImageStoreController.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\RatingFacade.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\session\UserBean.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\target\generated-sources\java\com\Hemlagat\model\QUserdb.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\Rating.java
-C:\Users\Daniel Cebe\Documents\GitHub\WebApplications-DAT076\Hemlagat\src\main\java\com\Hemlagat\model\MailSender.java
->>>>>>> 17837753522d5923e8bc98e905b94a63d6af25b0

@@ -50,8 +50,36 @@ public class RatingFacade extends AbstractFacade<Rating> {
         System.out.println("ADDED TO LIST: ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
         
         System.out.print("Vi är i min create");
-        getEntityManager().persist(userdb);
+        getEntityManager().persist(rate);
         System.out.print("Vi är i min create2");
+    
+    }
+    
+    public int findMedianRatings(String chef){
+        int median = 0;
+        int count =0;
+         List<Rating> allRatings = em.createQuery("SELECT e FROM Rating e").getResultList();
+
+       
+        List<Rating> RatingsWeWant = new LinkedList<>();
+        for (Rating rate : allRatings) {
+            System.out.println("Here comes the comments: " + rate.getRate()); 
+            if (rate.getChef().equals(chef)) {
+               median += rate.getRate();
+               count++;
+            }
+        }
+        if(count != 0){
+            median = median/count;}
+        System.out.println("THE RATING FOR CHEF " +  chef + " IS :::::" +median + " ::::");
+        System.out.println("THE RATING FOR CHEF " +  chef + " IS :::::" +median + " ::::");
+        System.out.println("THE RATING FOR CHEF " +  chef + " IS :::::" +median + " ::::");
+        System.out.println("THE RATING FOR CHEF " +  chef + " IS :::::" +median + " ::::");
+        System.out.println("THE RATING FOR CHEF " +  chef + " IS :::::" +median + " ::::");
+        System.out.println("THE RATING FOR CHEF " +  chef + " IS :::::" +median + " ::::");
+        
+        return median;
+    
     
     }
 

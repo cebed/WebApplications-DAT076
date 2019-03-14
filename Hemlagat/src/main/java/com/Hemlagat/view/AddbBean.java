@@ -2,6 +2,7 @@ package com.Hemlagat.view;
 
 import com.Hemlagat.model.Addb;
 import com.Hemlagat.model.AddbFacade;
+import com.Hemlagat.model.RatingFacade;
 import com.Hemlagat.model.Userdb;
 import com.Hemlagat.model.UserdbFacade;
 import com.Hemlagat.model.session.ShoppingCart;
@@ -45,7 +46,8 @@ public class AddbBean implements Serializable {
   private UserdbFacade Userfacade;
    @Inject
     private UserBean userBean;
-
+   @Inject
+   private RatingFacade ratingFacade;
      @Getter
     @Setter
     private List<Addb> itemsbyEmail;
@@ -64,10 +66,16 @@ public class AddbBean implements Serializable {
  @PostConstruct
     public void init() {
        
-        if (cart.getItem() != null)
+        if (cart.getItem() != null){
             current = cart.getItem();
-        else
+            email = current.getUserid().getEmail();
+            System.out.println("###########################       WE GOT IN THE IF" + current.toString());
+        }
+        else{
             current = new Addb();
+            System.out.println("###########################       NOT NOT NOT NOT" + current.toString());
+        
+        }
         System.out.println("###########################       statt" + current.toString());
     }
 
@@ -102,7 +110,12 @@ public class AddbBean implements Serializable {
       
         
     }
-     
+    public int getMedianRating(){
+    
+      return ratingFacade.findMedianRatings(email);
+    
+    
+    }
    
    
 }
