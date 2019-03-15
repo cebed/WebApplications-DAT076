@@ -63,16 +63,14 @@ public class AddbFacade extends AbstractFacade<Addb> {
     
     
     
-    public List<Addb> findByEmail(String email) {
-        Userdb us = new Userdb();
+    public List<Addb> findByEmail(Userdb usdb) {
+       
         
-        us.setEmail(email.toLowerCase().trim());
-        
-        System.out.println("Looking for User " + email);
+       
         List<Addb> emaillist = em.createNamedQuery("Addb.findAll", Addb.class).getResultList();
         List<Addb> wantedEmail = new LinkedList<>();
        for(Addb li : emaillist){
-           if(us.equalsbbb(li.getUserid())){
+           if(usdb.equalsbbb(li.getUserid())){
                
                 wantedEmail.add(li);       
                }          
@@ -89,20 +87,18 @@ public class AddbFacade extends AbstractFacade<Addb> {
     
     
     
-    public List<Addb> findonlysoldaAds(String email) {
-        Userdb us = new Userdb();
+    public List<Addb> findonlysoldaAds(Userdb usdb) {
+       
         
-        us.setEmail(email.toLowerCase().trim());
-        
-        System.out.println("Looking for User " + email);
+        System.out.println("Du ska sälja varor min kära bror ------------------");
         List<Addb> emaillist = em.createNamedQuery("Addb.findAll", Addb.class).getResultList();
         List<Addb> wantedEmail = new LinkedList<>();
        for(Addb li : emaillist){
           
          
-           if((us.equalsbbb(li.getUserid())) && (li.getOther()!= null) && (li.getOther().equals("sold"))  ){
+           if((usdb.equalsbbb(li.getUserid())) && (li.getOther()!= null) && (li.getStatus().equals("sold"))  ){
                
-             
+             System.out.println("the sold is ------- -äääsdäsädäsadäsd-" + li.getStatus());
               
               
              
@@ -123,17 +119,15 @@ public class AddbFacade extends AbstractFacade<Addb> {
     
     
     
-    public List<Addb> findonlyBougtItems(String email) {
-        Userdb us = new Userdb();
+    public List<Addb> findonlyBougtItems(Userdb usdb) {
+       
         
-        us.setEmail(email.toLowerCase().trim());
-        
-        //System.out.println("Looking for User " + email);
+        System.out.println("Du ska köpa varor min kära bror ------------------");
         List<Addb> emaillist = em.createNamedQuery("Addb.findAll", Addb.class).getResultList();
         List<Addb> wantedEmail = new LinkedList<>();
        for(Addb li : emaillist){
-           if((us.equalsbbb(li.getUserid())) && (li.getOther()!= null) && (li.getOther().equals("kopt"))){
-              
+           if((usdb.equalsbbb(li.getUserid())) && (li.getOther()!= null) && (li.getStatus().equals("kopt"))){
+               System.out.println("the bought is ------- -äääsdäsädäsadäsd-" + li.getStatus());
               
            //    System.out.println( li.getOther()+" _________-------" );
                 wantedEmail.add(li);       
