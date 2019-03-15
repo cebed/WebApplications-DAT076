@@ -192,13 +192,13 @@
                                 <div class="ui-g-12"   > 
 
                                     <div class="ui-g-5"  style="height:70px;border-color: #13654a;"  align="left"> 
-                                        <h:outputText value="#{addbBean.current}"  class="font-style-view-page"/>
+                                        <h:outputText value="#{shoppingCart.item}"  class="font-style-view-page"/>
                                     </div> 
                                     <div class="ui-g-2"  style="height:70px;border-color: #13654a;" align="right"  > 
-                                        <h:outputText value="#{addbBean.current.price}" class="font-style-view-page"/>
+                                        <h:outputText value="#{shoppingCart.item.quantity}" class="font-style-view-page"/>
                                     </div> 
                                     <div class="ui-g-5"  style="height:70px;border-color: #13654a;"  align="right">
-                                        <h:outputText value="#{addbBean.current.price}" class="font-style-view-page"/>
+                                        <h:outputText value="#{shoppingCart.item.price}" class="font-style-view-page"/>
 
                                     </div> 
 
@@ -288,9 +288,9 @@
                             </div>
                             <div class="ui-g-6" align="right">
 
-                                <b:button href="/Hemlagat/Ratingpage.xhtml" value="Köp" tiny-screen="half"  iconAwesome="cart-plus" look="success"  style="height: 100px; width: 400px;">
-                                    <f:param name="userId" value="#{addbBean.current.userid.email}" />
-                                </b:button>
+                                <b:commandButton action="#{addbController.addToShoppingCartForRatingPage}" value="Köp" tiny-screen="half"  iconAwesome="cart-plus" look="success"  style="height: 100px; width: 400px;">
+                                    <f:setPropertyActionListener value="#{addbBean.current.userid.email}" target="#{ratingController.email}" />
+                                </b:commandButton>
                             </div>
                         </div>
 

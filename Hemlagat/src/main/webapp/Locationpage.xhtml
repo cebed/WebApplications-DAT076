@@ -27,7 +27,6 @@
 
 
                         <div style="position: relative;text-align: center; color: #13654a; font-size: 20px;">
-                            <p:graphicImage value="/addb/Templetes/framsidabild.jpeg"  width="63%" height="61%;" style=" padding-left: 406px;"  />
                             <div style=" position: absolute; top: 50%; padding-left: 250px;">
 
 
@@ -35,12 +34,14 @@
                                 <!-- Rickard -->
 
                                 <form id="ipForm">
-                                    <input type="text"  name = "ipAddress" id = "ip" value="temp"/>
-
-                                    <h:link outcome="sellOrBuy.xhtml" value="Dinposition"/>
+                                    <input type="text"  name = "ipAddress" id = "ip" value="tmp"/>
+                                    <h:inputText value="#{addbController.address}" required="true" 
+                                                 requiredMessage="Please enter a address"/>
+                                    <h:commandButton action="#{addbController.setLocation()}" value="faaaaan"/>
+                                    
+                                    
 
                                 </form>
-
 
 
 

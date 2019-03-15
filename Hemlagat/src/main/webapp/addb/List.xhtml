@@ -24,7 +24,7 @@
 
                     <div class="ui-g" >
                         <div class="ui-g-12" align="center"  >
-                            <p:outputLabel style="  font-family: serif; font-size: 80px; font-weight: bold; color: #13654a; margin-left: -20px;" value="  Annonser i #{addbBean.address}">
+                            <p:outputLabel style="  font-family: serif; font-size: 80px; font-weight: bold; color: #13654a; margin-left: -20px;" value="  Annonser i #{addbController.address}">
 
                             </p:outputLabel>
                         </div>
@@ -128,6 +128,15 @@
                                         <div class="ui-g-3" style=" min-height: 150px;" align="left" >
                                             <h:outputText value="Betyg på kocken:  #{addbBean.current.rating}/5 "  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                             <p:rating value="#{addbBean.current.rating}" readonly="true" />
+                                            <h:link value="#{addbBean.current.userid.email}" outcome="/RatingList.xhtml"/>
+
+                                           
+
+
+                                            <b:commandLink action="#{addbController.addToShoppingCartForRating()}" value="Watch comments">
+                                                <f:setPropertyActionListener value="#{addbBean.current.userid.email}" target="#{ratingController.email}" />
+                                            </b:commandLink>
+
                                         </div>
                                         <!--ort address och postno -->
                                         <div class="ui-g-3"  align="left" >
@@ -190,13 +199,13 @@
                                         </div>
                                         <div class="ui-g-3" style="height: 110px;" align="left"  >
 
-                                        <b:commandButton  action="#{addbController.addToShoppingCart}"  title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Till köp">
+                                            <b:commandButton  action="#{addbController.addToShoppingCart}"  title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Till köp">
 
-                                            <b:commandLink action="#{addbController.addToShoppingCart}" value="heehahsdas"></b:commandLink>
-                                                  <f:setPropertyActionListener value="#{item}" target="#{addbBean.current}" />
+                                                
+                                                <f:setPropertyActionListener value="#{item}" target="#{shoppingCart.item}" />
 
 
-                                        </b:commandButton>
+                                            </b:commandButton>
 
                                         </div>
 

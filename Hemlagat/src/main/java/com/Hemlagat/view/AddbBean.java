@@ -34,9 +34,7 @@ public class AddbBean implements Serializable {
     @Getter
     @Setter
     private Addb current ;
-    @Getter
-    @Setter
-    private String Address;
+    
     @Getter
     @Setter
     private String email;
@@ -69,9 +67,11 @@ public class AddbBean implements Serializable {
     public int getMedianRating(){
     
       return ratingFacade.findMedianRatings(email);
-    
-    
     }
-   
+    
+    public List getAllRatings(){
+    
+     return ratingFacade.findUserRatings(current.getUserid().getEmail());
+    }
    
 }

@@ -40,7 +40,9 @@ public class AddbController implements Serializable {
     private RatingFacade ratingFacade;
     @Inject
     private ShoppingCart cart;
-
+    @Getter
+    @Setter
+    private String Address;
     @Getter
     @Setter
     private List<Addb> items;
@@ -72,10 +74,13 @@ public class AddbController implements Serializable {
             return "Locationpage.xhtml";
         }
     }
-
+    public String setLocation(){
+            return "/addb/List.xhtml?faces-redirect=true";
+    
+    }
     public String putItems() {
 
-        items = addbFacade.findByAdress(addbBean.getAddress());
+        items = addbFacade.findByAdress(Address);
         return "/addb/List.xhtml?faces-redirect=true";
 
     }
@@ -111,6 +116,20 @@ public class AddbController implements Serializable {
     public String addToShoppingCart() {
         cart.setItem(addbBean.getCurrent());
         return "/addb/View";
+    }
+    
+    public String addToShoppingCartForRating() {
+        cart.setItem(addbBean.getCurrent());
+        return "/RatingList";
+    }
+    
+    public String addToShoppingCartForRatingPage() {
+        addbBean.getCurrent().setStatus("kopt");
+        addbFacade.edit(addbBean.getCurrent());
+        
+        cart.setItem(addbBean.getCurrent());
+        
+        return "/Ratingpage";
     }
 
     // public double getTotal(){

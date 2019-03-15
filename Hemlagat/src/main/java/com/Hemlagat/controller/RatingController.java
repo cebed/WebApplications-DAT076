@@ -6,6 +6,7 @@ import com.Hemlagat.controller.util.PaginationHelper;
 import com.Hemlagat.model.RatingFacade;
 import com.Hemlagat.model.Userdb;
 import com.Hemlagat.model.UserdbFacade;
+import com.Hemlagat.model.session.ShoppingCart;
 import com.Hemlagat.model.session.UserBean;
 
 import java.io.Serializable;
@@ -22,6 +23,8 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
+import lombok.Getter;
+import lombok.Setter;
 
 @Named("ratingController")
 @SessionScoped
@@ -33,9 +36,14 @@ public class RatingController implements Serializable {
     private com.Hemlagat.model.RatingFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    @Getter
+    @Setter
+    private String email;
     private List<Rating> ratings = null;
     @Inject
     private UserBean userBean;
+    @Inject
+    private ShoppingCart cart;
 
     public RatingController() {
     }
@@ -52,7 +60,7 @@ public class RatingController implements Serializable {
 
 
         
-        ratings = ejbFacade.findUserRatings("a@a");
+        ratings = ejbFacade.findUserRatings(email);
           
 
         return ratings;
@@ -99,6 +107,7 @@ public class RatingController implements Serializable {
 
     public String create() {
         try {
+            current.setChef(email);
             current.setRater(userBean.getUsername());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("RatingCreated"));
