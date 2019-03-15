@@ -28,7 +28,7 @@ import org.primefaces.model.UploadedFile;
 @ViewScoped
 
 public class AddbBean implements Serializable {
-    @Getter
+      @Getter
     @Setter
     private UploadedFile file;
     @Getter
@@ -40,23 +40,10 @@ public class AddbBean implements Serializable {
     @Getter
     @Setter
     private String email;
-    @Inject
-  private AddbFacade addbFacade;
-  @Inject
-  private UserdbFacade Userfacade;
-   @Inject
-    private UserBean userBean;
+   
+
    @Inject
    private RatingFacade ratingFacade;
-     @Getter
-    @Setter
-    private List<Addb> itemsbyEmail;
-    @Getter
-    @Setter
-    private List<Addb>  bougtItems;    
-    @Getter
-    @Setter
-    private List<Addb>  soldItems; 
 
     @Inject
     private ShoppingCart cart;
@@ -79,37 +66,6 @@ public class AddbBean implements Serializable {
         System.out.println("###########################       statt" + current.toString());
     }
 
-
-   public List<Addb> getItems() {
-   
-   return addbFacade.findByAdress(Address);
-   }
-   
-   
-   
-   public List<Addb>  ItemsbyEmail() {
-
-       final Userdb userdb = Userfacade.find(userBean.getEmail());
-           return  addbFacade.findByEmail(userdb.getEmail());
-            
-        
-    }
-     
-     
-     public List<Addb> SoldItems() {
-            final Userdb userdb = Userfacade.find(userBean.getEmail());
-      return addbFacade.findonlysoldaAds(userdb.getEmail());
-          
-     
-    }
-   
-     
-     public List<Addb> BougtItems() {
-        final Userdb userdb = Userfacade.find(userBean.getEmail());
-     return addbFacade.findonlysoldaAds(userdb.getEmail());
-      
-        
-    }
     public int getMedianRating(){
     
       return ratingFacade.findMedianRatings(email);

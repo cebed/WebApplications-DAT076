@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.Hemlagat.model;
 
 import java.io.Serializable;
@@ -38,13 +33,13 @@ public class MailSender implements Serializable {
         Message mailMessage = new MimeMessage(mailSession);
         mailMessage.setFrom(new InternetAddress(username));
         mailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(toMail));
-        mailMessage.setContent(message,"text/html");
+        mailMessage.setContent(message, "text/html");
         mailMessage.setSubject(subject);
-        
-         Transport transport = mailSession.getTransport("smtp");
-            transport.connect("smtp.gmail.com", username, password);
-            
-            transport.sendMessage(mailMessage, mailMessage.getAllRecipients());
+
+        Transport transport = mailSession.getTransport("smtp");
+        transport.connect("smtp.gmail.com", username, password);
+
+        transport.sendMessage(mailMessage, mailMessage.getAllRecipients());
 
     }
 

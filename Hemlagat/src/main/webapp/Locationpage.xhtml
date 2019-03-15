@@ -18,52 +18,54 @@
     <h:body>
         <ui:composition template="/addb/Templetes/Templete.xhtml">
             <ui:define name="content">
-                <h:form>
-               
+                <f:view locale="#{facesContext.externalContext.requestLocale}">
 
-                    <div id="data"></div>
-
-
-                    <div style="position: relative;text-align: center; color: #13654a; font-size: 20px;">
-                        <p:graphicImage value="/addb/Templetes/framsidabild.jpeg"  width="63%" height="61%;" style=" padding-left: 406px;"  />
-                        <div style=" position: absolute; top: 50%; padding-left: 250px;">
+                    <h:form>
 
 
+                        <div id="data"></div>
 
-                            <!-- Rickard -->
 
-                            <form id="ipForm">
-                                <input type="text"  name = "ipAddress" id = "ip" value="temp"/>
-
-                                <h:link outcome="sellOrBuy.xhtml" value="Dinposition"/>
-
-                            </form>
+                        <div style="position: relative;text-align: center; color: #13654a; font-size: 20px;">
+                            <p:graphicImage value="/addb/Templetes/framsidabild.jpeg"  width="63%" height="61%;" style=" padding-left: 406px;"  />
+                            <div style=" position: absolute; top: 50%; padding-left: 250px;">
 
 
 
+                                <!-- Rickard -->
 
-                            <script>
-                                function callback(response) {
-                                    console.log(response);
-                                    document.getElementById("ip").value = response.city;
-                                }
+                                <form id="ipForm">
+                                    <input type="text"  name = "ipAddress" id = "ip" value="temp"/>
 
+                                    <h:link outcome="sellOrBuy.xhtml" value="Dinposition"/>
 
-                                $.ajax({
-                                    url: "https://geoip-db.com/jsonp", dataType: "jsonp"
-
-                                })
-
-
-                            </script>
+                                </form>
 
 
 
+
+                                <script>
+                                    function callback(response) {
+                                        console.log(response);
+                                        document.getElementById("ip").value = response.city;
+                                    }
+
+
+                                    $.ajax({
+                                        url: "https://geoip-db.com/jsonp", dataType: "jsonp"
+
+                                    })
+
+
+                                </script>
+
+
+
+                            </div>
                         </div>
-                    </div>
-                </h:form>
+                    </h:form>
 
-
+                </f:view>
             </ui:define>
 
         </ui:composition>

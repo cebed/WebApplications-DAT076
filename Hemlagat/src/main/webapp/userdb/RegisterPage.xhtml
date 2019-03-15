@@ -4,8 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/addb/Templetes/Templete.xhtml">
         <ui:define name="title">
@@ -27,8 +27,6 @@
 
 
         <h:body>
-
-
 
             <div  class="valign-wrapper" id="login-page" >
                 <div class="container" >   
@@ -70,11 +68,8 @@
                                                     </div>
 
                                                     <div class="col s12 input-field">
-                                                        <h:commandButton action="#{userdbController.create}" value="#{bundle.CreateUserdbSaveLink}" styleClass="btn btn-large" />
-                                                    </div>
-
-                                                    <div class="col s12 input-field">
-                                                        <p:button outcome="/Locationpage.xhtml" value="Cancel"/>
+                                                        <h:commandButton action="#{userdbController.create}" value="#{bundle.CreateUserdbSaveLink}" styleClass="btn btn-large"  style="width:250px; height: 50px; margin:5px;" />
+                                                         <b:button outcome="/Locationpage" value="Cancel" style="width:100px; margin: 3px; height: 50px;"/>
                                                     </div>
 
                                                 </div>
