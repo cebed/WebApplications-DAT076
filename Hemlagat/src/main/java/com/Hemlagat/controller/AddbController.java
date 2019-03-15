@@ -123,7 +123,8 @@ public class AddbController implements Serializable {
         return "/RatingList";
     }
     
-    public String addToShoppingCartForRatingPage() {
+    public String addToShoppingCartForRatingPage() {    
+        addbBean.getCurrent().setQuantity(addbBean.getCurrent().getQuantity()-1);
         addbBean.getCurrent().setStatus("kopt");
         addbFacade.edit(addbBean.getCurrent());
         

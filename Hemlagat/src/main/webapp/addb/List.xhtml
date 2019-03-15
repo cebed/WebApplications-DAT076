@@ -126,21 +126,21 @@
                                             <h:outputText value="#{addbBean.current.description}"  class="lista-title-describtion" style="font-weight: normal; font-size: 17px; font-family: cursive"/>
                                         </div>
                                         <div class="ui-g-3" style=" min-height: 150px;" align="left" >
-                                            <h:outputText value="Betyg på kocken:  #{addbBean.current.rating}/5 "  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            <h:outputText value="Betyg på #{addbBean.current.userid.username}:  #{addbBean.current.rating}/5 "  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                             <p:rating value="#{addbBean.current.rating}" readonly="true" />
-                                            <h:link value="#{addbBean.current.userid.email}" outcome="/RatingList.xhtml"/>
+                                            
 
                                            
 
 
-                                            <b:commandLink action="#{addbController.addToShoppingCartForRating()}" value="Watch comments">
+                                            <b:commandLink action="#{addbController.addToShoppingCartForRating()}" value="Kolla omdömen" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal">
                                                 <f:setPropertyActionListener value="#{addbBean.current.userid.email}" target="#{ratingController.email}" />
                                             </b:commandLink>
 
                                         </div>
                                         <!--ort address och postno -->
                                         <div class="ui-g-3"  align="left" >
-                                            rad2 com 1
+                                            
                                         </div>
                                         <div class="ui-g-6"  align="left" >
                                             <div class="ui-g-4" align="left"  >
@@ -155,46 +155,46 @@
 
                                         </div>
                                         <div class="ui-g-3"  align="left" >
-                                            rad2 com 3
+                                           
                                         </div>
                                         <div class="ui-g-12"  align="left" >
                                             <div class="ui-g-3"  align="left" >
                                                 <!--  Rickard här kan du sötta  -->
-                                                rad 3 col 3
+                                                
                                             </div>
                                             <div class="ui-g-6"  align="left" >
-                                                <h:outputText value="Pris per portion:   $#{addbBean.current.price} skr "  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                                <h:outputText value="Pris per portion:   #{addbBean.current.price} /kr "  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                                 <br style="height: 50px;"></br>
                                                 <h:outputText value="Antal i lager   :    #{addbBean.current.quantity} /st  " class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                                 <br style="height: 50px;"></br>
-                                                <h:outputText value="Vikt per portion:   #{addbBean.current.weight} / kg" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                                <h:outputText value="Vikt per portion:   #{addbBean.current.weight} /gram" class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
 
                                             </div>
                                             <div class="ui-g-3"  align="left" >
                                                 <!--  Rickard här kan du sötta  -->
-                                                rad 3 col 3
+                                                
                                             </div>
 
                                         </div>
                                         <div class="ui-g-3"  align="left" >
 
 
-                                            <b:commandButton  oncomplete="/addb/View" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Köp">
+                                            <b:commandButton  oncomplete="/addb/List" title="View Detail"   iconAwesome="fa-plus" size="2x" look="success" style="width:190px; height: 90px;" value="Tillbaka">
 
 
-                                                <h:link outcome="/addb/List" value="backa" style="font-size: 15px; font-family: normal;" />
+                                                
 
                                             </b:commandButton>
                                         </div>
 
                                         <div class="ui-g-6"  style="height: 110px;" align="left" >
-                                            <h:outputText value="Vegeterian :  #{addbBean.current.vegetarian}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            <h:outputText value="Vegetariskt:  #{addbBean.current.vegetarian}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                             <br style="height: 50px;"></br>
-                                            <h:outputText value="Nötter:  #{addbBean.current.nuts}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            <h:outputText value="Innehåller Nötter:  #{addbBean.current.nuts}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                             <br style="height: 50px;"></br>
-                                            <h:outputText value="Laktos:  #{addbBean.current.lactose}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            <h:outputText value="Innehåller Laktos:  #{addbBean.current.lactose}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
                                             <br style="height: 50px;"></br>
-                                            <h:outputText value="Gluten:  #{addbBean.current.gluten}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
+                                            <h:outputText value="Innehåller Gluten:  #{addbBean.current.gluten}"  class="lista-title-describtion" style="font-weight: normal; font-size: 15px; font-family: normal"/>
 
                                         </div>
                                         <div class="ui-g-3" style="height: 110px;" align="left"  >

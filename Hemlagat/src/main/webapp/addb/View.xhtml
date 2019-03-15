@@ -45,18 +45,18 @@
                                 <!--  rad 1                                                                                -->         
                                 <!--   högra col           -->
                                 <div class="ui-g-6"  style="height:70px;border-color: #13654a;" >                        
-                                    <p:outputLabel value = " namn :  "></p:outputLabel>
-                                    <br></br>
-                                     <p:outputLabel value ="#{userBean.username}"></p:outputLabel>
+                                     <b:inputText label="Namn" labelStyle="width:50px;">
+
+                                    </b:inputText>
                                     
                                 </div>
                                 <!--   mellan tom col          -->
                                 <div class="ui-g-1"    > </div>
                                 <!--   väbstra col           -->
                                 <div class="ui-g-5"  style="height:70px;border-color: #13654a;" >                 
-                                    <p:outputLabel value = " namn :  "></p:outputLabel>
-                                    <br></br>
-                                     <p:outputLabel value ="#{userBean.username}son"></p:outputLabel>
+                                     <b:inputText label="Telefon" labelStyle="width:50px;">
+
+                                    </b:inputText>
                                 </div>
                                 <!--  tom col mellan rader           -->
                                 <div class="ui-g-12"  style="height: 25px;"> </div>
@@ -64,7 +64,7 @@
                                 <!--  rad 2                                                                                -->         
                                 <!--   högra col           -->
                                 <div class="ui-g-6"  style="height:70px;border-color: #13654a;"  >                     
-                                    <b:inputText label="Upphämtningsdag" labelStyle="width:50px;">
+                                    <b:inputText label="Upphämtningstid" labelStyle="width:50px;">
 
                                     </b:inputText>
 
@@ -83,7 +83,7 @@
                                 <!--  rad 3                                                                                -->         
                                 <!--   högra col           -->
                                 <div class="ui-g-6"  style="height:70px;border-color: #13654a;" >                    
-                                    <b:inputText label="Address" labelStyle="width:80px;">
+                                    <b:inputText label="Email" labelStyle="width:80px;">
 
                                     </b:inputText>
 
@@ -92,7 +92,7 @@
                                 <div class="ui-g-1"    > </div>
                                 <!--   väbstra col           -->
                                 <div class="ui-g-5"  style="height:70px;border-color: #13654a;"  >                      
-                                    <b:inputText label="ort" labelStyle="width:80px;">
+                                    <b:inputText label="Adress" labelStyle="width:80px;">
 
                                     </b:inputText>
                                 </div>
@@ -102,18 +102,14 @@
                                 <!--  rad 4                                                                                -->         
                                 <!--   högra col           -->
                                 <div class="ui-g-6"  style="height:70px;border-color: #13654a;"   >                 
-                                   <p:outputLabel value = " Email :  "></p:outputLabel>
-                                    <br></br>
-                                    <p:outputLabel value ="#{userBean.email}"></p:outputLabel>
+                                   
 
                                 </div>
                                 <!--   mellan tom col          -->
                                 <div class="ui-g-1"    > </div>
                                 <!--   väbstra col           -->
                                 <div class="ui-g-5"  style="height:70px;border-color: #13654a;"    >                    
-                                    <b:inputText label="Telefon" labelStyle="width:80px;">
-
-                                    </b:inputText>
+                                    
                                 </div>
                                 <!--  tom col mellan rader           -->
                                 <div class="ui-g-12"  style="height: 25px;"> </div>
@@ -121,18 +117,14 @@
                                 <!--  rad 5                                                                               -->         
                                 <!--   högra col           -->
                                 <div class="ui-g-6"  style="height:70px;border-color: #13654a;"   >                        
-                                    <b:inputText label="Email" labelStyle="width:80px;">
-
-                                    </b:inputText>
+                                   
 
                                 </div>
                                 <!--   mellan tom col          -->
                                 <div class="ui-g-1"    > </div>
                                 <!--   väbstra col           -->
                                 <div class="ui-g-5"  style="height:70px;border-color: #13654a;"      >              
-                                    <b:inputText label="EfterNamn" labelStyle="width:80px;">
-
-                                    </b:inputText>
+                                   
                                 </div>
                                 <!--  tom col mellan rader           -->
                                 <div class="ui-g-12"  style="height: 25px;"> </div>
@@ -172,7 +164,7 @@
 
                                     <div class="ui-g-5" align="left"  style="height:70px;border-color: #13654a;" >
                                         <p:outputLabel class="font-style-view-page">
-                                            Prudukt
+                                            Produkt
                                         </p:outputLabel>
                                     </div> 
                                     <div class="ui-g-2"   style="height:70px;border-color: #13654a;" align="right" > 
@@ -192,13 +184,13 @@
                                 <div class="ui-g-12"   > 
 
                                     <div class="ui-g-5"  style="height:70px;border-color: #13654a;"  align="left"> 
-                                        <h:outputText value="#{shoppingCart.item}"  class="font-style-view-page"/>
+                                        <h:outputText value="#{shoppingCart.item.title}"  class="font-style-view-page"/>
                                     </div> 
                                     <div class="ui-g-2"  style="height:70px;border-color: #13654a;" align="right"  > 
-                                        <h:outputText value="#{shoppingCart.item.quantity}" class="font-style-view-page"/>
+                                        <h:outputText value="1" class="font-style-view-page"/>
                                     </div> 
                                     <div class="ui-g-5"  style="height:70px;border-color: #13654a;"  align="right">
-                                        <h:outputText value="#{shoppingCart.item.price}" class="font-style-view-page"/>
+                                        <h:outputText value="#{shoppingCart.item.price}kr" class="font-style-view-page"/>
 
                                     </div> 
 
@@ -214,9 +206,9 @@
                                     </div> 
                                     <div class="ui-g-2"    style="height:70px;border-color: #13654a;" > </div> 
                                     <div class="ui-g-5"  align="right" style="height:70px;border-color: #13654a;" >
-                                        <p:outputLabel class="font-style-view-page">
-                                            antal*pris
-                                        </p:outputLabel>
+                                        
+                                             <h:outputText value="#{shoppingCart.item.price}kr" class="font-style-view-page"/>
+                                        
 
                                     </div> 
 
@@ -241,7 +233,7 @@
 
                                     <div class="ui-g-4"   style="height:70px;border-color: #13654a;" > 
                                         <p:outputLabel class="font-style-view-page" style="font-size: 15px;">
-                                            plats för upphmtning
+                                            Plats för upphämtning
                                         </p:outputLabel>
 
                                     </div> 
