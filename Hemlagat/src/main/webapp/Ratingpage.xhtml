@@ -32,7 +32,8 @@
         <h:outputText value="who made this dish:" />
         <h:inputText value="#{ratingController.selected.chef}" size="60" />
         <h:outputText value="who is the rater" />
-        <h:inputText value="#{ratingController.selected.rater}" size="60" />
+        <h:outputText value="#{userBean.username}" />
+        
         
     </h:panelGrid>
     <b:commandButton value="Submit"  look="success" span="2"

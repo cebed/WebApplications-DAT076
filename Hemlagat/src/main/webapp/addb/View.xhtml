@@ -288,7 +288,9 @@
                             </div>
                             <div class="ui-g-6" align="right">
 
-                                <b:button value="Köp" tiny-screen="half"  iconAwesome="cart-plus" look="success"  style="height: 100px; width: 400px;"/>
+                                <b:button href="/Hemlagat/Ratingpage.xhtml" value="Köp" tiny-screen="half"  iconAwesome="cart-plus" look="success"  style="height: 100px; width: 400px;">
+                                    <f:param name="userId" value="#{addbBean.current.userid.email}" />
+                                </b:button>
                             </div>
                         </div>
 

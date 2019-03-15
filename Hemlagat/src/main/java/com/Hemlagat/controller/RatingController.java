@@ -6,6 +6,7 @@ import com.Hemlagat.controller.util.PaginationHelper;
 import com.Hemlagat.model.RatingFacade;
 import com.Hemlagat.model.Userdb;
 import com.Hemlagat.model.UserdbFacade;
+import com.Hemlagat.model.session.UserBean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -33,7 +34,8 @@ public class RatingController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private List<Rating> ratings = null;
-
+    @Inject
+    private UserBean userBean;
 
     public RatingController() {
     }
@@ -97,7 +99,7 @@ public class RatingController implements Serializable {
 
     public String create() {
         try {
-           
+            current.setRater(userBean.getUsername());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("RatingCreated"));
             return prepareCreate();
