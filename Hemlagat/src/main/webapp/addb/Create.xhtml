@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+       xmlns:o="http://omnifaces.org/ui">
 
     
     <h:body>
@@ -46,18 +47,19 @@
                                 <div class="ui-g-12"  style=" " align="left" ></div>
                                 <div class="ui-g-12"  style="  " align="left" >
                                     
-                                    <p:outputLabel value="logged as: " ></p:outputLabel> 
+                                   
                                     <div class="ui-g-12"  align="center"  ></div>
-                                    <p:outputLabel value="#{userBean.email}" ></p:outputLabel> 
-                                    <p:inputText label="looed as  " value="#{addbBean.current.userid}"></p:inputText>
+                                  
+                                   
                                    
                                      <p:outputLabel style="  font-family: serif; font-size: 30px; font-weight: bold; color: #13654a;">
                                    Lägg Maträttsbilden
                                 </p:outputLabel> 
                                 </div>
                                 <div class="ui-g-12"  style="border: outset;  height: 200px; "  > 
-                                    <!-- bidden visas här          -->    bilden visas här  
-                                    
+                                    <!--
+                                     <o:graphicImage width="100%" height="auto"  value="#{item.photo}" dataURI="true" rendered="#{item.hasPhoto}"/>
+                                    -->
                                 </div>
                                 <div class="ui-g-12"  style="  height: 200px; "  align="center"> 
                                     
@@ -82,19 +84,19 @@
                                 <!-- rad 1 col 2 -->
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="MatTitel" maxlength="25" value="#{addbBean.current.title}"></b:inputText>
+                                    <b:inputText label="MatTitel" maxlength="25" value="#{addbBean.current.title}" required="true"></b:inputText>
                                 </div>
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här      -->      
-                                    <b:inputTextarea label="Beskrivning" styleClass="unresizable" value="#{addbBean.current.description}" maxlength="200" style="resize: none" > </b:inputTextarea>
+                                    <b:inputTextarea label="Beskrivning" styleClass="unresizable" value="#{addbBean.current.description}" maxlength="200" style="resize: none" required="true"> </b:inputTextarea>
                                   
                                 </div>
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="Pris" labelStyle="width:80px;" value="#{addbBean.current.price}"> </b:inputText>
+                                    <b:inputText label="Pris" labelStyle="width:80px;" value="#{addbBean.current.price}" required="true"> </b:inputText>
                                 </div>
                                 <div class="ui-g-3"    style="width: 50px; "  > <h:outputLabel for="basic" value="Antal  "  /></div>
-                                <div class="ui-g-2"  style="width: 50px;"    >  <p:spinner id="basic"  value="#{addbBean.current.quantity}"  /></div>
+                                <div class="ui-g-2"  style="width: 50px;"    >  <p:spinner id="basic"  value="#{addbBean.current.quantity}" required="true" /></div>
                                 <div class="ui-g-7"     > 
                                     <!-- bidden visas här          -->   
                                     
@@ -102,19 +104,19 @@
                                 </div>
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="Vikt" labelStyle="width:80px;" value="#{addbBean.current.weight}"> </b:inputText>
+                                    <b:inputText label="Vikt" labelStyle="width:80px;" value="#{addbBean.current.weight}" required="true"> </b:inputText>
                                 </div>
                                 <div class="ui-g-12"     > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="Address" labelStyle="width:80px;" value="#{addbBean.current.address}"> </b:inputText>
+                                    <b:inputText label="Address" labelStyle="width:80px;" value="#{addbBean.current.address}" required="true"> </b:inputText>
                                 </div>
                                 <div class="ui-g-6"   > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="Ort" labelStyle="width:80px;" value="#{addbBean.current.other}"></b:inputText>
+                                    <b:inputText label="Ort" labelStyle="width:80px;" value="#{addbBean.current.other}" required="true"></b:inputText>
                                 </div>
                                 <div class="ui-g-6"   > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="Postnumber" labelStyle="width:80px;" value="#{addbBean.current.other2}"></b:inputText>
+                                    <b:inputText label="Postnumber" labelStyle="width:80px;" value="#{addbBean.current.other2}" required="true"></b:inputText>
                                 </div>
 
 
@@ -141,7 +143,7 @@
                                     <div class="ui-g-6"   >  <b:selectBooleanCheckbox value="#{addbBean.current.nuts}" caption="Nuts"   />        </div> 
                                     <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbBean.current.lactose}" caption="Lactose"   />      </div> 
                                     <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbBean.current.gluten}" caption="Gluten"   />       </div>   
-                                    <p:inputText label="looed as  " value="#{addbBean.current.status}"></p:inputText>
+                                   
                                 </div>
                                 <div class="ui-g-12" style="height: 180px;"></div>
                                 <div class="ui-g-12"   >
