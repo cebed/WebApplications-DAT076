@@ -132,9 +132,34 @@ public class AddbController implements Serializable {
     }
     
     public String addToShoppingCartForRatingPage() {    
-        addbBean.getCurrent().setQuantity(addbBean.getCurrent().getQuantity()-1);
-        addbBean.getCurrent().setStatus("kopt");
+          Addb db = new Addb();
+      
+        db.setTitle(addbBean.getCurrent().getTitle());
+        db.setDescription(addbBean.getCurrent().getDescription());
+        db.setStatus("kopt");
+        db.setAddress(addbBean.getCurrent().getAddress());
+        db.setOther(addbBean.getCurrent().getOther());
+        db.setOther2(addbBean.getCurrent().getOther2());
+        
+        db.setWeight(addbBean.getCurrent().getWeight());
+        db.setPrice(addbBean.getCurrent().getPrice());
+        
+         final Userdb userdb = userFacade.find(userBean.getEmail());
+        db.setUserid(userdb);
+       addbFacade.create(db);
+        
+        if((addbBean.getCurrent().getQuantity()-1) > 0){
+   
+            
+            addbBean.getCurrent().setQuantity(addbBean.getCurrent().getQuantity()-1);
         addbFacade.edit(addbBean.getCurrent());
+        }
+        else{
+        addbBean.getCurrent().setStatus("slut");
+        addbFacade.edit(addbBean.getCurrent());
+        
+        }
+        
         
         cart.setItem(addbBean.getCurrent());
         
