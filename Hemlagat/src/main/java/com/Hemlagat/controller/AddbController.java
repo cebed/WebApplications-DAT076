@@ -60,7 +60,7 @@ public class AddbController implements Serializable {
         try {
 
             addbBean.getCurrent().setPhoto(addbBean.getFile().getContents());
-            addbBean.getCurrent().setStatus("sold");
+            addbBean.getCurrent().setStatus("Aktiv");
 
             final Userdb userdb = userFacade.find(userBean.getEmail());
             addbBean.getCurrent().setUserid(userdb);
