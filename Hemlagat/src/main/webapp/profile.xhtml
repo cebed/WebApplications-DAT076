@@ -8,78 +8,71 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:b="http://bootsfaces.net/ui">
     <h:head>
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"/>
 
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-        <!--JavaScript at end of body for optimized loading-->
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-
-        <title>Your Profile</title>
     </h:head>
-
-    <h:body styleClass="green darken-3">
-        <ui:composition template="/addb/Templetes/Templete.xhtml">
-
-
-            <ui:define name="content">
+    <ui:composition template="/addb/Templetes/Templete.xhtml">
+        <ui:define name="content">
+            <h:body>
                 <f:view locale="#{facesContext.externalContext.requestLocale}">
+                    <b:jumbotron style="background: white; height: auto;"> 
+                        <div class="myContact" style="position: relative;  align-content: center; text-align: center; color: green;">
+                            <h1>My profile </h1>
+                        </div>
+                        <b:container>
+                            <h:outputStylesheet />
+                            <!--      loggad som skriven av roman             -->
+                            <h:form>
+                                <div class="col-sm-6 col-sm-offset-3" align="center" >
+                                    <div class="panel panel-default" style="background-color: whitesmoke;"> 
+                                        <p:panel style="background: white; width: 250px; ">
+                                            <h2><strong>Välkommen</strong></h2> 
+                                            <p> #{userBean.username} </p>
+                                            <br></br>
+                                            <p> <strong> Email adress </strong></p> 
+                                         
+                                            <p>#{userBean.email}</p>
+                                            <!-- <p>Your ads: </p> hashtag{login.myItems} -->
+                                            <!-- <p>Your rating: </p>-->
+                                            <hr></hr>
+                                            <h:link outcome="/changepassword" value="Byt lösenord"/>
+
+                                            <hr></hr>
+                                            <h:commandLink action="#{addbController.ItemsbyEmail()}" value="Alla Annonser" styleClass="btn btn-large"/>
+
+                                            <hr></hr>
+                                            <h:commandLink action="#{addbController.BougtItems}"  value="Köpta annonser" styleClass="btn btn-large"/>
+
+                                            <hr></hr>
+                                            <h:commandLink action="#{addbController.SoldItems()}" value="Aktiva annonser" styleClass="btn btn-large"/>
+
+                                            <hr></hr>
+                                            <b:commandLink action="#{addbController.addToShoppingCartForRating()}" value="Se dina omdömen">
+                                                <f:setPropertyActionListener value="#{userBean.email}" target="#{ratingController.email}" />
+                                            </b:commandLink>
+                                            <hr></hr>
+                                            
+                                         
+                                            <p:commandButton  action="#{login.logout}" value="Logga ut" style="background-color: silver; "  />
+                                            <hr></hr>
 
 
-                    <div  class="valign-wrapper" id="login-page" >
-                        <div class="container" >   
-                            <div class="center-align">
-                                <div class="row">
-                                    <div class="col s6 offset-s3">
-                                        <div class="card">
-                                            <div class="card-content">
-                                                <div>
-                                                    <img class="responsive-img" style="max-width: 64px;" src="https://d29fhpw069ctt2.cloudfront.net/icon/image/120428/preview.svg"  />
-                                                    <div class="header">
-                                                        <h1>Your Profile</h1>
-                                                        <h:outputStylesheet library="css" name="jsfcrud.css"/>
-                                                        <!--      loggad som skriven av roman             -->
-                                                        <h:form>
-                                                            <p>Welcome, #{userBean.username} </p> 
-                                                            <p>Email address: #{userBean.email}</p>
-                                                            <!-- <p>Your ads: </p> hashtag{login.myItems} -->
-                                                            <!-- <p>Your rating: </p>-->
-                                                            <h:link outcome="/changepassword" value="Change your password"/>
-                                                            <br/>
-                                                            <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
-                                                        </h:form>
-                                                        <hr></hr>
-                                                        <h:form>
-                                                            <h:commandLink action="#{addbController.ItemsbyEmail()}" value="Alla Annonser" styleClass="btn btn-large"/>
-
-                                                        </h:form>
-                                                        <hr></hr>
-                                                        <h:form>
-                                                            <h:commandLink action="#{addbController.BougtItems}"  value="köpta/" styleClass="btn btn-large"/>
-                                                        </h:form>
-                                                        <hr></hr>
-                                                        <h:form>
-                                                            <h:commandLink action="#{addbController.SoldItems()}" value="solda mat/vator" styleClass="btn btn-large"/>
-                                                        </h:form>
-                                                        <hr></hr>
-                                                        <h:form>                            
-                                                            <b:commandLink action="#{addbController.addToShoppingCartForRating()}" value="Se dina ratings">
-                                                                <f:setPropertyActionListener value="#{userBean.email}" target="#{ratingController.email}" />
-                                                            </b:commandLink></h:form>
-                                                        <hr></hr>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </p:panel>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </h:form>
+
+
+
+
+
+
+
+
+                        </b:container>
+                    </b:jumbotron>
                 </f:view>
-            </ui:define>
-        </ui:composition>
-    </h:body>
+            </h:body>
+        </ui:define>
+    </ui:composition>
 </html>
