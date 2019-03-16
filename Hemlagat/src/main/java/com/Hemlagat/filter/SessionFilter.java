@@ -34,7 +34,7 @@ public class SessionFilter extends HttpFilter {
         String currentPath = req1.getRequestURL().toString();
 
         if (!userBean.isLoggedIn()) {
-            if (currentPath.contains("/Hemlagat/profile.xhtml") || currentPath.contains("/Hemlagat/addb/Create.xhtml")) {
+            if (currentPath.contains("/Hemlagat/profile.xhtml") || currentPath.contains("/Hemlagat/addb/Create.xhtml") || currentPath.contains("/Hemlagat/addb/View.xhtml")) {
                 res1.sendRedirect(req1.getContextPath() + "/LoginPage.xhtml");
             } else {
                 chain.doFilter(request, response);
