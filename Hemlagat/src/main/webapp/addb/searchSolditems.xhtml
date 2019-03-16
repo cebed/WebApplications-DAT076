@@ -104,21 +104,27 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListAddbTitle_other}"/>
+                                    <h:outputText value="ort/stad"/>
                                 </f:facet>
                                 <h:outputText value="#{item.other}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListAddbTitle_other2}"/>
+                                    <h:outputText value="Postno"/>
                                 </f:facet>
                                 <h:outputText value="#{item.other2}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListAddbTitle_other2}"/>
+                                    <h:outputText value="Din email"/>
                                 </f:facet>
                                 <h:outputText value="#{item.userid}"/>
+                            </h:column>
+                         <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="status"/>
+                                </f:facet>
+                                <h:outputText value="#{item.status}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
@@ -129,10 +135,10 @@
                         </h:dataTable>
                    
                     <br />
-                    <h:commandLink action="#{addbController.prepareCreate}" value="#{bundle.ListAddbCreateLink}"/>
+                
                     <br />
                     <br />
-                    <h:link outcome="/index" value="#{bundle.ListAddbIndexLink}"/>
+                  
                 </h:form>
         </ui:define>
     </ui:composition>

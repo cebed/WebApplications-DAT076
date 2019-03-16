@@ -68,7 +68,7 @@ public class AddbController implements Serializable {
             //  addbBean.getCurrent().setRating(ratingFacade.findMedianRatings(addbBean.getCurrent().getUserid().getEmail())); // den här metoden ställer till man kan int skapa en ads om man har den!!!!
             addbFacade.create(addbBean.getCurrent());
 
-            return "Locationpage?faces-redirect=true";
+            return  SoldItems();
         } catch (Exception e) {
 
             return "Locationpage.xhtml";
@@ -78,6 +78,14 @@ public class AddbController implements Serializable {
             return "/addb/List.xhtml?faces-redirect=true";
     
     }
+    
+    public String setProfilePage(){
+            return "/profile.xhtml?faces-redirect=true";
+    
+    }
+    
+    
+    
     public String putItems() {
 
         items = addbFacade.findByAdress(Address);
