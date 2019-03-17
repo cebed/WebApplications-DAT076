@@ -1,4 +1,4 @@
-package com.Hemlagat.view;
+package com.Hemlagat.model.session;
 
 import com.Hemlagat.model.Addb;
 import com.Hemlagat.model.AddbFacade;

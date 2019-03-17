@@ -9,7 +9,7 @@ import com.Hemlagat.model.RatingFacade;
 import com.Hemlagat.model.Userdb;
 import com.Hemlagat.model.UserdbFacade;
 import com.Hemlagat.model.session.UserBean;
-import com.Hemlagat.view.AddbBean;
+import com.Hemlagat.model.session.AddbBean;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
