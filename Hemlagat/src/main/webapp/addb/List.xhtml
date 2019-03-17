@@ -117,7 +117,7 @@
                                 <p:outputPanel id="AdsDetail" style="text-align:center;">
                                     <div class="ui-g-12" style="border: outset" align="left" >
                                         <div class="ui-g-3" style=" min-height: 150px;" align="left" >
-                                            <p:graphicImage value="/addb/curry.jpeg" id="curry" width="190px" height="128px"/>
+                                            <o:graphicImage width="100%" height="auto"  value="#{addbBean.current.photo}" dataURI="true" rendered="#{addbBean.current.hasPhoto}"/>
                                         </div>
                                         <div class="ui-g-6" style=" min-height: 150px;" align="left" >
                                             <h:outputText value="#{addbBean.current.title}"  class="lista-title-describtion"/>
