@@ -98,7 +98,7 @@ public class AddbController implements Serializable {
         final Userdb userdb = userFacade.find(userBean.getEmail());
         addbBean.getCurrent().setUserid(userdb);
         itemsbyEmail = addbFacade.findByEmail(userdb);
-        return "/addb/extradata.xhtml";
+        return "/addb/searchforallitems.xhtml";
 
     }
 

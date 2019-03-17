@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
 
     
 
@@ -17,31 +18,24 @@
              <ui:define name="content">
    
         
-                 <h:form styleClass="jsfcrud_list_form">
+                 
+                 
+                 
+                 
+                 <div class="ui-g" style="background-color: white;">
+
+                    <div class="ui-g-12" ></div>
+                    <div class="ui-g-2" ></div>
+                    <div class="ui-g-8" >
+                         <h:form styleClass="jsfcrud_list_form">
                     <h:panelGroup id="messagePanel" layout="block">
                         <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                     </h:panelGroup>
                     
                    
-                     <h:dataTable value="#{addbController.soldItems}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                           
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                           <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="#{bundle.ListAddbTitle_id}"/>
-                                </f:facet>
-                                <h:outputText value="#{item.id}"/>
-                            </h:column>
+                     <h:dataTable value="#{addbController.soldItems}" var="item" border="0" cellpadding="2" cellspacing="0" >
+                    
+   
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.ListAddbTitle_title}"/>
@@ -134,12 +128,36 @@
                            
                         </h:dataTable>
                    
-                    <br />
-                
-                    <br />
-                    <br />
+                   
                   
                 </h:form>
+                        
+                    </div>
+                      <div class="ui-g-2" ></div>
+                      <div class="ui-g-12"  >
+                          
+                          <b:button  outcome="/Locationpage" value="Till första sidan" style="width: 100%;  font-size: 30px;"/>
+                          
+                      </div>
+                </div>
+
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                
         </ui:define>
     </ui:composition>
 </h:body>

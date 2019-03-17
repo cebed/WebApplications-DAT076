@@ -4,8 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:p="http://primefaces.org/ui">
 
 
 
@@ -22,22 +21,13 @@
                     <div class="ui-g-12" ></div>
                     <div class="ui-g-2" ></div>
                     <div class="ui-g-8" >
-                        <h:form styleClass="jsfcrud_list_form">
+                         <h:form styleClass="jsfcrud_list_form">
                     <h:panelGroup id="messagePanel" layout="block">
                         <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                     </h:panelGroup>
 
 
-                    <h:dataTable value="#{addbController.bougtItems}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-
-
-
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListAddbTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </h:column>
+                    <h:dataTable value="#{addbController.itemsbyEmail}" var="item" border="0" cellpadding="2" cellspacing="0"  rules="all" style="border:outset 1px">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListAddbTitle_title}"/>
@@ -100,29 +90,30 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="ort/stad"/>
+                                <h:outputText value="#{bundle.ListAddbTitle_other}"/>
                             </f:facet>
                             <h:outputText value="#{item.other}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Postno"/>
+                                <h:outputText value="#{bundle.ListAddbTitle_other2}"/>
                             </f:facet>
                             <h:outputText value="#{item.other2}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="din Email"/>
+                                <h:outputText value="Userid"/>
                             </f:facet>
                             <h:outputText value="#{item.userid}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Status"/>
+                                <h:outputText value="status"/>
                             </f:facet>
                             <h:outputText value="#{item.status}"/>
                         </h:column>
                         <h:column>
+
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
@@ -130,16 +121,24 @@
 
                     </h:dataTable>
 
-                   
 
+                    
                 </h:form>
+                        
                     </div>
-                    <div class="ui-g-2" ></div>
-                    <div class="ui-g-12" >
-                        <b:button  outcome="/Locationpage" value="Till första sidan" style="width: 100%;  font-size: 30px;"/>
-                    </div>
+                      <div class="ui-g-2" ></div>
+                      <div class="ui-g-12" >
+                          <h:link outcome="/Locationpage" value="#{bundle.ListAddbIndexLink}"/>
+                          
+                      </div>
                 </div>
 
+
+
+
+
+
+               
             </ui:define>
         </ui:composition>
     </h:body>
