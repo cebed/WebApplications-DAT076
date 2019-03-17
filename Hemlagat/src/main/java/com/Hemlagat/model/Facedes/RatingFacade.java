@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Hemlagat.model;
+package com.Hemlagat.model.Facedes;
 
+import com.Hemlagat.model.Rating;
+import com.Hemlagat.model.Userdb;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import java.util.ArrayList;

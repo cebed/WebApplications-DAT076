@@ -7,7 +7,7 @@ package com.Hemlagat.controller;
 
 
 import com.Hemlagat.controller.util.JsfUtil;
-import com.Hemlagat.model.UserdbFacade;
+import com.Hemlagat.model.Facedes.UserdbFacade;
 import com.Hemlagat.model.Userdb;
 import com.Hemlagat.model.session.UserBean;
 
@@ -44,7 +44,7 @@ public class LoginController implements Serializable {
     private UserBean userBean;
 
     @EJB
-    private com.Hemlagat.model.AddbFacade ejbFacade;
+    private com.Hemlagat.model.Facedes.AddbFacade ejbFacade;
 
     public String login() {
         final Userdb loggedInUser = userRegistry.findUser(email, password);

@@ -3,9 +3,9 @@ package com.Hemlagat.controller;
 import com.Hemlagat.model.Rating;
 import com.Hemlagat.controller.util.JsfUtil;
 import com.Hemlagat.controller.util.PaginationHelper;
-import com.Hemlagat.model.RatingFacade;
+import com.Hemlagat.model.Facedes.RatingFacade;
 import com.Hemlagat.model.Userdb;
-import com.Hemlagat.model.UserdbFacade;
+import com.Hemlagat.model.Facedes.UserdbFacade;
 import com.Hemlagat.model.session.ShoppingCart;
 import com.Hemlagat.model.session.UserBean;
 
@@ -33,7 +33,7 @@ public class RatingController implements Serializable {
     private Rating current;
     private DataModel items = null;
     @EJB
-    private com.Hemlagat.model.RatingFacade ejbFacade;
+    private com.Hemlagat.model.Facedes.RatingFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
     @Getter

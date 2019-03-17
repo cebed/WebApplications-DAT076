@@ -3,7 +3,7 @@ package com.Hemlagat.controller;
 import com.Hemlagat.model.Userdb;
 import com.Hemlagat.controller.util.JsfUtil;
 import com.Hemlagat.controller.util.PaginationHelper;
-import com.Hemlagat.model.UserdbFacade;
+import com.Hemlagat.model.Facedes.UserdbFacade;
 import com.Hemlagat.model.session.UserBean;
 
 import java.io.Serializable;
@@ -40,7 +40,7 @@ public class UserdbController implements Serializable {
     private UserBean userBean;
 
     @EJB
-    private com.Hemlagat.model.UserdbFacade ejbFacade;
+    private com.Hemlagat.model.Facedes.UserdbFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 

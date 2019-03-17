@@ -1,10 +1,10 @@
 package com.Hemlagat.model.session;
 
 import com.Hemlagat.model.Addb;
-import com.Hemlagat.model.AddbFacade;
-import com.Hemlagat.model.RatingFacade;
+import com.Hemlagat.model.Facedes.AddbFacade;
+import com.Hemlagat.model.Facedes.RatingFacade;
 import com.Hemlagat.model.Userdb;
-import com.Hemlagat.model.UserdbFacade;
+import com.Hemlagat.model.Facedes.UserdbFacade;
 import com.Hemlagat.model.session.ShoppingCart;
 import com.Hemlagat.model.session.UserBean;
 
