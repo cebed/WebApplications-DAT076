@@ -45,7 +45,7 @@
                             <div class="ui-g-4"      > 
                                 <!-- header till först col -->
                                 <div class="ui-g-12"  style=" " align="left" ></div>
-                                <div class="ui-g-12"  style="  " align="left" >
+                                <div class="ui-g-12"  style="  " align="center" >
                                     
                                    
                                     <div class="ui-g-12"  align="center"  ></div>
@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="ui-g-6"   > 
                                     <!-- bidden visas här          -->   
-                                    <b:inputText label="Postnumber" labelStyle="width:80px;" value="#{addbBean.current.other2}" required="true"></b:inputText>
+                                    <b:inputText label="Post-no" labelStyle="width:80px;" value="#{addbBean.current.other2}" required="true"></b:inputText>
                                 </div>
 
 
@@ -145,14 +145,14 @@
                                     <div class="ui-g-6"    >  <b:selectBooleanCheckbox value="#{addbBean.current.gluten}" caption="Gluten"   />       </div>   
                                    
                                 </div>
-                                <div class="ui-g-12" style="height: 180px;"></div>
-                                <div class="ui-g-12"   >
+                                <div class="ui-g-12" style="height: 210px;"></div>
+                                <div class="ui-g-12"  style="height: 100px;" >
                                                                                                                                                             
-                                    <b:commandButton value="Lägg upp annons" iconAwesome="fa-save" look="success" style="height: 80px; width: 300px; font-family: serif; font-size: 15px; " action="#{addbController.create}"> </b:commandButton>
+                                    <b:commandButton value="Lägg upp annons" iconAwesome="fa-save" look="success" style="height: 100%; width: 100%; font-family: serif; font-size: 15px; " action="#{addbController.create}"> </b:commandButton>
                                 </div>
-                                <div class="ui-g-12"  >
+                                <div class="ui-g-12"  style=" height: 100px;">
 
-                                    <b:commandButton value="back" tiny-screen="half"  iconAwesome="cart-plus" look="success"   style="height: 80px; width: 300px; font-family: serif; font-size: 15px; " action="/sellOrBuy"/>
+                                    <b:commandButton value="back"   iconAwesome="cart-plus" look="success"   style="height: 100%; width: 100%; font-family: serif; font-size: 15px; " action="/sellOrBuy"/>
                                 </div>
 
 
