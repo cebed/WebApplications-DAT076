@@ -4,6 +4,8 @@ Webapplication project
 The project report is available on Github, as well as on Google drive:
 https://docs.google.com/document/d/1DTVL91n68JwWSPsQg7buBpOWTgPWLBhHRzoU3YtJq9Y/edit?usp=sharing
 
+The complete UML for the project is in the root directory of Github.
+
 The visual board (Scrum board) of the project is available on Trello:
 https://trello.com/b/xp6np6Q7/webbapp
 
