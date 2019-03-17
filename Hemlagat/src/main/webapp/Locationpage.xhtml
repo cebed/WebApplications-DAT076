@@ -13,21 +13,7 @@
     <h:head>
         <title>Facelet Title</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    </h:head>
-
-    <h:body>
-        <ui:composition template="/addb/Templetes/Templete.xhtml">
-            <ui:define name="content">
-                <f:view locale="#{facesContext.externalContext.requestLocale}">
-
-                    <div class="ui-g" >
-                        <div class="ui-g-3"  > </div>
-                        <div class="ui-g-6"  >
-                            <div class="ui-g-12" style=" height: 140px;"  ></div>
-                            <div class="ui-g-12"  >
-                                <form id="ipForm">
-                                    <script>
+         <script>
                                         function callback(response) {
                                             console.log(response);
                                             document.getElementById("ip").value = response.city;
@@ -41,14 +27,32 @@
 
 
                                     </script>
-                                    <div class="ui-g-8" style="border: outset;  height: 70px; background-color: #13654a;"  >
-                                        <input type="text"  name = "ipAddress" id = "ip" value="tmp" style="width: 100%; height: 100%; font-family: serif; font-size: 30px;"/>
 
+    </h:head>
+
+    <h:body>
+        <ui:composition template="/addb/Templetes/Templete.xhtml">
+            <ui:define name="content">
+                <f:view locale="#{facesContext.externalContext.requestLocale}">
+
+                    <div class="ui-g" >
+                        <div class="ui-g-3"  > </div>
+                        <div class="ui-g-6"  >
+                            <div class="ui-g-12" style=" height: 140px;"  ></div>
+                            <div class="ui-g-12"  >
+                                <h:form>
+                                   
+                                    <div class="ui-g-8" style="border: outset;  height: 70px; background-color: #13654a;"  >
+                                        <b:inputText type="text" value="#{addbController.address}" id = "ip"  style="width: 100%; height: 100%; font-family: serif; font-size: 30px;" placeholder="Mata in din stad"/>
+                                        
                                     </div>
                                     <div class="ui-g-4" style="border: outset; height: 70px; background-color: #13654a;" >
-                                        <h:commandButton action="#{addbController.setLocation()}" value="Din Position" style="width: 100%; height: 100%; font-family: serif; font-size: 20px;" />
+                                        <h:commandButton action="/sellOrBuy.xhtml" value="Din Position" style="width: 100%; height: 100%; font-family: serif; font-size: 20px;" >
+                                           
+                                            
+                                        </h:commandButton>
                                     </div>
-                                </form>
+                                </h:form>
                             </div>
                             <div class="ui-g-12" style=" height: 200px;" ></div>
                         </div>
