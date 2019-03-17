@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.Hemlagat.model.Facedes;
 
 import com.Hemlagat.model.QUserdb;
@@ -44,8 +40,7 @@ public class UserdbFacade extends AbstractFacade<Userdb> {
     }
 
     public Userdb findUser(String email, String password) {
-        System.out.println("Looking for user " + email);
-        System.out.println("Password >" + password + "<");
+       
         QUserdb tableofuser = QUserdb.userdb;
         System.out.println(query.from(tableofuser).fetch());
         Userdb result = qf.selectFrom(tableofuser).where(tableofuser.email.eq(email)).fetchOne();
