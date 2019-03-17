@@ -61,7 +61,7 @@ and open the template in the editor.
                         
                         <div class="ui-g-6" align="left"  >
                              <b:button style="height: 100%; font-size: 20px; background-color: whitesmoke; font-weight: bold; width: 100%; color: #13654a;" rendered="#{userBean.loggedIn}" value="Inloggad: #{userBean.username}"   outcome="/profile"></b:button>
-                        
+                             <b:button  style="height: 100%; font-size: 20px; background-color: whitesmoke; font-weight: bold; width: 100%; color: #13654a;" value="Logga in" outcome="/LoginPage" rendered="#{!userBean.loggedIn}"/>
                     </div>
                     <div class="ui-g-6" align="right"  >
 
