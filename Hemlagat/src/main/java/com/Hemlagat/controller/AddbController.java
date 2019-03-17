@@ -65,7 +65,7 @@ public class AddbController implements Serializable {
             final Userdb userdb = userFacade.find(userBean.getEmail());
             addbBean.getCurrent().setUserid(userdb);
             System.out.println("###############################################   jag är på controller" + userdb);
-            //  addbBean.getCurrent().setRating(ratingFacade.findMedianRatings(addbBean.getCurrent().getUserid().getEmail())); // den här metoden ställer till man kan int skapa en ads om man har den!!!!
+            addbBean.getCurrent().setRating(ratingFacade.findMedianRatings(addbBean.getCurrent().getUserid().getEmail())); // den här metoden ställer till man kan int skapa en ads om man har den!!!!
             addbFacade.create(addbBean.getCurrent());
 
             return  SoldItems();
@@ -166,7 +166,5 @@ public class AddbController implements Serializable {
         return "/Ratingpage";
     }
 
-    // public double getTotal(){
-    //return addbBean.getCurrent().getQuantity() * addbBean.getCurrent().getPrice();
-    // }
+   
 }

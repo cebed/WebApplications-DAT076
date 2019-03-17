@@ -60,21 +60,21 @@ and open the template in the editor.
                         
                         
                         <div class="ui-g-6" align="left"  >
-                             <b:button style="height: 100%; width: 100%; color: #13654a;" rendered="#{userBean.loggedIn}" value="Logged in as #{userBean.username}"   outcome="/profile"></b:button>
+                             <b:button style="height: 100%; font-size: 20px; background-color: whitesmoke; font-weight: bold; width: 100%; color: #13654a;" rendered="#{userBean.loggedIn}" value="Inloggad: #{userBean.username}"   outcome="/profile"></b:button>
                         
                     </div>
                     <div class="ui-g-6" align="right"  >
 
                     
-                        <b:commandButton id="dynaButton" value="Meny"  icon="cog"  style=" height: 100%; width: 100%; color: #13654a; " />
+                        <b:commandButton id="dynaButton" value="Meny"  icon="cog"  style=" font-weight: bold; font-size: 20px; background-color: whitesmoke; height: 100%; width: 100%; color: #13654a; " />
                         <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
                             <p:submenu>
-                                <p:menuitem value="Login" outcome="/LoginPage" rendered="#{!userBean.loggedIn}"/>
-                                <p:menuitem value="Register" outcome="/userdb/RegisterPage" rendered="#{!userBean.loggedIn}"/>
-                                <p:menuitem value="My Profile" outcome="/profile.xhtml" update="messages" icon="pi pi-save" rendered="#{userBean.loggedIn}" />
-                                <p:menuitem value="Logout" action="#{login.logout()}" rendered="#{userBean.loggedIn}" />
+                                <p:menuitem value="Logga in" outcome="/LoginPage" rendered="#{!userBean.loggedIn}"/>
+                                <p:menuitem value="Registrera" outcome="/userdb/RegisterPage" rendered="#{!userBean.loggedIn}"/>
+                                <p:menuitem value="Min Profil" outcome="/profile.xhtml" update="messages" icon="pi pi-save" rendered="#{userBean.loggedIn}" />
+                                <p:menuitem value="Logga ut" action="#{login.logout()}" rendered="#{userBean.loggedIn}" />
                                 <p:separator />
-                                <p:menuitem value="Homepage" outcome="/Locationpage" icon="pi pi-home"/>
+                                <p:menuitem value="Hem" outcome="/Locationpage" icon="pi pi-home"/>
                             </p:submenu>
                         </p:menu>
                         
