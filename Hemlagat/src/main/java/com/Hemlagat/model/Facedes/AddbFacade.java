@@ -45,7 +45,7 @@ public class AddbFacade extends AbstractFacade<Addb> {
         
        for(Addb li : getByAddre){
            if(li.getStatus().equals("Aktiv")){
-           if(li.getAddress().equals(address)){
+           if(li.getOther().equals(address)){
                
               
                 

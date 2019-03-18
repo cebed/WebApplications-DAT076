@@ -20,9 +20,12 @@ import javax.inject.Inject;
 
 import lombok.Getter;
 import lombok.Setter;
-
+/**
+ *
+ * @author nurabd
+ */
 @Named("addbController")
-@RequestScoped
+@SessionScoped
 public class AddbController implements Serializable {
 
     @Inject

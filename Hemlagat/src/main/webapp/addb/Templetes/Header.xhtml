@@ -60,13 +60,13 @@ and open the template in the editor.
 
 
                         <div class="ui-g-6" align="left"  >
-                            <b:button style="height: 100%; font-size: 20px; background-color: whitesmoke; font-weight: bold; width: 100%; color: #13654a;" rendered="#{userBean.loggedIn}" value="Inloggad: #{userBean.username}"   outcome="/profile"></b:button>
-                            <b:button  style="height: 100%; font-size: 20px; background-color: whitesmoke; font-weight: bold; width: 100%; color: #13654a;" value="Logga in" outcome="/LoginPage" rendered="#{!userBean.loggedIn}"/>
+                            <b:button style="height: 100%;  background-color: whitesmoke; font-weight: bold; width: 100%; color: #13654a;" rendered="#{userBean.loggedIn}" value="Inloggad: #{userBean.username}"   outcome="/profile"></b:button>
+                            <b:button  style="height: 100%;  background-color: whitesmoke; font-weight: bold; width: 100%; color: #13654a;" value="Logga in" outcome="/LoginPage" rendered="#{!userBean.loggedIn}"/>
                         </div>
                         <div class="ui-g-6" align="right"  >
 
 
-                            <b:commandButton id="dynaButton" value="Meny"  icon="cog"  style=" font-weight: bold; font-size: 20px; background-color: whitesmoke; height: 100%; width: 100%; color: #13654a; " />
+                            <b:commandButton id="dynaButton" value="Meny"  icon="cog"  style=" font-weight: bold;  background-color: whitesmoke; height: 100%; width: 100%; color: #13654a; " />
                             <p:menu overlay="true" trigger="dynaButton" my="left top" at="left bottom">
                                 <p:submenu>
                                     <p:menuitem value="Registrera" outcome="/userdb/RegisterPage" rendered="#{!userBean.loggedIn}"/>
