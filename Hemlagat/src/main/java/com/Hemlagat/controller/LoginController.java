@@ -50,7 +50,7 @@ public class LoginController implements Serializable {
 
             userBean.setUsername(loggedInUser.getUsername());
 
-            return "Locationpage?faces-redirect=true";
+            return "sellOrBuy?faces-redirect=true";
 
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Wrong email or password"));
