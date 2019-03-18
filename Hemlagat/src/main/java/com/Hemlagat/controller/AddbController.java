@@ -48,7 +48,7 @@ public class AddbController implements Serializable {
             addbBean.getCurrent().setStatus("Aktiv");
             final Userdb userdb = userFacade.find(userBean.getEmail());
             addbBean.getCurrent().setUserid(userdb);
-            // addbBean.getCurrent().setRating(ratingFacade.findMedianRatings(addbBean.getCurrent().getUserid().getEmail())); // den här metoden ställer till man kan int skapa en ads om man har den!!!!
+            addbBean.getCurrent().setRating(ratingFacade.findMedianRatings(addbBean.getCurrent().getUserid().getEmail())); // den här metoden ställer till man kan int skapa en ads om man har den!!!!
             addbFacade.create(addbBean.getCurrent());
             return addbBean.OnAktiveItems();
         } catch (Exception e) {
