@@ -1,5 +1,6 @@
 package com.Hemlagat.model.session;
 
+import com.Hemlagat.controller.AddbController;
 import com.Hemlagat.model.Addb;
 import com.Hemlagat.model.Facedes.AddbFacade;
 import com.Hemlagat.model.Facedes.RatingFacade;
@@ -7,7 +8,6 @@ import com.Hemlagat.model.Userdb;
 import com.Hemlagat.model.Facedes.UserdbFacade;
 import com.Hemlagat.model.session.ShoppingCart;
 import com.Hemlagat.model.session.UserBean;
-
 
 import java.io.Serializable;
 
@@ -23,55 +23,109 @@ import lombok.Getter;
 import lombok.Setter;
 import org.primefaces.model.UploadedFile;
 
-
 @Named("addbBean")
 @ViewScoped
 
 public class AddbBean implements Serializable {
-      @Getter
+
+    @Getter
     @Setter
     private UploadedFile file;
     @Getter
     @Setter
-    private Addb current ;
-    
+    private Addb current;
+
     @Getter
     @Setter
     private String email;
-   
 
-   @Inject
-   private RatingFacade ratingFacade;
+    @Setter
+    private List<Addb> items;
+    @Getter
+    @Setter
+    private List<Addb> itemsbyEmail;
+    @Getter
+    @Setter
+    private List<Addb> bougtItems;
+    @Getter
+    @Setter
+    private List<Addb> aktiveItems;
+
+    @Inject
+    private RatingFacade ratingFacade;
 
     @Inject
     private ShoppingCart cart;
-   
-    
-    
- @PostConstruct
+
+    @Inject
+    private AddbController addbController;
+
+    @Inject
+    private AddbFacade addbFacade;
+    @Inject
+    private UserdbFacade userFacade;
+    @Inject
+    private UserBean userBean;
+
+    @PostConstruct
     public void init() {
-       
-        if (cart.getItem() != null){
+
+        if (cart.getItem() != null) {
             current = cart.getItem();
             email = current.getUserid().getEmail();
-            System.out.println("###########################       WE GOT IN THE IF" + current.toString());
-        }
-        else{
+        } else {
             current = new Addb();
-            System.out.println("###########################       NOT NOT NOT NOT" + current.toString());
-        
         }
-        System.out.println("###########################       statt" + current.toString());
     }
 
-    public int getMedianRating(){
-    
-      return ratingFacade.findMedianRatings(email);
+    public int getMedianRating() {
+
+        return ratingFacade.findMedianRatings(email);
     }
-    
-    public List getAllRatings(){
-    
-     return ratingFacade.findUserRatings(current.getUserid().getEmail());
+
+    public List getAllRatings() {
+
+        return ratingFacade.findUserRatings(current.getUserid().getEmail());
     }
-   
+
+    public List<Addb> getItems() {
+        return addbFacade.findByAdress(addbController.getAddress());
+    }
+
+    public String putItems() {
+        return "/addb/List.xhtml?faces-redirect=true";
+    }
+
+    public List<Addb> getitemsbyEmail() {
+        final Userdb userdb = userFacade.find(userBean.getEmail());
+        current.setUserid(userdb);
+        return addbFacade.findByEmail(userdb);
+    }
+
+    public String OnItemsbyEmail() {
+        return "/addb/searchforallitems.xhtml";
+    }
+
+    public List<Addb> getaktiveItems() {
+        final Userdb userdb = userFacade.find(userBean.getEmail());
+        current.setUserid(userdb);
+        return addbFacade.findonlysoldaAds(userdb);
+
+    }
+
+    public String OnAktiveItems() {
+        return "/addb/searchSolditems.xhtml";
+    }
+
+    public List<Addb> getBougtItems() {
+        final Userdb userdb = userFacade.find(userBean.getEmail());
+        current.setUserid(userdb);
+        return addbFacade.findonlyBougtItems(userdb);
+
+    }
+
+    public String OnBougtItems() {
+        return "/addb/searchBougtItems.xhtml";
+    }
+
 }

@@ -37,13 +37,13 @@
                                             <h:link outcome="/changepassword" value="Byt lösenord"/>
 
                                             <hr></hr>
-                                            <h:commandLink action="#{addbController.ItemsbyEmail()}" value="Alla Annonser" styleClass="btn btn-large"/>
+                                            <h:commandLink action="#{addbBean.OnItemsbyEmail()}" value="Alla Annonser" styleClass="btn btn-large"/>
 
                                             <hr></hr>
-                                            <h:commandLink action="#{addbController.BougtItems}"  value="Köpta annonser" styleClass="btn btn-large"/>
+                                            <h:commandLink action="#{addbBean.OnBougtItems() }"  value="Köpta annonser" styleClass="btn btn-large"/>
 
                                             <hr></hr>
-                                            <h:commandLink action="#{addbController.SoldItems()}" value="Aktiva annonser" styleClass="btn btn-large"/>
+                                            <h:commandLink action="#{addbBean.OnAktiveItems()}" value="Aktiva annonser" styleClass="btn btn-large"/>
 
                                             <hr></hr>
                                             <b:commandLink action="#{addbController.addToShoppingCartForRating()}" value="Se dina omdömen">

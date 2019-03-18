@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Daniel Cebe
+ * @author Nurabd
  */
 @Stateless
 public class AddbFacade extends AbstractFacade<Addb> {
@@ -46,9 +46,9 @@ public class AddbFacade extends AbstractFacade<Addb> {
        for(Addb li : getByAddre){
            if(li.getStatus().equals("Aktiv")){
            if(li.getAddress().equals(address)){
-               System.out.println("//////////////////////////////////////" +li.getTitle().equals("gbg"));
+               
               
-                System.out.println( li.getAddress().equals("gbg") + "2222 " );
+                
                 OnlyWanteAdd.add(li);       
                } else{
            onlyAktiv.add(li);
@@ -57,10 +57,10 @@ public class AddbFacade extends AbstractFacade<Addb> {
        }
        
           if (!OnlyWanteAdd.isEmpty() ) {
-          //  System.out.println("Found user and right password");
+         
             return OnlyWanteAdd;
         } else {
-           // System.out.println("Did not find user");
+          
             return onlyAktiv;
         }
         }
@@ -81,10 +81,10 @@ public class AddbFacade extends AbstractFacade<Addb> {
        }
        
           if (!wantedEmail.isEmpty() ) {
-           // System.out.println("mission done" + wantedEmail);
+         
             return wantedEmail;
         } else {
-            System.out.println("mission faild");
+         
             return null;
         }
         }
@@ -94,7 +94,7 @@ public class AddbFacade extends AbstractFacade<Addb> {
     public List<Addb> findonlysoldaAds(Userdb usdb) {
        
         
-        System.out.println("Du ska sälja varor min kära bror ------------------");
+      
         List<Addb> emaillist = em.createNamedQuery("Addb.findAll", Addb.class).getResultList();
         List<Addb> wantedEmail = new LinkedList<>();
        for(Addb li : emaillist){
@@ -102,7 +102,7 @@ public class AddbFacade extends AbstractFacade<Addb> {
          
            if((usdb.equalsbbb(li.getUserid())) && (li.getOther()!= null) && (li.getStatus().equals("Aktiv"))  ){
                
-             System.out.println("the sold is ------- -äääsdäsädäsadäsd-" + li.getStatus());
+           
               
               
              
@@ -111,10 +111,10 @@ public class AddbFacade extends AbstractFacade<Addb> {
        }
        
           if (!wantedEmail.isEmpty() ) {
-           // System.out.println("mission done" );
+          
             return wantedEmail;
         } else {
-            //System.out.println("mission faild");
+           
             return null;
         }
         }
@@ -126,23 +126,23 @@ public class AddbFacade extends AbstractFacade<Addb> {
     public List<Addb> findonlyBougtItems(Userdb usdb) {
        
         
-        System.out.println("Du ska köpa varor min kära bror ------------------");
+      
         List<Addb> emaillist = em.createNamedQuery("Addb.findAll", Addb.class).getResultList();
         List<Addb> wantedEmail = new LinkedList<>();
        for(Addb li : emaillist){
            if((usdb.equalsbbb(li.getUserid())) && (li.getOther()!= null) && (li.getStatus().equals("kopt"))){
-               System.out.println("the bought is ------- -äääsdäsädäsadäsd-" + li.getStatus());
+             
               
-           //    System.out.println( li.getOther()+" _________-------" );
+          
                 wantedEmail.add(li);       
                }          
        }
        
           if (!wantedEmail.isEmpty() ) {
-           // System.out.println("mission done" );
+         
             return wantedEmail;
         } else {
-           // System.out.println("mission faild");
+        
             return null;
         }
         }
