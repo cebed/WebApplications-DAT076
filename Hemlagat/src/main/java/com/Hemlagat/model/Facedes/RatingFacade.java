@@ -3,19 +3,14 @@ package com.Hemlagat.model.Facedes;
 
 import com.Hemlagat.model.Rating;
 import com.Hemlagat.model.Userdb;
-import com.querydsl.jpa.impl.JPAQuery;
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+
 
 /**
  *
@@ -45,11 +40,11 @@ public class RatingFacade extends AbstractFacade<Rating> {
          Userdb userdb = Userfacade.find(rate.getChef());
          userdb.getRatings().add(rate);
             
-        System.out.println("ADDED TO LIST: ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::");
+        System.out.println("ADDED TO LIST: ");
         
         System.out.print("Vi är i min create");
         getEntityManager().persist(rate);
-        System.out.print("Vi är i min create2");
+    
     
     }
     
@@ -59,7 +54,7 @@ public class RatingFacade extends AbstractFacade<Rating> {
          List<Rating> allRatings = em.createQuery("SELECT e FROM Rating e").getResultList();
 
        
-        List<Rating> RatingsWeWant = new LinkedList<>();
+        
         for (Rating rate : allRatings) {
             System.out.println("Here comes the comments: " + rate.getRate()); 
             if (rate.getChef().equals(chef)) {
@@ -69,12 +64,7 @@ public class RatingFacade extends AbstractFacade<Rating> {
         }
         if(count != 0){
             median = median/count;}
-        System.out.println("THE RATING FOR CHEF " +  chef + " IS :::::" +median + " ::::");
-        System.out.println("THE RATING FOR CHEF " +  chef + " IS :::::" +median + " ::::");
-        System.out.println("THE RATING FOR CHEF " +  chef + " IS :::::" +median + " ::::");
-        System.out.println("THE RATING FOR CHEF " +  chef + " IS :::::" +median + " ::::");
-        System.out.println("THE RATING FOR CHEF " +  chef + " IS :::::" +median + " ::::");
-        System.out.println("THE RATING FOR CHEF " +  chef + " IS :::::" +median + " ::::");
+        
         
         return median;
     
