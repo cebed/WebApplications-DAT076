@@ -21,38 +21,29 @@
         <div class="ui-g-6" style="display: block; margin-left: auto; margin-right: auto;">
             
     <p:growl id="messages" showDetail="true" />
- 
+    <p:outputLabel style="  font-family: serif; font-size: 80px; font-weight: bold; color: #13654a; margin-left: -20px;" >Tack för ditt köp
+
+                            </p:outputLabel>
     <h:panelGrid id="ratesystem" columns="1" cellpadding="2"  >
-        <h3>Rating</h3>
+        <h2>Betyg</h2>
         <p:rating value="#{ratingController.selected.rate}" />
-        <h3> Comment </h3>
+        <h2> Kommentar </h2>
        
         <p:inputTextarea rows="6" cols="33" value ="#{ratingController.selected.comment}" />
        
-        <h:outputText value="who made this dish:" />
+       <!-- <h:outputText value="who made this dish:" />
         
         <h:outputText value="who is the rater" />
-        <h:outputText value="#{userBean.username}" />
+        <h:outputText value="#{userBean.username}" />-->
         
         
     </h:panelGrid>
     <b:commandButton value="Submit"  look="success" span="2"
-                     actionListener="#{ratingController.create()}"/>
+                     action="#{ratingController.create()}"/>
     
           
         </div>
-    <p:dialog header="Values" widgetVar="dlg" showEffect="fade" hideEffect="fade">
-        <h:panelGrid id="display" columns="2" cellpadding="5">
-            <h:outputText value="Rating 1:" />
-            <h:outputText value="#{ratingbean.rating1}" />
  
-            <h:outputText value="Comment:" />
-            <h:outputText value="#{ratingbean.comment}" />
- 
-            <h:outputText value="Rating 3:" />
-            <h:outputText value="#{ratingbean.rating3}" />
-        </h:panelGrid>
-    </p:dialog>
 </h:form>
         
         

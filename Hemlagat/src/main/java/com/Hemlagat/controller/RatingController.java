@@ -6,6 +6,7 @@ import com.Hemlagat.controller.util.PaginationHelper;
 import com.Hemlagat.model.Facedes.RatingFacade;
 import com.Hemlagat.model.Userdb;
 import com.Hemlagat.model.Facedes.UserdbFacade;
+import com.Hemlagat.model.session.AddbBean;
 import com.Hemlagat.model.session.ShoppingCart;
 import com.Hemlagat.model.session.UserBean;
 
@@ -42,6 +43,8 @@ public class RatingController implements Serializable {
     private List<Rating> ratings = null;
     @Inject
     private UserBean userBean;
+    @Inject 
+    private AddbBean addbBean;
     @Inject
     private ShoppingCart cart;
 
@@ -110,8 +113,8 @@ public class RatingController implements Serializable {
             current.setChef(email);
             current.setRater(userBean.getUsername());
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("RatingCreated"));
-            return prepareCreate();
+            prepareCreate();
+            return addbBean.OnBougtItems();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
