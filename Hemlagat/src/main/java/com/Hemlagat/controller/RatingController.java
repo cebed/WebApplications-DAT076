@@ -4,9 +4,6 @@ import com.Hemlagat.model.Rating;
 import com.Hemlagat.controller.util.JsfUtil;
 import com.Hemlagat.controller.util.PaginationHelper;
 import com.Hemlagat.model.Facedes.RatingFacade;
-import com.Hemlagat.model.Userdb;
-import com.Hemlagat.model.Facedes.UserdbFacade;
-import com.Hemlagat.model.session.AddbBean;
 import com.Hemlagat.model.session.ShoppingCart;
 import com.Hemlagat.model.session.UserBean;
 
