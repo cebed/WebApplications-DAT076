@@ -11,6 +11,7 @@ import com.Hemlagat.model.session.UserBean;
 import com.Hemlagat.model.session.AddbBean;
 
 import java.io.Serializable;
+import javax.enterprise.context.RequestScoped;
 
 import javax.inject.Named;
 
@@ -21,7 +22,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Named("addbController")
-@SessionScoped
+@RequestScoped
 public class AddbController implements Serializable {
 
     @Inject
@@ -50,21 +51,30 @@ public class AddbController implements Serializable {
             addbBean.getCurrent().setUserid(userdb);
             addbBean.getCurrent().setRating(ratingFacade.findMedianRatings(addbBean.getCurrent().getUserid().getEmail())); // den här metoden ställer till man kan int skapa en ads om man har den!!!!
             addbFacade.create(addbBean.getCurrent());
-            return addbBean.OnAktiveItems();
+            return OnAktiveItems();
         } catch (Exception e) {
 
             return "Locationpage.xhtml";
         }
     }
 
+    
+     public String OnputItems() {
+        return "/addb/List.xhtml?faces-redirect=true";
+    }
+     public String OnItemsbyEmail() {
+        return "/addb/searchforallitems.xhtml";
+    }
+      public String OnAktiveItems() {
+        return "/addb/searchSolditems.xhtml";
+    }
+    
     public String setLocation() {
         return "/addb/List.xhtml?faces-redirect=true";
 
     }
-
-    public String setProfilePage() {
-        return "/profile.xhtml?faces-redirect=true";
-
+    public String OnBougtItems() {
+        return "/addb/searchBougtItems.xhtml";
     }
 
     public String addToShoppingCart() {

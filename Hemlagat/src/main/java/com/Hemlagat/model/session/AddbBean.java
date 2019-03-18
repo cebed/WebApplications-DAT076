@@ -22,6 +22,10 @@ import javax.inject.Inject;
 import lombok.Getter;
 import lombok.Setter;
 import org.primefaces.model.UploadedFile;
+/**
+ *
+ * @author nurabd
+ */
 
 @Named("addbBean")
 @ViewScoped
@@ -39,17 +43,7 @@ public class AddbBean implements Serializable {
     @Setter
     private String email;
 
-    @Setter
-    private List<Addb> items;
-    @Getter
-    @Setter
-    private List<Addb> itemsbyEmail;
-    @Getter
-    @Setter
-    private List<Addb> bougtItems;
-    @Getter
-    @Setter
-    private List<Addb> aktiveItems;
+   
 
     @Inject
     private RatingFacade ratingFacade;
@@ -92,9 +86,7 @@ public class AddbBean implements Serializable {
         return addbFacade.findByAdress(addbController.getAddress());
     }
 
-    public String putItems() {
-        return "/addb/List.xhtml?faces-redirect=true";
-    }
+   
 
     public List<Addb> getitemsbyEmail() {
         final Userdb userdb = userFacade.find(userBean.getEmail());
@@ -102,9 +94,7 @@ public class AddbBean implements Serializable {
         return addbFacade.findByEmail(userdb);
     }
 
-    public String OnItemsbyEmail() {
-        return "/addb/searchforallitems.xhtml";
-    }
+   
 
     public List<Addb> getaktiveItems() {
         final Userdb userdb = userFacade.find(userBean.getEmail());
@@ -113,9 +103,7 @@ public class AddbBean implements Serializable {
 
     }
 
-    public String OnAktiveItems() {
-        return "/addb/searchSolditems.xhtml";
-    }
+   
 
     public List<Addb> getBougtItems() {
         final Userdb userdb = userFacade.find(userBean.getEmail());
@@ -124,8 +112,6 @@ public class AddbBean implements Serializable {
 
     }
 
-    public String OnBougtItems() {
-        return "/addb/searchBougtItems.xhtml";
-    }
+    
 
 }

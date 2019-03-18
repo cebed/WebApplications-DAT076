@@ -44,7 +44,7 @@ public class RatingController implements Serializable {
     @Inject
     private UserBean userBean;
     @Inject 
-    private AddbBean addbBean;
+    private AddbController addbController;
     @Inject
     private ShoppingCart cart;
 
@@ -114,7 +114,7 @@ public class RatingController implements Serializable {
             current.setRater(userBean.getUsername());
             getFacade().create(current);
             prepareCreate();
-            return addbBean.OnBougtItems();
+            return addbController.OnBougtItems();
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
