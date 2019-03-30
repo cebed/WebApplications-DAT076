@@ -25,3 +25,4 @@ Important repo directories:
 /Hemlagat/src/main/webapp/addb/Templetes - All templates
 
 /Hemlagat/src/main/webapp/resources/css/ - CSS sheets
+
